@@ -1,0 +1,203 @@
+.left{float: left;}
+.right{float: right;}
+
+.mycart-border{
+	border:0;
+	border-bottom: 2px solid #cacaca;
+	float: left;
+	width: 100%;
+	display: block;
+}
+
+/*PASSOS / STEPS*/
+#step-1.hidden,
+#step-2.hidden,
+#step-3.hidden {
+    visibility: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transition: all .5s ease-in-out
+}
+#step-1,
+#step-2,
+#step-3 {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+.my-cart-steps {
+    margin: 10px 0 15px
+}
+.my-cart-steps .steps {
+    display: block;
+	float: left;
+	width: 300px;
+	height: 32px;
+	line-height: 32px;
+	margin-left: 19px;
+	background-color: #6ec6a4;
+	color: #fff;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 10px;
+	opacity: 0.7;
+}
+.my-cart-steps .steps:first-child {
+	margin-left: 0;
+}
+.my-cart-steps .current {
+    background-color: #6ec6a4;
+    color: #fff;
+    opacity: 1;
+}
+
+
+/*botões avançar e voltar*/
+.mycart-button{
+	display: inline-block;
+	width: 180px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	border-radius: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: none;
+	cursor: pointer;
+	margin-top: 120px;
+}
+.mycart-button.avancar {
+	background-color: #e95238;
+}
+
+
+
+/*Número do pedido*/
+#mycart-demand{
+	width: 260px;
+	height: 48px;
+	line-height: 48px;
+	margin-top: 30px;
+	float: left;
+	background-color: #e95238;
+	color: #fff;
+	font-size: 12px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+/*texto*/
+#mycart-text{
+	float: left;
+	width: 700px;
+	margin-top: 20px;
+	font-size: 11px;
+	font-family: sans-serif;
+}
+#mycart-text p{
+        font-size: 13px;
+	margin: 15px 0;
+}
+
+/*botão para imprimir*/
+#mycart-print{
+	width: 170px;
+	height: 170px;
+	line-height: 270px;
+	float: right;
+	margin-top: 69px;
+	background: #6ec6a4 url(../../../../default/images/icon@2x/print.png) no-repeat;
+	background-size: 86px 85px;
+	background-position: center 30px;
+	color: #fff;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-align: center;
+	-webkit-transition: all 0.1s;
+	-o-transition: all 0.1s;
+	transition: all 0.1s;
+        border: none;
+        cursor: pointer;
+}
+#mycart-print:hover{
+	background-position: center 27px;
+}
+
+
+/*Mensagem na imagem*/
+#mycart-confirm-message{
+	float: left;
+	width: 470px;
+	margin-right: 20px;
+	margin-top: 10px;
+}
+#mycart-confirm-message img{
+	width: 100%;
+}
+
+
+/*Dados e Totais*/
+#mycart-confirm-total{
+	float: left;
+	margin-top: 10px;
+	height: 470px;
+	position: relative;
+}
+#mycart-confirm-total p{
+	margin: 10px 0;
+	font-size: 12px;
+}
+#mycart-confirm-total .mycart-button{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+
+/*Lightbox para indicar para amigos
+----------------------------------------------*/
+#indique-lightbox{
+	width: 485px;
+}
+
+#indique-lightbox .field{
+	height: 25px;
+	line-height: 25px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	text-transform: uppercase;
+	width: 214px;
+	font-size: 9px;
+	float: left;
+	border: 1px solid #c0bfbf;
+	background-color: #fff;
+	position: relative;
+}
+#indique-lightbox textarea.field{
+	width: 100%;
+	height: 132px;
+}
+#indique-lightbox .field::-webkit-input-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field:-moz-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field::-moz-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field:-ms-input-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}
+#form-url-video{position:relative;padding:15px 10px;margin-bottom:10px}#form-url-video .rvb-label{color:#62c29c;font-weight:400;float:left;clear:left;height:22px;line-height:22px}#form-url-video .rvb-input-txt{float:left;width:295px;margin-bottom:15px}#form-url-video .send-button{margin-top:0;margin-right:0}
+
+.actions-user {
+    display: none !important;
+}
+
+#site-menu ul {
+    display: none !important;
+}

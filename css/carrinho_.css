@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* #################################### CARRINHO ############################################# */
+
+.produto {
+	width:130px;
+	height:auto;
+	float:left;
+	background:#FFFFFF;
+	padding: 4px;
+	margin: 0 0 20px 10px;
+	_margin: 0 0 20px 10px;
+	border: #704f29 solid 1px;
+}
+
+.carrinho_conteudo {
+	float:left;
+	background:#e5d6c5;
+	padding:10px;
+	
+}
+
+label {
+	float:left;
+	margin: 8px 0 0 0;
+}
+
+.carrinho_conteudo .input {
+	margin: 5px 0 0 5px;
+}
+
+.listacarrinho {
+	list-style:none;
+	float:left;
+	padding:2px;
+	margin:25px 0 0 0px;
+}
+
+.listacarrinho li {
+	background:#e5d6c5;
+	width: 160px;
+	padding:4px 0 4px 10px;
+	display:block;
+	margin: 0 0 0 10px;
+	float:left;
+}
+
+.listacarrinho .select {
+	background: #d2aa2a;
+	font-weight:bold;
+}
+
+.fimtabela {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #6b4922;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+}
+
+.precos_bege {
+	font-weight: bold;
+	color: #d2aa2a;
+	text-decoration: none;
+}

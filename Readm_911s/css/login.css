@@ -1,0 +1,49 @@
+body {
+    background-color: #f1f1f1;
+    font-family: Verdana;
+    font-size: 9px;
+    color: #888888;
+}
+.tudo {
+    width: 100%;
+    text-align: center;
+}
+.tudo img{
+    margin-top: 100px;
+}
+.quadro{
+    position: absolute;
+    left: 50%;
+    margin-left: -165px;
+    margin-top: 20px;
+    width: 330px;
+    height: 150px;
+    background-color: #d4d4d4;
+    padding-top: 50px;
+}
+.logar{
+    float: left;
+    padding-top: 6px;
+    margin-left: 40px;
+}
+.submit{
+    float: left;
+    margin-left: 10px;
+}
+.nmcpo{
+    float: left;
+    font-weight: bold;
+    color: #63c09b;
+    margin-left: 40px;
+    padding-top: 7px;
+}
+.inpcpo{
+    float: left;
+    margin-left: 13px;
+}
+.form00{
+    border:1px solid #b7b7b7;
+	font:11px Verdana;
+	padding:3px;
+    width:193px;
+}

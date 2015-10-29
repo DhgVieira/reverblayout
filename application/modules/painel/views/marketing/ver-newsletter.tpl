@@ -1,0 +1,1 @@
+{$dadosSpam->ds_conteudo}

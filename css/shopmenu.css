@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+#menu {height:auto; width:220px; position:absolute; z-index:999; *margin-left:-90px;}
+
+#menu ul {margin:3px 0 0 1px; padding:0; list-style:none; white-space:nowrap; text-align:left; padding:1px 1px 0 1px; background:#5a4d3d;}
+
+#menu li {margin:0; padding:0; list-style:none;}
+#menu li {display:inline-block; display:inline;}
+#menu ul ul {position:absolute; left:-9999px;}
+#menu ul#toplevel {position:absolute; left:0; top:0;}
+
+#menu a { display:block; font:bold 12px verdana,arial,sans-serif; color:#ddba3e; line-height:22px; text-decoration:none;padding:0 20px 0 10px;} 
+
+#menu ul li:hover > ul {left:90%; margin-top:-22px; margin-left:-1px;background:#ebeca8;}
+
+#menu a:hover ul,
+#menu a:hover a:hover ul, 
+#menu a:hover a:hover a:hover ul {left:100%;}
+#menu a:hover ul ul, 
+#menu a:hover a:hover ul ul {left:-9999px;}
+
+#menu li .divisor {background:url(images/sp_mn_divisor.gif); padding:3px; *padding: 0; *margin: 0 0 -25px 0;}
+#menu li .fonte {color:#36190e;}
+#menu li a:hover {background:#ebeca8; color:#36190e;} 
+#menu li:hover > a {background:#ebeca8; color:#f05424;}
+
+#menu table {position:absolute; left:99%; height:0; width:0; border-collapse:collapse; margin-top:-7px; margin-left:-1px;}
+

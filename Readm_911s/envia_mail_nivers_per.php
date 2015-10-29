@@ -1,0 +1,146 @@
+<?php
+include 'auth.php';
+include 'lib.php';
+include_once("fckeditor/fckeditor.php");
+
+$mes = request("mes");
+
+$subject  = "Happy bday! Aproveite o seu dia com uma promo exclusiva: 20% de desconto!";
+
+$texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
+                <p>Parab&eacute;ns, <strong>##nome##</strong>!</p>	
+                <p>Que a sua vida seja repleta de boa m&uacute;sica, seja no seu fone de ouvido ou nas nossas camisetas!</p> 
+                <p>Durante o m&ecirc;s do seu anivers&aacute;rio, voc&ecirc; ganha 20% DE DESCONTO em itens fora de promo&ccedil;&atilde;o aqui na Reverbcity!</p>
+                <p>Confira nossas estampas:</p>
+                <div style="background-color: #dcddde; padding: 5px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
+                <a href="http://rvb.la/FelizBday">http://rvb.la/FelizBday</a>
+                </div>
+                <br /> 
+                * Basta colocar o que deseja no carrinho e o desconto ser&aacute; aplicado automaticamente
+                <br /> <br /> 
+                Que os pr&oacute;ximos anos sejam ainda mais rock and roll,<br /> 
+                Equipe Reverbcity.
+          </div>';
+
+
+//$corpo = "<table align=\"center\" cellpadding=\"0\" cellspacing=\"0\" width=\"539\" border=\"0\" bgcolor=\"#ffe99e\">";
+//$corpo .= "	<tr><td><a href=\"http://www.reverbcity.com/shop/produtos2.php?tip=6\"><img src=\"http://www.reverbcity.com/images/topo_niver.jpg\" width=\"539\" border=\"0\" /></a></td></tr>";
+//$corpo .= "    <tr><td align=\"center\">";
+//$corpo .= "        	<table width=\"100%\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr>";
+//$corpo .= "                	<td align=\"center\">";
+//$corpo .= "                    	<table width=\"90%\" border=\"0\"><tr><td style=\"font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#000000;\">Feliz Aniversário <strong></strong> !!";
+//$corpo .= "						<br /><br />";
+//$corpo .= "						<span style=\"font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#000000;\">Especialmente no mês do seu aniversário, você ganha uma <strong>camiseta</strong> de presente da Reverbcity! Para ativar a promoção, basta você realizar uma compra de produtos que não estejam em promoção, a partir de R$150 que você ganha outra tee!</span>";
+//$corpo .= "						<br /><br />";
+//$corpo .= "                        Nas compras a partir de R$260, o <strong>frete é grátis!!!!</strong>";
+//$corpo .= "                        <br /><br />";
+//$corpo .= "                        Confira nossas Camisetas:<br /><a href=http://www.reverbcity.com/shop/produtos2.php?tip=6>http://www.reverbcity.com/shop/produtos2.php?tip=6</a><br /><br />";
+//$corpo .= "                        Que os próximos anos sejam ainda mais rock and roll,";
+//$corpo .= "                        <br /><br />";
+//$corpo .= "                        <strong>Equipe Reverbcity</strong>.";
+//$corpo .= "                      <br /><br /><span style=\"font-size:12px;\">* Após atingir o valor estipulado, basta estar logado e adicionar a camiseta desejada no seu carrinho.</span>";
+//$corpo .= "                      <br /><span style=\"font-size:12px;\">* A promoção é válida apenas no mês do seu aniversário e não é acumulativa.</span>";
+//$corpo .= "                      <br /><span style=\"font-size:12px;\">* A Reverbcity reserva-se no direito de alterar ou cancelar a promoção a qualquer momento.</span>";
+//$corpo .= "                        <br /><br />";
+//$corpo .= "                	</td></tr></table></td>";
+//$corpo .= "                 </tr>";
+//$corpo .= "            </table></td></tr>";
+//$corpo .= "    <tr><td bgcolor=\"#ffffff\"><a href=\"http://www.reverbcity.com/shop/produtos2.php?tip=6\"><img src=\"http://www.reverbcity.com/images/rodape_niver.jpg\" width=\"539\" border=\"0\" /></a></td></tr>";
+//$corpo .= "</table>";
+
+$corpo = IncluiPapelCarta("niver",utf8_decode($texto));
+
+$dataini_seg = mktime(0, 0, 0, date('m'), 1 , date('Y'));
+$datafimseg = mktime(0, 0, 0, date('m'), date('t') , date('Y'));
+
+$datacom = date('d/m/Y', $dataini_seg);
+$datasem = date('d/m/Y', $datafimseg);
+
+//$dataini = DateAdd(1);
+//$datacom = str_pad($dataini[2],2,"0",STR_PAD_LEFT)."/".str_pad($dataini[1],2,"0",STR_PAD_LEFT)."/".$dataini[0];
+
+//$datafim = DateAdd(7);
+//$datasem = str_pad($datafim[2],2,"0",STR_PAD_LEFT)."/".str_pad($datafim[1],2,"0",STR_PAD_LEFT)."/".$datafim[0];
+?>
+<?php include 'topo.php'; ?>
+
+    	<table class="textosjogos" cellpadding="0" cellspacing="0">
+        	<tr>
+            	<td height="20" align="center" class="textostabelas">
+                	<ul id="titulos_abas">
+                      <li id="menuDepo" class="abaativa">Envio Aniversariantes</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <table class="textostabelas" width="100%" bgcolor="#F7F7F7" cellpadding="0" cellspacing="0">
+        	<tr>
+            	<td align="left">
+                	<ul id="titulos_abas">
+                      <li id="abaCriar" class="abainativa" onMouseOver="trataMouseAba(this);">Enviando Email</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+            	<td align="left">
+                <table width="99%" align="center" cellpadding="0" cellspacing="0">
+                <tr><td bgcolor="#FFFFFF">
+                <div id="abas">
+                       
+                    <div id="Criar">
+                         <p style="margin: 0 0 0 20px;">A tag <strong>##nome##</strong> ser&aacute; substitu&iacute;da pelo nome dos aniversariantes</p>
+                         <form action="envia_mail_nivers_per2.php" method="post">
+                             <fieldset>
+                                 <ul class="formularios">
+                                   <li>
+                                     <label for="titulo" class="data1">
+                                       Data Inicial:<br />
+                                       <input class="form02" type="text" name="dataini" value="<?php echo $datacom ?>" />
+                                     </label>
+                                   </li>
+                                   <li>
+                                     <label for="titulo" class="data2">
+                                       Data Final:<br />
+                                       <input class="form02" type="text" name="datafim" value="<?php echo $datasem ?>" />
+                                     </label>
+                                   </li>
+                                   <li>
+                                     <label for="titulo" class="fonte1">
+                                       Assunto do E-Mail:<br />
+                                       <input class="form02" type="text" name="titulo" value="<?php echo utf8_decode($subject); ?>" />
+                                       <input type="submit" id="postar" name="postar" value="Enviar E-mails" />
+                                     </label>
+                                   </li>
+                                   <li>
+                                     <label for="conteudo" class="fonte1">
+                                       Conteudo:<br />
+                                       <?php
+                                            $oFCKeditor = new FCKeditor('FCKeditor1') ;
+                                            $oFCKeditor->ToolbarSet = 'MyToolbar';
+                                            $oFCKeditor->BasePath = 'fckeditor/' ;
+                                            $oFCKeditor->Height = 700 ;
+											$oFCKeditor->Width = 650 ;
+                                            $oFCKeditor->Value = $corpo ;
+                                            $oFCKeditor->Create('conteudo');
+                                            ?>
+                                     </label>
+                                   </li>
+                                   </ul>
+                             </fieldset>
+
+                         </form>
+                    </div>
+
+                    <script>
+                      defineAba("abaCriar","Criar");
+                      defineAbaAtiva("abaCriar");
+                    </script>
+                
+                </div>	 <!-- /abas -->
+				</td></tr>
+                </table>
+                <br />
+                </td>
+            </tr>
+        </table>
+<?php include 'rodape.php'; ?>

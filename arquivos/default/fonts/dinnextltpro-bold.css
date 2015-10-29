@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'DINNextLTProBold';
+    src: url('dinnextltpro-bold.eot');
+    src: url('dinnextltpro-bold.eot') format('embedded-opentype'),
+         url('dinnextltpro-bold.woff') format('woff'),
+         url('dinnextltpro-bold.ttf') format('truetype'),
+         url('dinnextltpro-bold.svg#DINNextLTProBold') format('svg');
+}

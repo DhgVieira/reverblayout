@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+	<font>Tahoma</font>
+	<text_size>9</text_size>
+	<text_color>#000000</text_color>
+	<add_time_stamp>true</add_time_stamp>
+	<grid>
+		<x>
+			<alpha>15</alpha>
+			<dashed>true</dashed>
+			<approx_count>6</approx_count>
+		</x>
+		<y_left>
+			<alpha>15</alpha>
+			<dashed>true</dashed>
+		</y_left>
+	</grid>
+	<graphs>
+		<graph gid="1">
+			<axis>left</axis>
+			<color>#990000</color>
+			<line_width>1</line_width>
+			<balloon_text><![CDATA[{value} on]]></balloon_text>
+			<visible_in_legend>false</visible_in_legend>
+			<bullet></bullet>
+			<bullet_size></bullet_size>
+		</graph>
+	</graphs>
+	<plot_area>
+		<margins>
+			<left>30</left>
+			<top>40</top>
+			<right>30</right>
+			<bottom>60</bottom>
+		</margins>
+	</plot_area>
+	<indicator>
+		<zoomable>false</zoomable>
+		<y_balloon_on_off>false</y_balloon_on_off>
+	</indicator>
+	<legend>
+		<graph_on_off>false</graph_on_off>
+	</legend>
+</settings>

@@ -1,0 +1,99 @@
+/* CSS Document */
+
+#party {
+	margin: 0 auto;
+	width:910px;
+	height:auto;
+}
+
+.party_week {
+	background: #d1a92a;
+	color: #ffffff;
+	padding: 4px 0 4px 10px;
+	font-size:11px;
+	width:123px;
+	border: 1px solid #6b4922;
+}
+
+.party_days {
+	background:url(../images/img_bg_days.jpg);
+	width: 130px;
+	height: 140px;
+	background-repeat:no-repeat;
+}
+
+.party_days_select {
+	width: 132px;	
+	height: 140px;
+	background: #ffffff;
+	border: 1px solid #6b4922;
+}
+
+.party_days_select img {
+	padding: 8px 10px;
+}
+
+.party_top {
+	color: #FFFFFF;
+	font-size:14px;
+	background: #6b4922;
+	height: 20px;
+}
+
+.party_vazio {
+	color: #FFFFFF;
+	font-size:14px;
+	background: #977957;
+	height: 20px;
+}
+
+.party_day {
+	padding: 0 0 0 10px;
+}
+
+.fest_title {
+	font-size:11px;
+	margin: 0 4px 0 0;
+}
+
+.party_day_content {
+	padding: 10px;
+}
+
+#party_divulga {
+	background:#6B4922;
+	margin: 0 0 20px 0;
+	height:22px;
+}
+
+#party_divulga ul {
+	color:#FFFFFF;
+	margin: 0;
+	list-style:none;
+	font-size:11px;
+	
+}
+
+#party_divulga li {
+	padding: 3px 0 0 0;
+	float:left;
+	height:10px;
+	display:inline;
+	
+}
+
+.janela_party {
+	float:left;
+	width: 160px;
+	height:435px;
+	background:#f0e7dc;
+	overflow:auto;
+}
+
+.janela_party p {
+	margin: 10px 10px 20px 20px;
+}
+
+.janela_party a {
+	margin: 20px 0 20px 0;
+}
