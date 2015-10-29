@@ -1,0 +1,436 @@
+﻿<?php include 'auth.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Reverbdoc - Seu guia do programador!</title>
+        <!--Font Awesome Icons-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!--Materialize-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+        <!--Style-->
+        <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
+        <link rel="icon" href="https://www.reverbcity.com/arquivos/default/images/logo_flat.png" sizes="meta">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <style>
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+    <body>
+        <ul id="slide-out" class="side-nav fixed">
+            <li class="logo"><a id="logo-container" href="https://www.reverbcity.com/" target="_blank" class="brand-logo">
+                    <img src="https://www.reverbcity.com/arquivos/default/images/logo_flat.png" alt="">
+                </a>
+            </li>
+            <li class="bold"><a href="#informacoes-gerais" class="waves-effect waves-light ">Informações</a></li>
+            <li class="bold"><a href="#acessos-principais" class="waves-effect waves-light ">Acessos</a></li>
+            <li class="bold"><a href="#aplicacao" class="waves-effect waves-light ">Aplicação</a></li>
+            <li class="bold"><a href="#new-admin" class="waves-effect waves-light ">Novo Admin</a></li> 
+            <li class="bold"><a href="#arquivos" class="waves-effect waves-light ">Arquivos</a></li> 
+        </ul>	
+
+        <main>
+            <section id="informacoes-gerais">
+                <nav class="top-nav teal lighten-2">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="javascript:void(0)" class="page-title">Informações</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container">
+                    <!-- Acessos Principais -->
+                    <div class="row">
+                        <div class="col m6 l12">
+                            <h4><i class="fa fa-server"></i> - Servidor EC2 (Instance ID: i-e2107af7)</h4>
+                            <p>Para acessar o servidor, utilize a <a href="#pem">private key</a>.</p>	
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Nginx</h5>
+                                    <p>Utilizamos o servidor Nginx pela sua eficiencia e rapidez.</p>
+                                    <blockquote>
+                                        Servidor web poderoso, com excelente proxy reverso e load balancing. Nginx atualmente conta com cerca de 2 milhões de domínios trabalhando com ele, o que equivale a uma fatia de cerca de de 4% dos servidores web pela internet a fora<br /> <span class="right">Eduardo Fonseca Velasques</span>						
+                                    </blockquote>							
+                                </div>
+                                <div class="row">
+                                    <h5>Zend Framework 2</h5>
+                                    <p>Mais informações sobre o uso de rotas e estrutura de pastas no menu <a href="#aplicacao">Aplicação</a></p>					
+                                </div>
+                            </div>				
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="acessos-principais">	
+                <nav class="top-nav teal lighten-2">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="javascript:void(0)" class="page-title">Acessos</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <h5><i class="fa fa-file"></i> - Arquivo de Senhas</h5>
+                        <a id="pem" href="http://reverbcity.com/Readm_911s/private/senhas_reverbcity.docx" target="_blank" class="waves-effect waves-light btn">Baixar</a>
+                    </div>
+                    <!-- Acessos Principais -->
+                    <div class="row">
+                        <div class="col m6 l12">
+                            <h4><i class="fa fa-amazon"></i> - Amazon Web Services (AWS)</h4>
+                            <p>Antes de configurar suas aplicações não esqueça de liberar os acessos no painel EC2 Amazon:</p>
+                            <h5>Painel Amazon</h5>
+                            <div class="container">
+                                <div class="row">
+                                    <p>E-mail: desenvolvimento@reverbcity.com</p>
+                                    <p>Senha: &#60;amazon&#62;reverbcity&#60;/amazon&#62; </p>
+                                </div>
+                            </div>
+                            <p>
+                                - Após logar no painel AWS, clique em EC2, no menu NETWORK & SECURITY clique em Security Groups.<br/>
+                                - Selecione a Instancia correspondente (Group ID sg-b46296d1). <br />
+                                - Na aba Inbound adicione uma nova regra ou altere uma existente para o IP referente à máquina que terá acesso aos serviços (FTP, MYSQL e etc)
+                            </p>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col l12">							
+                                        <h5><i class="fa fa-file"></i> - FTP</h5>
+                                        <div class="container">
+                                            <div class="row">
+                                                <p>Host: 54.94.215.107</p>
+                                                <p>Protocol: FTP</p>
+                                                <p>Usuário: reverbcity</p>
+                                                <p>Senha: reverb@server2014</p>
+                                            </div>
+                                        </div>
+                                        <h5><i class="fa fa-database"></i> - MySQL</h5>
+                                        <div class="container">
+                                            <div class="row">
+                                                <p>Hostname: reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com</p>
+                                                <p>Port: 3306</p>
+                                                <p>Username: reverb</p>
+                                                <p>Password: reverbserver2014</p>
+                                            </div>
+                                        </div>
+                                        <h5><i class="fa fa-key"></i> - Private Key</h5>
+                                        <div class="container">
+                                            <div class="row">
+                                                <p>Utilize esta key para acesso ao servidor via terminal.</p>
+                                                <a id="pem" href="http://reverbcity.com/Readm_911s/private/reverb.pem" target="_blank" class="waves-effect waves-light btn">reverb.pem</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>						
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="aplicacao">
+                <nav class="top-nav teal lighten-2">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="javascript:void(0)" class="page-title">Aplicação</a>					
+                        </div>				
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="col m6 l12">
+                            <p>Aqui estão os principais componentes da aplicação web, incluindo plataforma de pagamento, plataforma de envio de SMS e etc</p>
+                            <h4>Zend Framework 2</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Estrutura de Pastas</h5>
+                                    <pre class="language-markup">
+								<code class=" directory-markup language-markup">
+reverbcity.com/
+	application/
+		configs/ -- routes.ini
+		docs/
+		languages/
+		layouts/
+		modules/
+			default/
+				controllers/
+				models/
+				views/
+					atacado/
+					blog/
+					carrinho/
+					checkout/
+					checkout2/
+					error/
+					forum/
+					index/
+					landing/
+					loja/
+					people/
+					reverbcycle/
+					reverbme/
+					teste/
+			painel/
+			user/
+		tmp/			
+			back_cache/
+			cache/
+			front_cache/
+			templates_c/ -- Arquivos Cache
+	arquivos/
+	clickheat/
+	cronjobs/
+	css/
+	editor/
+	images/
+		2012/
+		editor/
+			image/
+				1/
+				2/
+				assinatura/
+				Assinaturas E-mail/
+				Email_Mkt_Padrao2012/
+				Mail2015/
+				Mailing-2014/
+				Movie Collection/
+				MusicaDia/
+	imgrast/
+		images/
+	library/
+	livezilla/
+	nfe/
+	Readm_911s/ -- ADM atual
+		arquivos/
+		arquivos_correio/
+		bb/
+		chart2/
+		css/
+		Excel/
+		fckeditor/
+		html2pdf/
+		images/
+		img/
+		jquery-autocomplete/
+		nfe/
+		pdf/
+		phpmailer/
+		private/
+		scripts/
+		temp/
+	scripts/
+								</code>
+                                    </pre>
+                                </div>
+                                <div class="row">
+                                    <h5>Rotas</h5>
+                                    <p>Utilizamos o arquivo routes.ini para estipular as rotas da aplicação, onde a estrutura da mesma é:</p>
+                                    <pre class="language-markup">
+								<code class=" directory-markup language-markup">
+routes.nomeview.route = "exemplo-url" -- nomenclatura que será usada para chamar as ações. Ex: https://reverbcity.com/exemplo-url - irá chamar a ação exemplo do controller exemploController
+routes.nomeview.defaults.module = default -- Módulo 
+routes.nomeview.defaults.controller = exemploController
+routes.nomeview.defaults.action = exemplo -- Action (exemploAction(){}) contida no Controller (exemploController)
+								</code>
+                                    </pre>
+                                </div>
+                            </div>
+                            <h4>Pagar.me</h4>
+                            <p>Usamos a infraestrutura de pagamento Pagar.me para nossos checkouts e controle de transações. <br />Será abordado neste tópico somente o necessário para compreensão do uso. Caso queira a documentação completa acesse a documentação oficial: <a href="https://docs.pagar.me/" target="_blank">Pagar.me Doc</a> </p>
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Keys</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Produção</h5>
+                                            <p>API: ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl</p>
+                                            <p>Criptografia: ek_live_r4PoyMJEm9o1qdezLoLQ6YRULYcRdk</p>
+                                        </div>
+                                        <div class="row">
+                                            <h5>Homologação</h5>
+                                            <p>API: ak_test_lemGrJb4dURjNVsXIlGa54NOyifzOB</p>
+                                            <p>Criptografia: ek_test_XRdwFsit9mOwd8wUvyXo2eoEogc12q</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="new-admin">
+                <nav class="top-nav teal lighten-2">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="javascript:void(0)" class="page-title">Novo Admin</a>					
+                        </div>				
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <h5><i class="fa fa-file"></i> - Documentação em PDF</h5>
+                        <a id="admnovo" href="http://reverbcity.com/Readm_911s/private/manual_adminnovo.pdf" target="_blank" class="waves-effect waves-light btn">Baixar</a>
+                    </div>                    
+                    <div class="row">
+                        <div class="col m6 l12">                            
+                            <h4><i class="fa fa-bug"></i> Verificar</h4>
+                            <p>Tópicos decorrentes do levantamento feito na primeira semana sobre o Admin </p>
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Dashboard</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Pedidos</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Não há como filtrar gráfico pelo período.</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Cadastros</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Verificar se os dados estão vindo da forma descrita no PDF.</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Aniversariantes</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Verificar funcionalidade do gráfico de porcentagem.</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Mais Vendidos</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Filtrar os produtos mais vendidos pela data (selecionada no quadro Pedidos).</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Acessos</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Verificar se os dados estão vindo corretamente.</p>
+                                                </div>
+                                            </div>										
+                                        </div>
+                                    </div>
+                                    <h5>Site</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Banners</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Verificar se banners cadastrados estão indo para o site.</p>
+                                                </div>
+                                            </div>
+                                            <h5>Novo Local Banner</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Implementar locais onde os banners irão ser mostrados.</p>
+                                                </div>
+                                            </div>									
+                                        </div>
+                                    </div>
+                                    <h5>Blog</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Posts Cadastrados</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Implementar o menu Opção em Lote.</p>
+                                                </div>
+                                            </div>
+                                            <h5>Comentários</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Ajustar opção excluir.</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Colunista</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Implementar CRUD de colunista.</p>
+                                                </div>
+                                            </div>	
+                                            <h5>Categorias</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Implementar CRUD de categorias.</p>
+                                                </div>
+                                            </div>															
+                                        </div>								
+                                    </div>
+                                    <h5>Fórum</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Tópicos</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Implementar CRUD de tópicos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5>Compras</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <h5>Compras em Aberto</h5>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <p>- Verificar alguns pedidos que ficam zerados.</p>
+                                                    <p>- Ao alterar pedido em que o cliente possui crédito, o valor total perde o mesmo. <br/ > Fazer com que ele reconheça o desconto.</p>
+                                                    <p>- Quando um cliente para um pedido cancelado, fazer com que o sistema adicione a data de pagamento.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5>Clientes</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <p>- Aplicar funcionalidade no botão Créditos.</p>
+                                        </div>
+                                    </div>
+                                    <h5>Geral</h5>
+                                    <div class="container">
+                                        <div class="row">
+                                            <p>- Ajustar Parâmetros do Sistema</p>									
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="arquivos">
+                <nav class="top-nav teal lighten-2">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                            <a href="javascript:void(0)" class="page-title">Arquivos Documentados</a>
+                        </div>
+                    </div>
+                </nav>
+                <div class="container">
+                    <div class="row">
+                        <h5>Cycle App</h5>
+                        <a id="cycle_app" href="http://reverbcity.com/Readm_911s/private/cycle_app.pdf" target="_blank" class="waves-effect waves-light btn">Ver</a>
+                    </div>
+                    <div class="row">
+                        <h5>Organograma V1</h5>
+                        <a id="organograma_v1" href="http://reverbcity.com/Readm_911s/private/organigrama_v1.pdf" target="_blank" class="waves-effect waves-light btn">Ver</a>
+                    </div>
+                    <div class="row">
+                        <h5>Organograma V2</h5>
+                        <a id="organograma_v2" href="http://reverbcity.com/Readm_911s/private/organigrama_v2.pdf" target="_blank" class="waves-effect waves-light btn">Ver</a>
+                    </div>   
+                    <div class="row">
+                        <h5>Mapa do Site</h5>
+                        <a id="sitemap" href="http://reverbcity.com/Readm_911s/private/sitemap_v2.pdf" target="_blank" class="waves-effect waves-light btn">Ver</a>
+                    </div>   
+                </div>
+            </section>
+        </main>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>	
+    </body>
+</html>

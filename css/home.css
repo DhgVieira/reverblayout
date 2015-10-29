@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* ############################### INDEX ###################################### */
+
+#index-produtos {
+	float:left;
+	margin: 10px 15px 30px 0px;
+	width: 450px;
+	_width: 460px;
+	_margin: 10px 10px 30px 0px;
+}
+
+#index-produtos .produto {
+	width:130px;
+	height:200px;
+	float:left;
+	background:#FFFFFF;
+	padding: 4px;
+	margin: 0 0 10px 10px;
+	_margin: 0 0 10px 10px;
+	border: #704f29 solid 1px;
+}
+
+#index-boxes {
+	width:510px;
+	_width:;
+	float:right;
+	_float:;
+	margin: 0 10px 25px 0;
+}

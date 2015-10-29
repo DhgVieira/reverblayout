@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ################################### REVERBCYCLE  ########################################### */
+
+#reverbcycle {
+	margin: 0 30px 0 30px;
+	_margin: 0 20px 0 30px;
+}
+
+
+	#reverbcycle .produto {
+		width:138px;
+		height:auto;
+		float:left;
+		background:#FFFFFF;
+		border: solid 1px #6b4922;
+		margin:0 0 20px 10px;
+		padding:2px;
+	}
+	
+		#reverbcycle .produto img {
+			float:left;
+			padding:4px;
+			width: auto;
+			height: auto;
+			margin:0;
+		}
+	
+	#reverbcycle .descricao {
+		width:130px;
+		_width:110px;
+		margin: 5px;
+		/*padding:2px 2px 5px 2px;*/
+	}
+	
+		#reverbcycle .descricao p {
+			margin: 2px;
+			padding:2px;
+		}
+	

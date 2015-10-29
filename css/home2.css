@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* ############################### INDEX ###################################### */
+
+#index-titulo {
+	width:990px;
+	height:45px;
+	margin: 0;
+	clear:both;
+}
+
+#index-menu {
+	width:200px;
+	float:left;
+	margin: 0;
+}
+
+#index-produtos {
+	float:left;
+	margin:5px 0 0 0;
+	width: auto;
+	height:210px;
+}
+
+#index-produtos .produto {
+	width:130px;
+	height:200px;
+	float:left;
+	background:#FFFFFF;
+	padding: 4px;
+	margin: 0 0 10px 0px;
+	_margin: 0 0 10px 0px;
+	border: #704f29 solid 1px;
+}
+
+#index-boxes {
+	width:auto;
+	float:left;
+	margin: 0;
+}

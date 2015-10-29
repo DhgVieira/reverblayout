@@ -1,0 +1,141 @@
+.left{float: left;}
+.right{float: right;}
+
+.mycart-border{
+	border:0;
+	border-bottom: 2px solid #cacaca;
+	float: left;
+	width: 100%;
+	display: block;
+}
+
+/*botões avançar e voltar*/
+.mycart-button{
+	display: inline-block;
+	width: 180px;
+	height: 55px;
+	line-height: 55px;
+	text-align: center;
+	border-radius: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: none;
+	cursor: pointer;
+	margin-top: 120px;
+}
+.mycart-button.avancar {
+	background-color: #e95238;
+}
+
+
+
+/*Número do pedido*/
+#mycart-demand{
+	width: 260px;
+	height: 48px;
+	line-height: 48px;
+	margin-top: 30px;
+	float: left;
+	background-color: #e95238;
+	color: #fff;
+	font-size: 12px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+/*texto*/
+#mycart-text{
+	float: left;
+	width: 665px;
+	margin-top: 20px;
+	font-size: 11px;
+	font-family: sans-serif;
+}
+#mycart-text p{
+	margin: 15px 0;
+}
+
+/*botão para imprimir*/
+#mycart-print{
+	width: 170px;
+	height: 170px;
+	line-height: 270px;
+	float: right;
+	margin-top: 69px;
+	background: #6ec6a4 url(../../../../default/images/icon@2x/print.png) no-repeat;
+	background-size: 86px 85px;
+	background-position: center 30px;
+	color: #fff;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-align: center;
+	-webkit-transition: all 0.1s;
+	-o-transition: all 0.1s;
+	transition: all 0.1s;
+}
+#mycart-print:hover{
+	background-position: center 27px;
+}
+
+
+/*Mensagem na imagem*/
+#mycart-confirm-message{
+	float: left;
+	width: 470px;
+	margin-right: 20px;
+	margin-top: 15px;
+}
+#mycart-confirm-message img{
+	width: 100%;
+}
+
+
+/*Dados e Totais*/
+#mycart-confirm-total{
+	float: left;
+	margin-top: 10px;
+}
+#mycart-confirm-total p{
+	margin: 10px 0;
+	font-size: 12px;
+}
+
+
+/*Lightbox para indicar para amigos
+----------------------------------------------*/
+#indique-lightbox{
+	width: 485px;
+}
+
+#indique-lightbox .field{
+	height: 25px;
+	line-height: 25px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	margin-right: 5px;
+	text-transform: uppercase;
+	width: 214px;
+	font-size: 9px;
+	float: left;
+	border: 1px solid #c0bfbf;
+	background-color: #fff;
+	position: relative;
+}
+#indique-lightbox textarea.field{
+	width: 100%;
+	height: 132px;
+}
+#indique-lightbox .field::-webkit-input-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field:-moz-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field::-moz-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}#indique-lightbox .field:-ms-input-placeholder {
+   color: #646464;
+   text-transform: uppercase;
+}

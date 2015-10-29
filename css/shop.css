@@ -1,0 +1,234 @@
+@charset "utf-8";
+/* #################################### SHOP ############################################# */
+#shop {
+	float:left;
+	width:990px;
+	height:auto;
+}
+
+	#shop p {
+		margin:0;
+		padding:0;
+	}
+	
+	#shop ul {
+		width:540px;
+		height:auto;
+		font-size:11px;
+		color: #6b4922;
+		list-style:none;
+		margin: 0 auto;
+	}
+	
+	#shop li {
+		display:block;
+		float:left;
+		width: 140px;
+		height:14px;
+		background-repeat:repeat-x;
+		margin: 0 10px 0 0;
+		padding: 5px 0 5px 0;
+		
+	}
+	
+	#shop li a {
+		height:27px;
+		padding: 0px 15px 0px 10px;
+		margin: 0px;
+		/*display:block;*/
+	}
+
+#shop #listaprodutos {
+	z-index:0;
+	width:990px;
+	float:left;
+	margin: 10px auto;
+
+}
+
+#shop #listaprodutos2 {
+	z-index:0;
+	width:750px;
+	float:left;
+	margin: 10px auto;
+
+}
+
+#shop .produto {
+	width:180px;
+	float:left;
+	height:275px;
+	background:#FFFFFF;
+	border: solid 1px #6b4922;
+	padding: 4px;
+	margin: 0 0 10px 0;
+}
+
+	#shop .produto img {
+		margin:0;
+		padding:0;
+	}
+
+#shop .preco-produto {
+	float:left;
+	width:60px;
+	margin:10px 0 0 0;
+	padding:0;
+	border-right:solid 1px #6b4922;
+}
+
+#shop .desc-produto {
+	float:left;
+	width:50%;
+	margin: 10px 0 0 10px;
+	padding:0;
+}
+
+#shop #shop-preview {
+	float:left;
+	width: 590px;
+	margin: 0 0 10px 40px;
+	_margin: 0 0 10px 20px;
+}
+
+#shop #shop-preview #foto-thumbs {
+	float:left;
+	width:90px;
+}
+
+#shop #shop-preview #foto-thumbs img {
+	width:80px;
+	height:110px;
+	background:#FFFFFF;
+	padding: 4px;
+	border:1px #6b4922 solid;
+	margin: 0 0 20px 0;
+}
+
+#shop #shop-preview .foto-detalhe {
+	width:480px;
+	height:530px;
+	float:right;
+	background:#FFFFFF;
+	padding: 4px;
+	border:1px #6b4922 solid;
+}
+
+#shop #shop-sidebar {
+	width:300px;
+	height:auto;
+	float:right;
+}
+
+#shop #shop-conteudo {
+	width:590px;
+	float:left;
+	padding: 0 0 20px 0;
+	
+}
+
+#shop-sizes {
+	float:left;
+	width:315px;
+}
+
+#shop #shop-sizes ul {
+	float:left;
+	width:315px;
+	list-style:none;
+	margin: 0 0 5px 0;
+}
+
+#shop #shop-sizes li {
+	font-size:14px;
+	font-weight:bold;
+	width:30px;
+	height: 14px;
+	margin:0 5px 0 0;
+	display:inline;
+}
+
+#shop #shop-sizes li a {
+	padding: 0px 5px 0px 5px;
+	margin: 0px;
+}
+
+.preco {
+	font-size:11px;
+	color:#d2aa2a;
+	text-decoration:line-through;
+}
+
+.promocao {
+	font-size:11px;
+	color:#f05626;
+	text-decoration:none;
+}
+
+.classics {
+	color:#d2a0c9;
+}
+
+/* ################# MENU SHOP ############################# */
+
+.menushop {
+	width:140px;
+	margin: 0;
+	position:absolute;
+	float:left;
+	padding:0;
+	}
+
+	.menushop h3 {
+		padding: 4px 0 0 0;
+		height:18px;
+		margin:0;
+		
+	}
+	
+	.menushop ul {
+		width:150px;
+		margin: 1px 0 0 0;
+		background:#ebeca8;
+		list-style:none;
+		display:none;
+		overflow:hidden;
+		opacity:0;
+		position:relative;
+		z-index:3000;
+		padding:3px 0 3px 0;
+		
+	}
+	
+	.menushop li {
+		width:155px;
+		font-size:11px;
+		padding: 2px;
+		float:left;		
+	}
+	
+	.menushop li a {
+		padding:3px;
+		/*display:block;*/
+
+	}
+		
+		.rosa li a:hover {
+			border: solid #e39ada 1px;
+			text-decoration:none;
+		}
+		
+		.laranja li a:hover {
+			border: solid #f05626 1px;
+			text-decoration:none;
+		}
+		
+		.verde li a:hover {
+			border: solid #62c29c 1px;
+			text-decoration:none;
+		}
+
+		.bege li a:hover {
+			border: solid #d2aa2a 1px;
+			text-decoration:none;
+		}	

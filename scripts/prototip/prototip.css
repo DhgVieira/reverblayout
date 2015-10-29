@@ -1,0 +1,13 @@
+	
+	.prototip { 
+	position:absolute; 
+	}
+
+	.prototip .pinktip .content { 
+	font:12px Arial, Helvetica, sans-serif;
+	background-color:#683d59;
+	border:2px solid #fff;
+	padding:5px; 
+	color:#fff;
+	clear:both;
+	}

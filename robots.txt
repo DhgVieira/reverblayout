@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /cronjobs/
+Disallow: /css/
+Disallow: /editor/
+Disallow: /imgrast/
+Disallow: /scripts/
+Disallow: /library/
+Disallow: /livezilla/
+Disallow: /Readm_911s/
+Disallow: /application/
+Disallow: /images/
+Disallow: /clickheat/
+Disallow: /shop/
+Disallow: /*.php$
+Disallow: /*.php*
+Sitemap: https://www.reverbcity.com/sitemap.xml
+Sitemap: https://www.reverbcity.com/sitemap_image.xml

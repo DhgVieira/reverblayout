@@ -1,0 +1,6 @@
+<?php
+include "lib.php";
+$texto = RemoveAcentos("téstando açentos óóõõ ü");
+
+echo $texto;
+?>

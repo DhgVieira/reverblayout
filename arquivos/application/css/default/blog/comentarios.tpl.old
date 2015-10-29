@@ -1,0 +1,78 @@
+<form action="{$this->url(["idpost"=>{$blog->NR_SEQ_BLOG_BLRC}], "comentar", TRUE)}" method="post" id="form-comment-post">
+        {if $_nome_usuario eq ""}
+            <div class="field-row">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="field-row">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        {else}
+            <div class="field-row">
+                <label>{$_nome_usuario}</label>
+            </div>
+        {/if}
+        <div class="field-row">
+            <textarea name="comentario" id="comment" cols="1" rows="1" placeholder="Escrava aqui seu comentário..."></textarea>
+        </div>
+        <div class="insert-captcha">
+             <img src="{$basePath}/thumb/captcha/1/93/38/{$this->idCaptcha}.png" alt="captcha" heigth="38" width="93">
+               <!--  <input class="input-box" type="text" id="contato-captcha-code" name="captcha"> -->
+             <input name="captcha[input]" type="text" class="input-box" maxlength="3" title="Digite os caracteres da imagem" id="contato-captcha-code">
+                  <input id="captcha" name="captcha[id]" value="{$this->idCaptcha}" type="hidden">
+
+        </div>
+        <div class="send-button">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+    <div class="post-comments">
+        <span class="band"></span>
+        <h3 class="title-header">Comentários</h3>
+        <div class="listing-comments">
+            {foreach from=$comentarios item=comentario}
+                {assign var="foto" value="{$comentario->NR_SEQ_CADASTRO_CASO}"}
+                {assign var="extensao" value="{$comentario->DS_EXT_CACH}"}
+                {assign var="foto_completa" value="{$foto}.{$extensao}"}
+                <div class="comment-item">
+                    <div class="photo-author">
+                        {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+                            <img alt="1st Name" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>2,'largura'=>50,'altura'=>62,'imagem'=>$foto_completa],'imagem', TRUE)}"/>
+                        {else}
+                            <img alt="1st Name" src="{$this->Url(['tipo'=>"error", 'crop'=>2,'largura'=>50,'altura'=>62,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"/>
+                        {/if}
+                        <span class="name-author">{utf8_decode($comentario->DS_NOME_CASO)}</span>
+                    </div>
+                    <div class="comment-details">
+                        <ul class="status-about-item">
+                            <li><a href="{$this->url(["idpost"=>{$comentario->NR_SEQ_COMENTARIO_CBRC}], "curtirpost", TRUE)}" class="lovers">+ {$comentario->NR_CURTIRAM_CBRC} Curtiram</a></li>
+                            <li><a href="{$this->url(["idpost"=>{$comentario->NR_SEQ_COMENTARIO_CBRC}], "naocurtirpost", TRUE)}" class="haters">- {$comentario->NR_NAOCURTIRAM_CBRC} Não curtiram</a></li>
+                            <li><a href="#" class="replies">3 Respostas</a></li>
+                            <li>{$comentario->DT_CADASTRO_CBRC|date_format:"%d/%m/%Y"} {$comentario->DT_CADASTRO_CBRC|date_format:"%H:%M"}</li>
+                        </ul>
+                        <p>{utf8_decode($comentario->DS_TEXTO_CBRC|strip_tags)}</p>
+                    </div>
+
+                    <div class="answer-comment">
+                        <ul class="status-about-item">
+                            <li><a href="#" class="lovers">+ 2 Curtiram</a></li>
+                            <li><a href="#" class="haters">- 4 Não curtiram</a></li>
+                            <li>04/04/2013 9:12</li>
+                        </ul>
+                        <span class="answer-name-author">Fulano</span>
+                        <p>Lorem ipsum dolor sit amet consectetur.</p>
+                    </div>
+
+                    <div class="user-reply-comment">
+                        <p class="person-name">Usuário logado</p>
+                        <textarea name="reply" class="reply-txt" placeholder="Escreva aqui seu comentário..."></textarea>
+                        <div class="send-button">
+                            <button type="submit">Enviar</button>
+                        </div>
+                    </div> <!-- reply-item -->
+
+                </div>
+            {/foreach}
+        </div>
+    </div>

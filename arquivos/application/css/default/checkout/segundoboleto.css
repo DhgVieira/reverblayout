@@ -1,0 +1,23 @@
+span{
+	font-weight: bold;
+}
+.formulario{
+	text-align: center;
+	margin-top: 50px;
+}
+
+.formulario button{
+	display: inline-block;
+	margin-left: 10px;
+	width: 260px;
+	height: 67px;
+	line-height: 67px;
+	text-align: center;
+	border-radius: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	background-color: #e95238;
+}

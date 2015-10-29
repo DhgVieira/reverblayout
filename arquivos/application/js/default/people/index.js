@@ -1,0 +1,1 @@
+reverb.people=function(){$("#form-people").on("submit",function(e){if($("#imagem").val()!=""){reverb.fullLoader()}else{e.preventDefault();reverb.alertMessage("error","Selecione uma imagem para poder enviar.")}})};$(function(){reverb.people()})

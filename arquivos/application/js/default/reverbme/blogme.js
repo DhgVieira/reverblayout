@@ -1,0 +1,1 @@
+reverb.blogme=function(){$(".reply-comment-btn").on("click",function(){$(this).toggleClass("active");$(this).closest(".comments-item").find(".user-reply-comment").toggleClass("disabled").find("textarea").focus()})};$(function(){reverb.blogme()})

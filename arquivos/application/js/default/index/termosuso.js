@@ -1,0 +1,1 @@
+$(function(){$("#lista-help a").on("click",function(e){e.preventDefault();if($(this).hasClass("aberto")){}else{$(".aberto").next().slideUp();$(".aberto").removeClass("aberto");$(this).addClass("aberto");$(this).next().slideDown()}})})

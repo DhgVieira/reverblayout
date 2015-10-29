@@ -1,0 +1,70 @@
+
+	.abaativa {
+	background:#fff;
+	font:bold 10px Verdana, Arial, Helvetica, sans-serif;
+	margin-top:5px;
+	color:#42413e;
+	}
+	
+	.abainativa {
+	background:url(../img/li.jpg) bottom repeat-x;
+	font:bold 10px Verdana, Arial, Helvetica, sans-serif;
+	margin-top:5px;
+	color:#888681;
+	}
+	
+	ul#titulos_abas, titulos_abas3 {
+	padding:0%;
+	margin:0%;
+	}
+	
+	ul#titulos_abas li {
+	width:170px; height:auto;
+	border-left:1px solid #f0ede4;
+	border-right:1px solid #f0ede4;
+	border-top:1px solid #f0ede4;
+	padding:3px 3px 4px 3px;
+	list-style-type:none;
+	text-align:center;
+	display:inline;
+	margin-left:7px;
+	float:left;
+	}
+	
+	ul#titulos_abas2 li {
+	width:85px; height:auto;
+	border-left:1px solid #f0ede4;
+	border-right:1px solid #f0ede4;
+	border-top:1px solid #f0ede4;
+	padding:3px 3px 4px 3px;
+	list-style-type:none;
+	text-align:center;
+	display:inline;
+	margin-left:4px;
+	float:left;
+	}
+	
+	
+	ul#titulos_abas3 li {
+	width:140px; height:15px;
+	border-left:1px solid #f0ede4;
+	border-right:1px solid #f0ede4;
+	border-top:1px solid #f0ede4;
+	padding:4px 4px 4px 4px;
+	list-style-type:none;
+	text-align:center;
+	display:inline;
+	margin-left:1px;
+	float:left;
+	}
+	
+	#abas {
+	width:100%; height:auto;
+	border-top:1px solid #f0ede4;
+	float:left;
+	}
+	
+	div#Ver, div#Criar {
+	padding-top:15px;
+	float:left;
+	}
