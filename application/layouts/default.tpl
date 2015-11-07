@@ -1095,7 +1095,7 @@
 			</script>
 			{/if}
 		{/if}
-		<script type="text/javascript" async src="https://assets.pagar.me/checkout/checkout.js"></script>
+		
 		{literal}
 		<!-- GOOGLE ANALITYCS -->
 		<script type="text/javascript">
