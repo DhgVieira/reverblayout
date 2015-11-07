@@ -1,3 +1,4 @@
+.DS_Store
 arquivos/uploads/banners/*
 arquivos/uploads/blog/*
 arquivos/uploads/blog_me/*
@@ -18,3 +19,4 @@ temporarios/*
 application_
 livezilla/*
 nfe
+/application/tmp

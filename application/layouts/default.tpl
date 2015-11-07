@@ -23,7 +23,6 @@
 	document.basePath = '{$basePath}';
 	</script>
 	
-	<script type="text/javascript" src="https://assets.pagar.me/checkout/checkout.js"></script>
 	
 	<meta property="fb:app_id" content="713473752042540" />
 	<meta property="fb:admins" content="100000451099995"/>
@@ -51,33 +50,33 @@
 	<meta name="google-site-verification" content="WJxo-ptNAStuP27bFhQ9LtNos15iL--lJUCGwUta5ro" />
 	<meta name="robots" content="index, follow, all" />
 	{if $currentController == 'loja' && $currentAction == 'produto'}
-	{if $produto->NR_SEQ_TIPO_PRRC == 6}
-	{assign var=preTitle value='Camiseta '}
-	{else}
-	{assign var=preTitle value=''}
-	{/if}
-	{assign var=ds_produto_prrc value=' - '|explode:$produto->DS_PRODUTO_PRRC}
-	{assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
-	{assign var=urlCanonical value="https://www.reverbcity.com/produto/{$this->createslug($slug)}/{$produto->NR_SEQ_PRODUTO_PRRC}"}
+		{if $produto->NR_SEQ_TIPO_PRRC == 6}
+			{assign var=preTitle value='Camiseta '}
+		{else}
+			{assign var=preTitle value=''}
+		{/if}
+		{assign var=ds_produto_prrc value=' - '|explode:$produto->DS_PRODUTO_PRRC}
+		{assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
+		{assign var=urlCanonical value="https://www.reverbcity.com/produto/{$this->createslug($slug)}/{$produto->NR_SEQ_PRODUTO_PRRC}"}
 
-	<link rel="canonical" href="{$urlCanonical}" />
-	<link rel="alternate" href="{$urlCanonical}" hreflang="pt-br" />
+		<link rel="canonical" href="{$urlCanonical}" />
+		<link rel="alternate" href="{$urlCanonical}" hreflang="pt-br" />
 	{else}
-	{if $currentController == 'index' && $currentAction == 'index'}
-	<link rel="canonical" href="https://www.reverbcity.com/inicio" />
-	<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
-	{else}
-	<link rel="canonical" href="{$_pagina_atual}" />
-	<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
-	{/if}
+		{if $currentController == 'index' && $currentAction == 'index'}
+			<link rel="canonical" href="https://www.reverbcity.com/inicio" />
+			<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
+		{else}
+			<link rel="canonical" href="{$_pagina_atual}" />
+			<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
+		{/if}
 	{/if}
 
 	{if $currentController == 'loja' && $currentAction == 'index'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{elseif $currentController == 'loja' && $currentAction == 'todos-produtos'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{elseif $currentController == 'index' && $currentAction == 'inicio'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{/if}
 
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -96,91 +95,10 @@
         <script type="text/javascript" src="{$basePath}/arquivos/default/js/libs/html5shiv.min.js"> </script>
         <![endif]-->
 
-        {$this->headLink()}
+    {$this->headLink()}
 
-        {if $_isMobile neq 1}
-        {literal}
-        <!--Start of Zopim Live Chat Script-->
-        <script type="text/javascript">
-        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-        	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-        		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-        		$.src='//v2.zopim.com/?2Z58nkKSaFYfK6W9xTVaK5iULjxTJQTu';z.t=+new Date;$.
-        		type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-        		</script>
-        		<!--End of Zopim Live Chat Script-->
-        		{/literal}
-
-        		{if $_logado}
-        		<script>
-        		$zopim(function(){
-        			$zopim.livechat.setName('{$_nome_usuario}');
-        			$zopim.livechat.setEmail('{$_email_usuario}');
-        		});
-        		</script>
-        		{/if}
-        		{/if}
-        		{literal}
-        		<script>
-        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        		ga('create', 'UA-38700671-1', 'auto');
-        		ga('require', 'displayfeatures');
-        		ga('require', 'ecommerce');
-        		ga('require', 'linkid', 'linkid.js');
-        		ga('send', 'pageview');
-
-        		</script>
-        		{/literal}
-        		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
-        		<script>
-        		ga('ecommerce:addTransaction', {
-        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-        			'affiliation': 'Reverbcity.com',
-        			'revenue': '{$compra->VL_TOTAL_COSO}',
-        			'shipping': '{$compra->VL_FRETE_COSO}',
-        			'tax': '0'
-        		});
-
-        		{foreach from=$carrinho item=dadosProduto}
-        		ga('ecommerce:addItem', {
-        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-        			'name': '{$dadosProduto['nome']}',
-        			'sku': '{$dadosProduto['codigo']}',
-        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
-        			'quantity': '{$dadosProduto['quantidade']}'
-        		});
-        		{/foreach}
-        		ga('ecommerce:send');
-        		</script>
-
-        		<script type="text/javascript">
-        		document.valorCompra = '{$compra->VL_TOTAL_COSO}';
-        		</script>
-        		{literal}
-        		<script type="text/javascript">
-        		(function() {
-        			var _fbq = window._fbq || (window._fbq = []);
-        			if (!_fbq.loaded) {
-        				var fbds = document.createElement('script');
-        				fbds.async = true;
-        				fbds.src = '//connect.facebook.net/en_US/fbds.js';
-        				var s = document.getElementsByTagName('script')[0];
-        				s.parentNode.insertBefore(fbds, s);
-        				_fbq.loaded = true;
-        			}
-        		})();
-        		window._fbq = window._fbq || [];
-        		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
-        		</script>
-        		{/literal}
-        		<noscript>
-        			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
-        		</noscript>
-        		{/if}
+    
+	
         	</head>
         	<body>
 
@@ -1153,6 +1071,94 @@
             <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
             <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
         </noscript>
+		
+
+		{if $_isMobile neq 1}
+	        {literal}
+	        <!--Start of Zopim Live Chat Script-->
+	        <script type="text/javascript">
+	        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	        	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	        		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+	        		$.src='//v2.zopim.com/?2Z58nkKSaFYfK6W9xTVaK5iULjxTJQTu';z.t=+new Date;$.
+	        		type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+			</script>
+			<!--End of Zopim Live Chat Script-->
+			{/literal}
+
+			{if $_logado}
+			<script>
+	        		$zopim(function(){
+	        			$zopim.livechat.setName('{$_nome_usuario}');
+	        			$zopim.livechat.setEmail('{$_email_usuario}');
+	        		});
+			</script>
+			{/if}
+		{/if}
+		<script type="text/javascript" async src="https://assets.pagar.me/checkout/checkout.js"></script>
+		<!-- GOOGLE ANALITYCS -->
+		<script>
+        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        		ga('create', 'UA-38700671-1', 'auto');
+        		ga('require', 'displayfeatures');
+        		ga('require', 'ecommerce');
+        		ga('require', 'linkid', 'linkid.js');
+        		ga('send', 'pageview');
+
+		</script>
+
+		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
+			<script>
+	        		ga('ecommerce:addTransaction', {
+	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+	        			'affiliation': 'Reverbcity.com',
+	        			'revenue': '{$compra->VL_TOTAL_COSO}',
+	        			'shipping': '{$compra->VL_FRETE_COSO}',
+	        			'tax': '0'
+	        		});
+
+	        		{foreach from=$carrinho item=dadosProduto}
+	        		ga('ecommerce:addItem', {
+	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+	        			'name': '{$dadosProduto['nome']}',
+	        			'sku': '{$dadosProduto['codigo']}',
+	        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
+	        			'quantity': '{$dadosProduto['quantidade']}'
+	        		});
+	        		{/foreach}
+	        		ga('ecommerce:send');
+			</script>
+
+			<script type="text/javascript">
+				document.valorCompra = '{$compra->VL_TOTAL_COSO}';
+			</script>
+	        <script type="text/javascript">
+	    		(function() {
+	    			var _fbq = window._fbq || (window._fbq = []);
+	    			if (!_fbq.loaded) {
+	    				var fbds = document.createElement('script');
+	    				fbds.async = true;
+	    				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	    				var s = document.getElementsByTagName('script')[0];
+	    				s.parentNode.insertBefore(fbds, s);
+	    				_fbq.loaded = true;
+	    			}
+	    		})();
+	    		window._fbq = window._fbq || [];
+	    		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
+			</script>
+			<noscript>
+				<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
+			</noscript>	
+	     		
+		{/if}
+
+		
+
     </body>
 </html>
 {/strip}

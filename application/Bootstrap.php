@@ -46,65 +46,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			'automatic_serialization' => TRUE
 		);
 
-		$backendOptions = array (
-			'cache_dir' => $this->_config->reverb->cache->cache_dir
-		);
-
-		$cache = Zend_Cache::factory("Core", "File", $frontendOptions, $backendOptions);
-		Zend_Registry::set("cache", $cache);
-
-		$dir = $this->_config->reverb->cache->cache_dir; 
-		// $frontendOptions = array( 'lifetime' => 600, 
-		// 						  'content_type_memorization' => true, 
-		// 						  'default_options' => array( 'cache' => true,
-		// 						  							  'cache_with_get_variables' => true, 
-		// 						  							  'cache_with_post_variables' => true, 
-		// 						  							  'cache_with_session_variables' => true, 
-		// 						  							  'cache_with_cookie_variables' => true, ), 
-		// 						  							  'regexps' => array( // cache the whole IndexController
-								  							  					
-		// 						  							  					'^/blog/index' => array('cache' => true),
-		// 						  							  					'^/forum/index' => array('cache' => true),
-		// 						  							  					'^/index/' => array('cache' => true),
-		// 						  							  					'^/people/index' => array('cache' => true),
-		// 						  							  					'^/reverbcycle/index' => array('cache' => true),
-		// 						  							  					'^/loja/index' => array('cache' => true),
-		// 						  							  					'^/loja/novidades' => array('cache' => true),
-		// 						  							  					'^/loja/masculino' => array('cache' => true),
-		// 						  							  					'^/loja/feminino' => array('cache' => true),
-		// 						  							  					'^/loja/casa' => array('cache' => true),
-		// 						  							  					'^/loja/sale' => array('cache' => true),
-		// 						  							  					'^/loja/valepresente' => array('cache' => true),
-		// 						  							  					'^/loja/avisame' => array('cache' => true),
-		// 						  							  					'^/loja/colecoesantigas' => array('cache' => true)
-
-
-		// 						  							  					 // place more controller links here to cache them
-		// 						  							  					  )
-		// 						  							  	);
-
+		$cache = Zend_Cache::factory("Core", "APC", $frontendOptions, array());
+		Zend_Registry::set("cache", $cache);		
 	}
-
-	/**
-	 * Inicializa a tradução do sistema
-	 *
-	 * @name _initTranslate
-	 */
-//	protected function _initTranslate() {
-//		try {
-//			// Busca a linguagem padrão
-//			$options = $this->getOption("Reverb");
-//			$default_language = $options['config']['language'];
-//
-//			// Inicia a tradução do site
-//			$translate = new Zend_Translate("array", APPLICATION_PATH . "/languages", NULL, array('scan' => Zend_Translate::LOCALE_DIRECTORY));
-//			$translate->setLocale($default_language);
-//			Zend_Registry::set("translate", $translate);
-//		} 
-//		catch(Exception $e) {
-//			die($e->getMessage());
-//		}
-//	}
 
 	/**
 	 * Inicializa as rotas
@@ -159,19 +103,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		 		// Registra a conexão
 		 		$registry = Zend_Registry::getInstance();
 		 		$registry->set("db", $db);
+
+		 		Zend_Db_Table_Abstract::setDefaultMetadataCache($registry->get('cache'));
 		 	}
 		 	catch(Exception $e) {
-//		 		var_dump($e);
-		 		// Mostra o problema com a conexão de dados
-                die($e->getMessage());
+                
 		 		die("Estamos com problemas no momento, retorne em alguns instantes. Obrigado.");
 		 	}
 		 }
-//		$resource = $this->getPluginResource('multidb');
-//                $resource->init();
-//
-//                Zend_Registry::set('db', $resource->getDb('db1'));
-//                Zend_Registry::set('db2', $resource->getDb('db2'));
 	}
 
 	/**
