@@ -46,12 +46,13 @@ class Reverb_Controller_Plugin_Arquivos extends Zend_Controller_Plugin_Abstract 
 		
 		// Percorre os arquivos js
 		$module = (string)$request->getModuleName();
-		$fileJs = "";
+		$fileJs = ['content' => '', 'name' => 'all'];
 		foreach($config->$module as $file) {
 			if(strpos($file, "http://") === FALSE) {
 				// Troca a palavra chave do modulo
 				$file = str_replace(":module", $module, $file);
-				$fileJs .= file_get_contents(APPLICATION_PATH . '/../' . $file);
+				$fileJs['content'] .= file_get_contents(APPLICATION_PATH . '/../' . $file);
+				$fileJs['name'] .= '-' . $file;
 				// Adiciona o arquivo
 //				$view->headScript()->appendFile($basePath . "/" . $file);
 			}
@@ -61,7 +62,8 @@ class Reverb_Controller_Plugin_Arquivos extends Zend_Controller_Plugin_Abstract 
 			}
 		}
 
-		if (!empty($fileJs)) {
+		if (!empty($fileJs['content'])) {
+			file_put_contents(APPLICATION_PATH . '/../arquivos/uploads/' . $fileJs['name'] . '.js', $fileJs['content']);
 			$view->headScript()->appendFile($fileJs);
 		}
 
