@@ -49,22 +49,21 @@ class Reverb_Controller_Plugin_Arquivos extends Zend_Controller_Plugin_Abstract 
 		$fileJs = ['content' => '', 'name' => 'all'];
 		foreach($config->$module as $file) {
 			if(strpos($file, "http://") === FALSE) {
+				$fileName = explode('/', $file);
 				// Troca a palavra chave do modulo
 				$file = str_replace(":module", $module, $file);
-				$fileJs['content'] .= file_get_contents(APPLICATION_PATH . '/../' . $file);
-				$fileJs['name'] .= '-' . $file;
-				// Adiciona o arquivo
-//				$view->headScript()->appendFile($basePath . "/" . $file);
+
+				$fileJs['content'] .= file_get_contents(APPLICATION_PATH . '/../' . $file) . ';' . PHP_EOL;
+				$fileJs['name'] .= '-' . end($fileName);
 			}
 			else {
 				// Adiciona o arquivo
 				$view->headScript()->appendFile($file);
 			}
 		}
-
 		if (!empty($fileJs['content'])) {
 			file_put_contents(APPLICATION_PATH . '/../arquivos/uploads/' . $fileJs['name'] . '.js', $fileJs['content']);
-			$view->headScript()->appendFile($fileJs);
+			$view->headScript()->appendFile('/arquivos/uploads/' . $fileJs['name'] . '.js');
 		}
 
 		// Busca os titulos do arquivos
