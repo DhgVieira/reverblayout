@@ -46,20 +46,25 @@ class Reverb_Controller_Plugin_Arquivos extends Zend_Controller_Plugin_Abstract 
 		
 		// Percorre os arquivos js
 		$module = (string)$request->getModuleName();
+		$fileJs = "";
 		foreach($config->$module as $file) {
 			if(strpos($file, "http://") === FALSE) {
 				// Troca a palavra chave do modulo
 				$file = str_replace(":module", $module, $file);
-				
+				$fileJs .= file_get_contents(APPLICATION_PATH . '/../' . $file);
 				// Adiciona o arquivo
-				$view->headScript()->appendFile($basePath . "/" . $file);
+//				$view->headScript()->appendFile($basePath . "/" . $file);
 			}
 			else {
 				// Adiciona o arquivo
 				$view->headScript()->appendFile($file);
 			}
 		}
-		
+
+		if (!empty($fileJs)) {
+			$view->headScript()->appendFile($fileJs);
+		}
+
 		// Busca os titulos do arquivos
 		$config = new Zend_Config_Ini(APPLICATION_PATH . "/configs/arquivos.ini", "title");
 		
