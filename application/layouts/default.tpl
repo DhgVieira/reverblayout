@@ -1113,6 +1113,7 @@
 		</script>
 		{/literal}
 		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
+			{literal}
 			<script>
 	        		ga('ecommerce:addTransaction', {
 	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
@@ -1155,7 +1156,7 @@
 			<noscript>
 				<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
 			</noscript>	
-	     		
+	     	{/literal}
 		{/if}
 
 		
