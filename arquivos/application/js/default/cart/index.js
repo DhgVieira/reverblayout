@@ -204,6 +204,25 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    $('#pay-button').on('click', function (e) {
+
+        var amount = reverb.floatNumbersPagarme(carrinho.total);
+
+        // inicializa o checkout
+        var checkout = new PagarMeCheckout.Checkout({"encryption_key":"ek_test_XRdwFsit9mOwd8wUvyXo2eoEogc12q", success: function(data) {
+            console.log(data);
+            $("#data-holder").val(data.token);
+            $('#mycart-payment').submit();
+            // callback após o checkout ter sido finalizado
+        }});
+
+        // abre o checkout passando os parâmetros desejados
+        var params = {"customerData":false, "amount":amount, "createToken": "true", "cardBrands": "visa,mastercard,amex", };
+        checkout.open(params);
+    });
+
+
+/*
     $('.pedido.avancar').on('click', function (e) {
         e.preventDefault();
 
@@ -231,26 +250,7 @@ $(document).ready(function () {
         } else {
 
             var amount = reverb.floatNumbersPagarme(carrinho.total);
-/*
-            // inicializa o checkout
-            var checkout = new PagarMeCheckout.Checkout({"encryption_key":"ek_test_Akwmf1evsllS5aPfdVZr3rk4It6xWR", success: function(data) {
-                console.log(data);
-                $("#data-holder").val(data.token);
-                $('#mycart-payment').submit();
-                // callback após o checkout ter sido finalizado
-            }});
-            // abre o checkout passando os parâmetros desejados
-            var params = {
-                "customerData":false,
-                "paymentMethods": "credit_card,boleto",
-                "cardBrands": "visa,mastercard,amex,aura,jcb,diners,elo",
-                "amount": amount,
-                "maxInstallments": 4,
-                "uiColor": "#6ec6a4"
-            };
-            checkout.open(params);
 
-*/
             var checkout = new PagarMeCheckout.Checkout({"encryption_key": "ek_live_r4PoyMJEm9o1qdezLoLQ6YRULYcRdk", success: function (r) {
                 console.log(r);
                 $("#data-holder").val(r.token);
@@ -262,7 +262,7 @@ $(document).ready(function () {
             $('#carregando-lightbox').removeClass('md-show');
         }
     });
-
+*/
     $('.carrinho.avancar').on('click', function (e) {
         e.preventDefault();
         $('.carrinho-lista').hide('slide', {direction: 'left'}, 350, function () {
