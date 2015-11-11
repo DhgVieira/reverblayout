@@ -433,9 +433,9 @@ class CarrinhoController extends Zend_Controller_Action {
                         $tempo_cadastro = $query_tempo_cadastro->fetchAll();
 
                         //agora verifico se o tempo de cadastro e maior que 90 dias
-                        //if ($tempo_cadastro[0]["diferenca"] <= 90 and $ja_tem_brinde == 0) {
+                        if ($tempo_cadastro[0]["diferenca"] <= 90 and $ja_tem_brinde == 0) {
 
-                        if ($ja_tem_brinde == 0) {
+                        //if ($ja_tem_brinde == 0) {
 
                             //agora verifico se existe mais de 150 em compras e se ainda não entrou brinde para ele
 //                            if ($valor_total >= $promocoes["vl_primeira_compra"]) {
