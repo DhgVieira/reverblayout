@@ -506,7 +506,7 @@
             <input type="hidden" name="transition-token" id="data-holder" data-token=""
                    data-customer-data="false" data-max-installments="4" value="" >
             <a href="#" class="mycart-button pedido voltar">Voltar</a>
-            <a href="#" class="mycart-button pedido avancar md-trigger">Pagamento</a>
+            <a href="#" class="mycart-button pedido avancar md-trigger" data-modal="carregando-lightbox">Pagamento</a>
         </div>
     </form>
     <script type="text/javascript">

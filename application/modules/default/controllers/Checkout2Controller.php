@@ -1438,7 +1438,8 @@ class Checkout2Controller extends Zend_Controller_Action {
         $temTeste = false;
 
         require APPLICATION_PATH . '/../library/Reverb/Library/pagarme/Pagarme.php';
-        Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
+        //Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
+        Pagarme::setApiKey("ak_test_lemGrJb4dURjNVsXIlGa54NOyifzOB");
 
         $token = $dados['transition-token'];
         $returnedTransaction = PagarMe_Transaction::findById("{$token}");
@@ -3979,7 +3980,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 $this->view->bairro = $bairro;
 
                 require APPLICATION_PATH . '/../library/Reverb/Library/pagarme/Pagarme.php';
-                Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
+                Pagarme::setApiKey("ak_test_lemGrJb4dURjNVsXIlGa54NOyifzOB");
 
                 $transaction = PagarMe_Transaction::findById($compra->DS_TID_COSO);
 
