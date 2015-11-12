@@ -334,23 +334,25 @@
                 display: ["firefox", "chrome", "opera", "msie"]
             });
             $('#site-menu').removeClass('hidden');
+            var logado = false, nomeUsuario = "", emailUsuario = "";
+            {if $_logado eq 1}
+                nomeUsuario = '{$_nome_usuario}';
+                emailUsuario =  '{$_email_usuario}';
+                logado = true;
+            {/if}
             {literal}
-            window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-                d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-                _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-                $.src='//v2.zopim.com/?2Z58nkKSaFYfK6W9xTVaK5iULjxTJQTu';z.t=+new Date;$.
-                type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+            	$.getScript('/arquivos/default/js/zopim.js', function() {
+            		if (logado) {
+	                	$zopim(function(){
+	                        $zopim.livechat.setName(nomeUsuario);
+	                        $zopim.livechat.setEmail(emailUsuario);
+	                	});
+	                }
+            	});
+                
             {/literal}
             
-            {if $_logado eq 1}
-                var nomeUsuario = '{$_nome_usuario}', emailUsuario =  '{$_email_usuario}';       
-                {literal}  
-                $zopim(function(){
-                        $zopim.livechat.setName(nomeUsuario);
-                        $zopim.livechat.setEmail(emailUsuario);
-                });
-                {/literal}
-            {/if}
+            
             return false
         })
 </script>
