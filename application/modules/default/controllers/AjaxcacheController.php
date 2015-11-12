@@ -1,6 +1,6 @@
 <?php
 
-class AjaxCacheController extends Zend_Controller_Action
+class AjaxcacheController extends Zend_Controller_Action
 {
 
     public function init()
