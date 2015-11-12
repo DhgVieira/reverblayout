@@ -505,10 +505,6 @@
             </div>
         </noscript>
         
-        <script type="text/javascript"></script>
-        
-		
-
 		{if $_isMobile neq 1}
 	        {literal}
 	        <!--Start of Zopim Live Chat Script-->
