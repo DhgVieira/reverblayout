@@ -506,26 +506,9 @@
         </noscript>
         
 		{if $_isMobile neq 1}
-	        {literal}
-	        <!--Start of Zopim Live Chat Script-->
-	        <script type="text/javascript">
-	        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-	        	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-	        		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-	        		$.src='//v2.zopim.com/?2Z58nkKSaFYfK6W9xTVaK5iULjxTJQTu';z.t=+new Date;$.
-	        		type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-			</script>
-			<!--End of Zopim Live Chat Script-->
-			{/literal}
+	        
 
-			{if $_logado}
-			<script>
-	        		$zopim(function(){
-	        			$zopim.livechat.setName('{$_nome_usuario}');
-	        			$zopim.livechat.setEmail('{$_email_usuario}');
-	        		});
-			</script>
-			{/if}
+			
 		{/if}
 		
 		{literal}
@@ -594,6 +577,8 @@
 		{* BUSCAR O MENU TOPO *}
 		
 		<script type="text/javascript">
+			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if};
+			
 			{literal}
             $(window).bind("load", function() {
                $.getScript('/arquivos/default/js/social.js', function() {});
@@ -601,9 +586,7 @@
                		twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });
                });
             });
-        	{/literal}
-			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if}
-			{literal}			
+        			
 			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
 			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
 			{/literal}
