@@ -1,23 +1,24 @@
-    <div class="banners-advertisement cycle-slideshow"
-    data-cycle-fx="fadeout"
-    data-cycle-timeout="5000"
-    data-cycle-slides="> a"
-    data-cycle-log="true"
-    data-cycle-pause-on-hover="true" style="margin-bottom:10px;">
-        {foreach from=$banners_topo item=banner}
-        {assign var="foto" value="{$banner->NR_SEQ_BANNER_BARC}"}
-        {assign var="extensao" value="{$banner->DS_EXT_BARC}"}
-        {assign var="foto_completa" value="{$foto}.{$extensao}"}
-            <a href="{$banner->DS_LINK_BARC}">
-                {if file_exists("arquivos/uploads/banners/$foto_completa")}
-                    <img src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />
-                {else}
-                    <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />
-                {/if}
-            </a>
-        {/foreach}
-    </div>
-
+    {*<div class="banners-advertisement cycle-slideshow"*}
+    {*data-cycle-fx="fadeout"*}
+    {*data-cycle-timeout="5000"*}
+    {*data-cycle-slides="> a"*}
+    {*data-cycle-log="true"*}
+    {*data-cycle-pause-on-hover="true" style="margin-bottom:10px;">*}
+        {*{foreach from=$banners_topo item=banner}*}
+        {*{assign var="foto" value="{$banner->NR_SEQ_BANNER_BARC}"}*}
+        {*{assign var="extensao" value="{$banner->DS_EXT_BARC}"}*}
+        {*{assign var="foto_completa" value="{$foto}.{$extensao}"}*}
+            {*<a>{$foto_completa} </a>*}
+            {*<a href="{$banner->DS_LINK_BARC}">*}
+                {*{if file_exists("arquivos/uploads/banners/$foto_completa")}*}
+                    {*<img src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />*}
+                {*{else}*}
+                    {*<img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />*}
+                {*{/if}*}
+            {*</a>*}
+        {*{/foreach}*}
+    {*</div>*}
+{include file="banner.tpl"}
 <section class="products">
     <div class="rvb-column left">
         <ul class="rvb-collection-of-products">
@@ -29,8 +30,9 @@
             {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
             {assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
             {assign var="foto_completa_dia" value="{$foto_produto}.{$extensao_produto}"}
-            
+
             {if !file_exists("arquivos/uploads/fotosprodutos/$foto_completa_dia")}
+                {$foto_completa_dia}
                 {assign var="foto_produto" value="{$fotos[1]['NR_SEQ_FOTO_FORC']}"}
                 {assign var="extensao_produto" value="{$fotos[1]['DS_EXT_FORC']}"}
                 {assign var="foto_completa_dia" value="{$foto_produto}.{$extensao_produto}"}
@@ -48,7 +50,7 @@
 
                 <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa_dia")}
-                        {assign var="foto_completa_dia" value="{$this->createslug($_produto_dia->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
+                        {*{assign var="foto_completa_dia" value="{$this->createslug($_produto_dia->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{utf8_decode($_produto_dia->DS_PRODUTO_PRRC)}">
                             {if $_isMobile neq 1}
@@ -85,7 +87,11 @@
                     {/if}
                     <span class="rvb-tag new productday"></span>
                 </a>
+                {*TOdo Dhiego*}
                 <div class="product-details">
+                    <div class="bola">
+                        <a>OFF</a>
+                    </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
                             {$_produto_dia->DS_PRODUTO_PRRC|truncate:29:"...":TRUE}
@@ -123,7 +129,7 @@
 
               <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
             {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-                    {assign var="foto_completa" value="{$this->createslug($destaque->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
+                    {*{assign var="foto_completa" value="{$this->createslug($destaque->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
                     <!-- Polyfill para imagens responsivas-->
                     <span data-picture data-alt="{$destaque->DS_PRODUTO_PRRC}" title="{$destaque->DS_PRODUTO_PRRC}">
                         {if $_isMobile neq 1}
@@ -160,6 +166,9 @@
                     <span class="rvb-tag new big"></span>
                 </a>
                 <div class="product-details">
+                    <div class="bola">
+                        <a>NEW</a>
+                    </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
                             {utf8_decode($destaque->DS_PRODUTO_PRRC)}
@@ -203,7 +212,7 @@
 
                 <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}" class="product-photo">
                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-                        {assign var="foto_completa" value="{$this->createslug($produto['DS_PRODUTO_PRRC'])}-{$foto_produto}.{$extensao_produto}"}
+                        {*{assign var="foto_completa" value="{$this->createslug($produto['DS_PRODUTO_PRRC'])}-{$foto_produto}.{$extensao_produto}"}*}
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}

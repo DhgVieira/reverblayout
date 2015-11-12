@@ -1,1 +1,38 @@
-section.products .rvb-column.left{float:left}.socials-network-dark:before{position:absolute;top:50%;left:0;margin-top:-8px;width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:8px solid #fff;border-right:0;content:" "}
+section.products .rvb-column.left
+{
+    float: left;
+}
+.socials-network-dark:before
+{
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #fff;
+    border-right: 0;
+    border-top: 8px solid transparent;
+    content: " ";
+    height: 0;
+    left: 0;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+}
+.bola
+{
+    margin-top: 10px;
+    float: left;
+    background-color: #5fbf98;
+    border-radius: 50%;
+    display: inline-block;
+    height: 36px;
+    width: 36px;
+    line-height:36px;
+}
+.bola a
+{
+    padding-left: 6px;
+    font-family: Sans,sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+
+}
