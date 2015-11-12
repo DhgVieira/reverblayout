@@ -598,14 +598,14 @@
 		{* BUSCAR O MENU TOPO *}
 		
 		<script type="text/javascript">
-
+			{literal}
             $(window).bind("load", function() {
                $.getScript('/arquivos/default/js/social.js', function() {});
                $.getScript('//platform.twitter.com/oct.js', function() {
                		twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });
                });
             });
-        
+        	{/literal}
 			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if}
 			{literal}			
 			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
