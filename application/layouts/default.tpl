@@ -642,9 +642,8 @@
 		<script type="text/javascript">
 			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if}
 			{literal}			
-			$.get('/topbar?isMobile=' + isMobile.toString(), function (response) {
-				$('#top-bar').html(response);
-			});
+			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
+			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
 			{/literal}
 		</script>		
 		
