@@ -1,24 +1,5 @@
-    {*<div class="banners-advertisement cycle-slideshow"*}
-    {*data-cycle-fx="fadeout"*}
-    {*data-cycle-timeout="5000"*}
-    {*data-cycle-slides="> a"*}
-    {*data-cycle-log="true"*}
-    {*data-cycle-pause-on-hover="true" style="margin-bottom:10px;">*}
-        {*{foreach from=$banners_topo item=banner}*}
-        {*{assign var="foto" value="{$banner->NR_SEQ_BANNER_BARC}"}*}
-        {*{assign var="extensao" value="{$banner->DS_EXT_BARC}"}*}
-        {*{assign var="foto_completa" value="{$foto}.{$extensao}"}*}
-            {*<a>{$foto_completa} </a>*}
-            {*<a href="{$banner->DS_LINK_BARC}">*}
-                {*{if file_exists("arquivos/uploads/banners/$foto_completa")}*}
-                    {*<img src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />*}
-                {*{else}*}
-                    {*<img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>40,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner->DS_DESCRICAO_BARC}" />*}
-                {*{/if}*}
-            {*</a>*}
-        {*{/foreach}*}
-    {*</div>*}
 {include file="banner.tpl"}
+{*<link rel="stylesheet" type="text/css" href="/arquivos/default/css/style.css">*}
 <section class="products">
     <div class="rvb-column left">
         <ul class="rvb-collection-of-products">
@@ -89,7 +70,7 @@
                 </a>
                 {*TOdo Dhiego*}
                 <div class="product-details">
-                    <div class="bola">
+                    <div class="circle" style="background-color: #5fbf98">
                         <a>OFF</a>
                     </div>
                     <h2 class="product-name">
@@ -166,7 +147,7 @@
                     <span class="rvb-tag new big"></span>
                 </a>
                 <div class="product-details">
-                    <div class="bola">
+                    <div class="circle" style="background-color: #fc6902">
                         <a>NEW</a>
                     </div>
                     <h2 class="product-name">
@@ -248,108 +229,118 @@
                             </noscript>
                         </span>
                     {/if}
-                    
-                {if $produto['DS_FRETEGRATIS_PRRC'] == 'S'}
-                    <span class="rvb-tag sale-frete"></span>                    
-                {elseif $produto['TP_DESTAQUE_PRRC'] == 1 and $produto['DS_FRETEGRATIS_PRRC'] == 'N'}
-                    <span class="rvb-tag new"></span>
-                {elseif $produto['TP_DESTAQUE_PRRC'] == 3}
-                    <span class="rvb-tag reprint"></span>
-                {elseif $produto['TP_DESTAQUE_PRRC'] == 2}
-                    <span class="rvb-tag sale"></span>
-                {else}
-                {/if}
+
+                {*{if $produto['DS_FRETEGRATIS_PRRC'] == 'S'}*}
+                    {*<span class="rvb-tag sale-frete"></span>*}
+                {*{elseif $produto['TP_DESTAQUE_PRRC'] == 1 and $produto['DS_FRETEGRATIS_PRRC'] == 'N'}*}
+                    {*<span class="rvb-tag new"></span>*}
+                {*{elseif $produto['TP_DESTAQUE_PRRC'] == 3}*}
+                    {*<span class="rvb-tag reprint"></span>*}
+                {*{elseif $produto['TP_DESTAQUE_PRRC'] == 2}*}
+                    {*<span class="rvb-tag sale"></span>*}
+                {*{else}*}
+                {*{/if}*}
                 </a>
-                <h2 class="product-name">
+                {*<h2 class="product-name">*}
                     {*{utf8_decode($produto->DS_PRODUTO_PRRC|truncate:18:"...":TRUE)}*}
-                    <a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">
-                        {if $produto['NR_SEQ_TIPO_PRRC'] == 6}camiseta {/if}{$produto['DS_PRODUTO_PRRC']}
-                    </a>
-                </h2>
+                    {*<a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">*}
+                        {*{if $produto['NR_SEQ_TIPO_PRRC'] == 6}camiseta {/if}{$produto['DS_PRODUTO_PRRC']}*}
+                    {*</a>*}
+                {*</h2>*}
                 {*{assign var=totalChar value=$produto['DS_PRODUTO_PRRC']|count_characters:true}*}
                 {*{if $totalChar >= 22}*}
                     {*<span class="extends">...</span>*}
                 {*{/if}*}
-               <p class="price">
-                   <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">
-                    {if $produto['VL_PROMO_PRRC'] > 0}
-                        <del>R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}</del>
-                        Por R$ {$produto['VL_PROMO_PRRC']|number_format:2:",":"."}
-                    {else}
-                         R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."} 
-                    {/if}
-                   </a>
-                </p>
+               {*<p class="price">*}
+                   {*<a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">*}
+                    {*{if $produto['VL_PROMO_PRRC'] > 0}*}
+                        {*<del>R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}</del>*}
+                        {*Por R$ {$produto['VL_PROMO_PRRC']|number_format:2:",":"."}*}
+                    {*{else}*}
+                         {*R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."} *}
+                    {*{/if}*}
+                   {*</a>*}
+                {*</p>*}
 
             </li>
             {/foreach}
+            <li class="product-item">
+                <div class="sex" style="background-color: #5fbf98">
+                    <span>MASCULINO</span>
+                </div>
+            </li>
+            <li class=" product-item">
+                <div class="sex" style="background-color: #5fbf98">
+                    <span>MASCULINO</span>
+                </div>
+            </li>
         </ul>
 
-        <ul class="pagination">
-             <ul class="pagination">
-            {if $categoria_produto neq ""}
+        {*<ul class="pagination">*}
+             {*<ul class="pagination">*}
+            {*{if $categoria_produto neq ""}*}
 
-                {if $pages.previous}
-                    <li class="item">
-                        <a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.previous}, "idcategoria"=>{$categoria_produto}], "inicio", TRUE)}">◄</a>
-                    </li>
-                {/if}
-                {section name=page_loop start=$this->contadores->current_page-1 loop=$this->contadores->current_page+3 step=1}
-                    {if $smarty.section.page_loop.index+1 == $this->contadores->current_page}
-                        <li class="item">
-                            <a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1, "idcategoria"=>{$categoria_produto}], 'inicio', TRUE)}" class="active">
-                                {$smarty.section.page_loop.index+1}
-                            </a>
-                        </li>
-                    {else}
-                        <li class="item">
-                            <a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1, "idcategoria"=>{$categoria_produto}], 'inicio', TRUE)}">
-                                {$smarty.section.page_loop.index+1}
-                            </a>
-                        </li>
-                    {/if}
-                {/section}
-                {if $pages.next}
-                    <li class="item">
-                        <a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.next}, "idcategoria"=>{$categoria_produto}], "inicio", TRUE)}">►</a>
-                    </li>
-                {/if}
+                {*{if $pages.previous}*}
+                    {*<li class="item">*}
+                        {*<a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.previous}, "idcategoria"=>{$categoria_produto}], "inicio", TRUE)}">◄</a>*}
+                    {*</li>*}
+                {*{/if}*}
+                {*{section name=page_loop start=$this->contadores->current_page-1 loop=$this->contadores->current_page+3 step=1}*}
+                    {*{if $smarty.section.page_loop.index+1 == $this->contadores->current_page}*}
+                        {*<li class="item">*}
+                            {*<a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1, "idcategoria"=>{$categoria_produto}], 'inicio', TRUE)}" class="active">*}
+                                {*{$smarty.section.page_loop.index+1}*}
+                            {*</a>*}
+                        {*</li>*}
+                    {*{else}*}
+                        {*<li class="item">*}
+                            {*<a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1, "idcategoria"=>{$categoria_produto}], 'inicio', TRUE)}">*}
+                                {*{$smarty.section.page_loop.index+1}*}
+                            {*</a>*}
+                        {*</li>*}
+                    {*{/if}*}
+                {*{/section}*}
+                {*{if $pages.next}*}
+                    {*<li class="item">*}
+                        {*<a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.next}, "idcategoria"=>{$categoria_produto}], "inicio", TRUE)}">►</a>*}
+                    {*</li>*}
+                {*{/if}*}
 
-            {else}
+            {*{else}*}
 
-                {if $pages.previous}
-                    <li class="item">
-                        <a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.previous}], "inicio", TRUE)}">◄</a>
-                    </li>
-                {/if}
-                {section name=page_loop start=$this->contadores->current_page-1 loop=$this->contadores->current_page+3 step=1}
-                    {if $smarty.section.page_loop.index+1 == $this->contadores->current_page}
-                        <li class="item">
-                            <a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1], 'inicio', TRUE)}" class="active">
-                                {$smarty.section.page_loop.index+1}
-                            </a>
-                        </li>
-                    {else}
-                        {if $pages.next && $pages.last >= $smarty.section.page_loop.index+1}
-                        <li class="item">
-                            <a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1], 'inicio', TRUE)}">
-                                {$smarty.section.page_loop.index+1}
-                            </a>
-                        </li>
-                        {/if}
-                    {/if}
-                {/section}
-                {if $pages.next}
-                    <li class="item">
-                        <a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.next}], "inicio", TRUE)}">►</a>
-                    </li>
-                {/if}
+                {*{if $pages.previous}*}
+                    {*<li class="item">*}
+                        {*<a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.previous}], "inicio", TRUE)}">◄</a>*}
+                    {*</li>*}
+                {*{/if}*}
+                {*{section name=page_loop start=$this->contadores->current_page-1 loop=$this->contadores->current_page+3 step=1}*}
+                    {*{if $smarty.section.page_loop.index+1 == $this->contadores->current_page}*}
+                        {*<li class="item">*}
+                            {*<a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1], 'inicio', TRUE)}" class="active">*}
+                                {*{$smarty.section.page_loop.index+1}*}
+                            {*</a>*}
+                        {*</li>*}
+                    {*{else}*}
+                        {*{if $pages.next && $pages.last >= $smarty.section.page_loop.index+1}*}
+                        {*<li class="item">*}
+                            {*<a rel="nofollow" href="{$this->url(["module"=>"default","controller"=>"index",  "action"=>"inicio", "page"=>$smarty.section.page_loop.index+1], 'inicio', TRUE)}">*}
+                                {*{$smarty.section.page_loop.index+1}*}
+                            {*</a>*}
+                        {*</li>*}
+                        {*{/if}*}
+                    {*{/if}*}
+                {*{/section}*}
+                {*{if $pages.next}*}
+                    {*<li class="item">*}
+                        {*<a rel="nofollow" title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"index", "action"=>"inicio", "page"=>{$pages.next}], "inicio", TRUE)}">►</a>*}
+                    {*</li>*}
+                {*{/if}*}
 
-            {/if}
-        </ul>
+            {*{/if}*}
+        {*</ul>*}
     </div>
 
-    <div class="rvb-column right">
-      {include file="sidebar-default.tpl"}
-    </div>
+    {*<div class="rvb-column right">*}
+      {*{include file="sidebar-default.tpl"}*}
+    {*</div>*}
 </section>
