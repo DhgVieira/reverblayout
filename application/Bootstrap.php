@@ -21,6 +21,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 	protected $_config = NULL;
 
 	/**
+	 * @var \Zend_Log
+	 */
+	protected $logger;
+
+	/**
 	 * Busca a configuração do INI
 	 *
 	 * @name _initConfig
@@ -38,7 +43,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
 	}
 
-
+	protected function _initLog() {
+		if ($log = $this->getPluginResource('log')) {
+			$this->logger = $log->getLog();
+			Zend_Registry::set('logger', $this->logger);
+		}
+	}
 
 	protected function _initCache() {
 		$frontendOptions = array(
@@ -65,6 +75,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			return $router;
 		}
 		catch(Exception $e) {
+			$message = $e->getMessage() . ' --- ' . $e->getTraceAsString();
+			$this->logger->log($message, Zend_Log::CRIT);
 			return FALSE;
 		}
 	}
