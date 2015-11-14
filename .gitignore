@@ -18,3 +18,5 @@ temporarios/*
 application_
 livezilla/*
 nfe
+application/tmp/cache/*
+application/tmp/templates_c/
