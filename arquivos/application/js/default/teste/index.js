@@ -6,16 +6,17 @@ carrinho = {
     total: $("#mycart-subtotal").data("total"),
     cep: $("#mycart-subtotal").data("cep"),
     msgErro: 0,
-    totalDescontoPromo: 0
+    totalDescontoPromo: 0,
+    encryption_key:"ek_live_r4PoyMJEm9o1qdezLoLQ6YRULYcRdk"
 }
 function r() {
     carrinho.quantidade = 0, carrinho.subTotal = 0, carrinho.subTotal = 0, carrinho.totalDescontoPromo = 0;
     $.each($(".mycart-content-item"), function (e) {
         var r = $(this).data("valorproduto"),
-            de = $(this).data("desconto"),
-            a = parseInt($(this).find("select[name=amount]").val()),
-            o = (r * a) - de,
-            semDe = r * a;
+                de = $(this).data("desconto"),
+                a = parseInt($(this).find("select[name=amount]").val()),
+                o = (r * a) - de,
+                semDe = r * a;
         carrinho.subTotal += o;
         carrinho.quantidade += a;
         carrinho.totalDescontoPromo += de;
@@ -226,19 +227,41 @@ $(document).ready(function () {
                 scrollTop: $(".rvb-title.pagamento-title").offset().top - 45
             }, 1000);
         } else {
-
+            // Novo Checkout
             var amount = reverb.floatNumbersPagarme(carrinho.total);
+            var customerName = $(this).data('customer-name');
+            var customerDocumentNumber = $(this).data('customer-document-number');
+            var customerEmail = $(this).data('customer-email');
+            var customerAddressStreet = $(this).data('customer-address-street');
+            var customerAddressStreetNumber = $(this).data('customer-address-street-number');
+            var customerAddressComplementary = $(this).data('customer-address-complementary');
+            var customerAddressNeighborhood = $(this).data('customer-address-neighborhood');
+            var customerAddressZipcode = $(this).data('customer-address-zipcode');
+            var customerPhoneDdd = $(this).data('customer-phone-ddd');
+            var customerPhoneNumber = $(this).data('customer-phone-number');
 
-            var checkout = new PagarMeCheckout.Checkout({"encryption_key": "ek_live_r4PoyMJEm9o1qdezLoLQ6YRULYcRdk", success: function (r) {
-                console.log(r);
-                $("#data-holder").val(r.token);
+            var checkout = new PagarMeCheckout.Checkout({"encryption_key": carrinho.encryption_key, success: function (r) {
+                    $("#data-holder").val(r.token);
+                    $('#mycart-payment').submit();
+                }});
 
-                $('#mycart-payment').submit();
-            }})
-            checkout.open({"customerData": false, "cardBrands": "visa,mastercard,amex,aura,jcb,diners,elo", "amount": amount,
-                "maxInstallments": 4, "uiColor": "#6ec6a4"});
-            $('#carregando-lightbox').attr('style', '');
-            $('#carregando-lightbox').removeClass('md-show');
+            checkout.open({
+                "customerData": false,
+                "cardBrands": "visa,mastercard,amex",
+                "amount": amount,
+                "maxInstallments": 4,
+                "uiColor": "#6ec6a4",
+                "customerName": customerName,
+                "customerDocumentNumber": customerDocumentNumber,
+                "customerEmail": customerEmail,
+                "customerAddressStreet": customerAddressStreet,
+                "customerAddressStreetNumber": customerAddressStreetNumber,
+                "customerAddressComplementary": customerAddressComplementary,
+                "customerAddressNeighborhood": customerAddressNeighborhood,
+                "customerAddressZipcode": customerAddressZipcode,
+                "customerPhoneDdd": customerPhoneDdd,
+                "customerPhoneNumber": customerPhoneNumber
+            });
         }
     });
 
@@ -328,10 +351,10 @@ $(document).ready(function () {
                     temGratis = true;
                 }
                 var a = e.PrazoEntrega,
-                    t = parseInt(e.Erro),
-                    s = e.valor_frete_gratis,
-                    c = e.Atacadista,
-                    n = e.Brindes;
+                        t = parseInt(e.Erro),
+                        s = e.valor_frete_gratis,
+                        c = e.Atacadista,
+                        n = e.Brindes;
 
                 if (s != 0) {
                     valor_frete_gratis = s;
@@ -416,8 +439,8 @@ $(document).ready(function () {
                 },
                 success: function (e) {
                     var r = e.valor_desconto,
-                        a = e.erro,
-                        o = e.msg_erro;
+                            a = e.erro,
+                            o = e.msg_erro;
                     a ? reverb.alertMessage("error", o) : (carrinho.desconto = r, $("#mycart-discount-button").text("DESATIVAR"), $("#cupomcode").prop("disabled", !0), reverb.alertMessage("success", "Seu vale desconto foi calculado com sucesso!"))
                 },
                 complete: function () {
@@ -444,7 +467,7 @@ $(document).ready(function () {
                 },
                 success: function (e) {
                     var r = (e.valor_desconto, e.erro),
-                        a = e.msg_erro;
+                            a = e.msg_erro;
                     r ? reverb.alertMessage("error", a) : (carrinho.desconto = 0, $("#mycart-discount-button").text("ATUALIZAR"), $("#cupomcode").val("").prop("disabled", !1), reverb.alertMessage("success", "Você removeu o seu desconto, agora poderá utiliza-lo em outra compra!"))
                 },
                 complete: function () {
@@ -640,32 +663,32 @@ $(document).ready(function () {
             var o = t.scripts[e];
             o.success(n)
         }, p = {remotePath: "/modal.html", props: {style: {zIndex: 9999, background: "transparent", border: "0 none transparent", overflowX: "hidden", overflowY: "auto", margin: 0, padding: 0, "-webkit-tap-highlight-color": "transparent", "-webkit-touch-callout": "none", position: "fixed", left: 0, top: 0, width: "100%", height: "100%"}}, closeModal: function () {
-            return p.container.hide(), p.container.find("iframe").blur(), !0
-        }, openModal: function () {
-            p.container.show(), p.container.find("iframe").focus()
-        }, beforeOpen: function (e) {
-            e && e()
-        }, create: function () {
-            var t = e("<div></div>").hide();
-            return e("body").append(t), p.container = t, new PagarMeCheckout.easyXDM.Rpc({remote: r + p.remotePath, container: t.get(0), props: p.props}, {local: {closeModal: p.closeModal, submitForm: function (e, t) {
-                p.closeModal(), l(e, t)
-            }}, remote: {config: {}, animateIn: {}}})
-        }}, f = {remotePath: "/tab-mid.html", props: {style: {display: "none"}}, closeModal: function () {
-            o.close(), o = null, a.setSource(null), a.restart()
-        }, beforeOpen: function (e) {
-            o && !o.closed && o.close(), o = window.open(r + "/tab.html"), o.blur(), a.setSource(o), e && e()
-        }, openModal: function () {
-        }, create: function () {
-            return a = createTransport({closeModal: function () {
-                f.closeModal()
-            }, submitForm: function (e, t) {
-                f.closeModal(), l(e, t)
-            }}, r), {config: function (e, t) {
-                a.callMethod("config", e, t)
-            }, animateIn: function () {
-                a.callMethod("animateIn")
-            }}
-        }};
+                return p.container.hide(), p.container.find("iframe").blur(), !0
+            }, openModal: function () {
+                p.container.show(), p.container.find("iframe").focus()
+            }, beforeOpen: function (e) {
+                e && e()
+            }, create: function () {
+                var t = e("<div></div>").hide();
+                return e("body").append(t), p.container = t, new PagarMeCheckout.easyXDM.Rpc({remote: r + p.remotePath, container: t.get(0), props: p.props}, {local: {closeModal: p.closeModal, submitForm: function (e, t) {
+                            p.closeModal(), l(e, t)
+                        }}, remote: {config: {}, animateIn: {}}})
+            }}, f = {remotePath: "/tab-mid.html", props: {style: {display: "none"}}, closeModal: function () {
+                o.close(), o = null, a.setSource(null), a.restart()
+            }, beforeOpen: function (e) {
+                o && !o.closed && o.close(), o = window.open(r + "/tab.html"), o.blur(), a.setSource(o), e && e()
+            }, openModal: function () {
+            }, create: function () {
+                return a = createTransport({closeModal: function () {
+                        f.closeModal()
+                    }, submitForm: function (e, t) {
+                        f.closeModal(), l(e, t)
+                    }}, r), {config: function (e, t) {
+                        a.callMethod("config", e, t)
+                    }, animateIn: function () {
+                        a.callMethod("animateIn")
+                    }}
+            }};
         n = u() ? f : p, t.scriptsCount_ = 0, t.scripts = {}, t.prototype.mapIframeParameters_ = function (e) {
             var t = {card_brands: "brands"};
             for (var n in t)
@@ -712,19 +735,19 @@ $(document).ready(function () {
                 var P = v(k.data("button-text"));
                 P.insertBefore(k), k.data("button-class") && P.addClass(k.data("button-class"));
                 var j, C = new t({encryption_key: k.data("encryption-key"), success: function (t) {
-                    var n = e("[data-checkout-id=" + this.id + "]"), o = n.parents("form"), a = null, r = function (t, n) {
-                        n = n, e.each(t, function (t) {
-                            var a;
-                            if (a = n ? n + "[" + t + "]" : t, e.isPlainObject(this))
-                                r(this, a);
-                            else {
-                                var i = e("<input />", {name: a, type: "hidden", val: this});
-                                o.append(i)
-                            }
-                        })
-                    };
-                    t.token || (a = "pagarme"), r(t, a), o.submit()
-                }});
+                        var n = e("[data-checkout-id=" + this.id + "]"), o = n.parents("form"), a = null, r = function (t, n) {
+                            n = n, e.each(t, function (t) {
+                                var a;
+                                if (a = n ? n + "[" + t + "]" : t, e.isPlainObject(this))
+                                    r(this, a);
+                                else {
+                                    var i = e("<input />", {name: a, type: "hidden", val: this});
+                                    o.append(i)
+                                }
+                            })
+                        };
+                        t.token || (a = "pagarme"), r(t, a), o.submit()
+                    }});
                 j = C.id, k.attr("data-checkout-id", j), P.data("script", j), P.data("checkout", C)
             }
         }
@@ -766,12 +789,12 @@ $(document).ready(function () {
                     }
                 }
             }), {callMethod: function () {
-                u.apply(null, arguments)
-            }, setSource: function (e) {
-                t = e
-            }, restart: function () {
-                o = []
-            }}
+                    u.apply(null, arguments)
+                }, setSource: function (e) {
+                    t = e
+                }, restart: function () {
+                    o = []
+                }}
         }
     }(window);
     var i = 1, s = 0;
