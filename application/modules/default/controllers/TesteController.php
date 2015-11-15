@@ -140,13 +140,19 @@ class TesteController extends Zend_Controller_Action {
             $select_info = $model_cadastro->select()
                     ->from("cadastros", array("DS_NOME_CASO",
                         "DS_ENDERECO_CASO",
-                        "DS_NUMERO_CASO",
+                        "replace(replace(DS_NUMERO_CASO,'-',''),'.','') as DS_NUMERO_CASO",
                         "DS_COMPLEMENTO_CASO",
                         "DS_CIDADE_CASO",
                         "DS_UF_CASO",
                         "DS_PAIS_CACH",
                         "DS_CEP_CASO",
-                        "DS_BAIRRO_CASO"))
+                        "replace(replace(DS_CEP_CASO,'-',''),'.','') as DS_CEP_CASO",
+                        "DS_BAIRRO_CASO",
+                        "replace(replace(DS_CPFCNPJ_CASO,'-',''),'.','') as DS_CPFCNPJ_CASO",
+                        "DS_EMAIL_CASO",
+                        "replace(replace(DS_DDDFONE_CASO,'-',''),'.','') as DS_DDDFONE_CASO",
+                        "replace(replace(DS_FONE_CASO,'-',''),'.','') as DS_FONE_CASO"
+                        ))
                     ->where("NR_SEQ_CADASTRO_CASO = '$usuarios->idperfil'");
             //assino o cliente ao view
             $infos = $model_cadastro->fetchRow($select_info)->toArray();
@@ -433,9 +439,9 @@ class TesteController extends Zend_Controller_Action {
                         $tempo_cadastro = $query_tempo_cadastro->fetchAll();
 
                         //agora verifico se o tempo de cadastro e maior que 90 dias
-                        //if ($tempo_cadastro[0]["diferenca"] <= 90 and $ja_tem_brinde == 0) {
+                        if ($tempo_cadastro[0]["diferenca"] <= 30 and $ja_tem_brinde == 0) {
 
-                        if ($ja_tem_brinde == 0) {
+                        //if ($ja_tem_brinde == 0) {
 
                             //agora verifico se existe mais de 150 em compras e se ainda não entrou brinde para ele
 //                            if ($valor_total >= $promocoes["vl_primeira_compra"]) {

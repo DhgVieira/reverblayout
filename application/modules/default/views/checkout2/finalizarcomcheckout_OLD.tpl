@@ -184,6 +184,11 @@
 </div>                                
 <div id="container-modal-boleto-overlay"></div>
 <div id="modal-boleto"></div>
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        alert('Teste');
+    });
+</script>
 <!-- Google Code for Compra Conversion Page -->
 <script type="text/javascript">
     /* <![CDATA[ */
