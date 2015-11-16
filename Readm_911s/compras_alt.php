@@ -117,11 +117,11 @@ body {
 }
 -->
 </style>
-<script type="text/javascript" src="scripts/autocomplete/jquery-1.4.2.min.js"></script>
-<script type='text/javascript' src='scripts/autocomplete/jquery.bgiframe.min.js'></script>
-<script type='text/javascript' src='scripts/autocomplete/jquery.ajaxQueue.js'></script>
-<!-- <script type='text/javascript' src='scripts/autocomplete/thickbox-compressed.js'></script> -->
-<script type='text/javascript' src='scripts/autocomplete/jquery.autocomplete.js'></script>
+<script type="text/javascript" pagespeed_no_transform src="scripts/autocomplete/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" pagespeed_no_transform src="/Readm_911s/scripts/autocomplete/jquery.bgiframe.min.js?v=01"></script>
+<script type="text/javascript" pagespeed_no_transform src="scripts/autocomplete/jquery.ajaxQueue.js"></script>
+<?php //<!-- <script type='text/javascript' src='scripts/autocomplete/thickbox-compressed.js'></script> --> ?>
+<script type="text/javascript" src="scripts/autocomplete/jquery.autocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="scripts/autocomplete/jquery.autocomplete.css" />
 <script type="text/javascript">
     $().ready(function() {
