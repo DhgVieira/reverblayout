@@ -258,6 +258,7 @@ a.text-success:focus,a.text-success:hover
 }
 .tooltip
 {
+    
     background-color: #000;
     border-radius: 4px;
     color: #fff;
