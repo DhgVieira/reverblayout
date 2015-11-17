@@ -11,8 +11,17 @@
         {assign var="acaoAtual" value="atacado"}
     {/if}
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
+<h2>Ranged Slider</h2>
+<div id="rangedval">
+    Range Value: <span id="rangeval">90 - 290</span>
+</div>
+
+<div id="rangeslider"></div>
 <div class="sidebar-ui sidebar-filters right-aligned">
+
     <div style="text-align:center;width:219px;">
 
     {*<ul class="socials-network-dark">*}
@@ -26,14 +35,17 @@
 
     <!-- <p class="full-strip">Filtros</p> -->
 
-    <form action="#" id="form-busca-filtros" class="clearfix" method="POST">
-        <input type="text" class="search-input" placeholder="Digite a busca" name="busca_produto" {if $palavra_busca neq ''} value="{$palavra_busca}" {/if}>
+    {*<form action="#" id="form-busca-filtros" class="clearfix" method="POST">*}
+
+        {*<input type="text" class="search-input" placeholder="Digite a busca" name="busca_produto" {if $palavra_busca neq ''} value="{$palavra_busca}" {/if}>*}
         <!-- <div class="send-button search-icon">
             <button class="ir search-icon" type="submit">Buscar</button>
         </div> -->
-    </form>
-
+    {*</form>*}
     <!-- filtro de valores -->
+        <div class="menu-top">
+            <span style="text-align: left">Filtre sua busca</span>
+        </div>
     <a rel="nofollow" class="arrow-menu open-sub-menu" href="#" data-menu="filter-by-values">
         <span class="icon-arrow"></span>
     </a>
@@ -44,66 +56,71 @@
     </div>
     <ul class="sub-menu filter-by-values">
         <li class="sub-menu-item">
-            {if $valor_url eq 19.90}
-                <span class="sub-menu-link active">Até R$ 19,90</span>
-            {else}
-                <a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"19.90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                    Até R$ 19,90
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $valor_url eq 29.90}
-                <span class="sub-menu-link active">Até R$ 29,90 - (SALE)</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"29.90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                    Até R$ 29,90
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $valor_url eq 30}
-                <span class="sub-menu-link active">De R$ 30,00 A R$ 55,00</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"30"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                   De R$ 30,00 A R$ 55,00
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $valor_url eq 59}
-                <span class="sub-menu-link active">De R$ 59,00</span>
-            {else}
-                <a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"59"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                    De R$ 59,00
-                </a>
-            {/if}
-        </li>       
-        <li class="sub-menu-item">
-            {if $valor_url eq 61}
-                <span class="sub-menu-link active">De R$ 61,00 A R$ 90,00</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"61"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                   De R$ 61,00 A R$ 89,90
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-           {if $valor_url eq 90}
-                <span class="sub-menu-link active">A PARTIR DE R$ 90,00</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                   A PARTIR DE R$ 90,00
-                </a>
-            {/if}
-        </li>
-    </ul>
+
+            {*<input type="range" min="25" max="1000">*}
+            </li>
+        </ul>
+            {*{if $valor_url eq 19.90}*}
+                {*<span class="sub-menu-link active">Até R$ 19,90</span>*}
+            {*{else}*}
+                {*<a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"19.90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                    {*Até R$ 19,90*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $valor_url eq 29.90}*}
+                {*<span class="sub-menu-link active">Até R$ 29,90 - (SALE)</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"29.90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                    {*Até R$ 29,90*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $valor_url eq 30}*}
+                {*<span class="sub-menu-link active">De R$ 30,00 A R$ 55,00</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"30"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                   {*De R$ 30,00 A R$ 55,00*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $valor_url eq 59}*}
+                {*<span class="sub-menu-link active">De R$ 59,00</span>*}
+            {*{else}*}
+                {*<a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"59"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                    {*De R$ 59,00*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>       *}
+        {*<li class="sub-menu-item">*}
+            {*{if $valor_url eq 61}*}
+                {*<span class="sub-menu-link active">De R$ 61,00 A R$ 90,00</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"61"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                   {*De R$ 61,00 A R$ 89,90*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+           {*{if $valor_url eq 90}*}
+                {*<span class="sub-menu-link active">A PARTIR DE R$ 90,00</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                   {*A PARTIR DE R$ 90,00*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+    {*</ul>*}
+
 
 {if $tipos|count > 0}
     <!-- filtro produtos -->
-    <a rel="nofollow" class="arrow-menu open-sub-menu" href="#" data-menu="filter-by-products">
-        <span class="icon-arrow"></span>
-    </a>
+    {*<a rel="nofollow" class="arrow-menu open-sub-menu" href="#" data-menu="filter-by-products">*}
+        {*<span class="icon-arrow"></span>*}
+    {*</a>*}
     <div class="menu-title">
         <div class="left-menu-item">
             <span class="menu-name">Produtos</span>
@@ -435,3 +452,25 @@
     <p class="full-strip"><a rel="nofollow" href="{$this->url([], "{$acaoAtual}", TRUE)}">Limpar filtros</a></p>
 </div>
 </div>
+<script>
+    $(function(){
+        $('#defaultslide').slider({
+            max: 1000,
+            min: 0,
+            value: 500,
+            slide: function(e,ui) {
+                $('#currentval').html(ui.value);
+            }
+        });
+
+        $('#rangeslider').slider({
+            range: true,
+            min: 0,
+            max: 1000,
+            values: [ 90, 290 ],
+            slide: function( event, ui ) {
+                $('#rangeval').html(ui.values[0]+" - "+ui.values[1]);
+            }
+        });
+    });
+</script>

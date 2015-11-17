@@ -26,23 +26,23 @@
 <section class="products">
     <h1 class="rvb-title">Reverb <span>Rock</h1></span>
 
-    <span class="breadcrumb">
-        <div style="float: left; display: inline-block;" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-            <a itemprop="url" href="https://www.reverbcity.com/inicio">
-                <span itemprop="title">Reverbcity</span>
-            </a> >
-            <div style="display: inline-block;" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                <a itemprop="url" itemprop="title" href="https://www.reverbcity.com/loja">
-                    <span itemprop="title">Loja</span>
-                </a> >
-                <div style="display: inline-block;" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                    <a itemprop="url" itemprop="title" href="https://www.reverbcity.com/todos-produtos">
-                        <span itemprop="title"><b>Todos produtos</b></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </span>
+    {*<span class="breadcrumb">*}
+        {*<div style="float: left; display: inline-block;" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">*}
+            {*<a itemprop="url" href="https://www.reverbcity.com/inicio">*}
+                {*<span itemprop="title">Reverbcity</span>*}
+            {*</a> >*}
+            {*<div style="display: inline-block;" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">*}
+                {*<a itemprop="url" itemprop="title" href="https://www.reverbcity.com/loja">*}
+                    {*<span itemprop="title">Loja</span>*}
+                {*</a> >*}
+                {*<div style="display: inline-block;" itemprop="child" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">*}
+                    {*<a itemprop="url" itemprop="title" href="https://www.reverbcity.com/todos-produtos">*}
+                        {*<span itemprop="title"><b>Todos produtos</b></span>*}
+                    {*</a>*}
+                {*</div>*}
+            {*</div>*}
+        {*</div>*}
+    {*</span>*}
 
     {*<span class="breadcrumb">*}
     {*<div style="float: left;" itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href=""><span itemprop="title">Reverbcity</span></a> > </div>*}

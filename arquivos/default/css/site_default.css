@@ -43,8 +43,8 @@ blockquote:after,blockquote:before,q:after,q:before
 }
 table
 {
-    border-collapse: collapse;
-    border-spacing: 0;
+    /*border-collapse: collapse;*/
+    /*border-spacing: 0;*/
 }
 a
 {
@@ -326,7 +326,7 @@ a.text-success:focus,a.text-success:hover
 .pagination
 {
     clear: both;
-    float: left;
+    float: right;
     margin-top: 10px;
 }
 .pagination .item
@@ -337,6 +337,7 @@ a.text-success:focus,a.text-success:hover
 .pagination a
 {
     background-color: #e7e7e7;
+    border-radius: 50%;
     color: #929293;
     font-size: 11px;
     font-weight: 700;
@@ -368,7 +369,7 @@ body
 .container
 {
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
     width: 980px;
 }
 .rvb-column

@@ -1,7 +1,7 @@
 {include file="banner.tpl"}
 {*<link rel="stylesheet" type="text/css" href="/arquivos/default/css/style.css">*}
 <section class="products">
-    <div class="rvb-column left">
+    <div class="rvb-column center">
         <ul class="rvb-collection-of-products">
             {assign var="foto" value="{$_produto_dia->NR_SEQ_PRODUTO_PRRC}"}
             {assign var="extensao" value="{$_produto_dia->DS_EXT_PRRC}"}
@@ -71,7 +71,7 @@
                 {*TOdo Dhiego*}
                 <div class="product-details">
                     <div class="circle" style="background-color: #5fbf98">
-                        <a>OFF</a>
+                        <a>NEW</a>
                     </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
@@ -82,10 +82,16 @@
                         </a>
                     </h2>
                     <p class="price">
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            <span class="old-price">R$ {$_produto_dia->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
-                            por R$ {$_produto_dia->VL_PROMO_PRRC|number_format:2:",":"."}
-                        </a>
+                        {if $destaque->VL_PROMO_PRRC neq 0}
+                            <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                                <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
+                                por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
+                            </a>
+                        {else}
+                            <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                                R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
+                            </a>
+                        {/if}
                     </p>
                 </div>
             </li>
@@ -148,7 +154,7 @@
                 </a>
                 <div class="product-details">
                     <div class="circle" style="background-color: #fc6902">
-                        <a>NEW</a>
+                        <a>OFF</a>
                     </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
@@ -159,16 +165,10 @@
                         </a>
                     </h2>
                     <p class="price">
-                    {if $destaque->VL_PROMO_PRRC neq 0}
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
-                            por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
+                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                            <span class="old-price">R$ {$_produto_dia->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
+                            por R$ {$_produto_dia->VL_PROMO_PRRC|number_format:2:",":"."}
                         </a>
-                    {else}
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
-                        </a>
-                    {/if}
                     </p>
                 </div>
             </li>

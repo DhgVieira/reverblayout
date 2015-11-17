@@ -130,10 +130,34 @@
             <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($_produto_dia->DS_PRODUTO_PRRC)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                 <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1,'largura'=>220,'altura'=>280,'imagem'=>$foto_completa_dia],'imagem', TRUE)}" alt="{$_produto_dia->DS_PRODUTO_PRRC}">
             </a>
-            <span class="promocao_dia">Promoção do Dia</span>
+            {*<span class="promocao_dia">Promoção do Dia</span>*}
 
         </div>
-
+        <div class="product-details">
+            <div class="circle" style="background-color: #5fbf98">
+                <a>NEW</a>
+            </div>
+            <h2 class="product-name">
+                <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                    {$_produto_dia->DS_PRODUTO_PRRC|truncate:29:"...":TRUE}
+                    {if $_produto_dia->DS_FRETEGRATIS_PRRC == 'S'}
+                        - Frete Grátis
+                    {/if}
+                </a>
+            </h2>
+            <p class="price">
+                {if $destaque->VL_PROMO_PRRC neq 0}
+                    <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                        <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
+                        por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
+                    </a>
+                {else}
+                    <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                        R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
+                    </a>
+                {/if}
+            </p>
+        </div>
         <div id="categorias" class="posreflole">
             <h3>Categorias</h3>
             <ul>
