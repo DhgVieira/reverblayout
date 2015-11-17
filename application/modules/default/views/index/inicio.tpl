@@ -1,5 +1,6 @@
 {include file="banner.tpl"}
-{*<link rel="stylesheet" type="text/css" href="/arquivos/default/css/style.css">*}
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <section class="products">
     <div class="rvb-column center">
         <ul class="rvb-collection-of-products">
@@ -35,7 +36,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{utf8_decode($_produto_dia->DS_PRODUTO_PRRC)}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>340, 'altura'=>380, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>460, 'altura'=>512, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>250, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>315, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -52,7 +53,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="Produto Destaque">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>220,'altura'=>250,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>280,'altura'=>315,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 479px)"></span>
@@ -120,7 +121,7 @@
                     <!-- Polyfill para imagens responsivas-->
                     <span data-picture data-alt="{$destaque->DS_PRODUTO_PRRC}" title="{$destaque->DS_PRODUTO_PRRC}">
                         {if $_isMobile neq 1}
-                            <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>340, 'altura'=>380, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                            <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>460, 'altura'=>512, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                         {else}
                             <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>250, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                             <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>315, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -137,7 +138,7 @@
                     <!-- Polyfill para imagens responsivas-->
                     <span data-picture data-alt="Produto Destaque">
                         {if $_isMobile neq 1}
-                            <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
+                            <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
                         {else}
                             <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>220,'altura'=>250,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
                             <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>280,'altura'=>315,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 479px)"></span>
@@ -197,7 +198,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -217,7 +218,7 @@
                             {if $_isMobile neq 1}
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"></span>
                             {else}
-                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
+                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
                                 <!-- for hd displays -->
                                 <span data-width="140" data-height="160" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>280, 'altura'=>320, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>

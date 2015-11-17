@@ -1158,7 +1158,7 @@ section.products .rvb-product-item
     display: block;
     float: left;
     height: 242px;
-    margin: 0 10px;
+    margin: 0 10px 10px;
     width: 220px;
 }
 section.products .rvb-product-item.highlight
@@ -1256,8 +1256,8 @@ section.products .product-photo img
     float: left;
     display: inline-block;
     height: 46px;
-    width: 459px;
-    margin: 0 9px;
+    width: 460px;
+    margin: 0 10px;
     text-align:center;
     /*background-color: #000a28;*/
 
@@ -1266,7 +1266,7 @@ section.products .product-photo img
 }
 
 .sex span {
-    font-family: Sans,sans-serif;
+    font-family: Roboto, sans-serif;
     font-size: 16px;
     font-weight: bold;
     color: white;
@@ -1282,6 +1282,7 @@ section.products .product-name
 {
     display: block;
     margin: 10px 0 0;
+    font-family: 'Droid Sans', sans-serif;
     overflow: hidden;
     text-transform: uppercase;
     /*width: 100%;*/
@@ -1303,9 +1304,11 @@ section.products .product-name
 section.products p.price
 {
     font-weight: 700;
+    font-family: 'Droid Sans', sans-serif;
 }
 section.products p.price .old-price
 {
+    font-family: 'Droid Sans', sans-serif;
     color: lightgray;
     text-decoration: line-through;
 }
