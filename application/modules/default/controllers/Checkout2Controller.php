@@ -829,10 +829,11 @@ class Checkout2Controller extends Zend_Controller_Action {
                             }
                         } else {
                             //jogo o valor do produto na variavel
-                            $valor = $data_carrinho[$key]['vl_desconto'];
+
+                            $valor = $data_carrinho[$key]['valor'];
 
                             //o mesmo valor para inserir no banco sem ter sido multiplicado
-                            $valor_uni = $data_carrinho[$key]['vl_desconto'];
+                            $valor_uni = $data_carrinho[$key]['valor'];
                         }
 
                         //atribuo o valor cheio
@@ -840,6 +841,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                         //recebo a quantidade
                         $quantidade = $item['quantidade'];
                         //multiplico pela quantidade do produto
+
                         $valor = $valor * $quantidade;
                         //agora falo que tem produto cheio
                         $tem_cheio = 1;
