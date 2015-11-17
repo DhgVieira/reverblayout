@@ -74,11 +74,11 @@
                     <li class="rvb-product-item">
                         <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                             {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-                                {assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
+                                {*{assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
                                 <!-- Polyfill para imagens responsivas-->
                                 <span data-picture data-alt="{$produto->DS_PRODUTO_PRRC}" data-title="{$produto->DS_PRODUTO_PRRC}">
                                 {if $_isMobile neq 1}
-                                    <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                                    <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                                 {else}
                                     <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                     <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -88,14 +88,14 @@
                                 {/if}
 
                                     <noscript>
-                                        <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" title="{$produto->DS_PRODUTO_PRRC}">
+                                        <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" title="{$produto->DS_PRODUTO_PRRC}">
                                     </noscript>
                             </span>
                             {else}
                                 <!-- Polyfill para imagens responsivas-->
                                 <span data-picture data-alt="{$produto->DS_PRODUTO_PRRC}" data-title="{$produto->DS_PRODUTO_PRRC}">
                                 {if $_isMobile neq 1}
-                                    <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"></span>
+                                    <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"></span>
                                 {else}
                                     <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                     <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -105,43 +105,43 @@
                                 {/if}
 
                                     <noscript>
-                                        <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity">
+                                        <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity">
                                     </noscript>
                             </span>
                             {/if}
 
-                            {if $produto->TP_DESTAQUE_PRRC == 1}
-                                <span class="rvb-tag new"></span>
-                            {elseif $produto->TP_DESTAQUE_PRRC == 3}
-                                <span class="rvb-tag reprint"></span>
-                            {elseif $produto->TP_DESTAQUE_PRRC == 2}
-                                <span class="rvb-tag sale"></span>
-                            {elseif $produto->DS_FRETEGRATIS_PRRC == 'S'}
-                                <span class="rvb-tag sale-frete"></span>
-                            {else}
-                                <span class="rvb-tag"></span>
-                            {/if}
+                            {*{if $produto->TP_DESTAQUE_PRRC == 1}*}
+                                {*<span class="rvb-tag new"></span>*}
+                            {*{elseif $produto->TP_DESTAQUE_PRRC == 3}*}
+                                {*<span class="rvb-tag reprint"></span>*}
+                            {*{elseif $produto->TP_DESTAQUE_PRRC == 2}*}
+                                {*<span class="rvb-tag sale"></span>*}
+                            {*{elseif $produto->DS_FRETEGRATIS_PRRC == 'S'}*}
+                                {*<span class="rvb-tag sale-frete"></span>*}
+                            {*{else}*}
+                                {*<span class="rvb-tag"></span>*}
+                            {*{/if}*}
                         </a>
-                        <h2 class="product-name">
+                        {*<h2 class="product-name">*}
                             {*{$produto->DS_PRODUTO_PRRC|truncate:19:"...":TRUE}*}
-                            <a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                                {if $produto->NR_SEQ_TIPO_PRRC == 6}camiseta {/if}{$produto->DS_PRODUTO_PRRC}
-                            </a>
-                        </h2>
+                            {*<a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">*}
+                                {*{if $produto->NR_SEQ_TIPO_PRRC == 6}camiseta {/if}{$produto->DS_PRODUTO_PRRC}*}
+                            {*</a>*}
+                        {*</h2>*}
                         {*{assign var=totalChar value=$produto->DS_PRODUTO_PRRC|count_characters:true}*}
                         {*{if $totalChar >= 22}*}
                             {*<span class="extends">...</span>*}
                         {*{/if}*}
-                        <p class="price">
-                            <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                                {if $produto->VL_PROMO_PRRC > 0}
-                                    <del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>
-                                    Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}
-                                {else}
-                                    R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}
-                                {/if}
-                            </a>
-                        </p>
+                        {*<p class="price">*}
+                            {*<a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">*}
+                                {*{if $produto->VL_PROMO_PRRC > 0}*}
+                                    {*<del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>*}
+                                    {*Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}*}
+                                {*{else}*}
+                                    {*R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}*}
+                                {*{/if}*}
+                            {*</a>*}
+                        {*</p>*}
                     </li>
                 {/foreach}
             </ul>
