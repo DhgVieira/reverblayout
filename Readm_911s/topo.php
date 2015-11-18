@@ -126,6 +126,7 @@ header("Content-Type: text/html; charset=ISO-8859-1",true);
 </script>
 </head>
 <body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+<?php if(empty(request("rvbview"))) : ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr bgcolor="#361a0f">
     <td width="820"><img src="img/logo.gif" /></td>
@@ -143,3 +144,5 @@ header("Content-Type: text/html; charset=ISO-8859-1",true);
   </tr>
   <tr>
   	<td colspan="3">
+
+    <?php endif; ?>

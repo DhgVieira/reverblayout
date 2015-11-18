@@ -453,6 +453,20 @@ function confirma_ass(ida) {
                                  </ul>
                          </form>
                          </td>
+                          <td>
+                              <form action="newsletter_exporta_aniversariantes.php" method="" target="_blank" enctype="text/plain" style="width:420px">
+                                  <ul class="formularios">
+                                      <li>
+                                          <label for="descricao">
+                                              Aniversariantes do Mes:<br />
+                                          </label>
+                                      </li>
+                                      <li>
+                                          <input  type="submit" id="postar2" name="postar2" value="Exportar"/>
+                                      </li>
+                                  </ul>
+                              </form>
+                          </td>
                      </tr>
                  </table>
 <!-- FIM DE EXPORTAR //***** -->

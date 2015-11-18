@@ -505,39 +505,22 @@
         <div class="mycart-buttons clearfix">
             <input type="hidden" name="transition-token" id="data-holder" data-token=""
                    data-customer-data="false" data-max-installments="4" value="" >
+
             <a href="#" class="mycart-button pedido voltar">Voltar</a>
-            <a href="#" class="mycart-button pedido avancar md-trigger">Pagamento</a>
+            <a href="#" class="mycart-button pedido avancar md-trigger"
+               data-customer-name="{$info['DS_NOME_CASO']}"
+               data-customer-document-number="{$info['DS_CPFCNPJ_CASO']}"
+               data-customer-email="{$info['DS_EMAIL_CASO']}"
+               data-customer-address-street="{$info['DS_ENDERECO_CASO']}"
+               data-customer-address-street-number="{$info['DS_NUMERO_CASO']}"
+               data-customer-address-complementary="{$info['DS_COMPLEMENTO_CASO']}"
+               data-customer-address-neighborhood="{$info['DS_BAIRRO_CASO']}"
+               data-customer-address-zipcode="{$info['DS_CEP_CASO']}"
+               data-customer-phone-ddd="{$info['DS_DDDFONE_CASO']}"
+               data-customer-phone-number="{$info['DS_FONE_CASO']}"
+               data-modal="carregando-lightbox">Pagamento</a>
         </div>
     </form>
-    <script type="text/javascript">
-        function doSubmit(form_id) {
-            console.log(jQuery);
-            var frm = jQuery(form_id);
-            console.log(frm);
-            var data = frm.serialize();
-            console.log(data);
-            jQuery("#spinner").show();
-            jQuery.ajax("{$this->url([], "fazerpedidocheckout", TRUE)}", {
-                data : data,
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                type : 'POST',
-                success : function(data) {
-                    console.log(JSON.stringify(data));
-                    document.location.href = "/checkout-response";
-                },
-                error: function(msg) {
-                    jQuery("#spinner").hide();
-                    console.log(JSON.stringify(msg));
-                    document.location.href = "/checkout-response";
-                }
-            });
-            return false;
-        };
-        function changeEmailGanhador() {
-            var x = document.getElementById("emailganhadoraux").value;
-            document.getElementById("emailganhador").value = x;
-        }
-    </script>
 </div>
 
 </div>

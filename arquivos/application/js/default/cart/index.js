@@ -42,7 +42,7 @@ function r() {
         carrinho.total = carrinho.frete + carrinho.subTotal - carrinho.desconto;
         $('#mycart-subtotal p:eq(3) span:last').html("R$ " + reverb.formatNumber(carrinho.total));
 
-        //$('script#pagarme').data('amount', reverb.formatNumber(carrinho.total)    );
+        //$('script#pagarme').data('amount', reverb.formatNumber(carrinho.total));
         $( "script#pagarme" ).attr( "data-amount", reverb.floatNumbersPagarme(carrinho.total));
 
         if (carrinho.total > 50 && carrinho.total < 100) {
@@ -229,37 +229,38 @@ $(document).ready(function () {
                 scrollTop: $(".rvb-title.pagamento-title").offset().top - 45
             }, 1000);
         } else {
+            // Antigo Checkout
+            //$('#mycart-payment').submit();
+            var amount = carrinho.total;
 
-            var amount = reverb.floatNumbersPagarme(carrinho.total);
-/*
-            // inicializa o checkout
-            var checkout = new PagarMeCheckout.Checkout({"encryption_key":"ek_test_Akwmf1evsllS5aPfdVZr3rk4It6xWR", success: function(data) {
-                console.log(data);
-                $("#data-holder").val(data.token);
-                $('#mycart-payment').submit();
-                // callback após o checkout ter sido finalizado
-            }});
-            // abre o checkout passando os parâmetros desejados
-            var params = {
-                "customerData":false,
-                "paymentMethods": "credit_card,boleto",
-                "cardBrands": "visa,mastercard,amex,aura,jcb,diners,elo",
-                "amount": amount,
-                "maxInstallments": 4,
-                "uiColor": "#6ec6a4"
-            };
-            checkout.open(params);
+            amount = parseFloat(amount.toFixed(2));
+            amount = amount.toString();
 
-*/
+            var split = amount.split(".");
+            amount = amount.replace(".", "");
+
+            if (split[1] != null) {
+                if (split[0].length < 3 && split[1].length > 0) {
+                    amount = amount * 10;
+                } else if (split[1].length > 0) {
+                    amount = amount * 1;
+                } else {
+                    amount = amount * 100;
+                }
+            }else{
+                amount = amount * 100;
+            }
+
             var checkout = new PagarMeCheckout.Checkout({"encryption_key": "ek_live_r4PoyMJEm9o1qdezLoLQ6YRULYcRdk", success: function (r) {
-                console.log(r);
-                $("#data-holder").val(r.token);
-                $('#mycart-payment').submit();
-            }})
-            checkout.open({"customerData": false, "cardBrands": "visa,mastercard,amex,aura,jcb,diners,elo", "amount": amount,
-                "maxInstallments": 4, "uiColor": "#6ec6a4"});
+                    $("#data-holder").val(r.token);
+                    $('#mycart-payment').submit();
+                }})
+            checkout.open({"customerData": false, "cardBrands": "visa,mastercard,amex,aura,jcb,diners,elo", "amount": amount, "maxInstallments": 4, "uiColor": "#6ec6a4"});
             $('#carregando-lightbox').attr('style', '');
             $('#carregando-lightbox').removeClass('md-show');
+            $('html, body').animate({
+                scrollTop: $(".rvb-title.pagamento-title").offset().top - 45
+            }, 1000);
         }
     });
 
