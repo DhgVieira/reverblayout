@@ -1353,6 +1353,23 @@ section.products p.price .old-price
     color: lightgray;
     text-decoration: line-through;
 }
+.rvb-product-item .list-product-details {
+
+    position: absolute;
+    z-index: 100;
+    opacity: .6;
+    background-color: #000;
+    height: 35px;
+    width: 220px;
+    margin-top: 207px;
+}
+h2.product-div-op{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Droid Sans', sans-serif;
+    line-height: 35px;
+    font-weight: bold;
+}
 section.products .product-details
 {
 
@@ -2314,6 +2331,7 @@ iframe[name=google_conversion_frame]
         min-height: 160px;
         min-width: 140px;
         position: relative;
+        z-index: 1;
     }
     section.products .product-photo img
     {
