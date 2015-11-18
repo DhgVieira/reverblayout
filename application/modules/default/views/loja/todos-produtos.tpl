@@ -72,16 +72,22 @@
                     {assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
 
                     <li class="rvb-product-item">
+                        <div class="circle-top" style="background-color: #5fbf98">
+                            <a>NEW</a>
+                        </div>
                         <div class="list-product-details">
                             <h2 class="product-div-op">
-                                {$produto->DS_PRODUTO_PRRC|truncate:19:"...":TRUE}
+                                {$produto->DS_PRODUTO_PRRC|truncate:15:"...":TRUE}
+                                <span class="preco">
                                 {if $produto->VL_PROMO_PRRC > 0}
                                     <del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>
                                     Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}
                                 {else}
                                     R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}
                                 {/if}
+                                    </span>
                             </h2>
+
                         </div>
                         <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                             {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
@@ -146,7 +152,16 @@
                         {*{if $totalChar >= 22}*}
                             {*<span class="extends">...</span>*}
                         {*{/if}*}
-
+                        {*<p class="price">*}
+                        {*<a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">*}
+                        {*{if $produto->VL_PROMO_PRRC > 0}*}
+                        {*<del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>*}
+                        {*Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}*}
+                        {*{else}*}
+                        {*R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}*}
+                        {*{/if}*}
+                        {*</a>*}
+                        {*</p>*}
 
                     </li>
                 {/foreach}
