@@ -1126,7 +1126,7 @@ header[role=banner]
 }
 .security
 {
-    padding-top: 10x;
+    padding-top: 10px;
 }
 .links-nav-footer
 {
@@ -1160,7 +1160,7 @@ header[role=banner]
 .links-social ul li
 {
     display: inline-block;
-    margin-right: 2px;
+    margin-right: 10px;
 }
 .links-social .last
 {
@@ -1169,8 +1169,8 @@ header[role=banner]
 .links-social .icon
 {
     background-color: #fff;
-    background-image: url(/arquivos/default/images/sprites/socials.png);
-    background-repeat: no-repeat;
+    /*background-image: url(/arquivos/default/images/sprites/socials.png);*/
+    /*background-repeat: no-repeat;*/
     border-radius: 4px;
     height: 27px;
     width: 27px;
@@ -1185,15 +1185,18 @@ header[role=banner]
 }
 .links-social .facebook
 {
-    background-position: 8px 4px;
+    background: url(../../default/images/icon/facebook_new.png) no-repeat;
+    /*background-position: 8px 4px;*/
 }
 .links-social .facebook:hover
 {
+    /*background: url(../../default/images/icon/facebook_new.png) no-repeat;*/
     background-position: 8px -27px;
 }
 .links-social .twitter
 {
-    background-position: -27px 4px;
+    background: url(../../default/images/icon/twitter_new.png) no-repeat;
+    /*background-position: -27px 4px;*/
 }
 .links-social .twitter:hover
 {
@@ -1201,31 +1204,33 @@ header[role=banner]
 }
 .links-social .tumblr
 {
-    background-position: -60px 4px;
+    background: url(../../default/images/icon/tumblr_new.png) no-repeat;
+    /*background-position: -60px 4px;*/
 }
 .links-social .tumblr:hover
 {
     background-position: -60px -27px;
 }
-.links-social .flickr
-{
-    background-position: -94px 3px;
-}
-.links-social .flickr:hover
-{
-    background-position: -94px -27px;
-}
-.links-social .youtube
-{
-    background-position: -125px 2px;
-}
-.links-social .youtube:hover
-{
-    background-position: -125px -27px;
-}
+/*.links-social .flickr*/
+/*{*/
+    /*background-position: -94px 3px;*/
+/*}*/
+/*.links-social .flickr:hover*/
+/*{*/
+    /*background-position: -94px -27px;*/
+/*}*/
+/*.links-social .youtube*/
+/*{*/
+    /*background-position: -125px 2px;*/
+/*}*/
+/*.links-social .youtube:hover*/
+/*{*/
+    /*background-position: -125px -27px;*/
+/*}*/
 .links-social .instagram
 {
-    background-position: -158px 2px;
+    background: url(../../default/images/icon/instagram_new.png) no-repeat;
+    /*background-position: -158px 2px;*/
 }
 .links-social .instagram:hover
 {
@@ -1233,7 +1238,8 @@ header[role=banner]
 }
 .links-social .pinterest
 {
-    background-position: -191px 2px;
+    background: url(../../default/images/icon/pinterest_new.png) no-repeat;
+    /*background-position: -191px 2px;*/
 }
 .links-social .pinterest:hover
 {

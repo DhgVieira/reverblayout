@@ -898,12 +898,12 @@
         									<li>
         										<a href="http://reverbcity.tumblr.com/" title="Abrir a página de Tumblr" target="_blank" class="icon tumblr ir">Tumblr</a>
         									</li>
-        									<li>
-        										<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>
-        									</li>
-        									<li>
-        										<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>
-        									</li>
+        									{*<li>*}
+        										{*<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>*}
+        									{*</li>*}
+        									{*<li>*}
+        										{*<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>*}
+        									{*</li>*}
         									<li>
         										<a href="https://instagram.com/reverbcity" title="Abrir a página de Instagram" target="_blank" class="icon instagram ir">Instagram</a>
         									</li>
