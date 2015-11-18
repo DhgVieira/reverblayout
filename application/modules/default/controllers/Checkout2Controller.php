@@ -5560,7 +5560,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 if ($promocoes["st_frete_londrina"] == 1 and $usuarios->tipo <> 'PJ') {
 
                     //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-                    if (($resultado_busca['uf'] == "PR" OR $resultado_busca['uf'] == "SP" OR $resultado_busca['uf'] == "RJ") and $valor_total >= 100) {
+                    if (($resultado_busca['uf'] == "PR" OR $resultado_busca['uf'] == "SP" OR $resultado_busca['uf'] == "RJ") and $valor_total >= 200) {
 
                         //verifico s tem preco cheio
                         if ($tem_camiseta_cheia == 1) {
