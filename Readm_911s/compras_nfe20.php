@@ -3,6 +3,9 @@ include 'auth.php';
 include 'lib.php';
 error_reporting(0);
 
+var_dump($_POST);
+
+
 $compras = $_POST['etiq'];
 
 if (!$compras) {
@@ -77,7 +80,7 @@ foreach ($compras as $idc) {
     
     //date_default_timezone_set("UTC");
     date_default_timezone_set('America/Sao_Paulo');
-    $dataat = date("Y-m-d\TH:i:s") . "-03:00"; 
+    $dataat = date("Y-m-d\TH:i:s") . "-02:00";
     //$dataat = date("Y-m-d");
     $hora = date("H:i:s");
     
@@ -204,6 +207,6 @@ try{
 }catch(Exception $e){
     die($e->getMessage());
 }
-//Header("Location: compras_nfe2.php?exibe=$notas");
+    //Header("Location: compras_nfe2.php?exibe=$notas");
 exit();
 ?>
