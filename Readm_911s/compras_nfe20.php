@@ -3,9 +3,6 @@ include 'auth.php';
 include 'lib.php';
 error_reporting(0);
 
-var_dump($_POST);
-
-
 $compras = $_POST['etiq'];
 
 if (!$compras) {
