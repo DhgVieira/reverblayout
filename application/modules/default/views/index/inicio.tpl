@@ -198,7 +198,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, ' largura'=>220, 'altura'=>242,'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
