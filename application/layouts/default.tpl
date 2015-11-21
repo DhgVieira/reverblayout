@@ -616,7 +616,7 @@
         									{*                                    {else}*}
         									<a href="#" class="reverb-button my-cart" aria-labelledby="ordersCountWrapper" rel="nofollow">
         										{*  {/if}*}
-        										Meu Carrinho
+        										Carrinho
         										<span class="reverb-count red" id="ordersCountWrapper">
         											<span id="orderCountValue">{$_totalprodutos|count}</span>
         										</span>
