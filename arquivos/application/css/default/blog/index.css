@@ -329,27 +329,27 @@
 }
 .socials-network-dark .icon.facebook
 {
-    background: url(../../../../default/images/icon/facebook_new.png) no-repeat;
+    background: url(../../../../default/images/icon/facebook-white.png) no-repeat;
     /*background-position: 0 0;*/
 }
 .socials-network-dark .icon.twitter
 {
-    background: url(../../../../default/images/icon/twitter_new.png) no-repeat;
+    background: url(../../../../default/images/icon/twitter-white.png) no-repeat;
     /*background-position: -33px 0;*/
 }
 .socials-network-dark .icon.tumblr
 {
-    background: url(../../../../default/images/icon/tumblr_new.png) no-repeat;
+    background: url(../../../../default/images/icon/tumblr-white.png) no-repeat;
     /*background-position: -66px 0;*/
 }
 .socials-network-dark .icon.instagram
 {
-    background: url(../../../../default/images/icon/instagram_new.png) no-repeat;
+    background: url(../../../../default/images/icon/instagram-white.png) no-repeat;
     /*background-position: -98px 0;*/
 }
 .socials-network-dark .icon.pinterest
 {
-    background: url(../../../../default/images/icon/pinterest_new.png) no-repeat;
+    background: url(../../../../default/images/icon/pinterest-white.png) no-repeat;
     /*background-position: -130px 0;*/
 }
 @media screen and (max-width:979px)

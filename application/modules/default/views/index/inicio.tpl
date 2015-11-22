@@ -67,9 +67,8 @@
                             </noscript>
                         </span>
                     {/if}
-                    <span class="rvb-tag new productday"></span>
+                    {*<span class="rvb-tag new productday"></span>*}
                 </a>
-                {*TOdo Dhiego*}
                 <div class="product-details">
                     <div class="circle" style="background-color: #5fbf98">
                         <a>NEW</a>
@@ -151,7 +150,7 @@
                         </noscript>
                     </span>
             {/if}
-                    <span class="rvb-tag new big"></span>
+                    {*<span class="rvb-tag new big"></span>*}
                 </a>
                 <div class="product-details">
                     <div class="circle" style="background-color: #fc6902">
@@ -266,13 +265,13 @@
             </li>
             {/foreach}
             <li class="product-item">
-                <div class="sex" style="background-color: #5fbf98">
+                <div class="sex" style="">
                     <span>MASCULINO</span>
                 </div>
             </li>
             <li class=" product-item">
-                <div class="sex" style="background-color: #5fbf98">
-                    <span>MASCULINO</span>
+                <div class="sex">
+                    <span>FEMININO</span>
                 </div>
             </li>
         </ul>

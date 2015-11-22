@@ -72,9 +72,11 @@
                     {assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
 
                     <li class="rvb-product-item">
+                        {if $produto->DS_FRETEGRATIS_PRRC == 'S'}
                         <div class="circle-top" style="background-color: #5fbf98">
                             <a>NEW</a>
                         </div>
+                        {/if}
                         <div class="list-product-details">
                             <h2 class="product-div-op">
                                 {$produto->DS_PRODUTO_PRRC|truncate:15:"...":TRUE}
