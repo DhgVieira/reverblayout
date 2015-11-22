@@ -44,28 +44,28 @@
 
     <div class="clearfix"></div>
 
-    <div class="rvb-column left">
-    <!-- ultimos posts -->
-      {foreach from=$topicos_destaque item=destaque}
-        <div class="rvb-forum-latest-posts">
-            <a href="{$this->url(["titulo"=>{$this->createslug($destaque->DS_TOPICO_TOSO)}, "idforum"=>{$destaque->NR_SEQ_TOPICO_TOSO}], 'detalheforum', TRUE)}">
-                <div class="rvb-forum-latest-item title">{$destaque->DS_TOPICO_TOSO|truncate:17:"...":TRUE}</div>
-            </a>
-            <a href="{$this->url(["nome"=>{$this->createslug($destaque->DS_NOME_CASO)}, "idperfil"=>{$destaque->NR_SEQ_CADASTRO_CASO}], "perfil", TRUE)}">
-                <div class="rvb-forum-latest-item author">{$destaque->DS_NOME_CASO|truncate:10:"...":TRUE}</div>
-            </a>
-            <div class="rvb-forum-latest-item total-posts">{$destaque->NR_MSGS_TOSO} posts</div>
-        </div>
-      {/foreach}
-        {if $idusuario eq 2 or $idusuario eq 6605 or $idusuario eq 4162 or $idusuario eq 32609}
-          <div class="rvb-forum-search-post small">Fórum</div>
-          <div class="rvb-new-item md-trigger small" data-modal="enviar-todos-lightbox">Enviar para todos</div>
-          <div class="rvb-new-item md-trigger small" data-modal="criar-topico-lightbox">Criar tópico</div>
-        {else}
-          <div class="rvb-forum-search-post">Fórum</div>
-          <div class="rvb-new-item md-trigger" data-modal="criar-topico-lightbox">Criar tópico</div>
-        {/if}
+    <div id="header">
+        <ul class="abas">
+            <li> <div class="aba"> <span>Tab 1</span> </div> </li>
+            <li> <div class="aba"> <span>Tab 2</span> </div> </li>
+        </ul>
+    </div>
 
+    {*<div class="rvb-column left">*}
+    <div>
+    {*<!-- ultimos posts -->*}
+      {*{foreach from=$topicos_destaque item=destaque}*}
+        {*<div class="rvb-forum-latest-posts">*}
+            {*<a href="{$this->url(["titulo"=>{$this->createslug($destaque->DS_TOPICO_TOSO)}, "idforum"=>{$destaque->NR_SEQ_TOPICO_TOSO}], 'detalheforum', TRUE)}">*}
+                {*<div class="rvb-forum-latest-item title">{$destaque->DS_TOPICO_TOSO|truncate:17:"...":TRUE}</div>*}
+            {*</a>*}
+            {*<a href="{$this->url(["nome"=>{$this->createslug($destaque->DS_NOME_CASO)}, "idperfil"=>{$destaque->NR_SEQ_CADASTRO_CASO}], "perfil", TRUE)}">*}
+                {*<div class="rvb-forum-latest-item author">{$destaque->DS_NOME_CASO|truncate:10:"...":TRUE}</div>*}
+            {*</a>*}
+            {*<div class="rvb-forum-latest-item total-posts">{$destaque->NR_MSGS_TOSO} posts</div>*}
+        {*</div>*}
+      {*{/foreach}*}
+        <!-- Busca -->
         <div class="rvb-forum-form clearfix">
             <form action="{$this->url([], "forum", TRUE)}" method="post" id="search-post">
                 <div class="input-txt">
@@ -76,6 +76,17 @@
                 </div>
             </form>
         </div>
+        <!-- end busca -->
+        {if $idusuario eq 2 or $idusuario eq 6605 or $idusuario eq 4162 or $idusuario eq 32609}
+          <div class="rvb-forum-search-post small">Fórum</div>
+          <div class="rvb-new-item md-trigger small" data-modal="enviar-todos-lightbox">Enviar para todos</div>
+          <div class="rvb-new-item md-trigger small" data-modal="criar-topico-lightbox">Criar tópico</div>
+        {else}
+          <div class="rvb-forum-search-post">Fórum</div>
+          <div class="rvb-new-item md-trigger right" data-modal="criar-topico-lightbox">Criar tópico</div>
+        {/if}
+
+
         <table class="rvb-table-list-of-posts" id="topics-table">
             <thead>
                 <tr class="row-header">
