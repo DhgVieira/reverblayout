@@ -881,8 +881,6 @@ header[role=banner]
 .topbar-search .submit
 {
     background: url(../images/icon/search-small-new.png) center no-repeat;
-    /*background-color: #5fbf98;*/
-    /*background-position: 4px -84px;*/
     border: none;
     color: transparent;
     cursor: pointer;

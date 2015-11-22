@@ -48,7 +48,9 @@
     <ul class="sub-menu filter-by-values">
         <li class="sub-menu-item">
             <div id="slide-green"></div>
+            <label for="range-min"></label>
             <input type="text" id="range-min">
+            <label for="range-max"></label>
             <input type="text" id="range-max">
         </li>
     </ul>
