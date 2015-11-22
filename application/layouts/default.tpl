@@ -23,7 +23,6 @@
 	document.basePath = '{$basePath}';
 	</script>
 	
-	<script type="text/javascript" src="https://assets.pagar.me/checkout/checkout.js"></script>
 	
 	<meta property="fb:app_id" content="713473752042540" />
 	<meta property="fb:admins" content="100000451099995"/>
@@ -51,33 +50,33 @@
 	<meta name="google-site-verification" content="WJxo-ptNAStuP27bFhQ9LtNos15iL--lJUCGwUta5ro" />
 	<meta name="robots" content="index, follow, all" />
 	{if $currentController == 'loja' && $currentAction == 'produto'}
-	{if $produto->NR_SEQ_TIPO_PRRC == 6}
-	{assign var=preTitle value='Camiseta '}
-	{else}
-	{assign var=preTitle value=''}
-	{/if}
-	{assign var=ds_produto_prrc value=' - '|explode:$produto->DS_PRODUTO_PRRC}
-	{assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
-	{assign var=urlCanonical value="https://www.reverbcity.com/produto/{$this->createslug($slug)}/{$produto->NR_SEQ_PRODUTO_PRRC}"}
+		{if $produto->NR_SEQ_TIPO_PRRC == 6}
+			{assign var=preTitle value='Camiseta '}
+		{else}
+			{assign var=preTitle value=''}
+		{/if}
+		{assign var=ds_produto_prrc value=' - '|explode:$produto->DS_PRODUTO_PRRC}
+		{assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
+		{assign var=urlCanonical value="https://www.reverbcity.com/produto/{$this->createslug($slug)}/{$produto->NR_SEQ_PRODUTO_PRRC}"}
 
-	<link rel="canonical" href="{$urlCanonical}" />
-	<link rel="alternate" href="{$urlCanonical}" hreflang="pt-br" />
+		<link rel="canonical" href="{$urlCanonical}" />
+		<link rel="alternate" href="{$urlCanonical}" hreflang="pt-br" />
 	{else}
-	{if $currentController == 'index' && $currentAction == 'index'}
-	<link rel="canonical" href="https://www.reverbcity.com/inicio" />
-	<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
-	{else}
-	<link rel="canonical" href="{$_pagina_atual}" />
-	<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
-	{/if}
+		{if $currentController == 'index' && $currentAction == 'index'}
+			<link rel="canonical" href="https://www.reverbcity.com/inicio" />
+			<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
+		{else}
+			<link rel="canonical" href="{$_pagina_atual}" />
+			<link rel="alternate" href="{$_pagina_atual}" hreflang="pt-br" />
+		{/if}
 	{/if}
 
 	{if $currentController == 'loja' && $currentAction == 'index'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{elseif $currentController == 'loja' && $currentAction == 'todos-produtos'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{elseif $currentController == 'index' && $currentAction == 'inicio'}
-	{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
+		{$this->paginationControl($contadores, NULL, 'paginator_loja_head.tpl')}
 	{/if}
 
 	<meta name="viewport" content="width=device-width, user-scalable=no" />
@@ -96,628 +95,25 @@
         <script type="text/javascript" src="{$basePath}/arquivos/default/js/libs/html5shiv.min.js"> </script>
         <![endif]-->
 
-        {$this->headLink()}
+    {$this->headLink()}
 
-        {if $_isMobile neq 1}
-        {literal}
-        <!--Start of Zopim Live Chat Script-->
-        <script type="text/javascript">
-        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
-        	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-        		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-        		$.src='//v2.zopim.com/?2Z58nkKSaFYfK6W9xTVaK5iULjxTJQTu';z.t=+new Date;$.
-        		type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-        		</script>
-        		<!--End of Zopim Live Chat Script-->
-        		{/literal}
-
-        		{if $_logado}
-        		<script>
-        		$zopim(function(){
-        			$zopim.livechat.setName('{$_nome_usuario}');
-        			$zopim.livechat.setEmail('{$_email_usuario}');
-        		});
-        		</script>
-        		{/if}
-        		{/if}
-        		{literal}
-        		<script>
-        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        		ga('create', 'UA-38700671-1', 'auto');
-        		ga('require', 'displayfeatures');
-        		ga('require', 'ecommerce');
-        		ga('require', 'linkid', 'linkid.js');
-        		ga('send', 'pageview');
-
-        		</script>
-        		{/literal}
-        		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
-        		<script>
-        		ga('ecommerce:addTransaction', {
-        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-        			'affiliation': 'Reverbcity.com',
-        			'revenue': '{$compra->VL_TOTAL_COSO}',
-        			'shipping': '{$compra->VL_FRETE_COSO}',
-        			'tax': '0'
-        		});
-
-        		{foreach from=$carrinho item=dadosProduto}
-        		ga('ecommerce:addItem', {
-        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-        			'name': '{$dadosProduto['nome']}',
-        			'sku': '{$dadosProduto['codigo']}',
-        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
-        			'quantity': '{$dadosProduto['quantidade']}'
-        		});
-        		{/foreach}
-        		ga('ecommerce:send');
-        		</script>
-
-        		<script type="text/javascript">
-        		document.valorCompra = '{$compra->VL_TOTAL_COSO}';
-        		</script>
-        		{literal}
-        		<script type="text/javascript">
-        		(function() {
-        			var _fbq = window._fbq || (window._fbq = []);
-        			if (!_fbq.loaded) {
-        				var fbds = document.createElement('script');
-        				fbds.async = true;
-        				fbds.src = '//connect.facebook.net/en_US/fbds.js';
-        				var s = document.getElementsByTagName('script')[0];
-        				s.parentNode.insertBefore(fbds, s);
-        				_fbq.loaded = true;
-        			}
-        		})();
-        		window._fbq = window._fbq || [];
-        		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
-        		</script>
-        		{/literal}
-        		<noscript>
-        			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
-        		</noscript>
-        		{/if}
+    
+	
         	</head>
         	<body>
 
         		{if $_isMobile eq 1}
         		<header id="mobile-header" role="banner">
-        			<div id="top-bar">
-        				<div id="page-nav">
-        					<div class="left-side">
-        						{if $currentController=="reverbcycle"}
-        						<span class="logo-topo ir cycle">
-        							<a accesskey="1" href="{$this->url([], 'reverbcycle', TRUE)}">
-        								<img src="{$basePath}/arquivos/default/images/reverb-cycle-logo.png" width="88" height="88" alt="Reverbcycle – Música que veste!">
-        							</a>
-        							<span class="alt-logo ir">Reverbcity – Música que veste!</span>
-        						</span>
-        						{else}
-        						<span class="logo-topo ir">
-        							<a accesskey="1" href="{$this->url([], 'inicio', TRUE)}">
-        								<img src="{$basePath}/arquivos/default/images/logos/reverbcity.png" width="88" height="88" alt="Reverbcity – Música que veste!">
-        							</a>
-        							<span class="alt-logo ir">Reverbcity – Música que veste!</span>
-        						</span>
-        						{/if}
-        						<div id="site-menu" role="navigation">
-        							<span class="btn-open ir">Abrir menu</span>
-        							<ul class="menu">
-        								<li class="menu-item home">
-        									<a class="menu-item-link" href="{$this->url([], 'inicio', TRUE)}">Home</a>
-        								</li>
-        								<li class="menu-item loja dropdown">
-        									<a class="menu-item-link" href="{$this->url([], 'todos-produtos', TRUE)}">Loja</a>
-        									<ul class="mobile-dropdown-menu drop-loja">
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'novidades', TRUE)}">Novidades</a></li>
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'masculino', TRUE)}">Masculino</a></li>
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'feminino', TRUE)}">Feminino</a></li>
-        										<!-- <li class="submenu-item"><a class="menu-item-link" href="{$this->url([], 'acessorios', TRUE)}">Acessórios</a></li> -->
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'casa', TRUE)}">Casa</a></li>
-        										<!-- <li class="submenu-item"><a class="menu-item-link" href="{$this->url([], 'converse', TRUE)}">Converse</a></li> -->
-        										<!-- <li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'sale', TRUE)}">Sale</a></li> -->
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'valepresente', TRUE)}">Vale Presente</a></li>
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'avisame', TRUE)}">Avise-me</a></li>
-        										<li class="submenu-item last"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'colecoesantigas', TRUE)}">Classics</a></li>
-        										{*<li class="submenu-item last"><a class="menu-item-link" href="{$this->url([], 'todos-produtos', TRUE)}">Todos Produtos</a></li>*}
-        									</ul>
-        								</li>
-        								<li class="menu-item sale">
-        									<a class="menu-item-link home c-orange" href="{$this->url([], 'sale', TRUE)}">Sale</a>
-        								</li>
-        								<li class="menu-item reverbme dropdown">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'reverbme', TRUE)}">Reverbme</a>
-        									<ul class="mobile-dropdown-menu drop-reverbme">
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'reverbmedetalhe', TRUE)}">Perfil</a></li>
-        										<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'people', TRUE)}">Reverbpeople</a></li>
-        										<li class="submenu-item last"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'reverbcycle', TRUE)}">Reverbcycle</a></li>
-        									</ul>
-        								</li>
-        								<li class="menu-item blog">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'blog', TRUE)}">Blog</a>
-        								</li>
-        								<li class="menu-item forum">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'forum', TRUE)}">Forum</a>
-        								</li>
-        								<li class="menu-item wholesale">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'cadastrolojista', TRUE)}">Atacado</a>
-        								</li>
-        								<li class="menu-item imprensa">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'imprensa', TRUE)}">Imprensa</a>
-        								</li>
-        								<li class="menu-item quem-somos">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'quemsomos', TRUE)}">Quem somos</a>
-        								</li>
-        								<li class="menu-item contato">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'contato', TRUE)}">Contato</a>
-        								</li>
-        								<li class="menu-item contato">
-        									<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'ajuda', TRUE)}">Ajuda</a>
-        								</li>
-        							</ul>
-        						</div>
-        					</div>
-        					<div class="right-side">
-        						<ul class="mobile-actions">
-        							<li>
-        								<a rel="nofollow" href="#filters" class="ir mobile-action-btn mobile-icon icon-filter">Filtros</a>
-        								{include file="mobile-filters.tpl"}
-        							</li>
-        							<li>
-        								<a rel="nofollow" href="#login" class="ir mobile-action-btn mobile-icon icon-login">Fazer Login</a>
-        								<div id="login" class="mobile-action-box hidden">
-        									<form id="rvb-form-login_m" method="post" action="{$this->url([], 'login', TRUE)}">
-        										{if $_logado eq 1}
-        										<div class="rvb-form-field">
-        											<input disabled value="{$_nome_usuario}" id="quickemail_m" type="email" name="email" placeholder="E-MAIL" required>
-        										</div>
-        										<div class="rvb-form-field">
-        											<input disabled value="111111" id="quicksenha_m" type="password" name="senha" placeholder="SENHA" required>
-        										</div>
-        										<div class="send-button">
-        											<a class="btn" href="{$this->url([], 'logout', TRUE)}">Logout</a>
-        										</div>
-        										{else}
-        										<div class="rvb-form-field">
-        											<input id="quickemail_m" type="email" name="email" placeholder="E-MAIL" required>
-        										</div>
-        										<div class="rvb-form-field">
-        											<input id="quicksenha_m" type="password" name="senha" placeholder="SENHA" required>
-        										</div>
-        										<div class="send-button">
-        											<button class="btn" type="submit">Login</button>
-        										</div>
-        										<div class="rvb-form-field status">
-        											<label class="checkbox" for="stay_m">
-        												<input id="stay_m" type="checkbox" name="manter_logado" value="1"> Permanecer logado
-        											</label>
-        										</div>
-        										{/if}
-        									</form>
-        								</div>
-        							</li>
-        							<li>
-        								<a href="{$this->url([], 'reverbme')}" class="ir mobile-icon icon-new-user">Criar Conta</a>
-        							</li>
-        							<li>
-        								<a rel="nofollow" href="#cart" class="ir mobile-action-btn mobile-icon icon-cart">Carrinho
-        									<span class="reverb-count red" id="ordersCountWrapper">
-        										<span id="orderCountValue">{$_totalprodutos|count}</span>
-        									</span>
-        								</a>
-        								<div id="cart" class="mobile-action-box hidden">
-        									<p class="flyout-title">Últimos itens adicionados ao seu carrinho:</p>
-        									<ul class="flyout-list my-cart-items">
-        										{if $_totalprodutos|count > 0}
-        										{foreach from=$_totalprodutos item=produto name=prod}
-        										{assign var="foto" value="{$produto['codigo']}"}
-        										{assign var="extensao" value="{$produto['path']}"}
-        										{assign var="foto_completa" value="{$foto}.{$extensao}"}
-
-        										{assign var="fotos" value=$this->fotoproduto($produto['codigo'])}
-        										{assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
-        										{assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
-        										{assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
-        										{if $smarty.foreach.prod.index == 3}
-        										{break}
-        										{/if}
-        										<li>
-        											<a rel="nofollow" class="my-cart-product-thumb" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        												{if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-        												<!-- Polyfill para imagens responsivas-->
-        												<span data-picture data-alt="{$produto['nome']}" data-title="{$produto['nome']}">
-        													<span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>88, 'altura'=>103, 'imagem'=>$foto_completa], "imagem", TRUE)}"></span>
-        													<!-- for hd displays -->
-        													<span data-width="88" data-height="103" data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>196, 'altura'=>206, 'imagem'=>$foto_completa], "imagem", TRUE)}" data-media="(-webkit-min-device-pixel-ratio: 2.0)"></span>
-
-        													<noscript>
-        														<img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>88, 'altura'=>103, 'imagem'=>$foto_completa], "imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity">
-        													</noscript>
-        												</span>
-        												{else}
-        												<!-- Polyfill para imagens responsivas-->
-        												<span data-picture data-alt="{$produto['nome']}" data-title="{$produto['nome']}">
-        													<span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>88, 'altura'=>103, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}"></span>
-        													<!-- for hd displays -->
-        													<span data-width="88" data-height="103" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>196, 'altura'=>206, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" data-media="(-webkit-min-device-pixel-ratio: 2.0)"></span>
-
-        													<noscript>
-        														<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>88, 'altura'=>103, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity">
-        													</noscript>
-        												</span>
-        												{/if}
-        											</a>
-        											<a class="my-cart-product-name" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        												{utf8_decode($produto['nome'])|truncate:28:"..":true}
-        											</a>
-        											<a rel="nofollow" class="my-cart-product-description" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        												<span class="product-gender">{utf8_decode($produto['genero'])}</span>
-        												<span class="product-size">Tamanho {utf8_decode($produto['sigla_tamanho'])}</span>
-        												<span class="product-amount">Quantidade: {utf8_decode($produto['quantidade'])}</span>
-        												{if $produto['vl_promo'] neq 0}
-        												<span class="product-price">R$ {$produto['vl_promo']|number_format:2:",":"."}</span>
-        												{else}
-        												<span class="product-price">R$ {$produto['valor']|number_format:2:",":"."}</span>
-        												{/if}
-        											</a>
-        											{if $produto['tipo'] neq 9}
-        											<a rel="nofollow" href="{$this->url(["idestoque"=>{$produto['idestoque']}], 'removercarrinho', TRUE)}" class="my-cart-remove-item md-close ir">Remover</a>
-        											{else}
-        											<a rel="nofollow" href="{$this->url(["idproduto"=>{$produto['codigo']}], 'removercarrinho', TRUE)}" class="my-cart-remove-item md-close ir">Remover</a>
-        											{/if}
-        										</li>
-        										{/foreach}
-        										{else}
-        										<li>
-        											<p class="name" style="text-align: center;">Seu carrinho esta vazio.</p>
-        										</li>
-        										{/if}
-        									</ul>
-        									<span class="total">Total parcial: R$ {$_total_carrinho|number_format:2:",":"."}</span>
-        									{if $_totalprodutos|count > 0}
-        									<a rel="nofollow" href="{$this->url([], 'carrinho', TRUE)}" class="flyout-button see-more">Ver carrinho</a>
-        									{else}
-        									<a rel="nofollow" href="{$this->url([], 'inicio', TRUE)}" class="flyout-button see-more">Comprar</a>
-        									{/if}
-        								</div>
-        							</li>
-        						</ul>
-        						<form action="{$this->url([], 'busca', TRUE)}" id="topbar-search-mobile" class="topbar-search" method="post">
-        							<input type="search" id="buscar_site_mobile" name="busca_topo" placeholder="Digite sua busca" class="input-box">
-        							<button type="submit" class="submit search-icon">Buscar</button>
-        						</form>
-        					</div>
-        				</div>
-        			</header>
-        			{else}
-        			<header id="desktop-header" role="banner">
+        			<div id="top-bar">        				
+        				{* LOAD DINAMIC *}
+        			</div>
+        		</header>
+        		{else}
+        		<header id="desktop-header" role="banner">
         				<div id="top-bar">
-        					<div id="page-nav" class="container">
-        						{if $currentController=="reverbcycle"}
-        						<span class="logo-topo ir cycle">
-        							<a accesskey="1" href="{$this->url([], 'reverbcycle', TRUE)}">
-        								<img pagespeed_no_transform src="{$basePath}/arquivos/default/images/reverb-cycle-logo.png" width="88" height="88" alt="Reverbcycle – Música que veste!">
-        							</a>
-        							<span class="alt-logo ir">Reverbcity – Música que veste!</span>
-        						</span>
-        						{else}
-        						<a accesskey="1" href="{$this->url([], 'inicio', TRUE)}">
-        							<span class="logo-topo ir">
-        								<span class="alt-logo ir">Reverbcity – Música que veste!</span>
-        							</span>
-        						</a>
-        						{/if}
-        						<div class="left-side">
-        							<ul class="actions-user">
-        								{if $_logado eq 1}
-        								<li>
-        									<a href="#" class="reverb-button ir user" aria-labelledby="requestsCountWrapper" rel="nofollow">
-        										<span class="reverb-count green" id="requestsCountWrapper">
-        											{if $_amigos|count > 0}
-        											<span id="requestsCountValue">{$_amigos|count}</span>
-        											{/if}
-        											<i class="accessible-elem"> Solicitações</i>
-        										</span>
-        									</a>
-        									<div class="reverb-flyout">
-        										<div class="flyout-header"></div>
-        										<div class="flyout-container">
-        											<p class="flyout-title">Solicitações de amizade:</p>
-        											<ul class="flyout-list friend-requests">
-        												{if $_amigos|count}
-        												{foreach from=$_amigos item=amigo name=friends}
-        												{assign var="foto" value="{$amigo['NR_SEQ_CADASTRO_CASO']}"}
-        												{assign var="extensao" value="{$amigo['DS_EXT_CACH']}"}
-        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
-        												{if $smarty.foreach.friends.index == 3}
-        												{break}
-        												{/if}
-        												<li class="request-item clearfix">
-        													<a rel="nofollow" href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_CADASTRO_CASO']}], "perfil", TRUE)}" >
-        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
-        														<img class="thumb" alt="nome" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>38, 'altura'=>43, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
-        														{else}
-        														<img class="thumb" alt="nome" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>38, 'altura'=>43, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
-        														{/if}
-        													</a>
-        													<p class="name">{utf8_decode($amigo['DS_NOME_CASO'])}</p>
-        													<div class="buttons">
-        														<a rel="nofollow" href="{$this->url(["idsolicitacao"=>{$amigo['NR_SEQ_AUT_AURC']}, "idamigo"=>{$amigo['NR_SEQ_CADASTRO_CASO']}], 'aceitaramigo', TRUE)}" class="button accept">Aceitar</a>
-        														<a rel="nofollow" href="{$this->url(["idamigo"=>{$amigo['NR_SEQ_AUT_AURC']}], 'recusaramigo', TRUE)}" class="button decline">Rejeitar</a>
-        													</div>
-        												</li>
-        												{/foreach}
-        												{else}
-        												<center> <p class="name">Você não possui solicitações no momento.</p> </center>
-        												{/if}
-        											</ul>
-        											<a rel="nofollow" href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more">Ver mais</a>
-        										</div>
-        										<div class="flyout-footer"></div>
-        									</div>
-        								</li>
-        								<li>
-        									<a href="#" class="reverb-button ir messages" aria-labelledby="messagesCountWrapper" rel="nofollow">
-        										<span class="reverb-count green" id="messagesCountWrapper">
-        											{if $_privados|count > 0}
-        											<span id="mercurymessagesCountValue">{$_privados|count}</span>
-        											{/if}
-        											<i class="accessible-elem"> Mensagens</i>
-        										</span>
-        									</a>
-        									<div class="reverb-flyout">
-        										<div class="flyout-header"></div>
-        										<div class="flyout-container">
-        											<p class="flyout-title">Mensagens privadas:</p>
-        											<ul class="flyout-list private-messages">
-        												{if $_privados|count > 0}
-        												{foreach from=$_privados item=privado name=private}
-        												{assign var="foto" value="{$privado['NR_SEQ_CADASTRO_CASO']}"}
-        												{assign var="extensao" value="{$privado['DS_EXT_CACH']}"}
-        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
-        												{if $smarty.foreach.private.index == 3}
-        												{break}
-        												{/if}
-        												<li class="request-item clearfix">
-        													<p class="name">{utf8_decode($privado['DS_NOME_CASO'])}</p>
-        													<div class="details-column-left">
-        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
-        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
-        														{else}
-        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
-        														{/if}
-        														<span class="date">em {$privado['DT_POST_SBRC']|date_format:"%d/%m"}</span>
-        													</div>
-        													<p class="message"> {utf8_decode($privado['DS_POST_SBRC']|truncate:40:"...":TRUE)}</p>
-        													<div class="buttons">
-        														<a href="{$this->url([], 'reverbmedetalhe')}" class="button accept" rel="nofollow">Ler tudo</a>
-        														<a href="{$this->url(["idrecado"=>{$privado->NR_SEQ_SCRAP_SBRC}], 'deletarrecado', TRUE)}" class="button decline" rel="nofollow">Deletar</a>
-        													</div>
-        												</li>
-        												{/foreach}
-        												{else}
-        												<center> <p class="name">Você não possui mensagens privadas no momento.</p> </center>
-        												{/if}
-        											</ul>
-        											<a href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more" rel="nofollow">Ver todas</a>
-        										</div>
-        										<div class="flyout-footer"></div>
-        									</div>
-        								</li>
-        								<li>
-        									<a href="#" class="reverb-button ir notifications" aria-labelledby="notificationsCountWrapper" rel="nofollow">
-        										<span class="reverb-count green" id="notificationsCountWrapper">
-        											{if $_publicos|count > 0}
-        											<span id="notificationsCountValue">{$_publicos|count}</span>
-        											{/if}
-        											<i class="accessible-elem"> Notificações</i>
-        										</span>
-        									</a>
-        									<div class="reverb-flyout">
-        										<div class="flyout-header"></div>
-        										<div class="flyout-container">
-        											<p class="flyout-title">Meus scraps:</p>
-        											<ul class="flyout-list scrap-wall">
-        												{if $_publicos|count > 0}
-        												{foreach from=$_publicos item=publico name=public}
-        												{assign var="foto" value="{$publico['NR_SEQ_CADASTRO_CASO']}"}
-        												{assign var="extensao" value="{$publico['DS_EXT_CACH']}"}
-        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
-        												{if $smarty.foreach.public.index == 3}
-        												{break}
-        												{/if}
-        												<li class="request-item clearfix">
-        													<p class="name"> {$publico['DS_NOME_CASO']}</p>
-        													<div class="details-column-left">
-        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
-        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
-        														{else}
-        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
-        														{/if}
-        														<span class="date">em {$publico['DT_POST_SBRC']|date_format:"%d/%m"}</span>
-        													</div>
-        													{assign var=mensagemScrap value=$publico['DS_POST_SBRC']|strip_tags}
-        													<p class="message">{$mensagemScrap|truncate:40:"...":TRUE}</p>
-        													<div class="buttons">
-        														<a href="{$this->url([], 'reverbmedetalhe')}" class="button accept" rel="nofollow">Ler tudo</a>
-        														<a href="{$this->url(["idrecado"=>{$publico->NR_SEQ_SCRAP_SBRC}], 'deletarrecado', TRUE)}" class="button decline" rel="nofollow">Deletar</a>
-        													</div>
-        												</li>
-        												{/foreach}
-        												{else}
-        												<center> <p class="name">Você não possui recados no momento.</p> </center>
-        												{/if}
-        											</ul>
-        											<a href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more" rel="nofollow">Ver todos</a>
-        										</div>
-        										<div class="flyout-footer"></div>
-        									</div>
-        								</li>
-        								{/if}
-        							</ul>
-        						</div>
-        						<div class="right-side">
-        							<ul class="actions-site">
-        								{if $_logado eq 1}
-        								<li>
-        									<a class="ac-action ac-io" href="{$this->url([], "minhascompras", TRUE)}" rel="nofollow">MINHAS COMPRAS</a>
-        								</li>
-        								{/if}
-        								<li>
-        									{if $_logado eq 1}
-        									<a class="ac-action ac-io" href="{$this->url([], 'logout', TRUE)}" rel="nofollow">LOGOUT</a>
-        									{else}
-        									<a href="#" class="reverb-button {if $email_error}opened{/if}" rel="nofollow">Login</a>
-        									<div class="reverb-flyout login">
-        										<div class="flyout-header"></div>
-        										<div class="flyout-container">
-        											<form id="rvb-form-login" method="post" action="{$this->url([], 'login', TRUE)}">
-        												<div class="rvb-form-field">
-        													<label class="legend" for="quickemail">E-mail</label>
-        													<input id="quickemail" type="email" name="email" required value="{$email_error}">
-        												</div>
-        												<div class="rvb-form-field">
-        													<label class="legend"  for="quicksenha">Senha</label>
-        													<input id="quicksenha" type="password" name="senha" required>
-        												</div>
-        												<div class="rvb-form-field status">
-        													<label class="checkbox" for="stay">
-        														<input id="stay" type="checkbox" name="manter_logado" value="1"> Permanecer logado
-        													</label>
-        												</div>
-        												<a class="forgot-pwd md-trigger" data-modal="lightbox-recuperar-senha" href="#" rel="nofollow">Esqueceu a senha?</a>
-        												<div class="send-button">
-        													<button type="submit" class="btn">Login</button>
-        												</div>
-        											</form>
-        										</div>
-        										<div class="flyout-footer"></div>
-        									</div>
-        									{/if}
-        								</li>
-        								<li>
-        									<a href="{$this->url([], 'novome')}" rel="nofollow">
-        										{if $_logado eq 1}
-        										{$_nome_usuario|truncate:10:"..":true}
-        										- Meu Perfil
-        										{else}
-        										Novo Cadastro
-        										{/if}
-        									</a>
-        								</li>
-        								<li class="no-border cart">
-        									{*                                    {if $_ultima_action eq 'produto'}*}
-        									{*                                        <a href="#" class="reverb-button my-cart opened" aria-labelledby="ordersCountWrapper" rel="nofollow">*}
-        									{*                                    {else}*}
-        									<a href="#" class="reverb-button my-cart" aria-labelledby="ordersCountWrapper" rel="nofollow">
-        										{*  {/if}*}
-        										Meu Carrinho
-        										<span class="reverb-count red" id="ordersCountWrapper">
-        											<span id="orderCountValue">{$_totalprodutos|count}</span>
-        										</span>
-        									</a>
-        									<div class="reverb-flyout cart">
-        										<a href="#" class="my-cart-close reverb-button" rel="nofollow"></a>
-        										<div class="flyout-header"></div>
-        										<div class="flyout-container">
-        											<p class="flyout-title">Últimos itens do seu carrinho:</p>
-        											<ul class="flyout-list my-cart-items">
-        												{if $_totalprodutos|count > 0}
-        												{foreach from=$_totalprodutos item=produto name=prod}
-        												{assign var="foto" value="{$produto['codigo']}"}
-        												{assign var="extensao" value="{$produto['path']}"}
-        												{assign var="foto_completa1" value="{$foto}.{$extensao}"}
-
-        												{assign var="fotos" value=$this->fotoproduto($produto['codigo'])}
-        												{assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
-        												{assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
-        												{assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
-        												{if $smarty.foreach.prod.index == 3}
-        												{break}
-        												{/if}
-        												<li>
-        													<a class="my-cart-product-thumb" rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        														{if file_exists("arquivos/uploads/fotosprodutos/$foto_completa") and $foto_completa != '.'}
-        														<img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>$foto_completa], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
-        														{elseif file_exists("arquivos/uploads/produtos/$foto_completa1")}
-        														<img src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>$foto_completa1], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
-        														{else}
-        														<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
-        														{/if}
-        													</a>
-        													<a class="my-cart-product-name" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        														{utf8_decode($produto['nome'])|truncate:13:"..":true}
-        													</a>
-        													{if $produto['tipo'] neq 9}
-        													<a href="{$this->url(["idestoque"=>{$produto['idestoque']}], 'removercarrinho', TRUE)}" rel="nofollow" class="my-cart-remove-item ir">Remover</a>
-        													{else}
-        													<a href="{$this->url(["idproduto"=>{$produto['codigo']}], 'removercarrinho', TRUE)}" rel="nofollow" class="my-cart-remove-item ir">Remover</a>
-        													{/if}
-        													<a rel="nofollow" class="my-cart-product-description" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
-        														<span class="product-gender">{if $produto['genero'] == 'm'}masculino{else}feminino{/if}</span>
-        														<span class="product-size">Tamanho {utf8_decode($produto['sigla'])}</span>
-        														<span class="product-amount">Quantidade {utf8_decode($produto['quantidade'])}</span>
-
-        														{assign var="vl_lojista_tmp" value="{math equation="x * y" x=$produto['valor'] y=0.6}"}
-
-        														{if $produto['vl_promo'] neq 0 and $vl_lojista_tmp > $produto['vl_promo']}
-        														<span class="product-price">R$ {$produto['vl_promo']|number_format:2:",":"."}</span>
-        														{else}
-        														<span class="product-price">R$ {$produto['total_produto']|number_format:2:",":"."}</span>
-        														{/if}
-        													</a>
-        												</li>
-        												{/foreach}
-
-        												{if $exibeBrindeCanecaPoster == 1}
-        												<li>
-        													<a href="{$this->url([], 'casa', TRUE)}" rel="nofollow" class="my-cart-product-thumb">
-        														<img src="{$basePath}/arquivos/default/images/reverb-gift.png" />
-        													</a>
-        													<a class="my-cart-product-name" href="{$this->url([], 'casa', TRUE)}" rel="nofollow">
-        														Brinde!
-        													</a>
-        													<a href="{$this->url([], 'casa', TRUE)}" class="my-cart-product-description" rel="nofollow">
-        														<span class="product-gender">Brinde liberado! Escolha uma caneca ou um poster de brinde!</span>
-        													</a>
-        												</li>
-        												{/if}
-        												{else}
-        												<li>
-        													<p class="name" style="text-align: center;">Seu carrinho esta vazio.</p>
-        												</li>
-        												{/if}
-        											</ul>
-        											<span class="total">Total: R$ {$_total_carrinho|number_format:2:",":"."}</span>
-        											{if $_totalprodutos|count > 0}
-        											<a href="#" class="flyout-button see-more" rel="nofollow">{$_totalprodutos|count} itens</a>
-        											<a href="{$this->url([], 'carrinho', TRUE)}" class="flyout-button see-more" rel="nofollow">Ver carrinho</a>
-        											{*<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Continuar comprando</a>*}
-        											{else}
-        											<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Comprar</a>
-        											{/if}
-        										</div>
-        										<div class="flyout-footer"></div>
-        									</div>
-        								</li>
-        								<li class="no-border last international">
-        									<a href="#" class="reverb-button ir international md-trigger" data-modal="international-purchases-lightbox" title="International Purchases" rel="nofollow">
-        										Compras Internacionais
-        									</a>
-        								</li>
-        							</ul>
-        							<form action="{$this->url([], 'busca', TRUE)}" id="topbar-search-desktop" class="topbar-search" method="post">
-        								<input type="text" name="busca_topo" id="busca_site" placeholder="Busca" class="input-box">
-        								<button type="submit" class="submit search-icon">Buscar</button>
-        							</form>
-        						</div>
-        					</div>
+        					{* LOAD DINAMIC *}
         				</div>
-        				<div id="site-menu" role="navigation">
+        				<div id="site-menu" class="hidden" role="navigation">
         					<ul>
         						<li class="menu-item home">
         							<a rel="nofollow" class="menu-item-link" href="{$this->url([], 'inicio', TRUE)}">Home</a>
@@ -1051,20 +447,9 @@
 
             <div class="md-overlay"></div>
             <!-- scripts -->
-            {*<script type="text/javascript" src="//selo.sitesustentavel.com.br/selo_sustentavel.js"></script>*}
+            
             <div id="fb-root"></div>
-            <script>(function(d, s, id) {
-            	var js, fjs = d.getElementsByTagName(s)[0];
-            	if (d.getElementById(id)) return;
-            	js = d.createElement(s); js.id = id;
-            	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=237745386316222";
-            	fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
-
-            <script type="text/javascript">
-          // document.basePath = '{$basePath}';
-          //document.basePath = '/reverbcity';
-          </script>
+       
 
           {*<script type="text/javascript">
           var _gaq = _gaq || [];
@@ -1088,25 +473,7 @@
       </script>
       {/if}
       {literal}
-      <script>
-      (function() {
-      	var _fbq = window._fbq || (window._fbq = []);
-      	if (!_fbq.loaded) {
-      		var fbds = document.createElement('script');
-      		fbds.async = true;
-      		fbds.src = '//connect.facebook.net/en_US/fbds.js';
-      		var s = document.getElementsByTagName('script')[0];
-      		s.parentNode.insertBefore(fbds, s);
-      		_fbq.loaded = true;
-      	}
-      	_fbq.push(['addPixelId', '533464170121834']);
-      })();
-      window._fbq = window._fbq || [];
-      window._fbq.push(['track', 'PixelInitialized', {}]);
-      </script>
-      <noscript>
-      	<img height="1" width="1" alt="Facebook Pixel" style="display:none" src="https://www.facebook.com/tr?id=533464170121834&amp;ev=PixelInitialized" />
-      </noscript>
+      
       <script type="text/javascript">
       /* <![CDATA[ */
       var google_conversion_id = 1047813471;
@@ -1115,44 +482,100 @@
       /* ]]> */
       </script>
       {/literal}
-      {*<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">*}
-      {*</script>*}
-      {*<noscript>*}
-      {*<div style="display:inline;">*}
-      {*<img height="1" width="1" style="border-style:none;" alt="Double Click" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047813471/?value=0&amp;guid=ON&amp;script=0"/>*}
-      {*</div>*}
-      {*</noscript>*}
+      
 
-      {*<script type="text/javascript" src="https://reverbcity.com/clickheat/js/clickheat.js"></script><script type="text/javascript"><!--*}
-      {*clickHeatSite = 'www.reverbcity.com';*}
-      {*clickHeatGroup = '{$currentController}/{$currentAction}';*}
-            {*clickHeatServer = 'https://reverbcity.com/clickheat/click.php';initClickHeat(); //-->*}
-            {*</script>*}
+      
             <!-- Código do Google para tag de remarketing teste-->
         <!--------------------------------------------------
         As tags de remarketing não podem ser associadas a informações pessoais de identificação nem inseridas em páginas relacionadas a categorias de confidencialidade. Veja mais informações e instruções sobre como configurar a tag em: http://google.com/ads/remarketingsetup
         --------------------------------------------------->
 
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            var google_conversion_id = 1047813471;
-            var google_custom_params = window.google_tag_params;
-            var google_remarketing_only = true;
-            /* ]]> */
-        </script>
-        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-        </script>
-        <noscript>
-            <div style="display:inline;">
-                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047813471/?value=0&amp;guid=ON&amp;script=0"/>
-            </div>
-        </noscript>
-        <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
-        <script type="text/javascript">twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
-        <noscript>
-            <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
-            <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
-        </noscript>
+        
+        
+		
+		{literal}
+		<!-- GOOGLE ANALITYCS -->
+		<script type="text/javascript">
+        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        		ga('create', 'UA-38700671-1', 'auto');
+        		ga('require', 'displayfeatures');
+        		ga('require', 'ecommerce');
+        		ga('require', 'linkid', 'linkid.js');
+        		ga('send', 'pageview');
+
+		</script>
+		{/literal}
+		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
+			{literal}
+			<script>
+	        		ga('ecommerce:addTransaction', {
+	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+	        			'affiliation': 'Reverbcity.com',
+	        			'revenue': '{$compra->VL_TOTAL_COSO}',
+	        			'shipping': '{$compra->VL_FRETE_COSO}',
+	        			'tax': '0'
+	        		});
+
+	        		{foreach from=$carrinho item=dadosProduto}
+	        		ga('ecommerce:addItem', {
+	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+	        			'name': '{$dadosProduto['nome']}',
+	        			'sku': '{$dadosProduto['codigo']}',
+	        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
+	        			'quantity': '{$dadosProduto['quantidade']}'
+	        		});
+	        		{/foreach}
+	        		ga('ecommerce:send');
+			</script>
+
+			<script type="text/javascript">
+				document.valorCompra = '{$compra->VL_TOTAL_COSO}';
+			</script>
+	        <script type="text/javascript">
+	    		(function() {
+	    			var _fbq = window._fbq || (window._fbq = []);
+	    			if (!_fbq.loaded) {
+	    				var fbds = document.createElement('script');
+	    				fbds.async = true;
+	    				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+	    				var s = document.getElementsByTagName('script')[0];
+	    				s.parentNode.insertBefore(fbds, s);
+	    				_fbq.loaded = true;
+	    			}
+	    		})();
+	    		window._fbq = window._fbq || [];
+	    		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
+			</script>
+			<noscript>
+				<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
+			</noscript>	
+	     	{/literal}
+		{/if}
+
+		{* BUSCAR O MENU TOPO *}
+		
+		<script type="text/javascript">
+			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if};
+			
+			{literal}
+            $(window).bind("load", function() {
+               $.getScript('/arquivos/default/js/social.js', function() {});
+               $.getScript('//www.googleadservices.com/pagead/conversion.js', function() {});
+               $.getScript('//platform.twitter.com/oct.js', function() {
+               		twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });
+               });
+            });
+        			
+			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
+			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
+			{/literal}
+		</script>		
+		
+
     </body>
 </html>
 {/strip}

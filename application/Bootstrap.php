@@ -57,6 +57,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		);
 
 		$cache = Zend_Cache::factory("Core", "APC", $frontendOptions, array());
+
 		Zend_Registry::set("cache", $cache);
 	}
 
