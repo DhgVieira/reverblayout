@@ -116,6 +116,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 		 		// Registra a conexão
 		 		$registry = Zend_Registry::getInstance();
 		 		$registry->set("db", $db);
+				Zend_Db_Table_Abstract::setDefaultMetadataCache($registry->get('cache'));
 		 	}
 		 	catch(Exception $e) {
 				echo '<div style="display:none">'. $e->getMessage() .'</div>';
