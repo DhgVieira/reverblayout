@@ -13,11 +13,10 @@ class AjaxcacheController extends Zend_Controller_Action
         $isMobile = (bool) $this->_request->getParam('isMobile', false);
 
         if ($isMobile) {
-            $this->render('topbar-mobile');
-            return;
+            $this->render('topbarmobile');
+        } else {
+            $this->render('topbar');
         }
-
-        $this->render('topbar');
     }
 
     public function sidebarAction()
