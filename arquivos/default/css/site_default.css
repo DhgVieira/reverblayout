@@ -1207,7 +1207,7 @@ header[role=banner]
     /*background-position: -60px 4px;*/
 }
 .links-social .tumblr:hover
-{
+{''
     background-position: -60px -27px;
 }
 /*.links-social .flickr*/
