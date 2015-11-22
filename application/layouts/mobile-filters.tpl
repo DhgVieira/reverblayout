@@ -129,140 +129,140 @@
             <span class="menu-name">Cores</span>
         </div>
     </div>
-    <ul class="sub-menu filter-by-colors">
-        <li class="sub-menu-item">
-            {if $cor_url eq 1}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir black">Preto</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>1, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir black">Preto</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 2}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir gray">Cinza</span>
-                </span>
-            {else}
-                <a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>2, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir gray">Cinza</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 3}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir white">Branco</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>3, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir white">Branco</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 7}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir light-blue">Azul Claro</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>7, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir light-blue">Azul claro</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 4}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir red">Vermelho</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>4, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir red">Vermelho</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 5}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir yellow">Amarelo</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>5, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir yellow">Amarelo</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 5}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir cream">Creme</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>5, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir cream">Creme</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 6}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir green">Verde</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>6, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir green">Verde</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 8}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir brown">Marrom</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>8, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir brown">Marrom</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 1}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir orange">Laranja</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>9, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir orange">Laranja</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 10}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir purple">Roxo</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>10, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir purple">Roxo</span>
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-            {if $cor_url eq 10}
-                <span class="sub-menu-link ui-button active">
-                    <span class="color ir purplepink">Rosa</span>
-                </span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>10, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
-                    <span class="color ir pink">Rosa</span>
-                </a>
-            {/if}
-        </li>
-    </ul>
+    {*<ul class="sub-menu filter-by-colors">*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 1}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir black">Preto</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>1, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir black">Preto</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 2}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir gray">Cinza</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>2, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir gray">Cinza</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 3}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir white">Branco</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>3, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir white">Branco</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 7}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir light-blue">Azul Claro</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>7, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir light-blue">Azul claro</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 4}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir red">Vermelho</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>4, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir red">Vermelho</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 5}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir yellow">Amarelo</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>5, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir yellow">Amarelo</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 5}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir cream">Creme</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>5, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir cream">Creme</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 6}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir green">Verde</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>6, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir green">Verde</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 8}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir brown">Marrom</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>8, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir brown">Marrom</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 1}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir orange">Laranja</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>9, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir orange">Laranja</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 10}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir purple">Roxo</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>10, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir purple">Roxo</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+            {*{if $cor_url eq 10}*}
+                {*<span class="sub-menu-link ui-button active">*}
+                    {*<span class="color ir purplepink">Rosa</span>*}
+                {*</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>10, "tipo"=>{$tipo_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">*}
+                    {*<span class="color ir pink">Rosa</span>*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+    {*</ul>*}
     <div class="clearfix"></div>
     <!-- filtro temas -->
     <a rel="nofollow" class="arrow-menu open-sub-menu" href="#" data-menu="filter-by-themes">
