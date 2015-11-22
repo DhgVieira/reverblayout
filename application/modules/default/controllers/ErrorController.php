@@ -24,6 +24,25 @@ class ErrorController extends Zend_Controller_Action {
 	 * @name errorAction
 	 */
 	public function errorAction() {
+		$errors = $this->_getParam("error_handler");
+		if($errors && $errors instanceof ArrayObject) {
+			/* @var \Zend_Controller_Request_Http $request */
+			/* @var \Zend_Controller_Dispatcher_Exception $exception */
+			/* @var \Zend_Log $logger */
+			$type = $errors->type;
+			$request = $errors->request;
+			$exception = $errors->exception;
+			$logger = Zend_Registry::get('logger');
+			$message = sprintf(
+				"Erro Type: %s. REQUEST: %s . EXCEPTION: %s, FILE: %s LINE: %s",
+				$type,
+				print_r($request->getParams(), true),
+				$exception->getMessage(),
+				$exception->getFile(),
+				$exception->getLine()
+			);
+			$logger->log($message, \Zend_Log::ALERT);
+		}
 //		// Desabilita o layout e busca o handler de erro
 //		$this->_helper->layout->disableLayout();
 //		$errors = $this->_getParam("error_handler");

@@ -34,7 +34,7 @@
 					<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'valepresente', TRUE)}">Vale Presente</a></li>
 					<li class="submenu-item"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'avisame', TRUE)}">Avise-me</a></li>
 					<li class="submenu-item last"><a rel="nofollow" class="menu-item-link" href="{$this->url([], 'colecoesantigas', TRUE)}">Classics</a></li>
-					{*<li class="submenu-item last"><a class="menu-item-link" href="{$this->url([], 'todos-produtos', TRUE)}">Todos Produtos</a></li>*}
+					<li class="submenu-item last"><a class="menu-item-link" href="{$this->url([], 'todos-produtos', TRUE)}">Todos Produtos</a></li>
 				</ul>
 			</li>
 			<li class="menu-item sale">
@@ -202,6 +202,7 @@
 		<button type="submit" class="submit search-icon">Buscar</button>
 	</form>
 </div>
+{literal}
 <script type="text/javascript">
         $(function() {
             reverb.init();
@@ -221,3 +222,4 @@
             return false
         })
 </script>
+{/literal}
