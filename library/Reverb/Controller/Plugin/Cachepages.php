@@ -39,28 +39,64 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
          */
         $bootstrap = $front->getParam("bootstrap");
 
-        $registry = Zend_Registry::getInstance();
-
-        /* @var \Zend_Cache_Core $cache*/
-        $cache = $registry->get('cacheMemcached');
         $options = $bootstrap->getOptions();
 
         $key = $options['Reverb']['config']['domain'] . $_SERVER['REQUEST_URI'];
+        $optionsMemcached = $options['resources']['cachemanager']['memcached']['backend'];
+        $cache = $this->getCache($optionsMemcached);
 
+        if ($request->getParam('noCache')) {
+            return;
+        }
+        $load = $cache->get($key);
 
-        if ($cache->load($key)) {
+        if (isset($load[0])) {
             return;
         }
 
-        /* @var Smarty $view*/
-        $smarty = $registry->get('view')->getEngine();
+        // CARREGA A PAGINA
+        $output = $this->loadPage($options);
 
-        $tpl = current($smarty->template_objects)->template_resource;
-
-        $output = $smarty->fetch($tpl);
-
-        $cache->save($output, $key, array(), 3600);
+        $cache->set($key, $output, $optionsMemcached['lifetime']);
     }
 
+    protected function loadPage($config)
+    {
+        $scheme = (bool) $config['Reverb']['config']['ssl'] ? 'https' : 'http';
+        $uri =  $_SERVER['REQUEST_URI'];
+        if (!empty($_SERVER['QUERY_STRING'])) {
+            $uri .= $_SERVER['QUERY_STRING'] . '&' . 'noCache=true';
+        } else {
+            $uri .= '?noCache=true';
+        }
+        $url = $scheme . '://' . $config['Reverb']['config']['domain'] . $uri;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $output = curl_exec($ch);
+
+        curl_close($ch);
+
+        return $output;
+    }
+
+    /**
+     * @param $config
+     * @return \Memcached
+     */
+    protected function getCache($config)
+    {
+        $cache = new \Memcached();
+        $cache->setOption(\Memcached::OPT_COMPRESSION, false);
+
+        foreach ($config['options']['servers'] as $server) {
+            $cache->addServer($server['host'], $server['port']);
+        }
+
+        return $cache;
+    }
 
 } 

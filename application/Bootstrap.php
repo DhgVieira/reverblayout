@@ -55,14 +55,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			'lifetime' => $this->_config->reverb->cache->time,
 			'automatic_serialization' => TRUE
 		);
-		$cacheMemcached = $this->bootstrap('cachemanager')
-			->getResource('cachemanager')
-			->getCache('memcached');
 
 		$cache = Zend_Cache::factory("Core", "APC", $frontendOptions, array());
 
 		Zend_Registry::set("cache", $cache);
-		Zend_Registry::set("cacheMemcached", $cacheMemcached);
 	}
 
 	/**
