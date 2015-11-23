@@ -1388,15 +1388,24 @@ section.products p.price .old-price
     color: lightgray;
     text-decoration: line-through;
 }
+
+#product-hidden {
+    opacity: 0;
+}
+.rvb-product-item:hover #product-hidden {
+    opacity: 1;
+}
 .rvb-product-item .list-product-details {
 
     position: absolute;
     z-index: 100;
-    opacity: .6;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.7);
     height: 35px;
     width: 220px;
     margin-top: 207px;
+}
+.preco del {
+    font-size: 11px;
 }
 .rvb-product-item h2.product-div-op{
     color: #ffffff;
@@ -1414,8 +1423,7 @@ section.products p.price .old-price
 
     position: absolute;
     z-index: 100;
-    opacity: .6;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.7);
     height: 84px;
     width: 220px;
     margin-top: 158px;
@@ -1431,10 +1439,10 @@ section.products p.price .old-price
     font-family: 'Droid Sans', sans-serif;
     font-weight: bold;
 }
-.retail{
+.preco .retail{
     margin-top: 10px;
 }
-.wholesale {
+.preco .wholesale {
     margin-top: 5px;
     font-size: 15px;
     color: #5fbf98;
