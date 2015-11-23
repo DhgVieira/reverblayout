@@ -55,10 +55,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			'lifetime' => $this->_config->reverb->cache->time,
 			'automatic_serialization' => TRUE
 		);
+		$cacheMemcached = $this->bootstrap('cachemanager')
+			->getResource('cachemanager')
+			->getCache('memcached');
 
 		$cache = Zend_Cache::factory("Core", "APC", $frontendOptions, array());
 
 		Zend_Registry::set("cache", $cache);
+		Zend_Registry::set("cacheMemcached", $cacheMemcached);
 	}
 
 	/**
@@ -260,6 +264,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
 		// Registra o plugin para carregar informações para todo o site
 		$this->frontController->registerPlugin(new Reverb_Controller_Plugin_Geral);
+		$this->frontController->registerPlugin(new Reverb_Controller_Plugin_Cachepages());
 
         //$this->frontController->registerPlugin( new Reverb_Controller_Plugin_Ssl);
 

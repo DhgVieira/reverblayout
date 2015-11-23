@@ -251,7 +251,8 @@ class ForumController extends Zend_Controller_Action {
 
 			$this->view->idusuario = $idusuario;
 
-
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
 	}
 
 	/**
