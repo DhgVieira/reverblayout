@@ -542,6 +542,11 @@ header[role=banner]
 {
     margin-right: 7px;
 }
+.actions-site a
+{
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 700;
+}
 .actions-site>li,.actions-user>li
 {
     display: inline-block;
@@ -859,7 +864,7 @@ header[role=banner]
 {
     margin-top: 6px;
     position: relative;
-    width: 221px;
+    width: 161px;
 }
 .input-box
 {
@@ -959,14 +964,14 @@ header[role=banner]
 .menu-item.busca input
 {
     height: 28px;
-    width: 140px;
+    width: 135px;
 }
 .separador
 {
     border-top: 1px solid #000;
-    margin-top: 30px;
+    margin-top: 25px;
     position: absolute;
-    width: 160px;
+    width: 155px;
 }
 .menu-item-link
 {

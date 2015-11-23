@@ -251,6 +251,9 @@ class ForumController extends Zend_Controller_Action {
 
 			$this->view->idusuario = $idusuario;
 
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+
 
 	}
 
@@ -1055,6 +1058,56 @@ class ForumController extends Zend_Controller_Action {
 
 	}
 
+
+	public function createslug($SEO_text) {
+
+		// Verifica se tem texto
+		if(empty($SEO_text)) {
+			return;
+		}
+
+		// Decodifica o html entities
+		$SEO_text = html_entity_decode($SEO_text,ENT_QUOTES, 'UTF-8');
+
+		// Diminui o tamanho da letra
+		$SEO_text = mb_strtolower($SEO_text, "UTF-8");
+
+		// Troca os caracteres especiais
+		$trans = array(
+			'ç' => "c",
+			'á' => "a",
+			'â' => "a",
+			'à' => "a",
+			'ã' => "a",
+			'é' => "e",
+			'ê' => "e",
+			'è' => "e",
+			'ẽ' => "e",
+			'í' => "i",
+			'î' => "i",
+			'ì' => "i",
+			'ĩ' => "i",
+			'ó' => "o",
+			'ô' => "o",
+			'ò' => "o",
+			'õ' => "o",
+			'ú' => "u",
+			'û' => "u",
+			'ù' => "u",
+			'ũ' => "u"
+		);
+		$SEO_text = strtr($SEO_text, $trans);
+
+		// Trocar o que não é especial
+		$SEO_text = preg_replace("@[^a-zA-Z0-9]@", "-", $SEO_text);
+
+		// Troca varios espacos por 1 só
+		$SEO_text = preg_replace("/__+/", "-", $SEO_text);
+
+		// Retorna o texto
+		return $SEO_text;
+	}
+
 	/**
 	 * funcao responsavel json de forum
 	 */
@@ -1115,7 +1168,11 @@ class ForumController extends Zend_Controller_Action {
 			 	// Converte a data para o formato Brasileiro
 	            $data_explode = explode("-", $topico->DT_ULTIMOPOST_TOSO);
 	            $dia = explode(" ", $data_explode[2]);
-	            $nova_data = $dia[0]."/".$data_explode[1]."/".$data_explode[0];
+	            //$nova_data = $dia[0]."/".$data_explode[1]."/".$data_explode[0];
+	            $nova_data = date_format($topico->DT_ULTIMOPOST_TOSO,"F d, Y");
+	            $novo_total = number_format($topico->NR_MSGS_TOSO);
+
+				 $topico->NR_MSGS_TOSO = $novo_total;
 
 	            $topico->DT_ULTIMOPOST_TOSO  = $nova_data;
         	}
@@ -1218,6 +1275,7 @@ class ForumController extends Zend_Controller_Action {
 			//json
 			$this->_helper->json($enquetes);
 	}
+
 
 	/*
 	*
