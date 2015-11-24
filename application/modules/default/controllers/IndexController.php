@@ -64,10 +64,10 @@ class IndexController extends Zend_Controller_Action {
      */
     public function indexAction() {
         // script para mudar a inicial para /inicio/page
-        $this->view->headLink()->offsetUnset(2);
-        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
-        $this->inicioAction();
-        $this->render('inicio');
+//        $this->view->headLink()->offsetUnset(2);
+//        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
+//        $this->inicioAction();
+//        $this->render('inicio');
 
         //$this->view->title = "Loja - Reverbcity.com";
         $this->view->title = "Camisetas de rock, indie, personalizadas - Reverbcity.com";
