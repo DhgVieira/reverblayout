@@ -8,6 +8,7 @@
 
 class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstract {
 
+    protected $domain;
 
     protected function getRoutesAllowedCache() {
         return array(
@@ -41,7 +42,9 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
 
         $options = $bootstrap->getOptions();
 
-        $key = $options['Reverb']['config']['domain'] . $_SERVER['REQUEST_URI'];
+        $this->setDomain($options);
+
+        $key = $this->domain . $_SERVER['REQUEST_URI'];
         $optionsMemcached = $options['resources']['cachemanager']['memcached']['backend'];
         $cache = $this->getCache($optionsMemcached);
 
@@ -60,6 +63,16 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
         $cache->set($key, $output, $optionsMemcached['lifetime']);
     }
 
+    private function setDomain($config)
+    {
+        $prefix = '';
+        if ((bool) $config['Reverb']['config']['ssl'] && strpos($config['Reverb']['config']['domain'], 'wwww') === false) {
+            $prefix = 'www.';
+        }
+
+        $this->domain = $prefix . $config['Reverb']['config']['domain'];
+    }
+
     protected function loadPage($config)
     {
         $scheme = (bool) $config['Reverb']['config']['ssl'] ? 'https' : 'http';
@@ -69,7 +82,7 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
         } else {
             $uri .= '?noCache=true';
         }
-        $url = $scheme . '://' . $config['Reverb']['config']['domain'] . $uri;
+        $url = $scheme . '://' . $this->domain . $uri;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
