@@ -97,7 +97,67 @@
 
     {$this->headLink()}
 
-    
+    			{literal}
+        		<script>
+        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        		ga('create', 'UA-38700671-1', 'auto');
+        		ga('require', 'displayfeatures');
+        		ga('require', 'ecommerce');
+        		ga('require', 'linkid', 'linkid.js');
+        		ga('send', 'pageview');
+
+        		</script>
+        		{/literal}
+        		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
+        		<script>
+        		ga('ecommerce:addTransaction', {
+        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+        			'affiliation': 'Reverbcity.com',
+        			'revenue': '{$compra->VL_TOTAL_COSO}',
+        			'shipping': '{$compra->VL_FRETE_COSO}',
+        			'tax': '0'
+        		});
+
+        		{foreach from=$carrinho item=dadosProduto}
+        		ga('ecommerce:addItem', {
+        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
+        			'name': '{$dadosProduto['nome']}',
+        			'sku': '{$dadosProduto['codigo']}',
+        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
+        			'quantity': '{$dadosProduto['quantidade']}'
+        		});
+        		{/foreach}
+        		ga('ecommerce:send');
+        		</script>
+
+        		<script type="text/javascript">
+        		document.valorCompra = '{$compra->VL_TOTAL_COSO}';
+        		</script>
+        		{literal}
+        		<script type="text/javascript">
+        		(function() {
+        			var _fbq = window._fbq || (window._fbq = []);
+        			if (!_fbq.loaded) {
+        				var fbds = document.createElement('script');
+        				fbds.async = true;
+        				fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        				var s = document.getElementsByTagName('script')[0];
+        				s.parentNode.insertBefore(fbds, s);
+        				_fbq.loaded = true;
+        			}
+        		})();
+        		window._fbq = window._fbq || [];
+        		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
+        		</script>
+        		{/literal}
+        		<noscript>
+        			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
+        		</noscript>
+				{/if}
 	
         	</head>
         	<body>
@@ -449,7 +509,15 @@
             <!-- scripts -->
             
             <div id="fb-root"></div>
-       
+       		<script>(function(d, s, id) {
+            	var js, fjs = d.getElementsByTagName(s)[0];
+            	if (d.getElementById(id)) return;
+            	js = d.createElement(s); js.id = id;
+            	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=237745386316222";
+            	fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+            
 
           {*<script type="text/javascript">
           var _gaq = _gaq || [];
@@ -473,7 +541,29 @@
       </script>
       {/if}
       {literal}
-      
+      <script>
+      (function() {
+      	var _fbq = window._fbq || (window._fbq = []);
+      	if (!_fbq.loaded) {
+      		var fbds = document.createElement('script');
+      		fbds.async = true;
+      		fbds.src = '//connect.facebook.net/en_US/fbds.js';
+      		var s = document.getElementsByTagName('script')[0];
+      		s.parentNode.insertBefore(fbds, s);
+      		_fbq.loaded = true;
+      	}
+      	_fbq.push(['addPixelId', '533464170121834']);
+      })();
+      window._fbq = window._fbq || [];
+      window._fbq.push(['track', 'PixelInitialized', {}]);
+      </script>
+      <noscript>
+      	<img height="1" width="1" alt="Facebook Pixel" style="display:none" src="https://www.facebook.com/tr?id=533464170121834&amp;ev=PixelInitialized" />
+      </noscript>
+      <!-- Código do Google para tag de remarketing teste-->
+      <!--
+        As tags de remarketing não podem ser associadas a informações pessoais de identificação nem inseridas em páginas relacionadas a categorias de confidencialidade. Veja mais informações e instruções sobre como configurar a tag em: http://google.com/ads/remarketingsetup
+        -->
       <script type="text/javascript">
       /* <![CDATA[ */
       var google_conversion_id = 1047813471;
@@ -482,94 +572,27 @@
       /* ]]> */
       </script>
       {/literal}
+      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+      <noscript>
+            <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047813471/?value=0&amp;guid=ON&amp;script=0"/>
+            </div>
+        </noscript>
+        <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+        <script type="text/javascript">twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+        <noscript>
+            <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+            <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+        </noscript>
       
 
-      
-            <!-- Código do Google para tag de remarketing teste-->
-        <!--------------------------------------------------
-        As tags de remarketing não podem ser associadas a informações pessoais de identificação nem inseridas em páginas relacionadas a categorias de confidencialidade. Veja mais informações e instruções sobre como configurar a tag em: http://google.com/ads/remarketingsetup
-        --------------------------------------------------->
-
-        
-        
-		
-		{literal}
-		<!-- GOOGLE ANALITYCS -->
-		<script type="text/javascript">
-        		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        		ga('create', 'UA-38700671-1', 'auto');
-        		ga('require', 'displayfeatures');
-        		ga('require', 'ecommerce');
-        		ga('require', 'linkid', 'linkid.js');
-        		ga('send', 'pageview');
-
-		</script>
-		{/literal}
-		{if $currentAction eq "finalizar" and ($compra->ST_COMPRA_COSO == 'A' or $compra->ST_COMPRA_COSO == 'P')}
-			{literal}
-			<script>
-	        		ga('ecommerce:addTransaction', {
-	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-	        			'affiliation': 'Reverbcity.com',
-	        			'revenue': '{$compra->VL_TOTAL_COSO}',
-	        			'shipping': '{$compra->VL_FRETE_COSO}',
-	        			'tax': '0'
-	        		});
-
-	        		{foreach from=$carrinho item=dadosProduto}
-	        		ga('ecommerce:addItem', {
-	        			'id': '{$compra->NR_SEQ_COMPRA_COSO}',
-	        			'name': '{$dadosProduto['nome']}',
-	        			'sku': '{$dadosProduto['codigo']}',
-	        			'price': '{$dadosProduto['valor']|number_format:2:".":""}',
-	        			'quantity': '{$dadosProduto['quantidade']}'
-	        		});
-	        		{/foreach}
-	        		ga('ecommerce:send');
-			</script>
-
-			<script type="text/javascript">
-				document.valorCompra = '{$compra->VL_TOTAL_COSO}';
-			</script>
-	        <script type="text/javascript">
-	    		(function() {
-	    			var _fbq = window._fbq || (window._fbq = []);
-	    			if (!_fbq.loaded) {
-	    				var fbds = document.createElement('script');
-	    				fbds.async = true;
-	    				fbds.src = '//connect.facebook.net/en_US/fbds.js';
-	    				var s = document.getElementsByTagName('script')[0];
-	    				s.parentNode.insertBefore(fbds, s);
-	    				_fbq.loaded = true;
-	    			}
-	    		})();
-	    		window._fbq = window._fbq || [];
-	    		window._fbq.push(['track', '6007459841147', {'value':document.valorCompra,'currency':'BRL'}]);
-			</script>
-			<noscript>
-				<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
-			</noscript>	
-	     	{/literal}
-		{/if}
 
 		{* BUSCAR O MENU TOPO *}
 		
 		<script type="text/javascript">
 			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if};
 			
-			{literal}
-            $(window).bind("load", function() {
-               $.getScript('/arquivos/default/js/social.js', function() {});
-               $.getScript('//www.googleadservices.com/pagead/conversion.js', function() {});
-               $.getScript('//platform.twitter.com/oct.js', function() {
-               		twttr.conversion.trackPid('l5zln', { tw_sale_amount: 0, tw_order_quantity: 0 });
-               });
-            });
-        			
+			{literal}               			
 			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
 			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
 			{/literal}
