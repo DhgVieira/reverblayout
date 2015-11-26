@@ -1,3 +1,4 @@
+{*
 <!-- <div class="banners-advertisement cycle-slideshow"
      data-cycle-fx="fadeout"
      data-cycle-timeout="5000"
@@ -117,3 +118,4 @@
 
 
 <!-- <div class="clearfix"></div> -->
+*}

@@ -64,10 +64,10 @@ class IndexController extends Zend_Controller_Action {
      */
     public function indexAction() {
         // script para mudar a inicial para /inicio/page
-        $this->view->headLink()->offsetUnset(2);
-        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
-        $this->inicioAction();
-        $this->render('inicio');
+//        $this->view->headLink()->offsetUnset(2);
+//        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
+//        $this->inicioAction();
+//        $this->render('inicio');
 
         //$this->view->title = "Loja - Reverbcity.com";
         $this->view->title = "Camisetas de rock, indie, personalizadas - Reverbcity.com";
@@ -82,6 +82,9 @@ class IndexController extends Zend_Controller_Action {
         $ipod = strpos($_SERVER['HTTP_USER_AGENT'], "iPod");
 
 
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/blackfriday.css');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery.backstretch.min.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/application/js/default/index/fullbanner.js');
 
         $campanhas = new Zend_Session_Namespace("campanhas");
         //pego a url da campanha
@@ -89,7 +92,7 @@ class IndexController extends Zend_Controller_Action {
         //pego o id da campanha
         $parametro = explode("=", $endereco);
         //adiciono a campanha a sessão
-        //verifico se existe parametro 
+        //verifico se existe parametro
 
         if ($parametro[1] != "") {
             //adiciono a campanha a sessão

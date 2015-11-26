@@ -1,0 +1,14 @@
+html,body{ margin:0; padding:0; height:100%; width:100%; }
+body { overflow-Y: hidden; background: #000}
+#desktop-header { display: none;}
+footer { display: none;}
+#main-content {display: none;}
+#full-size{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: 9999999;
+    background: black;
+    cursor: pointer;
+}
