@@ -162,6 +162,8 @@
         	</head>
         	<body>
 
+			<div class="full-size" id="full-size"></div>
+
         		{if $_isMobile eq 1}
         		<header id="mobile-header" role="banner">
         			<div id="top-bar">        				

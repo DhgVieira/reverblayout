@@ -3847,7 +3847,8 @@ class LojaController extends Zend_Controller_Action {
                 //ordeno pela ordem de ordenacao de produtos
                 ->order(array(
                     //"DS_CATEGORIA_PCRC ASC",
-                    'NR_ORDEM_TODOS_PRRC ASC'
+//                    'NR_ORDEM_TODOS_PRRC ASC'
+                    'VL_PROMO_PRRC ASC'
         ));
 
         // crio a paginação para proximo e para anterior
@@ -3866,6 +3867,7 @@ class LojaController extends Zend_Controller_Action {
 //
 //            //assino
 //            $this->view->assign('pages', $pageArray);
+
         // crio paginacao com numeros
         $current_page = $this->_request->getParam("page", 1);
         //passo para o paginador o select de produtos

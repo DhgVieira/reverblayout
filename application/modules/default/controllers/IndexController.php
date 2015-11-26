@@ -64,10 +64,15 @@ class IndexController extends Zend_Controller_Action {
      */
     public function indexAction() {
         // script para mudar a inicial para /inicio/page
+
         $this->view->headLink()->offsetUnset(2);
         $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
         $this->inicioAction();
         $this->render('inicio');
+//Fix Black Friday
+            $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/blackfriday.css');
+            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery.backstretch.min.js');
+            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/application/js/default/index/fullbanner.js');
 
         //$this->view->title = "Loja - Reverbcity.com";
         $this->view->title = "Camisetas de rock, indie, personalizadas - Reverbcity.com";
@@ -81,15 +86,13 @@ class IndexController extends Zend_Controller_Action {
         $berry = strpos($_SERVER['HTTP_USER_AGENT'], "BlackBerry");
         $ipod = strpos($_SERVER['HTTP_USER_AGENT'], "iPod");
 
-
-
         $campanhas = new Zend_Session_Namespace("campanhas");
         //pego a url da campanha
         $endereco = $_SERVER ['REQUEST_URI'];
         //pego o id da campanha
         $parametro = explode("=", $endereco);
         //adiciono a campanha a sessão
-        //verifico se existe parametro 
+        //verifico se existe parametro
 
         if ($parametro[1] != "") {
             //adiciono a campanha a sessão
@@ -564,8 +567,9 @@ class IndexController extends Zend_Controller_Action {
                 ->order(array(
                     // Remover comentarios depois da blackfriday
                     //"NR_ORDEM_HOME_PRRC ASC",
-                    "NR_ORDEM_TODOS_PRRC ASC"
+                    //"NR_ORDEM_TODOS_PRRC ASC"
                         //"DT_CADASTRO_PRRC DESC"
+                        "VL_PROMO_PRRC DESC"
         ));
 
         $lista_produtos = $model_produtos->fetchAll($select_produtos)->toArray();
