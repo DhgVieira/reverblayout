@@ -1,4 +1,4 @@
-{*
+{*<div class="full-size" id="full-size"></div>*}
 <!-- <div class="banners-advertisement cycle-slideshow"
      data-cycle-fx="fadeout"
      data-cycle-timeout="5000"
@@ -20,32 +20,32 @@
 </div> -->
 
 <ul id="carousel-banners" class="owl-carousel owl-theme">
-  {foreach from=$banners item=banner}
-    {assign var="foto" value=$banner['NR_SEQ_BANNER_BARC']}
-    {assign var="extensao" value="{$banner['DS_EXT_BARC']}"}
-    {assign var="foto_completa" value="{$foto}.{$extensao}"}
-    <li class="item">
-        <a href="{$banner['DS_LINK_BARC']}" target="_blank">
-           <!--  {if file_exists("arquivos/uploads/banners/$foto_completa")}
+    {foreach from=$banners item=banner}
+        {assign var="foto" value=$banner['NR_SEQ_BANNER_BARC']}
+        {assign var="extensao" value="{$banner['DS_EXT_BARC']}"}
+        {assign var="foto_completa" value="{$foto}.{$extensao}"}
+        <li class="item">
+            <a href="{$banner['DS_LINK_BARC']}" target="_blank">
+                <!--  {if file_exists("arquivos/uploads/banners/$foto_completa")}
                 <img class="lazyOwl" data-src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>422,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
             {else}
                 <img class="lazyOwl" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>422,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
             {/if} -->
-             {if file_exists("arquivos/uploads/banners/$foto_completa")}
-                <img class="lazyOwl" src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>$foto_completa],'imagem', TRUE)}" data-src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
-            {else}
-                <img class="lazyOwl" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
-            {/if}
-            <div class="banner-hover">
-                <span class="banner-hover-title">{$banner['DS_DESCRICAO_BARC']}</span> <br>
+                {if file_exists("arquivos/uploads/banners/$foto_completa")}
+                    <img class="lazyOwl" src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>$foto_completa],'imagem', TRUE)}" data-src="{$this->Url(['tipo'=>"banners", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
+                {else}
+                    <img class="lazyOwl" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>940,'altura'=>560,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$banner['DS_DESCRICAO_BARC']}">
+                {/if}
+                <div class="banner-hover">
+                    <span class="banner-hover-title">{$banner['DS_DESCRICAO_BARC']}</span> <br>
 
-                <span class="banner-hover-btn">Clique e saiba mais</span> <br>
+                    <span class="banner-hover-btn">Clique e saiba mais</span> <br>
 
-                <span class="banner-hover-phrase">{$banner['MSG_BANNER_BARC']}</span>
-            </div>
-        </a>
-    </li>
-  {/foreach}
+                    <span class="banner-hover-phrase">{$banner['MSG_BANNER_BARC']}</span>
+                </div>
+            </a>
+        </li>
+    {/foreach}
 </ul>
 <!-- <ul id="banners-slim">
     <li class="first">
@@ -118,4 +118,3 @@
 
 
 <!-- <div class="clearfix"></div> -->
-*}
