@@ -69,10 +69,6 @@ class IndexController extends Zend_Controller_Action {
         $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/inicio.css');
         $this->inicioAction();
         $this->render('inicio');
-//Fix Black Friday
-            $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/index/blackfriday.css');
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery.backstretch.min.js');
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/application/js/default/index/fullbanner.js');
 
         //$this->view->title = "Loja - Reverbcity.com";
         $this->view->title = "Camisetas de rock, indie, personalizadas - Reverbcity.com";
