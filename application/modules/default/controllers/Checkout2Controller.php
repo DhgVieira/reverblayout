@@ -5074,6 +5074,18 @@ class Checkout2Controller extends Zend_Controller_Action {
             //assino os valores na variavel
             $promocoes = $model_promo->fetchRow();
 
+            //inicio o model de configuracoes gerais para pegar o valor do frete gratis
+            $model_configuracoes = new Default_Model_Configuracoes();
+            //inicio a query
+            $select_configuracoes = $model_configuracoes->select()
+                //seto integridade como falsa
+                ->setIntegrityCheck(FALSE)
+                //da tabela de configuracoes, pego o status e o valor
+                ->from("config_gerais", array("ST_FRETEGRATIS_GESA",
+                    "VL_FRETEGRATIS_GESA"));
+            //atribuo para a variavel de configuracoes
+            $configuracoes = $model_configuracoes->fetchRow($select_configuracoes);
+
             $total_itens = count($carrinho->produtos);
             //percorro o carrinho
             foreach ($carrinho->produtos as $key => $produto) {
@@ -5257,19 +5269,6 @@ class Checkout2Controller extends Zend_Controller_Action {
             if (count($carrinho->produtos) > 1 AND $tem_frete_gratis == 1) {
                 $produto_ft_gratis = 'S';
             }
-
-
-            //inicio o model de configuracoes gerais para pegar o valor do frete gratis
-            $model_configuracoes = new Default_Model_Configuracoes();
-            //inicio a query
-            $select_configuracoes = $model_configuracoes->select()
-                    //seto integridade como falsa
-                    ->setIntegrityCheck(FALSE)
-                    //da tabela de configuracoes, pego o status e o valor
-                    ->from("config_gerais", array("ST_FRETEGRATIS_GESA",
-                "VL_FRETEGRATIS_GESA"));
-            //atribuo para a variavel de configuracoes
-            $configuracoes = $model_configuracoes->fetchRow($select_configuracoes);
 
             //agora transformo o peso em centesimos para o calculo
             $peso_produto = $peso_produto / 1000;
@@ -5479,7 +5478,7 @@ class Checkout2Controller extends Zend_Controller_Action {
             }
 
             // Se for primeira compra e for mais que 260 ganha frete grÃ¡tis
-            if (($sessao_promo->primeira == 1 or $sessao_promo->niver == 1) and $tem_brinde == 1 and $valor_total > 200) {
+            if (($sessao_promo->primeira == 1 or $sessao_promo->niver == 1) and $tem_brinde == 1 and $valor_total > $configuracoes->VL_FRETEGRATIS_GESA) {
                 if ($tem_cheio == 1) {
                     //atribuo o valor do frete como gratis cep valido e valor para frete zerado
 
@@ -5492,7 +5491,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 }
             }
 
-            if ($sessao_promo->niver == 1 and $tem_brinde == 1 and $valor_total > 200) {
+            if ($sessao_promo->niver == 1 and $tem_brinde == 1 and $valor_total > $configuracoes->VL_FRETEGRATIS_GESA) {
                 //atribuo o valor do frete como gratis cep valido e valor para frete zerado
 
                 $valor_total_frete = 0;
@@ -5560,7 +5559,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 if ($promocoes["st_frete_londrina"] == 1 and $usuarios->tipo <> 'PJ') {
 
                     //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-                    if (($resultado_busca['uf'] == "PR" OR $resultado_busca['uf'] == "SP" OR $resultado_busca['uf'] == "RJ") and $valor_total >= 200) {
+                    if (($resultado_busca['uf'] == "PR" OR $resultado_busca['uf'] == "SP" OR $resultado_busca['uf'] == "RJ") and $valor_total >= $configuracoes->VL_FRETEGRATIS_GESA) {
 
                         //verifico s tem preco cheio
                         if ($tem_camiseta_cheia == 1) {
