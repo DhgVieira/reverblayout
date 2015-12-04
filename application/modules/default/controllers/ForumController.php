@@ -28,6 +28,7 @@ class ForumController extends Zend_Controller_Action {
 		$this->view->keywords = "Reverbcity, forum, musica, comunidade, novidades, topicos";
 	}
 
+
 	/**
 	 *
 	 */
@@ -543,6 +544,142 @@ class ForumController extends Zend_Controller_Action {
 			$this->_redirect($_SERVER['HTTP_REFERER']);
 		}
 
+	}
+
+
+	public function enquetelistaAction() {
+
+		$palavra = $this->_request->getparam("busca");
+
+		//inicio a sessao de usuários
+		$usuarios = new Zend_Session_Namespace("usuarios");
+
+		//inicio o modulo das enquetes
+		$model_enquete = new Default_Model_Enquetes();
+
+
+		//inicio a query da enquete mais nova
+		$select_enquete_nova = $model_enquete->select()
+			//digo que nao existe integridade entre as tabelas
+			->setIntegrityCheck(false)
+			->from('enquetes', array('idenquete',
+				'titulo_enquete',
+				'idautor',
+				'data_inicio',
+				'total_votos' => "(SELECT
+									SUM(quantidade_votos)
+								AS
+									total_votos
+								FROM
+									enquetes_opcoes
+								WHERE
+									enquetes.idenquete = enquetes_opcoes.idenquete)"))
+			->joinLeft('cadastros',
+				'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO','NR_SEQ_CADASTRO_CASO'))
+			->order("data_inicio DESC")
+			->limit(1);
+
+		//assino ao view
+		$nova_enquete = $model_enquete->fetchRow($select_enquete_nova);
+		$this->view->nova_enquete = $nova_enquete;
+
+		//inicio a query da enquete mais nova
+		$select_enquete_hot = $model_enquete->select()
+			//digo que nao existe integridade entre as tabelas
+			->setIntegrityCheck(false)
+			->from('enquetes', array('idenquete',
+				'titulo_enquete',
+				'idautor',
+				'data_inicio',
+				'total_votos' => "(SELECT
+									SUM(quantidade_votos)
+								AS
+									total_votos
+								FROM
+									enquetes_opcoes
+								WHERE
+									enquetes.idenquete = enquetes_opcoes.idenquete)"))
+			->joinInner('cadastros',
+				'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO','NR_SEQ_CADASTRO_CASO'))
+			->order("total_votos DESC")
+			->limit(2);
+
+		//crio agora a lista das 2 mais votadas no topo
+		$this->view->enquetes_hot = $model_enquete->fetchAll($select_enquete_hot);
+
+		//assino ao view a enquete com ponto vermelho
+		$hot_enquete = $model_enquete->fetchRow($select_enquete_hot);
+		$this->view->hot_enquete = $hot_enquete;
+
+		//recebo o parametro para buscar a enquete
+		$palavra_enquete = $this->_request->getparam("busca_enquete");
+
+		//inicio a query
+		$select_enquete = $model_enquete->select()
+			//digo que nao existe integridade entre as tabelas
+			->setIntegrityCheck(false)
+			->from('enquetes', array('idenquete',
+				'titulo_enquete',
+				'idautor',
+				'data_inicio',
+				'total_votos' => "(SELECT
+										SUM(quantidade_votos)
+									AS
+										total_votos
+									FROM
+										enquetes_opcoes
+									WHERE
+										enquetes.idenquete = enquetes_opcoes.idenquete)"))
+			->joinInner('cadastros',
+				'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO','NR_SEQ_CADASTRO_CASO'))
+			->where("idenquete not in (".$hot_enquete->idenquete .",". $nova_enquete->idenquete .")");
+		if ($palavra_enquete != "") {
+			$select_enquete->where("titulo_enquete LIKE '%". $palavra_enquete ."%'");
+		}
+		$select_enquete->order("data_inicio DESC");
+
+		//assino ao view
+		$this->view->enquetes = $model_enquete->fetchAll($select_enquete);
+
+		//inicio o model de banners
+		$model_banner = new Default_Model_Banners();
+		//crio o dia e hora atual
+		$dia_hora = date("Y-m-d H:i:s");
+		//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+		$select_agendado_topo = $model_banner->select()
+			->where("NR_SEQ_LOCAL_BARC = 87")
+			->where("ST_BANNER_BARC = 'A'")
+			->where("ST_AGENDAMENTO_BARC = 1")
+			->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+			->order("DT_CADASTRO_BARC DESC");
+
+		//armazeno em uma variavel
+		$agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
+
+		//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+		$select_normais_topo = $model_banner->select()
+			->where("NR_SEQ_LOCAL_BARC = 87")
+			->where("ST_BANNER_BARC = 'A'")
+			->where("ST_AGENDAMENTO_BARC = 0")
+			->order("DT_CADASTRO_BARC DESC");
+
+		//armazeno em uma variavel
+		$normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
+		//junto os 2 tipos de banners em um só array
+		$banners_topo = array_merge($agendados_topo ,$normais_topo);
+
+		//Assino ao view
+		$this->view->banners = $banners_topo;
+
+
+		//agora pego o id do usuário logado
+		$idusuario = $usuarios->idperfil;
+
+		$this->view->idusuario = $idusuario;
+		$this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
+		$this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/js/default/forum/index.css');
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
+		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
 	}
 
 	/**
