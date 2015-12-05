@@ -288,19 +288,19 @@
 .show-more {
     display: block;
     margin: 0 auto;
-    padding: 6px 15px;
-    border: 2px solid #5dbf98;
+    padding: 10px 15px;
+    border: solid #44a980 2px;
     border-radius: 5px;
-    background-color: #fff;
-    color: #5dbf98;
+    background-color: #44A98A;
+    color: #ffffff;
     text-transform: uppercase;
     font-size: 10px;
     cursor: pointer
 }
 .show-more:focus,
 .show-more:hover {
-    border-color: #959595;
-    color: #959595
+    background-color: #e85238;
+    border: solid #e83324 2px;
 }
 .forum-loder {
     display: none;
