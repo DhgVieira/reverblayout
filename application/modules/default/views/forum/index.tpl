@@ -36,10 +36,10 @@
         </div>
     </div>
     <!-- end busca -->
-    {if $idusuario eq 2 or $idusuario eq 6605 or $idusuario eq 4162 or $idusuario eq 32609}
+    {if $idusuario eq 2 or $idusuario eq 6605 or $idusuario eq 4162 or $idusuario eq 32609 or $idusuario eq 369377}
         <div class="abas left">
             <div class="rvb-forum-search-post small nav"><a href="{$this->url([], 'forum', TRUE)}" class="active">Fórum</a></div>
-            <div class="rvb-forum-search-post small nav"><a href="{$this->url([], 'forum/enquete', TRUE)}">Enquete</a></div>
+            <div class="rvb-forum-search-post small nav"><a href="{$this->url([], 'enquetelista', TRUE)}">Enquete</a></div>
 
             <div class="rvb-new-item md-trigger small" data-modal="enviar-todos-lightbox">Enviar para todos</div>
             <div class="rvb-new-item md-trigger small" data-modal="criar-topico-lightbox">Criar tópico</div>

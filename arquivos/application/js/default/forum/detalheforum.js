@@ -43,6 +43,11 @@ reverb.detalheForum = function() {
         minLength: 3
     })
 };
+
+reverb.timeAgo = function() {
+    $("abbr.timeago").timeago();
+};
 $(function() {
-    reverb.detalheForum()
-})
+    reverb.detalheForum();
+    reverb.timeAgo();
+});

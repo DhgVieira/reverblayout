@@ -21,10 +21,19 @@
 <h1 class="rvb-title">Reverb <span>Forum</span></h1>
 
 <div class="full-title">
+    <a href="{$this->url([], 'forum', TRUE)}" class="rvb-forum-button back">
+        <img src="{$basePath}/arquivos/default/images/icon/btn_voltar.png"/>
+    </a>
     <h2 class="subtitle">{$topico->DS_TOPICO_TOSO}</h2>
+    <p>
+        Post by
+        <a href="{$this->url(["nome"=>{$this->createslug($topico->DS_NOME_CASO)}, "idperfil"=>{$topico->NR_SEQ_CADASTRO_CASO}], "perfil", TRUE)}">
+            {$topico->DS_NOME_CASO}
+        </a>
+    </p>
     <a href="{$this->url(["topico"=>{$this->createslug($topico->DS_TOPICO_TOSO)}, "idforum"=>{$topico->NR_SEQ_TOPICO_TOSO}], "denunciarforum", TRUE)}" class="rvb-forum-button report">Denunciar irregularidades</a>
 </div>
-
+{*
 <div class="rvb-forum-details clearfix">
     <a href="{$this->url([], 'forum', TRUE)}" class="rvb-forum-button back">Voltar aos tópicos</a>
 
@@ -35,7 +44,7 @@
         </div>
     </form>
 </div>
-
+*}
 <div class="rvb-forum-details clearfix">
     {if $_logado neq 1}
         <p class="not-logado">
@@ -46,7 +55,7 @@
         <form action="{$this->url(["idforum"=>{$topico->NR_SEQ_TOPICO_TOSO}], "comentarforum", TRUE)}" method="post" id="form-inserir-comentario">
             <textarea class="message-box" name="comentario" placeholder="Escreva aqui seu comentário..."></textarea>
             <div class="send-button clearfix">
-                <button class="rvb-white-button" type="submit">Enviar</button>
+                <button class="rvb-new-item md-trigger small" type="submit">Comentar</button>
             </div>
         </form>
     {/if}
@@ -68,14 +77,14 @@
                             </span>
                     </a>
                     {assign var=listacurtiram value=$this->listacurtiram($msg['NR_SEQ_MSG_MESO'])}
-                    {if $listacurtiram->count()}
-                    <span class="likes-tooltip">
-                        {foreach from=$listacurtiram item=curtiram}
-                            {assign var=nome value=" "|explode:$curtiram->nome}
-                            <a href="{$this->url(["nome"=>$this->createslug($curtiram->nome), "idperfil"=>$curtiram->id], "perfil", TRUE)}">{$nome[0]}</a><br />
-                        {/foreach}
-                    </span>
-                    {/if}
+                    {*{if $listacurtiram->count()}*}
+                    {*<span class="likes-tooltip">*}
+                        {*{foreach from=$listacurtiram item=curtiram}*}
+                            {*{assign var=nome value=" "|explode:$curtiram->nome}*}
+                            {*<a href="{$this->url(["nome"=>$this->createslug($curtiram->nome), "idperfil"=>$curtiram->id], "perfil", TRUE)}">{$nome[0]}</a><br />*}
+                        {*{/foreach}*}
+                    {*</span>*}
+                    {*{/if}*}
             </li>
             <li class="status-item">
                 <a href="{$this->url(["idmsg"=>{$msg['NR_SEQ_MSG_MESO']}], 'naocurtirmsg', TRUE)}"><span class="notlikes"> {$msg['NR_NAOCURTIRAM_MESO']} não curtiram</span></a>
@@ -87,7 +96,9 @@
                 <span class="reply reply-comment-btn">Responder</span>
             </li>
             <li class="status-item hide">
-                <span class="timestamp">{$msg['DT_CADASTRO_MESO']|date_format:"%d/%m/%Y"} ás {$msg['DT_CADASTRO_MESO']|date_format:"%H:%M"}</span>
+                <span class="timestamp">
+                    <abbr class="timeago" title="{$msg['DT_CADASTRO_MESO']|date_format:"%B %e, %Y"}">{$msg['DT_CADASTRO_MESO']|date_format:"%B %e, %Y"}</abbr>
+                </span>
             </li>
         </ul>
 
@@ -96,17 +107,18 @@
                 <div class="comment-item">
 
                     <div class="comment-person">
-                         <a href="{$this->url(["nome"=>{$this->createslug($msg['DS_NOME_CASO'])}, "idperfil"=>{$msg['NR_SEQ_CADASTRO_CASO']}], "perfil", TRUE)}" class="image">
+                         <a href="{$this->url(["nome"=>{$this->createslug($msg['DS_NOME_CASO'])}, "idperfil"=>{$msg['NR_SEQ_CADASTRO_CASO']}], "perfil", TRUE)}" class="image thumb-user">
                             {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
-                                <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>50, 'altura'=>61, 'imagem'=>$foto_completa],"imagem", TRUE)}" width="50" height="61" alt="{$msg['DS_NOME_CASO']}" />
+                                <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>55, 'altura'=>58, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$msg['DS_NOME_CASO']}" />
                             {else}
-                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>50, 'altura'=>61, 'imagem'=>'not_found_bkp.jpg'],"imagem", TRUE)}" width="50" height="61" alt="{$msg['DS_NOME_CASO']}" />
+                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>55, 'altura'=>58, 'imagem'=>'not_found_bkp.jpg'],"imagem", TRUE)}" alt="{$msg['DS_NOME_CASO']}" />
                             {/if}
                         </a>
-                            <p class="comment-name">
-                                <a href="{$this->url(["nome"=>{$this->createslug($msg['DS_NOME_CASO'])}, "idperfil"=>$msg['NR_SEQ_CADASTRO_CASO']], "perfil", TRUE)}" class="image">{$msg['DS_NOME_CASO']}</a>
-                            </p>
                     </div>
+
+                    <p class="comment-user">
+                        <a href="{$this->url(["nome"=>{$this->createslug($msg['DS_NOME_CASO'])}, "idperfil"=>$msg['NR_SEQ_CADASTRO_CASO']], "perfil", TRUE)}" class="image">{$msg['DS_NOME_CASO']}</a>
+                    </p>
 
                     <div class="comment-detail">
                         {*|replace:"http://":"https://"*}
@@ -133,7 +145,7 @@
                                         {*</span>*}
                                         <a href="{$this->url(["idmsg"=>{$mensagem_filhas->NR_SEQ_MSG_MESO}], 'curtirmsg', TRUE)}">
                                             <span class="likes">
-                                        {$mensagem_filhas->NR_CURTIRAM_MESO} curtiu
+                                         {$mensagem_filhas->NR_CURTIRAM_MESO} curtiu
                                                 </span>
                                         </a>
                                 </li>
