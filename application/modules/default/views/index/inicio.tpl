@@ -1,7 +1,8 @@
 {include file="banner.tpl"}
-{*<link rel="stylesheet" type="text/css" href="/arquivos/default/css/style.css">*}
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 <section class="products">
-    <div class="rvb-column left">
+    <div class="rvb-column center">
         <ul class="rvb-collection-of-products">
             {assign var="foto" value="{$_produto_dia->NR_SEQ_PRODUTO_PRRC}"}
             {assign var="extensao" value="{$_produto_dia->DS_EXT_PRRC}"}
@@ -35,7 +36,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{utf8_decode($_produto_dia->DS_PRODUTO_PRRC)}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>340, 'altura'=>380, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>460, 'altura'=>512, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>250, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>315, 'imagem'=>$foto_completa_dia],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -52,7 +53,7 @@
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="Produto Destaque">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>220,'altura'=>250,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>280,'altura'=>315,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 479px)"></span>
@@ -62,16 +63,15 @@
                             {/if}
 
                             <noscript>
-                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
+                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
                             </noscript>
                         </span>
                     {/if}
-                    <span class="rvb-tag new productday"></span>
+                    {*<span class="rvb-tag new productday"></span>*}
                 </a>
-                {*TOdo Dhiego*}
                 <div class="product-details">
                     <div class="circle" style="background-color: #5fbf98">
-                        <a>OFF</a>
+                        <a>NEW</a>
                     </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
@@ -82,10 +82,16 @@
                         </a>
                     </h2>
                     <p class="price">
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            <span class="old-price">R$ {$_produto_dia->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
-                            por R$ {$_produto_dia->VL_PROMO_PRRC|number_format:2:",":"."}
-                        </a>
+                        {if $destaque->VL_PROMO_PRRC neq 0}
+                            <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                                <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
+                                por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
+                            </a>
+                        {else}
+                            <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                                R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
+                            </a>
+                        {/if}
                     </p>
                 </div>
             </li>
@@ -114,7 +120,7 @@
                     <!-- Polyfill para imagens responsivas-->
                     <span data-picture data-alt="{$destaque->DS_PRODUTO_PRRC}" title="{$destaque->DS_PRODUTO_PRRC}">
                         {if $_isMobile neq 1}
-                            <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>340, 'altura'=>380, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                            <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>460, 'altura'=>512, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                         {else}
                             <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>250, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                             <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>315, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -124,14 +130,14 @@
                         {/if}
 
                         <noscript>
-                            <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
+                            <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
                         </noscript>
                     </span>
             {else}
                     <!-- Polyfill para imagens responsivas-->
                     <span data-picture data-alt="Produto Destaque">
                         {if $_isMobile neq 1}
-                            <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
+                            <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
                         {else}
                             <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>220,'altura'=>250,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
                             <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>280,'altura'=>315,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 479px)"></span>
@@ -140,15 +146,15 @@
                             <span data-width="280" data-height="315" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>560, 'altura'=>630, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 479px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
                         {/if}
                         <noscript>
-                            <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>340,'altura'=>380,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
+                            <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>460,'altura'=>512,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="Imagem não encontrada - Reverbcity">
                         </noscript>
                     </span>
             {/if}
-                    <span class="rvb-tag new big"></span>
+                    {*<span class="rvb-tag new big"></span>*}
                 </a>
                 <div class="product-details">
                     <div class="circle" style="background-color: #fc6902">
-                        <a>NEW</a>
+                        <a>OFF</a>
                     </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
@@ -159,16 +165,10 @@
                         </a>
                     </h2>
                     <p class="price">
-                    {if $destaque->VL_PROMO_PRRC neq 0}
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
-                            por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
+                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
+                            <span class="old-price">R$ {$_produto_dia->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
+                            por R$ {$_produto_dia->VL_PROMO_PRRC|number_format:2:",":"."}
                         </a>
-                    {else}
-                        <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
-                        </a>
-                    {/if}
                     </p>
                 </div>
             </li>
@@ -190,14 +190,31 @@
 
                 {assign var=ds_produto_prrc value=' - '|explode:$produto['DS_PRODUTO_PRRC']}
                 {assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
+                <div id="product-hidden">
+                    <div class="list-product-details">
+                        <h2 class="product-div-op">
+                            <a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">
+                            {$produto['DS_PRODUTO_PRRC']|truncate:15:"...":TRUE}
+                            </a>
+                            <span class="preco">
+                                    {if $produto['VL_PROMO_PRRC'] > 0}
+                                        <del>R$ {$produto['VL_PRODUTO_PRRC']}  Por</del>
+                                         R$ {$produto['VL_PROMO_PRRC']}
+                                    {else}
+                                        R$ {$produto['VL_PRODUTO_PRRC']}
+                                    {/if}
+                                        </span>
+                        </h2>
 
+                    </div>
+                </div>
                 <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}" class="product-photo">
                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
                         {*{assign var="foto_completa" value="{$this->createslug($produto['DS_PRODUTO_PRRC'])}-{$foto_produto}.{$extensao_produto}"}*}
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, ' largura'=>220, 'altura'=>242,'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
                             {else}
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
@@ -215,9 +232,9 @@
 
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}
-                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"></span>
                             {else}
-                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
+                                <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
                                 <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
                                 <!-- for hd displays -->
                                 <span data-width="140" data-height="160" data-src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>280, 'altura'=>320, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
@@ -225,7 +242,7 @@
                             {/if}
 
                             <noscript>
-                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity" width="160" height="185">
+                                <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity" width="160" height="185">
                             </noscript>
                         </span>
                     {/if}
@@ -265,13 +282,13 @@
             </li>
             {/foreach}
             <li class="product-item">
-                <div class="sex" style="background-color: #5fbf98">
-                    <span>MASCULINO</span>
+                <div class="sex" style="">
+                    <span><a rel="nofollow"  href="{$this->url([], 'masculino', TRUE)}">MASCULINO</a></span>
                 </div>
             </li>
             <li class=" product-item">
-                <div class="sex" style="background-color: #5fbf98">
-                    <span>MASCULINO</span>
+                <div class="sex">
+                    <span><a rel="nofollow"  href="{$this->url([], 'feminino', TRUE)}">FEMININO</a></span>
                 </div>
             </li>
         </ul>

@@ -616,7 +616,7 @@
         									{*                                    {else}*}
         									<a href="#" class="reverb-button my-cart" aria-labelledby="ordersCountWrapper" rel="nofollow">
         										{*  {/if}*}
-        										Meu Carrinho
+        										Carrinho
         										<span class="reverb-count red" id="ordersCountWrapper">
         											<span id="orderCountValue">{$_totalprodutos|count}</span>
         										</span>
@@ -898,12 +898,12 @@
         									<li>
         										<a href="http://reverbcity.tumblr.com/" title="Abrir a página de Tumblr" target="_blank" class="icon tumblr ir">Tumblr</a>
         									</li>
-        									<li>
-        										<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>
-        									</li>
-        									<li>
-        										<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>
-        									</li>
+        									{*<li>*}
+        										{*<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>*}
+        									{*</li>*}
+        									{*<li>*}
+        										{*<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>*}
+        									{*</li>*}
         									<li>
         										<a href="https://instagram.com/reverbcity" title="Abrir a página de Instagram" target="_blank" class="icon instagram ir">Instagram</a>
         									</li>
@@ -1149,6 +1149,20 @@
             var google_custom_params = window.google_tag_params;
             var google_remarketing_only = true;
             /* ]]> */
+
+			WebFontConfig = {
+				google: { families: [ 'Roboto:400,700:latin' ] }
+			};
+			(function() {
+				var wf = document.createElement('script');
+				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+						'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+				wf.type = 'text/javascript';
+				wf.async = 'true';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+			})();
+
         </script>
         <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
         </script>

@@ -229,10 +229,11 @@ $(document).ready(function () {
         } else {
             // Novo Checkout
             var amount = reverb.floatNumbersPagarme(carrinho.total);
+
             var checkout = new PagarMeCheckout.Checkout({"encryption_key": carrinho.encryption_key, success: function (r) {
                     $("#data-holder").val(r.token);
                     $('#mycart-payment').submit();
-                }})
+                }});
             checkout.open({"customerData": false, "cardBrands": "visa,mastercard,amex", "amount": amount,  "maxInstallments": 4, "uiColor": "#6ec6a4"});
         }
     });
