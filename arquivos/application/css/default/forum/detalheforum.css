@@ -154,28 +154,3 @@ span.likes:hover span.likes-tooltip{
     float: left;
     margin: 15px 16px 15px 0;
 }
-
-.comment-user {
-    text-align: left;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-.comment-user a {
-    color: #5fbf98;
-
-    font-family: Roboto, sans-serif;
-    font-size: 23px;
-    font-weight: bold;
-}
-.comment-user a:hover {
-    color: #e85238;
-}
-
-
-.comment-detail {
-    color: #414042;
-    float: left;
-    padding: 15px 10px 0 0;
-    width: 770px;
-    font-size: 15px;
-}

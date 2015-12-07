@@ -159,6 +159,10 @@
     float: right;
 }
 
+.left {
+    float: left;
+}
+
 .rvb-forum-form,
 .rvb-poll-form {
     clear: both;

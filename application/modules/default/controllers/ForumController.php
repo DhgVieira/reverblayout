@@ -434,6 +434,8 @@ class ForumController extends Zend_Controller_Action
 
         $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
 
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/default/css/comments.css');
+
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
 
