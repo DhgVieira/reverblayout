@@ -65,7 +65,7 @@ class Reverb_View_Helper_Dateformat extends Zend_View_Helper_Abstract {
 		$month[6] = $translate->translate("Jun");
 		$month[7] = $translate->translate("Jul");
 		$month[8] = $translate->translate("Aug");
-		$month[9] = $translate->translate("Sep");
+		$month[9] = $translate->translate("Se											p");
 		$month[10] = $translate->translate("Oct");
 		$month[11] = $translate->translate("Nov");
 		$month[12] = $translate->translate("Dec");
@@ -78,5 +78,34 @@ class Reverb_View_Helper_Dateformat extends Zend_View_Helper_Abstract {
 		
 		// Retorna a string formatada
 		return $new_date;
+	}
+
+	function get_timeago( $ptime ) {
+		$estimate_time = time() - $ptime;
+
+		if( $estimate_time < 1 )
+		{
+			return 'less than 1 second ago';
+		}
+
+		$condition = array(
+			12 * 30 * 24 * 60 * 60  =>  'year',
+			30 * 24 * 60 * 60       =>  'month',
+			24 * 60 * 60            =>  'day',
+			60 * 60                 =>  'hour',
+			60                      =>  'minute',
+			1                       =>  'second'
+		);
+
+		foreach( $condition as $secs => $str )
+		{
+			$d = $estimate_time / $secs;
+
+			if( $d >= 1 )
+			{
+				$r = round( $d );
+				return 'about ' . $r . ' ' . $str . ( $r > 1 ? 's' : '' ) . ' ago';
+			}
+		}
 	}
 }

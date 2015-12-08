@@ -1,13 +1,20 @@
 .full-title {
     position: relative;
     padding: 5px 10px;
-    background-color: #5fc19a;
 }
 
+.full-title p a{
+    color: #5fbf98;
+}
+
+.full-title p a:hover{
+    color: #e85238;
+}
 .full-title .subtitle,.rvb-forum-button {
-    color: #fff;
+    color: #414042;
     text-transform: uppercase;
     font-weight: 700;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .rvb-forum-button.report {
@@ -20,10 +27,8 @@
 }
 
 .rvb-forum-button.back {
-    padding: 5px 10px;
-    border-radius: 4px;
-    background-color: #676767;
-    font-size: 10px;
+    float: left;
+    margin-right: 22px;
 }
 
 .rvb-forum-button.back:focus,.rvb-forum-button.back:hover {
@@ -35,7 +40,7 @@
     margin-bottom: 10px;
     padding: 10px;
     width: 100%;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
 }
 
 .rvb-forum-details .send-button {
@@ -143,4 +148,9 @@ span.likes:hover span.likes-tooltip{
         background: #676767 url(../../../../default/images/icon@2x/report.png) no-repeat 5px center;
         background-size: 11px 11px;
     }
+}
+
+.comment-person .thumb-user {
+    float: left;
+    margin: 15px 16px 15px 0;
 }
