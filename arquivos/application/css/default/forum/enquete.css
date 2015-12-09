@@ -1,1 +1,261 @@
-.full-title{position:relative;padding:5px 10px;background-color:#5fc19a}.full-title .subtitle,.rvb-forum-button{color:#fff;text-transform:uppercase;font-weight:700}.rvb-forum-button.report{position:absolute;top:5px;right:10px;padding-left:16px;background:url(../../../../default/images/icon/report.png) no-repeat left center;font-size:10px}.rvb-forum-button.back{padding:5px 10px;border-radius:4px;background-color:#676767;font-size:10px}.rvb-forum-button.back:focus,.rvb-forum-button.back:hover{background-color:#d1d1d1}.rvb-forum-details{float:left;margin-bottom:10px;padding:30px 25px;width:100%;background-color:#f1f1f1;font-size:10px}.rvb-forum-details.no-bg{background:0 0}.rvb-forum-details.topics{padding:10px;width:100%}.rvb-forum-details p{color:#646464;font-size:10px}#form-pesquisar-post{position:relative;float:right}#form-pesquisar-post .search-input{padding:0 4px;width:218px;height:20px;line-height:20px;border:none;color:#414042;text-transform:uppercase;font-size:10px;font-family:Verdana,sans-serif}#form-pesquisar-post .send-button{margin:0;top:-20px;position:relative}.user-login-name{margin-bottom:10px;color:#5fc19a;font-weight:700}.form-polls .send-button{margin:13px 0 23px}.poll-item{position:relative;float:left;clear:both;margin-bottom:10px;padding:10px;width:100%;background-color:#f2f2f2}.poll-item-thumb{float:left;margin-right:10px}.poll-item-text{color:#646464;text-transform:uppercase;font-size:10px;line-height:13px;margin-top:28px;display:block}.poll-item-check{position:absolute;top:50%;right:55px;margin-top:-8px;width:18px;height:16px;cursor:pointer;background-image:url(../../../../default/images/icon/checkboxform.png)}.poll-item-check.active{background-position:0 100%}.poll-item-check input{display:none}.result-bar{position:absolute;top:45%;right:22px;text-transform:uppercase}.result-text{font-size:11px}.loading-bar,.result-text{float:left}.result-text.votes{float:right}.loading-bar{overflow:hidden;margin-left:4px;margin-right:14px;width:178px;height:13px;border:2px solid #d9d9d9;background-color:#fff}.progress{width:0;height:13px;background-color:#5fc19a;transition:all 2.25s ease-in-out}#irregularidades-lightbox .md-content{width:596px}#irregularidades-lightbox .md-content p,#irregularidades-lightbox .md-title{margin:0}#irregularidades-lightbox .mg-bg{padding:10px;background-color:#f1f1f1}#irregularidades-lightbox form{display:inline-block;clear:both;margin-top:10px;font-size:10px}#irregularidades-lightbox .left input{margin-right:3px}#irregularidades-lightbox .input-text input{margin-bottom:10px;width:263px}#irregularidades-lightbox textarea{margin-bottom:5px;width:553px}#irregularidades-lightbox .send-button{margin-right:7px}#irregularidades-lightbox .send-button .btn{padding:6px 18px}@media screen and (max-width:979px){#form-pesquisar-post,.rvb-title{display:none!important}}@media screen and (max-width:767px){.poll-item-text{width:360px}.result-bar{width:100px;top:36%}.loading-bar{width:100px;margin:0}.rvb-forum-button.report{position:absolute;top:auto;bottom:-30px;right:10px;background:#676767 url(../../../../default/images/icon/report.png) no-repeat 5px center;padding:4px 22px;border-radius:4px;font-size:10px;width:100px;height:21px;overflow:hidden}}@media screen and (max-width:479px){.result-bar{right:5px}.poll-item-text{width:180px}}@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5){.rvb-forum-button.report{background:#676767 url(../../../../default/images/icon@2x/report.png) no-repeat 5px center;background-size:11px 11px}}
+.full-title {
+    position: relative;
+    padding: 5px 10px;
+    background-color: #5fc19a
+}
+
+.full-title .subtitle, .rvb-forum-button {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700
+}
+
+.rvb-forum-button.report {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding-left: 16px;
+    background: url(../../../../default/images/icon/report.png) no-repeat left center;
+    font-size: 10px
+}
+
+.rvb-forum-button.back {
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #676767;
+    font-size: 10px
+}
+
+.rvb-forum-button.back:focus, .rvb-forum-button.back:hover {
+    background-color: #d1d1d1
+}
+
+.rvb-forum-details {
+    float: left;
+    margin-bottom: 10px;
+    padding: 30px 25px;
+    width: 100%;
+    background-color: #f1f1f1;
+    font-size: 10px
+}
+
+.rvb-forum-details.no-bg {
+    background: 0 0
+}
+
+.rvb-forum-details.topics {
+    padding: 10px;
+    width: 100%
+}
+
+.rvb-forum-details p {
+    color: #646464;
+    font-size: 10px
+}
+
+#form-pesquisar-post {
+    position: relative;
+    float: right
+}
+
+#form-pesquisar-post .search-input {
+    padding: 0 4px;
+    width: 218px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    color: #414042;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-family: Verdana, sans-serif
+}
+
+#form-pesquisar-post .send-button {
+    margin: 0;
+    top: -20px;
+    position: relative
+}
+
+.user-login-name {
+    margin-bottom: 10px;
+    color: #5fc19a;
+    font-weight: 700
+}
+
+.form-polls .send-button {
+    margin: 13px 0 23px
+}
+
+.poll-item {
+    position: relative;
+    float: left;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #f2f2f2
+}
+
+.poll-item-thumb {
+    float: left;
+    margin-right: 10px
+}
+
+.poll-item-text {
+    color: #646464;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 13px;
+    margin-top: 28px;
+    display: block
+}
+
+.poll-item-check {
+    position: absolute;
+    top: 50%;
+    right: 55px;
+    margin-top: -8px;
+    width: 18px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url(../../../../default/images/icon/checkboxform.png)
+}
+
+.poll-item-check.active {
+    background-position: 0 100%
+}
+
+.poll-item-check input {
+    display: none
+}
+
+.result-bar {
+    position: absolute;
+    top: 45%;
+    right: 22px;
+    text-transform: uppercase
+}
+
+.result-text {
+    font-size: 11px
+}
+
+.loading-bar, .result-text {
+    float: left
+}
+
+.result-text.votes {
+    float: right
+}
+
+.loading-bar {
+    overflow: hidden;
+    margin-left: 4px;
+    margin-right: 14px;
+    width: 178px;
+    height: 13px;
+    border: 2px solid #d9d9d9;
+    background-color: #fff
+}
+
+.progress {
+    width: 0;
+    height: 13px;
+    background-color: #5fc19a;
+    transition: all 2.25s ease-in-out
+}
+
+#irregularidades-lightbox .md-content {
+    width: 596px
+}
+
+#irregularidades-lightbox .md-content p, #irregularidades-lightbox .md-title {
+    margin: 0
+}
+
+#irregularidades-lightbox .mg-bg {
+    padding: 10px;
+    background-color: #f1f1f1
+}
+
+#irregularidades-lightbox form {
+    display: inline-block;
+    clear: both;
+    margin-top: 10px;
+    font-size: 10px
+}
+
+#irregularidades-lightbox .left input {
+    margin-right: 3px
+}
+
+#irregularidades-lightbox .input-text input {
+    margin-bottom: 10px;
+    width: 263px
+}
+
+#irregularidades-lightbox textarea {
+    margin-bottom: 5px;
+    width: 553px
+}
+
+#irregularidades-lightbox .send-button {
+    margin-right: 7px
+}
+
+#irregularidades-lightbox .send-button .btn {
+    padding: 6px 18px
+}
+
+@media screen and (max-width: 979px) {
+    #form-pesquisar-post, .rvb-title {
+        display: none !important
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .poll-item-text {
+        width: 360px
+    }
+
+    .result-bar {
+        width: 100px;
+        top: 36%
+    }
+
+    .loading-bar {
+        width: 100px;
+        margin: 0
+    }
+
+    .rvb-forum-button.report {
+        position: absolute;
+        top: auto;
+        bottom: -30px;
+        right: 10px;
+        background: #676767 url(../../../../default/images/icon/report.png) no-repeat 5px center;
+        padding: 4px 22px;
+        border-radius: 4px;
+        font-size: 10px;
+        width: 100px;
+        height: 21px;
+        overflow: hidden
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .result-bar {
+        right: 5px
+    }
+
+    .poll-item-text {
+        width: 180px
+    }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    .rvb-forum-button.report {
+        background: #676767 url(../../../../default/images/icon@2x/report.png) no-repeat 5px center;
+        background-size: 11px 11px
+    }
+}

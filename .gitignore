@@ -20,4 +20,6 @@ livezilla/*
 nfe
 /application/tmp/
 *.DS_Store
+/application/configs/application.ini
+/Readm_911s/lib.php
 Readm_911s/temp/

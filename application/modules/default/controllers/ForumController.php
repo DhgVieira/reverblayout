@@ -696,7 +696,8 @@ class ForumController extends Zend_Controller_Action
 
         $this->view->idusuario = $idusuario;
         $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
-        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/js/default/forum/index.css');
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/js/default/forum/index.js');
+
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
     }
@@ -811,6 +812,13 @@ class ForumController extends Zend_Controller_Action
 
         //crio a query de enquete
         $select_enquete = $model_enquete->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            ->from('enquetes')
+            ->joinInner('cadastros',
+                'enquetes.idautor = cadastros.NR_SEQ_CADASTRO_CASO', array('NR_SEQ_CADASTRO_CASO',
+                    'DS_NOME_CASO',
+                    'DS_EXT_CACH'))
             ->where("idenquete = ?", $idenquete);
         //armazeno as informações da variavel na enquente
         $enquete = $model_enquete->fetchRow($select_enquete);
@@ -974,6 +982,16 @@ class ForumController extends Zend_Controller_Action
 
         //Assino ao view
         $this->view->banners = $banners_topo;
+
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/detalheforum.css');
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/default/css/comments.css');
+
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/default/css/jquery.circliful.css');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-circliful/jquery.circliful.js');
+
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
 
 
     }
