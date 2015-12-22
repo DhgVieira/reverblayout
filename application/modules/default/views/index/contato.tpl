@@ -92,11 +92,10 @@
     <p class="full-strip">Social</p>
     <ul class="socials-network-dark">
     <li><a rel="nofollow" href="https://www.facebook.com/Reverbcity" target="_blank" class="icon facebook ir">Facebook</a></li>
-    <li><a rel="nofollow" href="https://twitter.com/reverbcity" target="_blank" class="icon twitter ir">Twitter</a></li>
-    <li><a rel="nofollow" href="http://reverbcity.tumblr.com/" target="_blank" class="icon tumblr ir">Tumblr</a></li>
-    <li><a rel="nofollow" href="http://instagram.com/reverbcity" target="_blank" class="icon instagram ir">Instagram</a></li>
+    <li><a rel="nofollow" href="https://twitter.com/reverbcity" target="_blank" class="icon twitter ir">Twitter</a></li><li><a rel="nofollow" href="http://instagram.com/reverbcity" target="_blank" class="icon instagram ir">Instagram</a></li>
     <li><a rel="nofollow" href="http://pinterest.com/reverbcity/" target="_blank" class="icon pinterest ir">Pinterest</a></li>
-    <li class="last"><a rel="nofollow" href="https://plus.google.com/+reverbcity/posts" target="_blank" class="icon rss ir">Google Plus</a></li>
+    <li><a rel="nofollow" href="http://reverbcity.tumblr.com/" target="_blank" class="icon tumblr ir">Tumblr</a></li>
+    {*<li class="last"><a rel="nofollow" href="https://plus.google.com/+reverbcity/posts" target="_blank" class="icon rss ir">Google Plus</a></li>*}
     </ul>
 </div>
 

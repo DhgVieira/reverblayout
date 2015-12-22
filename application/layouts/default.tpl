@@ -9,8 +9,9 @@
 	{$this->headTitle()}
 	{/if}
 	{literal}
+		<link rel="stylesheet" href="/arquivos/default/css/site_default.css">
 	<style>
-	a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin: 0;padding: 0;border: 0;vertical-align: baseline;font: inherit;font-size: 100%}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display: block}input,textarea{border-radius: 0!important}*{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}body{height: 100%}ol,ul{list-style: none}strong{font-weight: 700}blockquote,q{quotes: none}blockquote:after,blockquote:before,q:after,q:before{content: none}table{border-spacing: 0;border-collapse: collapse}a{color: inherit;text-decoration: none}@font-face{font-weight:400;font-style:normal;font-family:Andes-Regular;src:url(/arquivos/default/fonts/andes-regular.svg) format("svg"),url(/arquivos/default/fonts/andes-regular.ttf) format("truetype"),url(/arquivos/default/fonts/andes-regular.otf) format("opentype"),url(/arquivos/default/fonts/andes-regular.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Andes-Bold;src:url(/arquivos/default/fonts/andes-bold.svg) format("svg"),url(/arquivos/default/fonts/andes-bold.ttf) format("truetype"),url(/arquivos/default/fonts/andes-bold.otf) format("opentype"),url(/arquivos/default/fonts/andes-bold.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Hernandez-Bold;src:url(/arquivos/default/fonts/hernandez.svg) format("svg"),url(/arquivos/default/fonts/hernandez.ttf) format("truetype"),url(/arquivos/default/fonts/hernandez.otf) format("opentype"),url(/arquivos/default/fonts/hernandez.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Dinnextltpro-Bold;src:url(/arquivos/default/fonts/dinnextltpro-bold.svg) format("svg"),url(/arquivos/default/fonts/dinnextltpro-bold.ttf) format("truetype"),url(/arquivos/default/fonts/dinnextltpro-bold.otf) format("opentype"),url(/arquivos/default/fonts/dinnextltpro-bold.woff) format("woff")}.ir{display: block;overflow: hidden;text-indent: 100%;white-space: nowrap}.hidden{display: none!important;visibility: hidden}.visuallyhidden{position: absolute;overflow: hidden;clip: rect(0 0 0 0);margin: -1px;padding: 0;width: 1px;height: 1px;border: 0}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{position: static;overflow: visible;clip: auto;margin: 0;width: auto;height: auto}.invisible{visibility: hidden}.clearfix:after,.clearfix:before{display: table;content: " "}.clearfix:after{clear: both}.lightbox-button{margin: 0;padding: 4px 10px;border: 1px solid #5dbf98;sborder-radius: 4px;background-color: transparent;color: #5dbf98;font-weight: 700;font-size: 11px;cursor: pointer}.simple-anchor:hover{text-decoration: underline}.mt{margin-top: 5px}.mr{margin-right: 5px}.mb{margin-bottom: 5px}.ml{margin-left: 5px}.muted{color: #999}a.muted:focus,a.muted:hover{color: gray}.text-warning{color: #c09853}a.text-warning:focus,a.text-warning:hover{color: #a47e3c}.text-error{color: #b94a48}a.text-error:focus,a.text-error:hover{color: #953b39}.text-info{color: #3a87ad}a.text-info:focus,a.text-info:hover{color: #2d6987}.text-success{color: #468847}a.text-success:focus,a.text-success:hover{color: #356635}.text-left{text-align: left}.text-right{text-align: right}.text-center{text-align: center}.noscript{display: block;position: fixed;z-index: 10;bottom: 0;left: 0;width: 100%;height: 54px;text-align: center;background-color: #f05626}.noscript a{width: 100%;height: 100%;display: block;color: #fff;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 11px;font-family: Verdana,Arial,sans-serif;line-height: 24px}.noscript:hover{background-color: #F78A69}.noscript:hover a{color: #313131}#full-loader{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background-color: rgba(0,0,0,.5);z-index: 999999;display: none}.has-tooltip{position: relative}.tooltip{position: absolute;top: -135px;left: -60px;width: 210px;border-radius: 4px;background-color: #000;color: #fff;text-align: justify;font-size: 9px;font-family: Verdana,sans-serif;line-height: 1.5;margin-top: -5px;padding: 5px 10px;opacity: 0;-webkit-transition: opacity .5s;-moz-transition: opacity .5s;-ms-transition: opacity .5s;-o-transition: opacity .5s;transition: opacity .5s;visibility: hidden}.has-tooltip.active .tooltip{opacity: 1;visibility: visible;-webkit-transition: opacity .5s;-moz-transition: opacity .5s;-ms-transition: opacity .5s;-o-transition: opacity .5s;transition: opacity .5s}.tooltip:after{position: absolute;bottom: -5px;left: 110px;width: 0;height: 0;border-top: 5px solid #000;border-right: 5px solid transparent;border-left: 5px solid transparent;content: ""}.tooltip-link{float: left;clear: both;margin-top: 15px;margin-bottom: 10px;font-weight: 700}.logo-footer{background-image: url(/arquivos/default/images/sprites/logos.png);background-repeat: no-repeat}.logo-topo{background-image: url(/arquivos/default/images/logo_flat.png);background-repeat: no-repeat}.logo-topo.cycle{background: url(/arquivos/default/images/reverb-cycle-logo.png) 0/100% no-repeat}.pagination{float: left;margin-top: 10px;clear: both}.pagination .item{float: left;margin-right: 10px}.pagination a{margin: 0;padding: 8px 11px;background-color: #e7e7e7;color: #929293;font-weight: 700;font-size: 11px}.pagination a.active,.pagination a:focus,.pagination a:hover{background-color: #5fbf98;color: #fff}a,body,button,h1,h2,h3,h4,h5,h6,input,select,textarea{font-family: Verdana,sans-serif;border-radius: 0;box-shadow: none}button:focus,input:focus,select:focus,textarea:focus{outline: 0}body{background-color: #e7e7e7;color: #666;font-size: 100%;line-height: 1.5}.container{margin: 0 auto;padding: 0 20px;width: 980px}.rvb-column{float: left;margin-bottom: 20px;width: 460px}.rvb-column.right{margin-left: 20px}.rvb-footer-item>p,.rvb-header-item h2,.rvb-header-item>p{text-indent: 10px}.rvb-footer-item,.rvb-header-item{width: 100%;float: left;position: relative;padding: 0;height: 30px;line-height: 30px;color: #fff;text-transform: uppercase;font-size: 11px}.rvb-header-item{background-color: #5fbf98}.rvb-footer-item{margin-top: -10px;margin-bottom: 10px;background-color: #666}.rvb-content-item{float: left;position: relative;margin-bottom: 10px;padding: 20px 10px 10px;background-color: #e8e8e8;color: #666;width: 100%}.rvb-content-item .send-button{margin-right: 0}#msg-box{display: none;float: left;clear: both;margin: 10px 0;width: 100%;min-height: 24px;text-align: center}#msg-box.fixed{position: fixed;margin: 0;top: 0;left: 0;z-index: 9999;z-index: 9999999}#msg-box p{display: inline-block;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 11px;font-family: Verdana,Arial,sans-serif;line-height: 40px}#msg-box.msg-error p{color: #f05626}#msg-box.msg-success p{color: #5fc19a}#msg-box .rvb-icon{float: left;width: 30px;height: 30px}.msg-success{background-color: #f2f2f2}.msg-success .rvb-icon{background: url(/arquivos/default/images/icon/success-icon.png) center center no-repeat #5fc19a;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;margin: 5px 5px 0 0}.msg-error{background-color: #f2f2f2}.msg-error .rvb-icon{background: url(/arquivos/default/images/icon/error-icon.png) center center no-repeat #f05626;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;margin: 5px 5px 0 0}header[role=banner]{height: 98px}.header.container{height: 58px;background-color: #fff}#mobile-header{display: none}#top-bar{width: 100%;height: 40px;background-color: #414042;transition: all .25s ease-in-out}#top-bar.fixed{position: fixed}.logo-topo{float: left;margin: 10px 20px 0 0;width: 88px;height: 88px}.logo-topo a{display: block}#top-bar .left-side{width: 150px;height: 40px;float: left}#top-bar .right-side{float: right}.actions-site,.actions-user,.topbar-search{float: left}.actions-site{margin-right: 7px}.actions-site>li,.actions-user>li{position: relative;display: inline-block}.actions-site .international,.actions-site .my-cart,.actions-user .reverb-button,.search-icon{background-image: url(/arquivos/default/images/sprites/buttons.png);background-position: 0 0;background-repeat: no-repeat}.actions-site .international,.actions-site .my-cart,.actions-user .reverb-button{position: relative;width: 31px;height: 31px}.actions-user .reverb-button.user{background-position: 3px 10px}.actions-user .reverb-button.messages{background-position: -30px 10px}.actions-user .reverb-button.notifications{background-position: -61px 10px}.actions-user .accessible-elem{position: absolute;overflow: hidden;clip: rect(1px,1px,1px,1px);width: 1px;height: 1px}.reverb-count{position: absolute;top: 5px;right: 0;border-radius: 10px;color: #fff;font-weight: 700;font-size: 8px;cursor: pointer}.reverb-count.green span{border-top: 1px solid #4c997a;border-bottom: 1px solid #49997a;background-color: #5fbf98}.reverb-count.red span{border-top: 1px solid #e23923;border-bottom: 1px solid #c0311e;background-color: #e75238}.reverb-count span{padding: 0 3px 1px;border: none;border-radius: 10px;box-shadow: 0 -1px 0 rgba(0,0,0,.7);text-shadow: 0 -1px 0 rgba(0,0,0,.4)}.reverb-flyout .thumb{float: left;margin-right: 10px;border: 1px solid #fff}.reverb-flyout .request-item{display: block;padding: 14px 0;border-bottom: 1px solid #e7e7e7}.reverb-flyout .button,.reverb-flyout .name{text-transform: uppercase;font-weight: 700}.reverb-flyout .date,.reverb-flyout .message,.reverb-flyout .name{color: #414042;font-size: 10px}.reverb-flyout .buttons,.reverb-flyout .message{padding-left: 53px}.reverb-flyout .button{padding: 4px;border-radius: 4px;background-color: #fff;font-size: 7px}.reverb-flyout .button:focus,.reverb-flyout .button:hover{color: #fff}.reverb-flyout .accept{border: 1px solid #5fbf98;color: #5fbf98}.reverb-flyout .accept:focus,.reverb-flyout .accept:hover{background-color: #5fbf98}.reverb-flyout .decline{border: 1px solid #e75238;color: #e75238}.reverb-flyout .decline:focus,.reverb-flyout .decline:hover{background-color: #e75238}.reverb-flyout .details-column-left{float: left;width: 53px}.reverb-flyout .date{color: #b6b6b6;font-size: 8px;clear: both;display: block;line-height: 20px}.reverb-flyout .friend-requests .buttons,.reverb-flyout .friend-requests .message{padding-left: 48px}.private-messages .name,.scrap-wall .name{margin-bottom: 10px}.actions-site{width: auto;height: 40px;text-transform: uppercase;font-weight: 700;font-size: 8px}.actions-site .reverb-flyout{top: 0;width: 234px}.actions-site .reverb-flyout.cart{top: 20px;left: -50px}.actions-site>li{float: left;margin-top: 15px;padding: 0 6px 0 3px;border-right: 1px solid #b9bbbd}.actions-site>li.cart{margin-top: 11px}.actions-site>li.international{margin: 10px 4px 0;padding-left: 0}.actions-site .no-border{padding-right: 0;border-right: none}.actions-site>li a{color: #b9bbbd}.actions-site li>.opened,.actions-site li>a:focus,.actions-site li>a:hover{color: #fff;position: relative;z-index: 300}.actions-site .international,.actions-site .my-cart{width: auto;height: 20px;line-height: 20px}.actions-site .my-cart{display: block;padding-right: 40px;background-position: 82px -30px}.actions-site .my-cart:focus,.actions-site .my-cart:hover,.actions-site .opened.my-cart{background-position: 82px -57px}.actions-site .my-cart .reverb-count{top: -10px;right: 15px}.actions-site .international{width: 29px;background-position: -26px -29px}.actions-site .international:focus,.actions-site .international:hover{background-position: -26px -56px}.reverb-flyout.cart .total{text-transform: uppercase;margin-top: 17px;clear: both;color: #5fbf98;font-size: 10px;font-weight: 700;line-height: 12px;text-align: center;display: block}.reverb-flyout.cart .see-more{color: #e75238;font-size: 10px;font-weight: 700;line-height: 12px;text-align: center;display: block}.flyout-list.my-cart-items{display: table;width: 100%}.reverb-flyout.cart .flyout-title{text-transform: none}.my-cart-items li:first-child{padding-top: 6px}.my-cart-items li:last-child{border-bottom: none;padding-bottom: 0}.my-cart-items li{float: left;width: 100%;clear: left;border-bottom: 1px solid #e7e7e7;padding: 11px 0;position: relative;font-size: 9px}.my-cart-product-thumb{float: left;width: 54px;height: 62px;margin: 0 8px}.actions-site .my-cart-product-name{font-size: 10px;color: #5fbf98}.my-cart-product-description span{display: block;color: #b6b6b6}.my-cart-remove-item{position: absolute;right: 0;top: 20%;background: url(/arquivos/default/images/icon/remove-red.png) no-repeat;width: 20px;height: 20px;margin-top: -10px}.my-cart-close{position: absolute;right: 3%;top: 5%;background: url(/arquivos/default/images/icon/remove-red.png) no-repeat;width: 20px;height: 20px;margin-top: -10px}.actions-site li>.my-cart-remove-item:focus,.actions-site li>.my-cart-remove-item:hover{position: absolute}.topbar-search{position: relative;margin-top: 6px;width: 221px}.input-box{float: left;padding: 0 5px;width: 195px;height: 26px;border: none;background-color: #fff;color: #8b8b8b;text-transform: uppercase;font-size: 10px;font-family: Verdana;line-height: 26px}.input-box:focus,.input-box:hover{border: 0}.topbar-search .submit{position: relative;float: left;margin: 0;padding: 0;width: 26px;height: 26px;border: none;background-color: #5fbf98;background-position: 4px -84px;cursor: pointer;color: transparent}.topbar-search .submit:after{position: absolute;top: 50%;right: 26px;margin-top: -6px;border-top: 6px solid transparent;border-right: 6px solid #5fbf98;border-bottom: 6px solid transparent;content: " "}.ui-menu .ui-menu-item a{width: 100%;height: 20px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-size: 12px;}#site-menu,.menu-item{float: left}.menu-item.home{width: 53px}.menu-item.loja{width: 48px}.menu-item.wholesale{width: 78px}.menu-item.reverbme{width: 82px}.menu-item.blog{width: 52px}.menu-item.forum{width: 60px}.menu-item.imprensa{width: 80px}.menu-item.quem-somos{width: 100px}.menu-item.contato{width: 77px}.menu-item-link{color: #5fbf98;text-transform: uppercase;font-size: 11px}.menu-item-link.active,.menu-item-link:focus,.menu-item-link:hover{font-weight: 700}.dropdown{position: relative}.dropdown-menu:before{position: absolute;top: -7px;left: 7px;width: 0;height: 0;border-right: 7px solid transparent;border-bottom: 7px solid #818081;border-left: 7px solid transparent;content: " "}.dropdown-menu{position: absolute;top: 30px;left: 0;visibility: hidden;background-color: #818081;opacity: 0;filter: alpha(opacity=0);font-family: sans-serif}.dropdown-menu.drop-loja{width: 520px}.dropdown-menu.drop-reverbme{width: 235px}.dropdown-menu.active{visibility: visible;opacity: 1;filter: alpha(opacity=100)}.dropdown-menu .submenu-item{margin: 3px 7px 5px 6px;line-height: 1em;float: left}.dropdown-menu .submenu-item.last{margin-right: 0}.dropdown-menu .menu-item-link{color: #ECECEC;font-weight: 700;font-size: 9px}.dropdown-menu .menu-item-link:focus,.dropdown-menu .menu-item-link:hover{color: #fff}#sac{float: right;margin-top: 8px;text-align: right}#sac p{color: #414042;font-size: 11px;font-family: Arial,sans-serif}#base-bar{float: left;padding: 15px 0;width: 100%;background-color: #414042;color: #fff;font-size: 10px;font-family: Arial}#base-bar .container{padding: 0}#base-bar a{color: #fff;transition: color .15s ease-in-out}#base-bar a:focus,#base-bar a:hover{color: #cbcbcb}#base-bar a:active{color: #f05626}#base-bar .selo,.footer-newsletter,.links-footer,.links-information,.links-nav-footer,.links-social,.payments{float: left}#base-bar .selo{margin: 10px 0 0 42px;background-color: #fff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 3px}#base-bar .selo img{display: block}#sustainable_website{width: 142px;height: 40px;float: left;margin: 10px 25px}.links-information{width: 196px;text-align: center;margin-right: 30px}.links-information a,.links-information p{font-size: 10px;font-family: Arial,sans-serif}.logo-footer{margin-bottom: 15px;margin-left: auto;margin-right: auto;width: 64px;height: 68px;background-position: 0 -62px;background-size: 64px 126px}.security{padding-top: 10x}.links-nav-footer{padding-left: 19px;width: 169px;border-left: 1px solid #79797a;font-family: Verdana,sans-serif}.links-nav-footer.first{padding: 0;width: 130px;border: none}.links-nav-footer .title{margin-bottom: 25px;color: #cbcbcb;text-transform: uppercase;font-size: 12px}.links-nav-footer li{margin-bottom: 15px;font-size: 11px}.links-social,.payments{width: 220px}.links-social ul li{display: inline-block;margin-right: 2px}.links-social .last{margin: 0}.links-social .icon{width: 27px;height: 27px;border-radius: 4px;background-color: #fff;background-image: url(/arquivos/default/images/sprites/socials.png);background-repeat: no-repeat}.links-social .icon:focus,.links-social .icon:hover{background-color: #cbcbcb}.links-social .icon:active{background-color: #f05626}.links-social .facebook{background-position: 8px 4px}.links-social .facebook:hover{background-position: 8px -27px}.links-social .twitter{background-position: -27px 4px}.links-social .twitter:hover{background-position: -27px -27px}.links-social .tumblr{background-position: -60px 4px}.links-social .tumblr:hover{background-position: -60px -27px}.links-social .flickr{background-position: -94px 3px}.links-social .flickr:hover{background-position: -94px -27px}.links-social .youtube{background-position: -125px 2px}.links-social .youtube:hover{background-position: -125px -27px}.links-social .instagram{background-position: -158px 2px}.links-social .instagram:hover{background-position: -158px -27px}.links-social .pinterest{background-position: -191px 2px}.links-social .pinterest:hover{background-position: -191px -27px}.payments{margin-top: 2px;height: 28px;background: url(/arquivos/default/images/sprites/payments.png) no-repeat}.form-field{float: left;margin: 3px 0}.form-field input{float: left;margin: 0 5px 0 0;padding: 0 5px;width: 165px;height: 23px;border: none;border-bottom: 1px solid #fff;font-weight: 700;font-size: 10px;line-height: 24px}.form-field button{float: left;padding: 0 4px;height: 23px;border: 1px solid #fff;border-radius: 4px;background-color: #666;color: #fff;text-transform: uppercase;font-size: 10px;font-family: Arial,sans-serif;line-height: 23px;cursor: pointer}.footer-newsletter{margin-top: 15px;width: 220px}.footer-newsletter p{font-size: 10px}.footer-newsletter .title{color: #cbcbcb;text-transform: uppercase}.footer-newsletter .subtitle{clear: both;color: #959595}.footer-newsletter address{margin-top: 25px;font-size: 10px;font-family: sans-serif;line-height: 2;width: 290px;float: left}.footer-newsletter address span{display: block}.footer-newsletter address .large{width: 280px}.footer-newsletter address .x-large{width: 305px}.rvb-form{padding: 30px 10px;background-color: #f1f1f1}.rvb-label{margin-right: 15px;color: #646464;text-transform: uppercase;font-weight: 700;font-size: 9px;line-height: 15px;float: left}.rvb-input-txt{padding: 5px;border: 1px solid #c1c1c1;color: #646464;font-size: 9px;font-family: Verdana,sans-serif}input.error,select.error,textarea.error{border: 1px solid #e85238!important}label.error{position: absolute;background-color: #fff;color: #e85238;text-transform: uppercase;font-size: 10px;font-family: Verdana,sans-serif}input.error:focus+label.error,input.error:hover+label.error,select.error:focus+label.error,select.error:hover+label.error,textarea.error:focus+label.error,textarea.error:hover+label.error{display: none!important}.send-button{float: right;margin: 10px 20px 0 0;text-align: right}.send-button.left{float: left;margin: 10px 0 0 20px}.send-button.no-margin{margin-right: 0!important;margin-left: 0!important}.send-button .btn{display: inline-block;padding: 0 20px;height: 20px;line-height: 19px;border: 1px solid #62c29c;border-radius: 4px;background-color: #fff;color: #62c29c;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 10px;font-family: Sans-serif;cursor: pointer}.send-button .btn.bold{height: 25px;line-height: 23px}.send-button .btn:focus,.send-button .btn:hover{border: 1px solid #616161;color: #616161}.back-button{float: left;margin-left: 20px;margin-top: 10px;text-align: left}.back-button .btn{display: inline-block;padding: 0 20px;height: 20px;line-height: 20px;border: 1px solid #f05626;border-radius: 4px;background-color: #fff;color: #f05626;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 10px;font-family: Verdana,sans-serif;cursor: pointer}.back-button .btn:focus,.back-button .btn:hover{border: 1px solid #616161;color: #616161}#main-content{display: table;background-color: #fff;font-size: 11px;padding-bottom: 20px}.selo-google{display: block; margin-top: 10px;}.selo-google img {background-color: white;}.selo-trustsign img {margin-top: 13px;} .c-orange{color: #F05626 !important;} .menu-item.sale{width: 45px;} .bg-orange{background-color: #F05626 !important;} .c-white{color: #ffffff;}
+	/*a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin: 0;padding: 0;border: 0;vertical-align: baseline;font: inherit;font-size: 100%}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display: block}input,textarea{border-radius: 0!important}*{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}body{height: 100%}ol,ul{list-style: none}strong{font-weight: 700}blockquote,q{quotes: none}blockquote:after,blockquote:before,q:after,q:before{content: none}table{border-spacing: 0;border-collapse: collapse}a{color: inherit;text-decoration: none}@font-face{font-weight:400;font-style:normal;font-family:Andes-Regular;src:url(/arquivos/default/fonts/andes-regular.svg) format("svg"),url(/arquivos/default/fonts/andes-regular.ttf) format("truetype"),url(/arquivos/default/fonts/andes-regular.otf) format("opentype"),url(/arquivos/default/fonts/andes-regular.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Andes-Bold;src:url(/arquivos/default/fonts/andes-bold.svg) format("svg"),url(/arquivos/default/fonts/andes-bold.ttf) format("truetype"),url(/arquivos/default/fonts/andes-bold.otf) format("opentype"),url(/arquivos/default/fonts/andes-bold.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Hernandez-Bold;src:url(/arquivos/default/fonts/hernandez.svg) format("svg"),url(/arquivos/default/fonts/hernandez.ttf) format("truetype"),url(/arquivos/default/fonts/hernandez.otf) format("opentype"),url(/arquivos/default/fonts/hernandez.woff) format("woff")}@font-face{font-weight:400;font-style:normal;font-family:Dinnextltpro-Bold;src:url(/arquivos/default/fonts/dinnextltpro-bold.svg) format("svg"),url(/arquivos/default/fonts/dinnextltpro-bold.ttf) format("truetype"),url(/arquivos/default/fonts/dinnextltpro-bold.otf) format("opentype"),url(/arquivos/default/fonts/dinnextltpro-bold.woff) format("woff")}.ir{display: block;overflow: hidden;text-indent: 100%;white-space: nowrap}.hidden{display: none!important;visibility: hidden}.visuallyhidden{position: absolute;overflow: hidden;clip: rect(0 0 0 0);margin: -1px;padding: 0;width: 1px;height: 1px;border: 0}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{position: static;overflow: visible;clip: auto;margin: 0;width: auto;height: auto}.invisible{visibility: hidden}.clearfix:after,.clearfix:before{display: table;content: " "}.clearfix:after{clear: both}.lightbox-button{margin: 0;padding: 4px 10px;border: 1px solid #5dbf98;sborder-radius: 4px;background-color: transparent;color: #5dbf98;font-weight: 700;font-size: 11px;cursor: pointer}.simple-anchor:hover{text-decoration: underline}.mt{margin-top: 5px}.mr{margin-right: 5px}.mb{margin-bottom: 5px}.ml{margin-left: 5px}.muted{color: #999}a.muted:focus,a.muted:hover{color: gray}.text-warning{color: #c09853}a.text-warning:focus,a.text-warning:hover{color: #a47e3c}.text-error{color: #b94a48}a.text-error:focus,a.text-error:hover{color: #953b39}.text-info{color: #3a87ad}a.text-info:focus,a.text-info:hover{color: #2d6987}.text-success{color: #468847}a.text-success:focus,a.text-success:hover{color: #356635}.text-left{text-align: left}.text-right{text-align: right}.text-center{text-align: center}.noscript{display: block;position: fixed;z-index: 10;bottom: 0;left: 0;width: 100%;height: 54px;text-align: center;background-color: #f05626}.noscript a{width: 100%;height: 100%;display: block;color: #fff;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 11px;font-family: Verdana,Arial,sans-serif;line-height: 24px}.noscript:hover{background-color: #F78A69}.noscript:hover a{color: #313131}#full-loader{width: 100%;height: 100%;position: fixed;left: 0;top: 0;background-color: rgba(0,0,0,.5);z-index: 999999;display: none}.has-tooltip{position: relative}.tooltip{position: absolute;top: -135px;left: -60px;width: 210px;border-radius: 4px;background-color: #000;color: #fff;text-align: justify;font-size: 9px;font-family: Verdana,sans-serif;line-height: 1.5;margin-top: -5px;padding: 5px 10px;opacity: 0;-webkit-transition: opacity .5s;-moz-transition: opacity .5s;-ms-transition: opacity .5s;-o-transition: opacity .5s;transition: opacity .5s;visibility: hidden}.has-tooltip.active .tooltip{opacity: 1;visibility: visible;-webkit-transition: opacity .5s;-moz-transition: opacity .5s;-ms-transition: opacity .5s;-o-transition: opacity .5s;transition: opacity .5s}.tooltip:after{position: absolute;bottom: -5px;left: 110px;width: 0;height: 0;border-top: 5px solid #000;border-right: 5px solid transparent;border-left: 5px solid transparent;content: ""}.tooltip-link{float: left;clear: both;margin-top: 15px;margin-bottom: 10px;font-weight: 700}.logo-footer{background-image: url(/arquivos/default/images/sprites/logos.png);background-repeat: no-repeat}.logo-topo{background-image: url(/arquivos/default/images/logo_flat.png);background-repeat: no-repeat}.logo-topo.cycle{background: url(/arquivos/default/images/reverb-cycle-logo.png) 0/100% no-repeat}.pagination{float: left;margin-top: 10px;clear: both}.pagination .item{float: left;margin-right: 10px}.pagination a{margin: 0;padding: 8px 11px;background-color: #e7e7e7;color: #929293;font-weight: 700;font-size: 11px}.pagination a.active,.pagination a:focus,.pagination a:hover{background-color: #5fbf98;color: #fff}a,body,button,h1,h2,h3,h4,h5,h6,input,select,textarea{font-family: Verdana,sans-serif;border-radius: 0;box-shadow: none}button:focus,input:focus,select:focus,textarea:focus{outline: 0}body{background-color: #e7e7e7;color: #666;font-size: 100%;line-height: 1.5}.container{margin: 0 auto;padding: 0 20px;width: 980px}.rvb-column{float: left;margin-bottom: 20px;width: 460px}.rvb-column.right{margin-left: 20px}.rvb-footer-item>p,.rvb-header-item h2,.rvb-header-item>p{text-indent: 10px}.rvb-footer-item,.rvb-header-item{width: 100%;float: left;position: relative;padding: 0;height: 30px;line-height: 30px;color: #fff;text-transform: uppercase;font-size: 11px}.rvb-header-item{background-color: #5fbf98}.rvb-footer-item{margin-top: -10px;margin-bottom: 10px;background-color: #666}.rvb-content-item{float: left;position: relative;margin-bottom: 10px;padding: 20px 10px 10px;background-color: #e8e8e8;color: #666;width: 100%}.rvb-content-item .send-button{margin-right: 0}#msg-box{display: none;float: left;clear: both;margin: 10px 0;width: 100%;min-height: 24px;text-align: center}#msg-box.fixed{position: fixed;margin: 0;top: 0;left: 0;z-index: 9999;z-index: 9999999}#msg-box p{display: inline-block;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 11px;font-family: Verdana,Arial,sans-serif;line-height: 40px}#msg-box.msg-error p{color: #f05626}#msg-box.msg-success p{color: #5fc19a}#msg-box .rvb-icon{float: left;width: 30px;height: 30px}.msg-success{background-color: #f2f2f2}.msg-success .rvb-icon{background: url(/arquivos/default/images/icon/success-icon.png) center center no-repeat #5fc19a;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;margin: 5px 5px 0 0}.msg-error{background-color: #f2f2f2}.msg-error .rvb-icon{background: url(/arquivos/default/images/icon/error-icon.png) center center no-repeat #f05626;-moz-border-radius: 15px;-webkit-border-radius: 15px;border-radius: 15px;margin: 5px 5px 0 0}header[role=banner]{height: 98px}.header.container{height: 58px;background-color: #fff}#mobile-header{display: none}#top-bar{width: 100%;height: 40px;background-color: #414042;transition: all .25s ease-in-out}#top-bar.fixed{position: fixed}.logo-topo{float: left;margin: 10px 20px 0 0;width: 88px;height: 88px}.logo-topo a{display: block}#top-bar .left-side{width: 150px;height: 40px;float: left}#top-bar .right-side{float: right}.actions-site,.actions-user,.topbar-search{float: left}.actions-site{margin-right: 7px}.actions-site>li,.actions-user>li{position: relative;display: inline-block}.actions-site .international,.actions-site .my-cart,.actions-user .reverb-button,.search-icon{background-image: url(/arquivos/default/images/sprites/buttons.png);background-position: 0 0;background-repeat: no-repeat}.actions-site .international,.actions-site .my-cart,.actions-user .reverb-button{position: relative;width: 31px;height: 31px}.actions-user .reverb-button.user{background-position: 3px 10px}.actions-user .reverb-button.messages{background-position: -30px 10px}.actions-user .reverb-button.notifications{background-position: -61px 10px}.actions-user .accessible-elem{position: absolute;overflow: hidden;clip: rect(1px,1px,1px,1px);width: 1px;height: 1px}.reverb-count{position: absolute;top: 5px;right: 0;border-radius: 10px;color: #fff;font-weight: 700;font-size: 8px;cursor: pointer}.reverb-count.green span{border-top: 1px solid #4c997a;border-bottom: 1px solid #49997a;background-color: #5fbf98}.reverb-count.red span{border-top: 1px solid #e23923;border-bottom: 1px solid #c0311e;background-color: #e75238}.reverb-count span{padding: 0 3px 1px;border: none;border-radius: 10px;box-shadow: 0 -1px 0 rgba(0,0,0,.7);text-shadow: 0 -1px 0 rgba(0,0,0,.4)}.reverb-flyout .thumb{float: left;margin-right: 10px;border: 1px solid #fff}.reverb-flyout .request-item{display: block;padding: 14px 0;border-bottom: 1px solid #e7e7e7}.reverb-flyout .button,.reverb-flyout .name{text-transform: uppercase;font-weight: 700}.reverb-flyout .date,.reverb-flyout .message,.reverb-flyout .name{color: #414042;font-size: 10px}.reverb-flyout .buttons,.reverb-flyout .message{padding-left: 53px}.reverb-flyout .button{padding: 4px;border-radius: 4px;background-color: #fff;font-size: 7px}.reverb-flyout .button:focus,.reverb-flyout .button:hover{color: #fff}.reverb-flyout .accept{border: 1px solid #5fbf98;color: #5fbf98}.reverb-flyout .accept:focus,.reverb-flyout .accept:hover{background-color: #5fbf98}.reverb-flyout .decline{border: 1px solid #e75238;color: #e75238}.reverb-flyout .decline:focus,.reverb-flyout .decline:hover{background-color: #e75238}.reverb-flyout .details-column-left{float: left;width: 53px}.reverb-flyout .date{color: #b6b6b6;font-size: 8px;clear: both;display: block;line-height: 20px}.reverb-flyout .friend-requests .buttons,.reverb-flyout .friend-requests .message{padding-left: 48px}.private-messages .name,.scrap-wall .name{margin-bottom: 10px}.actions-site{width: auto;height: 40px;text-transform: uppercase;font-weight: 700;font-size: 8px}.actions-site .reverb-flyout{top: 0;width: 234px}.actions-site .reverb-flyout.cart{top: 20px;left: -50px}.actions-site>li{float: left;margin-top: 15px;padding: 0 6px 0 3px;border-right: 1px solid #b9bbbd}.actions-site>li.cart{margin-top: 11px}.actions-site>li.international{margin: 10px 4px 0;padding-left: 0}.actions-site .no-border{padding-right: 0;border-right: none}.actions-site>li a{color: #b9bbbd}.actions-site li>.opened,.actions-site li>a:focus,.actions-site li>a:hover{color: #fff;position: relative;z-index: 300}.actions-site .international,.actions-site .my-cart{width: auto;height: 20px;line-height: 20px}.actions-site .my-cart{display: block;padding-right: 40px;background-position: 82px -30px}.actions-site .my-cart:focus,.actions-site .my-cart:hover,.actions-site .opened.my-cart{background-position: 82px -57px}.actions-site .my-cart .reverb-count{top: -10px;right: 15px}.actions-site .international{width: 29px;background-position: -26px -29px}.actions-site .international:focus,.actions-site .international:hover{background-position: -26px -56px}.reverb-flyout.cart .total{text-transform: uppercase;margin-top: 17px;clear: both;color: #5fbf98;font-size: 10px;font-weight: 700;line-height: 12px;text-align: center;display: block}.reverb-flyout.cart .see-more{color: #e75238;font-size: 10px;font-weight: 700;line-height: 12px;text-align: center;display: block}.flyout-list.my-cart-items{display: table;width: 100%}.reverb-flyout.cart .flyout-title{text-transform: none}.my-cart-items li:first-child{padding-top: 6px}.my-cart-items li:last-child{border-bottom: none;padding-bottom: 0}.my-cart-items li{float: left;width: 100%;clear: left;border-bottom: 1px solid #e7e7e7;padding: 11px 0;position: relative;font-size: 9px}.my-cart-product-thumb{float: left;width: 54px;height: 62px;margin: 0 8px}.actions-site .my-cart-product-name{font-size: 10px;color: #5fbf98}.my-cart-product-description span{display: block;color: #b6b6b6}.my-cart-remove-item{position: absolute;right: 0;top: 20%;background: url(/arquivos/default/images/icon/remove-red.png) no-repeat;width: 20px;height: 20px;margin-top: -10px}.my-cart-close{position: absolute;right: 3%;top: 5%;background: url(/arquivos/default/images/icon/remove-red.png) no-repeat;width: 20px;height: 20px;margin-top: -10px}.actions-site li>.my-cart-remove-item:focus,.actions-site li>.my-cart-remove-item:hover{position: absolute}.topbar-search{position: relative;margin-top: 6px;width: 221px}.input-box{float: left;width: 100px;height: 15px;border: none;background-color: #fff;color: #8b8b8b;text-transform: uppercase;font-size: 10px;font-family: Verdana;line-height: 10px}.input-box:focus,.input-box:hover{border: 0}.topbar-search .submit{position: relative;float: left;margin: 0;padding: 0;width: 26px;height: 26px;border: none;background-color: #5fbf98;background-position: 4px -84px;cursor: pointer;color: transparent}.topbar-search .submit:after{position: absolute;top: 50%;right: 26px;margin-top: -6px;border-top: 6px solid transparent;border-right: 6px solid #5fbf98;border-bottom: 6px solid transparent;content: " "}.ui-menu .ui-menu-item a{width: 100%;height: 20px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-size: 12px;}#site-menu,.menu-item{float: left}.menu-item.home{width: 53px}.menu-item.loja{width: 48px}.menu-item.wholesale{width: 78px}.menu-item.reverbme{width: 82px}.menu-item.blog{width: 52px}.menu-item.forum{width: 60px}.menu-item.imprensa{width: 80px}.menu-item.quem-somos{width: 100px}.menu-item.contato{width: 77px}  .menu-item.busca{width: 140px; height: 23px;} .menu-item.busca input{width: 140px; height: 23px;} .separador {width: 140px; /!* coloque aqui a largura da linha *!/border-top: 1px solid #000; position: absolute; margin-top: 20px;}.menu-item-link{color: #5fbf98;text-transform: uppercase;font-size: 11px}.menu-item-link.active,.menu-item-link:focus,.menu-item-link:hover{font-weight: 700}.dropdown{position: relative}.dropdown-menu:before{position: absolute;top: -7px;left: 7px;width: 0;height: 0;border-right: 7px solid transparent;border-bottom: 7px solid #818081;border-left: 7px solid transparent;content: " "}.dropdown-menu{position: absolute;top: 30px;left: 0;visibility: hidden;background-color: #818081;opacity: 0;filter: alpha(opacity=0);font-family: sans-serif}.dropdown-menu.drop-loja{width: 520px}.dropdown-menu.drop-reverbme{width: 235px}.dropdown-menu.active{visibility: visible;opacity: 1;filter: alpha(opacity=100)}.dropdown-menu .submenu-item{margin: 3px 7px 5px 6px;line-height: 1em;float: left}.dropdown-menu .submenu-item.last{margin-right: 0}.dropdown-menu .menu-item-link{color: #ECECEC;font-weight: 700;font-size: 9px}.dropdown-menu .menu-item-link:focus,.dropdown-menu .menu-item-link:hover{color: #fff}#sac{float: right;margin-top: 8px;text-align: right}#sac p{color: #414042;font-size: 11px;font-family: Arial,sans-serif}#base-bar{float: left;padding: 15px 0;width: 100%;background-color: #414042;color: #fff;font-size: 10px;font-family: Arial}#base-bar .container{padding: 0}#base-bar a{color: #fff;transition: color .15s ease-in-out}#base-bar a:focus,#base-bar a:hover{color: #cbcbcb}#base-bar a:active{color: #f05626}#base-bar .selo,.footer-newsletter,.links-footer,.links-information,.links-nav-footer,.links-social,.payments{float: left}#base-bar .selo{margin: 10px 0 0 42px;background-color: #fff;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;padding: 3px}#base-bar .selo img{display: block}#sustainable_website{width: 142px;height: 40px;float: left;margin: 10px 25px}.links-information{width: 196px;text-align: center;margin-right: 30px}.links-information a,.links-information p{font-size: 10px;font-family: Arial,sans-serif}.logo-footer{margin-bottom: 15px;margin-left: auto;margin-right: auto;width: 64px;height: 68px;background-position: 0 -62px;background-size: 64px 126px}.security{padding-top: 10x}.links-nav-footer{padding-left: 19px;width: 169px;border-left: 1px solid #79797a;font-family: Verdana,sans-serif}.links-nav-footer.first{padding: 0;width: 130px;border: none}.links-nav-footer .title{margin-bottom: 25px;color: #cbcbcb;text-transform: uppercase;font-size: 12px}.links-nav-footer li{margin-bottom: 15px;font-size: 11px}.links-social,.payments{width: 220px}.links-social ul li{display: inline-block;margin-right: 2px}.links-social .last{margin: 0}.links-social .icon{width: 27px;height: 27px;border-radius: 4px;background-color: #fff;background-image: url(/arquivos/default/images/sprites/socials.png);background-repeat: no-repeat}.links-social .icon:focus,.links-social .icon:hover{background-color: #cbcbcb}.links-social .icon:active{background-color: #f05626}.links-social .facebook{background-position: 8px 4px}.links-social .facebook:hover{background-position: 8px -27px}.links-social .twitter{background-position: -27px 4px}.links-social .twitter:hover{background-position: -27px -27px}.links-social .tumblr{background-position: -60px 4px}.links-social .tumblr:hover{background-position: -60px -27px}.links-social .flickr{background-position: -94px 3px}.links-social .flickr:hover{background-position: -94px -27px}.links-social .youtube{background-position: -125px 2px}.links-social .youtube:hover{background-position: -125px -27px}.links-social .instagram{background-position: -158px 2px}.links-social .instagram:hover{background-position: -158px -27px}.links-social .pinterest{background-position: -191px 2px}.links-social .pinterest:hover{background-position: -191px -27px}.payments{margin-top: 2px;height: 28px;background: url(/arquivos/default/images/sprites/payments.png) no-repeat}.form-field{float: left;margin: 3px 0}.form-field input{float: left;margin: 0 5px 0 0;padding: 0 5px;width: 165px;height: 23px;border: none;border-bottom: 1px solid #fff;font-weight: 700;font-size: 10px;line-height: 24px}.form-field button{float: left;padding: 0 4px;height: 23px;border: 1px solid #fff;border-radius: 4px;background-color: #666;color: #fff;text-transform: uppercase;font-size: 10px;font-family: Arial,sans-serif;line-height: 23px;cursor: pointer}.footer-newsletter{margin-top: 15px;width: 220px}.footer-newsletter p{font-size: 10px}.footer-newsletter .title{color: #cbcbcb;text-transform: uppercase}.footer-newsletter .subtitle{clear: both;color: #959595}.footer-newsletter address{margin-top: 25px;font-size: 10px;font-family: sans-serif;line-height: 2;width: 290px;float: left}.footer-newsletter address span{display: block}.footer-newsletter address .large{width: 280px}.footer-newsletter address .x-large{width: 305px}.rvb-form{padding: 30px 10px;background-color: #f1f1f1}.rvb-label{margin-right: 15px;color: #646464;text-transform: uppercase;font-weight: 700;font-size: 9px;line-height: 15px;float: left}.rvb-input-txt{padding: 5px;border: 1px solid #c1c1c1;color: #646464;font-size: 9px;font-family: Verdana,sans-serif}input.error,select.error,textarea.error{border: 1px solid #e85238!important}label.error{position: absolute;background-color: #fff;color: #e85238;text-transform: uppercase;font-size: 10px;font-family: Verdana,sans-serif}input.error:focus+label.error,input.error:hover+label.error,select.error:focus+label.error,select.error:hover+label.error,textarea.error:focus+label.error,textarea.error:hover+label.error{display: none!important}.send-button{float: right;margin: 10px 20px 0 0;text-align: right}.send-button.left{float: left;margin: 10px 0 0 20px}.send-button.no-margin{margin-right: 0!important;margin-left: 0!important}.send-button .btn{display: inline-block;padding: 0 20px;height: 20px;line-height: 19px;border: 1px solid #62c29c;border-radius: 4px;background-color: #fff;color: #62c29c;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 10px;font-family: Sans-serif;cursor: pointer}.send-button .btn.bold{height: 25px;line-height: 23px}.send-button .btn:focus,.send-button .btn:hover{border: 1px solid #616161;color: #616161}.back-button{float: left;margin-left: 20px;margin-top: 10px;text-align: left}.back-button .btn{display: inline-block;padding: 0 20px;height: 20px;line-height: 20px;border: 1px solid #f05626;border-radius: 4px;background-color: #fff;color: #f05626;text-align: center;text-transform: uppercase;font-weight: 700;font-size: 10px;font-family: Verdana,sans-serif;cursor: pointer}.back-button .btn:focus,.back-button .btn:hover{border: 1px solid #616161;color: #616161}#main-content{display: table;background-color: #fff;font-size: 11px;padding-bottom: 20px}.selo-google{display: block; margin-top: 10px;}.selo-google img {background-color: white;}.selo-trustsign img {margin-top: 13px;} .c-orange{color: #F05626 !important;} .menu-item.sale{width: 45px;} .bg-orange{background-color: #F05626 !important;} .c-white{color: #ffffff;}*/
 	</style>
 	{/literal}
 	<!-- teste123 -->
@@ -173,7 +174,322 @@
         		{else}
         		<header id="desktop-header" role="banner">
         				<div id="top-bar">
-        					{* LOAD DINAMIC *}
+        					<div id="page-nav" class="container">
+        						{if $currentController=="reverbcycle"}
+        						<span class="logo-topo ir cycle">
+        							<a accesskey="1" href="{$this->url([], 'reverbcycle', TRUE)}">
+        								<img pagespeed_no_transform src="{$basePath}/arquivos/default/images/reverb-cycle-logo.png" width="88" height="88" alt="Reverbcycle – Música que veste!">
+        							</a>
+        							<span class="alt-logo ir">Reverbcity – Música que veste!</span>
+        						</span>
+        						{else}
+        						<a accesskey="1" href="{$this->url([], 'inicio', TRUE)}">
+        							<span class="logo-topo ir">
+        								<span class="alt-logo ir">Reverbcity – Música que veste!</span>
+        							</span>
+        						</a>
+        						{/if}
+        						<div class="left-side">
+        							<ul class="actions-user">
+        								{if $_logado eq 1}
+        								<li>
+        									<a href="#" class="reverb-button ir user" aria-labelledby="requestsCountWrapper" rel="nofollow">
+        										<span class="reverb-count green" id="requestsCountWrapper">
+        											{if $_amigos|count > 0}
+        											<span id="requestsCountValue">{$_amigos|count}</span>
+        											{/if}
+        											<i class="accessible-elem"> Solicitações</i>
+        										</span>
+        									</a>
+        									<div class="reverb-flyout">
+        										<div class="flyout-header"></div>
+        										<div class="flyout-container">
+        											<p class="flyout-title">Solicitações de amizade:</p>
+        											<ul class="flyout-list friend-requests">
+        												{if $_amigos|count}
+        												{foreach from=$_amigos item=amigo name=friends}
+        												{assign var="foto" value="{$amigo['NR_SEQ_CADASTRO_CASO']}"}
+        												{assign var="extensao" value="{$amigo['DS_EXT_CACH']}"}
+        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
+        												{if $smarty.foreach.friends.index == 3}
+        												{break}
+        												{/if}
+        												<li class="request-item clearfix">
+        													<a rel="nofollow" href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_CADASTRO_CASO']}], "perfil", TRUE)}" >
+        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
+        														<img class="thumb" alt="nome" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>38, 'altura'=>43, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
+        														{else}
+        														<img class="thumb" alt="nome" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>38, 'altura'=>43, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
+        														{/if}
+        													</a>
+        													<p class="name">{utf8_decode($amigo['DS_NOME_CASO'])}</p>
+        													<div class="buttons">
+        														<a rel="nofollow" href="{$this->url(["idsolicitacao"=>{$amigo['NR_SEQ_AUT_AURC']}, "idamigo"=>{$amigo['NR_SEQ_CADASTRO_CASO']}], 'aceitaramigo', TRUE)}" class="button accept">Aceitar</a>
+        														<a rel="nofollow" href="{$this->url(["idamigo"=>{$amigo['NR_SEQ_AUT_AURC']}], 'recusaramigo', TRUE)}" class="button decline">Rejeitar</a>
+        													</div>
+        												</li>
+        												{/foreach}
+        												{else}
+        												<center> <p class="name">Você não possui solicitações no momento.</p> </center>
+        												{/if}
+        											</ul>
+        											<a rel="nofollow" href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more">Ver mais</a>
+        										</div>
+        										<div class="flyout-footer"></div>
+        									</div>
+        								</li>
+        								<li>
+        									<a href="#" class="reverb-button ir messages" aria-labelledby="messagesCountWrapper" rel="nofollow">
+        										<span class="reverb-count green" id="messagesCountWrapper">
+        											{if $_privados|count > 0}
+        											<span id="mercurymessagesCountValue">{$_privados|count}</span>
+        											{/if}
+        											<i class="accessible-elem"> Mensagens</i>
+        										</span>
+        									</a>
+        									<div class="reverb-flyout">
+        										<div class="flyout-header"></div>
+        										<div class="flyout-container">
+        											<p class="flyout-title">Mensagens privadas:</p>
+        											<ul class="flyout-list private-messages">
+        												{if $_privados|count > 0}
+        												{foreach from=$_privados item=privado name=private}
+        												{assign var="foto" value="{$privado['NR_SEQ_CADASTRO_CASO']}"}
+        												{assign var="extensao" value="{$privado['DS_EXT_CACH']}"}
+        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
+        												{if $smarty.foreach.private.index == 3}
+        												{break}
+        												{/if}
+        												<li class="request-item clearfix">
+        													<p class="name">{utf8_decode($privado['DS_NOME_CASO'])}</p>
+        													<div class="details-column-left">
+        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
+        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
+        														{else}
+        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
+        														{/if}
+        														<span class="date">em {$privado['DT_POST_SBRC']|date_format:"%d/%m"}</span>
+        													</div>
+        													<p class="message"> {utf8_decode($privado['DS_POST_SBRC']|truncate:40:"...":TRUE)}</p>
+        													<div class="buttons">
+        														<a href="{$this->url([], 'reverbmedetalhe')}" class="button accept" rel="nofollow">Ler tudo</a>
+        														<a href="{$this->url(["idrecado"=>{$privado->NR_SEQ_SCRAP_SBRC}], 'deletarrecado', TRUE)}" class="button decline" rel="nofollow">Deletar</a>
+        													</div>
+        												</li>
+        												{/foreach}
+        												{else}
+        												<center> <p class="name">Você não possui mensagens privadas no momento.</p> </center>
+        												{/if}
+        											</ul>
+        											<a href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more" rel="nofollow">Ver todas</a>
+        										</div>
+        										<div class="flyout-footer"></div>
+        									</div>
+        								</li>
+        								<li>
+        									<a href="#" class="reverb-button ir notifications" aria-labelledby="notificationsCountWrapper" rel="nofollow">
+        										<span class="reverb-count green" id="notificationsCountWrapper">
+        											{if $_publicos|count > 0}
+        											<span id="notificationsCountValue">{$_publicos|count}</span>
+        											{/if}
+        											<i class="accessible-elem"> Notificações</i>
+        										</span>
+        									</a>
+        									<div class="reverb-flyout">
+        										<div class="flyout-header"></div>
+        										<div class="flyout-container">
+        											<p class="flyout-title">Meus scraps:</p>
+        											<ul class="flyout-list scrap-wall">
+        												{if $_publicos|count > 0}
+        												{foreach from=$_publicos item=publico name=public}
+        												{assign var="foto" value="{$publico['NR_SEQ_CADASTRO_CASO']}"}
+        												{assign var="extensao" value="{$publico['DS_EXT_CACH']}"}
+        												{assign var="foto_completa" value="{$foto}.{$extensao}"}
+        												{if $smarty.foreach.public.index == 3}
+        												{break}
+        												{/if}
+        												<li class="request-item clearfix">
+        													<p class="name"> {$publico['DS_NOME_CASO']}</p>
+        													<div class="details-column-left">
+        														{if file_exists("arquivos/upload/reverbme/$foto_completa")}
+        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>$foto_completa],"imagem", TRUE)}"/>
+        														{else}
+        														<img class="thumb" alt="{utf8_decode($privado['DS_NOME_CASO'])}" src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>41, 'altura'=>46, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}"/>
+        														{/if}
+        														<span class="date">em {$publico['DT_POST_SBRC']|date_format:"%d/%m"}</span>
+        													</div>
+        													{assign var=mensagemScrap value=$publico['DS_POST_SBRC']|strip_tags}
+        													<p class="message">{$mensagemScrap|truncate:40:"...":TRUE}</p>
+        													<div class="buttons">
+        														<a href="{$this->url([], 'reverbmedetalhe')}" class="button accept" rel="nofollow">Ler tudo</a>
+        														<a href="{$this->url(["idrecado"=>{$publico->NR_SEQ_SCRAP_SBRC}], 'deletarrecado', TRUE)}" class="button decline" rel="nofollow">Deletar</a>
+        													</div>
+        												</li>
+        												{/foreach}
+        												{else}
+        												<center> <p class="name">Você não possui recados no momento.</p> </center>
+        												{/if}
+        											</ul>
+        											<a href="{$this->url([], 'reverbmedetalhe')}" class="flyout-button see-more" rel="nofollow">Ver todos</a>
+        										</div>
+        										<div class="flyout-footer"></div>
+        									</div>
+        								</li>
+        								{/if}
+        							</ul>
+        						</div>
+        						<div class="right-side">
+        							<ul class="actions-site">
+        								{if $_logado eq 1}
+        								<li>
+        									<a class="ac-action ac-io" href="{$this->url([], "minhascompras", TRUE)}" rel="nofollow">MINHAS COMPRAS</a>
+        								</li>
+        								{/if}
+        								<li>
+        									{if $_logado eq 1}
+        									<a class="ac-action ac-io" href="{$this->url([], 'logout', TRUE)}" rel="nofollow">LOGOUT</a>
+        									{else}
+        									<a href="#" class="reverb-button {if $email_error}opened{/if}" rel="nofollow">Login</a>
+        									<div class="reverb-flyout login">
+        										<div class="flyout-header"></div>
+        										<div class="flyout-container">
+        											<form id="rvb-form-login" method="post" action="{$this->url([], 'login', TRUE)}">
+        												<div class="rvb-form-field">
+        													<label class="legend" for="quickemail">E-mail</label>
+        													<input id="quickemail" type="email" name="email" required value="{$email_error}">
+        												</div>
+        												<div class="rvb-form-field">
+        													<label class="legend"  for="quicksenha">Senha</label>
+        													<input id="quicksenha" type="password" name="senha" required>
+        												</div>
+        												<div class="rvb-form-field status">
+        													<label class="checkbox" for="stay">
+        														<input id="stay" type="checkbox" name="manter_logado" value="1"> Permanecer logado
+        													</label>
+        												</div>
+        												<a class="forgot-pwd md-trigger" data-modal="lightbox-recuperar-senha" href="#" rel="nofollow">Esqueceu a senha?</a>
+        												<div class="send-button">
+        													<button type="submit" class="btn">Login</button>
+        												</div>
+        											</form>
+        										</div>
+        										<div class="flyout-footer"></div>
+        									</div>
+        									{/if}
+        								</li>
+        								<li>
+        									<a href="{$this->url([], 'novome')}" rel="nofollow">
+        										{if $_logado eq 1}
+        										{$_nome_usuario|truncate:10:"..":true}
+        										- Meu Perfil
+        										{else}
+        										Novo Cadastro
+        										{/if}
+        									</a>
+        								</li>
+        								<li class="no-border cart">
+        									{*                                    {if $_ultima_action eq 'produto'}*}
+        									{*                                        <a href="#" class="reverb-button my-cart opened" aria-labelledby="ordersCountWrapper" rel="nofollow">*}
+        									{*                                    {else}*}
+        									<a href="#" class="reverb-button my-cart" aria-labelledby="ordersCountWrapper" rel="nofollow">
+        										{*  {/if}*}
+        										Carrinho
+        										<span class="reverb-count red" id="ordersCountWrapper">
+        											<span id="orderCountValue">{$_totalprodutos|count}</span>
+        										</span>
+        									</a>
+        									<div class="reverb-flyout cart">
+        										<a href="#" class="my-cart-close reverb-button" rel="nofollow"></a>
+        										<div class="flyout-header"></div>
+        										<div class="flyout-container">
+        											<p class="flyout-title">Últimos itens do seu carrinho:</p>
+        											<ul class="flyout-list my-cart-items">
+        												{if $_totalprodutos|count > 0}
+        												{foreach from=$_totalprodutos item=produto name=prod}
+        												{assign var="foto" value="{$produto['codigo']}"}
+        												{assign var="extensao" value="{$produto['path']}"}
+        												{assign var="foto_completa1" value="{$foto}.{$extensao}"}
+
+        												{assign var="fotos" value=$this->fotoproduto($produto['codigo'])}
+        												{assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
+        												{assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
+        												{assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
+        												{if $smarty.foreach.prod.index == 3}
+        												{break}
+        												{/if}
+        												<li>
+        													<a class="my-cart-product-thumb" rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
+        														{if file_exists("arquivos/uploads/fotosprodutos/$foto_completa") and $foto_completa != '.'}
+        														<img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>$foto_completa], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
+        														{elseif file_exists("arquivos/uploads/produtos/$foto_completa1")}
+        														<img src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>$foto_completa1], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
+        														{else}
+        														<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>54, 'altura'=>64, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" width="54" height="64" alt="{$produto['nome']}" />
+        														{/if}
+        													</a>
+        													<a class="my-cart-product-name" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
+        														{utf8_decode($produto['nome'])|truncate:13:"..":true}
+        													</a>
+        													{if $produto['tipo'] neq 9}
+        													<a href="{$this->url(["idestoque"=>{$produto['idestoque']}], 'removercarrinho', TRUE)}" rel="nofollow" class="my-cart-remove-item ir">Remover</a>
+        													{else}
+        													<a href="{$this->url(["idproduto"=>{$produto['codigo']}], 'removercarrinho', TRUE)}" rel="nofollow" class="my-cart-remove-item ir">Remover</a>
+        													{/if}
+        													<a rel="nofollow" class="my-cart-product-description" href="{$this->url(["titulo"=>{$this->createslug($produto['nome'])}, "idproduto"=>{$produto['codigo']}], 'produto', TRUE)}">
+        														<span class="product-gender">{if $produto['genero'] == 'm'}masculino{else}feminino{/if}</span>
+        														<span class="product-size">Tamanho {utf8_decode($produto['sigla'])}</span>
+        														<span class="product-amount">Quantidade {utf8_decode($produto['quantidade'])}</span>
+
+        														{assign var="vl_lojista_tmp" value="{math equation="x * y" x=$produto['valor'] y=0.6}"}
+
+        														{if $produto['vl_promo'] neq 0 and $vl_lojista_tmp > $produto['vl_promo']}
+        														<span class="product-price">R$ {$produto['vl_promo']|number_format:2:",":"."}</span>
+        														{else}
+        														<span class="product-price">R$ {$produto['total_produto']|number_format:2:",":"."}</span>
+        														{/if}
+        													</a>
+        												</li>
+        												{/foreach}
+
+        												{if $exibeBrindeCanecaPoster == 1}
+        												<li>
+        													<a href="{$this->url([], 'casa', TRUE)}" rel="nofollow" class="my-cart-product-thumb">
+        														<img src="{$basePath}/arquivos/default/images/reverb-gift.png" />
+        													</a>
+        													<a class="my-cart-product-name" href="{$this->url([], 'casa', TRUE)}" rel="nofollow">
+        														Brinde!
+        													</a>
+        													<a href="{$this->url([], 'casa', TRUE)}" class="my-cart-product-description" rel="nofollow">
+        														<span class="product-gender">Brinde liberado! Escolha uma caneca ou um poster de brinde!</span>
+        													</a>
+        												</li>
+        												{/if}
+        												{else}
+        												<li>
+        													<p class="name" style="text-align: center;">Seu carrinho esta vazio.</p>
+        												</li>
+        												{/if}
+        											</ul>
+        											<span class="total">Total: R$ {$_total_carrinho|number_format:2:",":"."}</span>
+        											{if $_totalprodutos|count > 0}
+        											<a href="#" class="flyout-button see-more" rel="nofollow">{$_totalprodutos|count} itens</a>
+        											<a href="{$this->url([], 'carrinho', TRUE)}" class="flyout-button see-more" rel="nofollow">Ver carrinho</a>
+        											{*<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Continuar comprando</a>*}
+        											{else}
+        											<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Comprar</a>
+        											{/if}
+        										</div>
+        										<div class="flyout-footer"></div>
+        									</div>
+        								</li>
+        								<li class="no-border last international">
+        									<a href="#" class="reverb-button ir international md-trigger" data-modal="international-purchases-lightbox" title="International Purchases" rel="nofollow">
+        										Compras Internacionais
+        									</a>
+        								</li>
+        							</ul>
+        						</div>
+        					</div>
         				</div>
         				<div id="site-menu" class="hidden" role="navigation">
         					<ul>
@@ -227,19 +543,28 @@
         						<li class="menu-item contato">
         							<a class="menu-item-link" href="{$this->url([], 'contato', TRUE)}" rel="nofollow">Contato</a>
         						</li>
+								<li class="menu-item busca">
+									<form action="{$this->url([], 'busca', TRUE)}" id="topbar-search-desktop" class="topbar-search" method="post">
+										<input type="text" name="busca_topo" id="busca_site" placeholder="Busca" class="input-box">
+										<hr class="separador"></hr>
+										<button type="submit" class="submit search-icon">Buscar</button>
+									</form>
+								</li>
+
         					</ul>
         				</div>
         				<div class="header container">
-        					<div id="sac">
-        						<p>SAC | seg-sex - 8:30 -17:30<br>
-        							Fone: (43) 3322-8852 <br>
-        							{if substr_count($_email_usuario, "@reverbcity.com")}
-        							Usuários online: {$_totalusers}
-                                                                {else}
-                                                                
-        							{/if}
-        						</p>
-        					</div>
+
+        					{*<div id="sac">*}
+        						{*<p>SAC | seg-sex - 8:30 -17:30<br>*}
+        							{*Fone: (43) 3322-8852 <br>*}
+        							{*{if substr_count($_email_usuario, "@reverbcity.com")}*}
+        							{*Usuários online: {$_totalusers}*}
+                                                                {*{else}*}
+                                                                {**}
+        							{*{/if}*}
+        						{*</p>*}
+        					{*</div>*}
         				</div>
         			</header>
         			{/if}
@@ -346,12 +671,12 @@
         									<li>
         										<a href="http://reverbcity.tumblr.com/" title="Abrir a página de Tumblr" target="_blank" class="icon tumblr ir">Tumblr</a>
         									</li>
-        									<li>
-        										<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>
-        									</li>
-        									<li>
-        										<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>
-        									</li>
+        									{*<li>*}
+        										{*<a href="https://plus.google.com/+reverbcity" rel="publisher" title="Abrir a página de Flickr" target="_blank" class="icon flickr ir">Google+</a>*}
+        									{*</li>*}
+        									{*<li>*}
+        										{*<a href="https://www.youtube.com/user/reverbcity" title="Abrir a página de Youtube" target="_blank" class="icon youtube ir">Youtube</a>*}
+        									{*</li>*}
         									<li>
         										<a href="https://instagram.com/reverbcity" title="Abrir a página de Instagram" target="_blank" class="icon instagram ir">Instagram</a>
         									</li>
@@ -574,8 +899,49 @@
       /* ]]> */
       </script>
       {/literal}
-      <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-      <noscript>
+
+      {*<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">*}
+      {*</script>*}
+      {*<noscript>*}
+      {*<div style="display:inline;">*}
+      {*<img height="1" width="1" style="border-style:none;" alt="Double Click" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047813471/?value=0&amp;guid=ON&amp;script=0"/>*}
+      {*</div>*}
+      {*</noscript>*}
+
+      {*<script type="text/javascript" src="https://reverbcity.com/clickheat/js/clickheat.js"></script><script type="text/javascript"><!--*}
+      {*clickHeatSite = 'www.reverbcity.com';*}
+      {*clickHeatGroup = '{$currentController}/{$currentAction}';*}
+            {*clickHeatServer = 'https://reverbcity.com/clickheat/click.php';initClickHeat(); //-->*}
+            {*</script>*}
+            <!-- Código do Google para tag de remarketing teste-->
+        <!--------------------------------------------------
+        As tags de remarketing não podem ser associadas a informações pessoais de identificação nem inseridas em páginas relacionadas a categorias de confidencialidade. Veja mais informações e instruções sobre como configurar a tag em: http://google.com/ads/remarketingsetup
+        --------------------------------------------------->
+
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            var google_conversion_id = 1047813471;
+            var google_custom_params = window.google_tag_params;
+            var google_remarketing_only = true;
+            /* ]]> */
+
+			WebFontConfig = {
+				google: { families: [ 'Roboto:400,700:latin' ] }
+			};
+			(function() {
+				var wf = document.createElement('script');
+				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+						'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+				wf.type = 'text/javascript';
+				wf.async = 'true';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+			})();
+
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+        </script>
+        <noscript>
             <div style="display:inline;">
                 <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1047813471/?value=0&amp;guid=ON&amp;script=0"/>
             </div>

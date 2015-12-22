@@ -1,0 +1,237 @@
+.grid-item .md-trigger {
+    background: #5fbf98;
+    border: solid 1px #4cb087; 
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+#more {
+    margin: 0 auto;
+    width: 200px;
+    background: #5fbf98;
+    border: solid 1px #4cb087;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 45px;
+    cursor: pointer;
+}
+#more span {
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 45px;
+}
+.grid-item .md-trigger span{
+    width: 100%;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 45px;
+}
+
+#container {
+    width: 940px;
+    margin: 0 auto;
+}
+
+
+/* clear fix */
+.grid {
+    /*background: #DDD;*/
+}
+
+/* clear fix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+    width: 23%;
+}
+
+.grid-item {
+    float: left;
+     margin-bottom: 20px;
+}
+
+@media (max-width: 950px) {
+.grid-item,  .grid-sizer { width: 31%; }
+}
+
+@media (max-width: 650px) {
+  .grid-item, .grid-sizer { width: 47%; }
+}
+
+.grid-item img {
+    display: block;
+    max-width: 100%;
+}
+
+/* ---- .grid-item ---- */
+.grid-item:hover .image_over {
+    display:table-cell;
+}
+.image_over {
+    display:none;
+    /*    height:100%;
+        width:100%;*/
+    opacity:0.8;
+    background: #5fbf98;    
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    cursor:pointer;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+}
+
+.share, .open {
+    width: 27px;
+    height: 21px;    
+    background-image: url(/arquivos/default/images/sprites/buttons.png);
+    margin: 0 auto;
+    position: relative;
+}
+.open {
+    left: -30px;
+    top: 37px;
+    background-position: -61px -55px;
+}
+.share {
+    right: -30px;
+    top: 15px;
+    background-position: -57px -82px;
+}
+.image_hover_text {
+    opacity: 1;
+    margin-top: 30%;
+    margin-bottom: 100%;
+}
+#more-nav {
+    margin: 20px 0;
+}
+
+.box    {  width:100%;
+           height:100%;
+           box-shadow:inset 1px 1px 40px 0 rgba(0,0,0,.45);
+           border-bottom:2px solid #fff;
+           border-right:2px solid #fff;
+           margin:5% auto 0 auto; 
+           background:url(http://ianfarb.com/wp-content/uploads/2013/10/nicholas-hodag.jpg);
+           background-size:cover;
+           border-radius:5px;
+           overflow:hidden;}
+
+.overlay    {  background:rgba(0,0,0,.75);
+               text-align:center;
+               padding:45px 0 66px 0;
+               opacity:0;
+               -webkit-transition: opacity .25s ease;
+               -moz-transition: opacity .25s ease;}
+
+.box:hover .overlay {
+    opacity:1;}
+
+.plus       {  font-family:Helvetica;
+               font-weight:900;
+               color:rgba(255,255,255,.85);
+               font-size:96px;}
+
+
+.flip-container {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    -ms-perspective: 1000;
+    perspective: 1000;
+    margin: 0 auto;
+}
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+
+}
+
+.flip-container, .front, .back {
+
+}
+
+/* flip speed goes here */
+.flipper {
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -o-transition: 0.6s;
+    -ms-transition: 0.6s;
+    transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    /*        height: 200px!important;*/
+}
+.back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+/* front pane, placed above back */
+.front {
+    z-index: 2;
+}
+
+/* back, initially hidden pane */
+.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.busca-people-container {
+    margin-bottom: 20px;
+}
+.texto-ppl {
+ width: 50%;   
+ color: #949494;
+}

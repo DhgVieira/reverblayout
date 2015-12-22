@@ -22,6 +22,22 @@
     <h2 class="subtitle">{$enquete->titulo_enquete}</h2>
     <a href="#" class="rvb-forum-button report md-trigger" data-modal="irregularidades-lightbox">Denunciar irregularidades</a>
 </div>
+
+<div class="full-title">
+    <a href="{$this->url([], 'enquetelista', TRUE)}" class="rvb-forum-button back">
+        <img src="{$basePath}/arquivos/default/images/icon/btn_voltar.png"/>
+    </a>
+
+    <h2 class="subtitle">{$enquete->titulo_enquete}</h2>
+
+    <p>
+        Post by
+        <a href="{$this->url(["nome"=>{$this->createslug($enquete->DS_NOME_CASO)}, "idperfil"=>{$enquete->NR_SEQ_CADASTRO_CASO}], "perfil", TRUE)}">
+            {$enquete->DS_NOME_CASO}
+        </a>
+    </p>
+</div>
+
 <div class="rvb-forum-details topics clearfix">
     <a href="{$this->url([], "forum", TRUE)}" class="rvb-forum-button back">Voltar as enquetes</a>
     <form action="{$this->url([], "forum", TRUE)}" id="form-pesquisar-post" class="clearfix">
@@ -31,10 +47,9 @@
         </div>
     </form>
 </div>
+{* Aqui o cara ainda nao votou *}
 {if $javotou eq 0}
-    
-
-        {if $enquete->data_fim|date_format:"%d/%m/%Y" lte $smarty.now|date_format:"%d/%m/%Y"}
+    {if $enquete->data_fim|date_format:"%d/%m/%Y" lte $smarty.now|date_format:"%d/%m/%Y"}
              <div class="rvb-forum-details no-bg clearfix">
             <p>{$enquete->descricao}</p>
             </div>
@@ -70,7 +85,7 @@
         <form action="{$this->url(["idenquete"=>{$enquete->idenquete}], "votarenquete", TRUE)}" method="post" class="form-polls">
             <ul class="list-of-polls">
                 {foreach from=$alternativas item=alternativa}
-                {assign var="foto_completa" value="{$alternativa->imagem_path}"}
+                {{assign var="foto_completa" value="{$alternativa->imagem_path}"}}
 
                 <li class="poll-item">
                     {if $alternativa->imagem_path neq ""}
@@ -96,21 +111,21 @@
             <button type="submit" class="btn">Votar</button>
         </div>
         </form>
-
-        {/if}
-    
-
+    {/if}
+{* Aqui o cara ja votou *}
 {else}
+    {* Aqui mostra caso exibe reusltado seja igual a 0 :( *}
     {if $enquete->exibe_resultado eq 0}
+    {* aqui verifica se a enquete esta vencida se nao nao mostra porque? *}
         {if $enquete->data_fim|date_format:"%d/%m/%Y" >= $smarty.now|date_format:"%d/%m/%Y"}
-
              <div class="rvb-forum-details no-bg clearfix">
             <p>{$enquete->descricao}</p>
             </div>
             <ul class="list-of-polls">
+                {counter start=0 print=false}
                 {foreach from=$resultado item=alternativa}
                     {assign var="porcentagem" value={math equation="(( x / y ) * z )" x=$alternativa->quantidade_votos y=$alternativa->total_votos z=100}}
-                    {assign var="foto_completa" value="{$alternativa->imagem_path}"}
+                    {{assign var="foto_completa" value="{$alternativa->imagem_path}"}}
 
                     <li class="poll-item">
                         {if $alternativa->imagem_path neq ""}
@@ -123,12 +138,14 @@
                         <span class="poll-item-text">{$alternativa->opcao}</span>
 
                         <div class="result-bar">
+                            <div class="resultado" id="resultado-{counter}" data-dimension="56" data-text="{$porcentagem|truncate:4:"":TRUE}%"  data-width="30" data-fontsize="10" data-percent="{$porcentagem|truncate:4:"":TRUE}" data-fgcolor="#61c099" data-bgcolor="#fff"></div>
                             <div class="result-text current-value">{$porcentagem|truncate:4:"":TRUE}%</div>
                             <div class="result-text votes">{$alternativa->quantidade_votos} Votos</div>
                             <div class="loading-bar">
                                 <div class="progress" data-value="{$porcentagem}%"></div>
                             </div>
                         </div>
+
                     </li>
                 {/foreach}
             </ul>
@@ -180,9 +197,9 @@
 
 <div class="about-this-post clearfix">
 {foreach from=$comentarios item=comentario}
-    {assign var="foto" value="{$comentario->NR_SEQ_CADASTRO_CASO}"}
-    {assign var="extensao" value="{$comentario->DS_EXT_CACH}"}
-    {assign var="foto_completa" value="{$foto}.{$extensao}"}
+    {{assign var="foto" value="{$comentario->NR_SEQ_CADASTRO_CASO}"}}
+    {{assign var="extensao" value="{$comentario->DS_EXT_CACH}"}}
+    {{assign var="foto_completa" value="{$foto}.{$extensao}"}}
     <div class="comments-item">
         <ul class="status-post">
             <li class="status-item">
@@ -307,3 +324,4 @@
         {/if}
     </ul>
 </div>
+

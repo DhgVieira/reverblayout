@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include 'auth.php';
 include 'lib.php';
@@ -215,6 +216,5 @@ include 'topo.php'; ?>
                     <p>&nbsp;</p>  
 				 </td>
             </tr>
-        </table>   
-   
+        </table>
 <?php include 'rodape.php'; ?>
