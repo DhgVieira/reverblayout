@@ -1,5 +1,5 @@
 .grid-item .md-trigger {
-    background: #5fbf98; 
+    background: #5fbf98;
     border: solid 1px #4cb087; 
     border-radius: 5px;
     display: block;
@@ -9,11 +9,16 @@
 #more {
     margin: 0 auto;
     width: 200px;
-    background: #5fbf98; 
-    border: solid 1px #4cb087; 
+    background: #5fbf98;
+    border: solid 1px #4cb087;
     border-radius: 5px;
     display: block;
     text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 45px;
+    cursor: pointer;
 }
 #more span {
     width: 100%;

@@ -12,17 +12,17 @@ class PeopleController extends Zend_Controller_Action {
         /* Initialize action controller here */
         $captcha = new Zend_Captcha_Image(); // Este é o nome da classe, no secrets...  
         $captcha->setWordlen(3) // quantidade de letras, tente inserir outros valores  
-                ->setImgDir(APPLICATION_PATH . '/../arquivos/uploads/captcha')// o caminho para armazenar as imagens  
-                ->setGcFreq(10)//especifica a cada quantas vezes o garbage collector vai rodar para eliminar as imagens inválidas  
-                ->setExpiration(500)// tempo de expiração em segundos.  
-                ->setHeight(80) // tamanho da imagem de captcha  
-                ->setWidth(130)// largura da imagem  
-                ->setLineNoiseLevel(1) // o nivel das linhas, quanto maior, mais dificil fica a leitura  
-                ->setDotNoiseLevel(1)// nivel dos pontos, experimente valores maiores  
-                ->setFontSize(15)//tamanho da fonte em pixels  
-                ->setFont(APPLICATION_PATH . '/../arquivos/default/fonts/andes-regular.ttf'); // caminho para a fonte a ser usada  
-        $this->view->idCaptcha = $captcha->generate(); // passamos aqui o id do captcha para a view  
-        $this->view->captcha = $captcha->render($this->view); // e o proprio captcha para a view 
+                ->setImgDir(APPLICATION_PATH . '/../arquivos/uploads/captcha')// o caminho para armazenar as imagens
+                ->setGcFreq(10)//especifica a cada quantas vezes o garbage collector vai rodar para eliminar as imagens inválidas
+                ->setExpiration(500)// tempo de expiração em segundos.
+                ->setHeight(80) // tamanho da imagem de captcha
+                ->setWidth(130)// largura da imagem
+                ->setLineNoiseLevel(1) // o nivel das linhas, quanto maior, mais dificil fica a leitura
+                ->setDotNoiseLevel(1)// nivel dos pontos, experimente valores maiores
+                ->setFontSize(15)//tamanho da fonte em pixels
+                ->setFont(APPLICATION_PATH . '/../arquivos/default/fonts/andes-regular.ttf'); // caminho para a fonte a ser usada
+        $this->view->idCaptcha = $captcha->generate(); // passamos aqui o id do captcha para a view
+        $this->view->captcha = $captcha->render($this->view); // e o proprio captcha para a view
 
         $this->view->title = "Reverb People - Quem usa Reverbcity";
         $this->view->description = "Veja a galeria das pessoas que usam Reverbcity";
@@ -55,7 +55,7 @@ class PeopleController extends Zend_Controller_Action {
 															    me_fotos_coments
 															WHERE
 															    NR_SEQ_FOTO_MCRC = NR_SEQ_FOTO_FORC)"))
-                //crio o inner join das pessoas	
+                //crio o inner join das pessoas
                 ->joinInner('cadastros', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array("DS_NOME_CASO",
             "DS_CIDADE_CASO",
             "NR_SEQ_CADASTRO_CASO"));
@@ -72,32 +72,38 @@ class PeopleController extends Zend_Controller_Action {
         //ordeno pela data de envio
         $select_fotos->order("me_fotos.NR_SEQ_FOTO_FORC DESC");
 
+//        $select_fotos->limit('10');
+
         // crio a paginação para proximo e para anterior
         $paginator = new Reverb_Paginator($select_fotos);
-        
+
         // crio paginacao com numeros
         $current_page = $this->_request->getParam("page", 1);
-        
+
         //defino a quantidade de itens por pagina
-        $paginator->setItemCountPerPage(11 * $current_page)
+        $paginator->setItemCountPerPage(20)
                 //defino a quantidade de paginas
-                ->setPageRange(5);
+                ->setPageRange(5)
+        ->setCurrentPageNumber($this->_getParam('page', 1));
         //atribuo ovalor a variavel
         $pages = $paginator->getPages();
         //crio o array de paginas
         $pageArray = get_object_vars($pages);
         //assino
         $this->view->assign('pages', $pageArray);
-
+//        print_r($select_fotos->__toString());
+//        die;
         //passo para o paginador o select de produtos
         $contador = new Reverb_Paginator($select_fotos);
         //defino o numero de itens a serem exibidos por página
-        $contador->setItemCountPerPage(11 * $current_page)
+        $contador->setItemCountPerPage(20)
+            ->setCurrentPageNumber($current_page)
                 //defino quantas páginas iram aparecer por vez
                 ->setPageRange(5)
                 //assino a paginacao
                 ->assign();
         //assino ao view
+        $query = $select_fotos->__toString();
         $this->view->contadores = $contador;
 
         //inicio o model de banners
@@ -130,12 +136,14 @@ class PeopleController extends Zend_Controller_Action {
         $this->view->headLink()->appendStylesheet('/arquivos/default/css/people.css');
 
         $this->view->headScript()
-                ->appendFile(
-                        'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
-                )->appendFile(
-//                                                            'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
-//                                                            'text/javascript'
-//                                                        )->appendFile(
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
+            )->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
+                'text/javascript')
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js'
+            )->appendFile(
                 '/arquivos/default/js/people.js', 'text/javascript'
         );
 
@@ -169,7 +177,7 @@ class PeopleController extends Zend_Controller_Action {
 															    me_fotos_coments
 															WHERE
 															    NR_SEQ_FOTO_MCRC = NR_SEQ_FOTO_FORC)"))
-                //crio o inner join das pessoas	
+                //crio o inner join das pessoas
                 ->joinInner('cadastros', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array("DS_NOME_CASO",
             "DS_CIDADE_CASO",
             "NR_SEQ_CADASTRO_CASO"));
@@ -237,7 +245,7 @@ class PeopleController extends Zend_Controller_Action {
                     ->from('cadastros', array("DS_NOME_CASO",
                         "DS_CIDADE_CASO",
                         "NR_SEQ_CADASTRO_CASO"))
-                    //crio o inner join das pessoas	
+                    //crio o inner join das pessoas
                     ->joinInner('me_fotos', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array('*'))
                     ->where("NR_SEQ_FOTO_FORC = ?", $idfoto);
 
@@ -247,7 +255,7 @@ class PeopleController extends Zend_Controller_Action {
 
             $db = Zend_Registry::get("db");
             //crio a query para selecionar os comentarios
-            $select_comentarios = "SELECT 
+            $select_comentarios = "SELECT
 	    								`cadastros`.`DS_NOME_CASO`,
 	    								`cadastros`.`NR_SEQ_CADASTRO_CASO`,
 	   								 	`me_fotos_coments` . *
@@ -256,7 +264,7 @@ class PeopleController extends Zend_Controller_Action {
 	  								inner join
 									cadastros on cadastros.NR_SEQ_CADASTRO_CASO = me_fotos_coments.NR_SEQ_CADASTRO_MCRC
 									WHERE me_fotos_coments.NR_SEQ_FOTO_MCRC = $idfoto AND comentario_id IS NULL
-									ORDER BY 
+									ORDER BY
 										NR_SEQ_COMENTARIO_MCRC
 									DESC
 									LIMIT 4";

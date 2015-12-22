@@ -43,8 +43,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="grid">
-            <div class="grid-sizer"></div>
+        <div id="grid">
 
             <div class="grid-item">
                 <a href="#" class="md-trigger" data-modal="people-lightbox">
@@ -55,7 +54,7 @@
                 {assign var="foto_me" value="{$foto->NR_SEQ_FOTO_FORC}"}
                 {assign var="extensao" value="{$foto->DS_EXT_FORC}"}
                 {assign var="foto_completa" value="{$foto_me}.{$extensao}"}
-
+                <div class="grid-sizer"></div>
                 <div class="grid-item">
                     <div class="flip-container">
                         <div class="flipper">
@@ -95,13 +94,13 @@
     </div>
     <div class="row">
         <div id="more-nav">
-            <a href="/people?page={$page + 1}" id="more">
-                <span>CARREGAR MAIS</span>
-            </a>
-        </div>        
+            {*<a href="/people/?page={$page + 1}">*}
+                <button id="more">CARREGAR MAIS</>
+            {*</a>*}
+        </div>
     </div>
 </section>
-</div>
+
 <!-- lightbox para adicionar fotos -->
 <div class="md-modal md-effect-1" id="people-lightbox">
     <div class="md-content">
