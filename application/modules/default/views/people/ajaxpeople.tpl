@@ -1,3 +1,4 @@
+<html>
 {foreach from=$contadores item=foto}
     {assign var="foto_me" value="{$foto->NR_SEQ_FOTO_FORC}"}
     {assign var="extensao" value="{$foto->DS_EXT_FORC}"}
@@ -19,3 +20,4 @@
         {/if}
     </div>
 {/foreach}
+</html>
