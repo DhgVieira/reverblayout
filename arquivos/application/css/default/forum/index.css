@@ -156,11 +156,11 @@
     width: 200px;
 }
 .right {
-    float: right;
+    float: right !important;
 }
 
 .left {
-    float: left;
+    float: left !important;
 }
 
 .rvb-forum-form,

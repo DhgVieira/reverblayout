@@ -696,7 +696,7 @@ class ForumController extends Zend_Controller_Action
 
         $this->view->idusuario = $idusuario;
         $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
-        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/js/default/forum/index.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/application/js/default/forum/index.js');
 
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');

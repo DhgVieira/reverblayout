@@ -43,10 +43,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="grid">
+        <div class="grid" id="grid">
             <div class="grid-sizer"></div>
 
-            <div class="grid-item">
+            <div class="grid-add">
                 <a href="#" class="md-trigger" data-modal="people-lightbox">
                     <span>ADICIONE UMA FOTO +</span>
                 </a>
@@ -98,7 +98,12 @@
             <a href="/people?page={$page + 1}" id="more">
                 <span>CARREGAR MAIS</span>
             </a>
-        </div>        
+        </div>
+        <div class="pagination">
+            <ul>
+                {$this->paginationControl($contadores, NULL, 'paginator_people.tpl')}
+            </ul>
+        </div>
     </div>
 </section>
 </div>

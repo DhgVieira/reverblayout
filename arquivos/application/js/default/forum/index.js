@@ -160,15 +160,24 @@ reverb.showMorePolls = function() {
                     };
                     var r = "";
                     r += '<tr class="row-content">';
-                    r += '<td class="rvb-table-lists-item content topic">';
-                    r += '<a class="post" href="' + n.linkEnquete + '">' + n.title + "</a>";
+                    r += '<td class="rvb-table-lists-item content content">';
+                    r += '<a class="topic-title" href="' + n.linkEnquete + '">' + n.title + "</a>";
+                    r += '<p>Post <abbr class="timeago" title="' + n.date + '">' + n.date + '</abbr> by</p>';
+                    r += '<a href="' + n.linkAuthor + '">' + n.author + '</a>';
                     r += "</td>";
-                    r += '<td class="rvb-table-lists-item content">';
-                    r += '<a href="' + n.linkAuthor + '">' + n.author + "</a>";
-                    r += "</td>";
-                    r += '<td class="rvb-table-lists-item content">' + n.votes + "</td>";
-                    r += '<td class="rvb-table-lists-item content">' + n.date + "</td>";
+                    r += '<td class="rvb-table-lists-item posts"><p>' + n.votes + "</p><span> Votos</span></td>";
                     r += "</tr>";
+
+                    //var r = "";
+                    //r += '<tr class="row-content">';
+                    //r += '<td class="rvb-table-lists-item content">';
+                    //r += '<a class="topic-title" href="' + n.linkTopic + '">' + n.title + "</a>";
+                    //r += '<p>Post <abbr class="timeago" title="' + n.lastPost + '">' + n.lastPost + '</abbr> by</p>';
+                    //r += '<a href="' + n.linkAuthor + '">' + n.author + '</a>';
+                    //r += '</p>';
+                    //r += "</td>";
+                    //r += '<td class="rvb-table-lists-item posts"><p>' + n.numberPosts + "</p><span> Posts</span></td>";
+                    //r += "</tr>";
                     $("#polls-table").append(r)
                 }
                 if (e.length < 1) {

@@ -12,15 +12,15 @@ class PeopleController extends Zend_Controller_Action {
         /* Initialize action controller here */
         $captcha = new Zend_Captcha_Image(); // Este é o nome da classe, no secrets...  
         $captcha->setWordlen(3) // quantidade de letras, tente inserir outros valores  
-                ->setImgDir(APPLICATION_PATH . '/../arquivos/uploads/captcha')// o caminho para armazenar as imagens  
-                ->setGcFreq(10)//especifica a cada quantas vezes o garbage collector vai rodar para eliminar as imagens inválidas  
-                ->setExpiration(500)// tempo de expiração em segundos.  
-                ->setHeight(80) // tamanho da imagem de captcha  
-                ->setWidth(130)// largura da imagem  
-                ->setLineNoiseLevel(1) // o nivel das linhas, quanto maior, mais dificil fica a leitura  
-                ->setDotNoiseLevel(1)// nivel dos pontos, experimente valores maiores  
-                ->setFontSize(15)//tamanho da fonte em pixels  
-                ->setFont(APPLICATION_PATH . '/../arquivos/default/fonts/andes-regular.ttf'); // caminho para a fonte a ser usada  
+        ->setImgDir(APPLICATION_PATH . '/../arquivos/uploads/captcha')// o caminho para armazenar as imagens
+        ->setGcFreq(10)//especifica a cada quantas vezes o garbage collector vai rodar para eliminar as imagens inválidas
+        ->setExpiration(500)// tempo de expiração em segundos.
+        ->setHeight(80) // tamanho da imagem de captcha
+        ->setWidth(130)// largura da imagem
+        ->setLineNoiseLevel(1) // o nivel das linhas, quanto maior, mais dificil fica a leitura
+        ->setDotNoiseLevel(1)// nivel dos pontos, experimente valores maiores
+        ->setFontSize(15)//tamanho da fonte em pixels
+        ->setFont(APPLICATION_PATH . '/../arquivos/default/fonts/andes-regular.ttf'); // caminho para a fonte a ser usada
         $this->view->idCaptcha = $captcha->generate(); // passamos aqui o id do captcha para a view  
         $this->view->captcha = $captcha->render($this->view); // e o proprio captcha para a view 
 
@@ -39,27 +39,27 @@ class PeopleController extends Zend_Controller_Action {
         $model_perfil = new Default_Model_Reverbme();
         //crio a query
         $select_fotos = $model_perfil->select()
-                //digo que nao existe integridade entre as tabelas
-                ->setIntegrityCheck(false)
-                //escolho a tabela do select para o join
-                ->from('me_fotos', array("NR_SEQ_CADASTRO_FORC",
-                    "DS_NOME_FORC",
-                    "DS_EXT_FORC",
-                    "NR_SEQ_FOTO_FORC",
-                    "NR_VIEWS_FORC",
-                    //crio uma subquery para contar o numero de comentarios
-                    "total_comentarios" => "(SELECT
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela do select para o join
+            ->from('me_fotos', array("NR_SEQ_CADASTRO_FORC",
+                "DS_NOME_FORC",
+                "DS_EXT_FORC",
+                "NR_SEQ_FOTO_FORC",
+                "NR_VIEWS_FORC",
+                //crio uma subquery para contar o numero de comentarios
+                "total_comentarios" => "(SELECT
 															COUNT(NR_SEQ_COMENTARIO_MCRC)
 																AS total_comentatios
 															FROM
 															    me_fotos_coments
 															WHERE
 															    NR_SEQ_FOTO_MCRC = NR_SEQ_FOTO_FORC)"))
-                //crio o inner join das pessoas	
-                ->joinInner('cadastros', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array("DS_NOME_CASO",
-            "DS_CIDADE_CASO",
-            "NR_SEQ_CADASTRO_CASO"));
-
+            //crio o inner join das pessoas
+            ->joinInner('cadastros',
+                'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO',array("DS_NOME_CASO",
+                    "DS_CIDADE_CASO",
+                    "NR_SEQ_CADASTRO_CASO"));
         //se for post, faz a busca
         if ($this->_request->isPost()) {
             // defino o adaptador do banco
@@ -74,14 +74,12 @@ class PeopleController extends Zend_Controller_Action {
 
         // crio a paginação para proximo e para anterior
         $paginator = new Reverb_Paginator($select_fotos);
-        
-        // crio paginacao com numeros
-        $current_page = $this->_request->getParam("page", 1);
-        
         //defino a quantidade de itens por pagina
-        $paginator->setItemCountPerPage(11 * $current_page)
-                //defino a quantidade de paginas
-                ->setPageRange(5);
+        $paginator->setItemCountPerPage(10)
+            //defino a quantidade de paginas
+            ->setPageRange(5)
+            //recebo o numero da pagina
+            ->setCurrentPageNumber($this->_getParam('page', 1));
         //atribuo ovalor a variavel
         $pages = $paginator->getPages();
         //crio o array de paginas
@@ -89,15 +87,22 @@ class PeopleController extends Zend_Controller_Action {
         //assino
         $this->view->assign('pages', $pageArray);
 
+        // crio paginacao com numeros
+        $current_page = $this->_request->getParam("page", 1);
         //passo para o paginador o select de produtos
         $contador = new Reverb_Paginator($select_fotos);
         //defino o numero de itens a serem exibidos por página
-        $contador->setItemCountPerPage(11 * $current_page)
-                //defino quantas páginas iram aparecer por vez
-                ->setPageRange(5)
-                //assino a paginacao
-                ->assign();
+        $contador->setItemCountPerPage(10)
+            //pega o numero da pagina
+            ->setCurrentPageNumber($current_page)
+            //defino quantas páginas iram aparecer por vez
+            ->setPageRange(5)
+            //assino a paginacao
+            ->assign();
         //assino ao view
+
+        $query = $select_fotos->__toString();
+
         $this->view->contadores = $contador;
 
         //inicio o model de banners
@@ -106,44 +111,44 @@ class PeopleController extends Zend_Controller_Action {
         $dia_hora = date("Y-m-d H:i:s");
         //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
         $select_agendado_topo = $model_banner->select()
-                ->where("NR_SEQ_LOCAL_BARC = 87")
-                ->where("ST_BANNER_BARC = 'A'")
-                ->where("ST_AGENDAMENTO_BARC = 1")
-                ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
-                ->order("DT_CADASTRO_BARC DESC");
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 1")
+            ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+            ->order("DT_CADASTRO_BARC DESC");
 
         //armazeno em uma variavel
         $agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
 
         //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
         $select_normais_topo = $model_banner->select()
-                ->where("NR_SEQ_LOCAL_BARC = 87")
-                ->where("ST_BANNER_BARC = 'A'")
-                ->where("ST_AGENDAMENTO_BARC = 0")
-                ->order("DT_CADASTRO_BARC DESC");
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 0")
+            ->order("DT_CADASTRO_BARC DESC");
 
         //armazeno em uma variavel
         $normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
         //junto os 2 tipos de banners em um só array
-        $banners_topo = array_merge($agendados_topo, $normais_topo);
+        $banners_topo = array_merge($agendados_topo ,$normais_topo);
+
+        //Assino ao view
+        $this->view->banners = $banners_topo;
 
         $this->view->headLink()->appendStylesheet('/arquivos/default/css/people.css');
 
         $this->view->headScript()
-                ->appendFile(
-                        'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
-                )->appendFile(
-//                                                            'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
-//                                                            'text/javascript'
-//                                                        )->appendFile(
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
+                'text/javascript'
+            )->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
+                'text/javascript'
+            )->appendFile(
                 '/arquivos/default/js/people.js', 'text/javascript'
-        );
+            );
 
-        //Assino ao view
-        $this->view->banners = $banners_topo;
-        $this->view->page = $this->_request->getParam("page", 1);
     }
-
     /**
      *
      */
@@ -153,26 +158,26 @@ class PeopleController extends Zend_Controller_Action {
         $model_perfil = new Default_Model_Reverbme();
         //crio a query
         $select_fotos = $model_perfil->select()
-                //digo que nao existe integridade entre as tabelas
-                ->setIntegrityCheck(false)
-                //escolho a tabela do select para o join
-                ->from('me_fotos', array("NR_SEQ_CADASTRO_FORC",
-                    "DS_NOME_FORC",
-                    "DS_EXT_FORC",
-                    "NR_SEQ_FOTO_FORC",
-                    "NR_VIEWS_FORC",
-                    //crio uma subquery para contar o numero de comentarios
-                    "total_comentarios" => "(SELECT
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela do select para o join
+            ->from('me_fotos', array("NR_SEQ_CADASTRO_FORC",
+                "DS_NOME_FORC",
+                "DS_EXT_FORC",
+                "NR_SEQ_FOTO_FORC",
+                "NR_VIEWS_FORC",
+                //crio uma subquery para contar o numero de comentarios
+                "total_comentarios" => "(SELECT
 															COUNT(NR_SEQ_COMENTARIO_MCRC)
 																AS total_comentatios
 															FROM
 															    me_fotos_coments
 															WHERE
 															    NR_SEQ_FOTO_MCRC = NR_SEQ_FOTO_FORC)"))
-                //crio o inner join das pessoas	
-                ->joinInner('cadastros', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array("DS_NOME_CASO",
-            "DS_CIDADE_CASO",
-            "NR_SEQ_CADASTRO_CASO"));
+            //crio o inner join das pessoas
+            ->joinInner('cadastros', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array("DS_NOME_CASO",
+                "DS_CIDADE_CASO",
+                "NR_SEQ_CADASTRO_CASO"));
 
         //se for post, faz a busca
         if ($this->_request->isPost()) {
@@ -190,10 +195,10 @@ class PeopleController extends Zend_Controller_Action {
         $paginator = new Reverb_Paginator($select_fotos);
         //defino a quantidade de itens por pagina
         $paginator->setItemCountPerPage(20)
-                //defino a quantidade de paginas
-                ->setPageRange(5)
-                //recebo o numero da pagina
-                ->setCurrentPageNumber($this->_getParam('page', 1));
+            //defino a quantidade de paginas
+            ->setPageRange(5)
+            //recebo o numero da pagina
+            ->setCurrentPageNumber($this->_getParam('page', 1));
         //atribuo ovalor a variavel
         $pages = $paginator->getPages();
         //crio o array de paginas
@@ -207,12 +212,12 @@ class PeopleController extends Zend_Controller_Action {
         $contador = new Reverb_Paginator($select_fotos);
         //defino o numero de itens a serem exibidos por página
         $contador->setItemCountPerPage(11)
-                //pega o numero da pagina
-                ->setCurrentPageNumber($current_page)
-                //defino quantas páginas iram aparecer por vez
-                ->setPageRange(5)
-                //assino a paginacao
-                ->assign();
+            //pega o numero da pagina
+            ->setCurrentPageNumber($current_page)
+            //defino quantas páginas iram aparecer por vez
+            ->setPageRange(5)
+            //assino a paginacao
+            ->assign();
         //assino ao view
         $this->view->contadores = $contador;
     }
@@ -231,15 +236,15 @@ class PeopleController extends Zend_Controller_Action {
             $model_perfil = new Default_Model_Reverbme();
             //crio a query
             $select_fotos = $model_perfil->select()
-                    //digo que nao existe integridade entre as tabelas
-                    ->setIntegrityCheck(false)
-                    //escolho a tabela do select para o join
-                    ->from('cadastros', array("DS_NOME_CASO",
-                        "DS_CIDADE_CASO",
-                        "NR_SEQ_CADASTRO_CASO"))
-                    //crio o inner join das pessoas	
-                    ->joinInner('me_fotos', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array('*'))
-                    ->where("NR_SEQ_FOTO_FORC = ?", $idfoto);
+                //digo que nao existe integridade entre as tabelas
+                ->setIntegrityCheck(false)
+                //escolho a tabela do select para o join
+                ->from('cadastros', array("DS_NOME_CASO",
+                    "DS_CIDADE_CASO",
+                    "NR_SEQ_CADASTRO_CASO"))
+                //crio o inner join das pessoas
+                ->joinInner('me_fotos', 'me_fotos.NR_SEQ_CADASTRO_FORC = cadastros.NR_SEQ_CADASTRO_CASO', array('*'))
+                ->where("NR_SEQ_FOTO_FORC = ?", $idfoto);
 
             $fotos = $model_perfil->fetchRow($select_fotos);
             //assino ao view
@@ -294,21 +299,21 @@ class PeopleController extends Zend_Controller_Action {
             $dia_hora = date("Y-m-d H:i:s");
             //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
             $select_agendado_topo = $model_banner->select()
-                    ->where("NR_SEQ_LOCAL_BARC = 87")
-                    ->where("ST_BANNER_BARC = 'A'")
-                    ->where("ST_AGENDAMENTO_BARC = 1")
-                    ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
-                    ->order("DT_CADASTRO_BARC DESC");
+                ->where("NR_SEQ_LOCAL_BARC = 87")
+                ->where("ST_BANNER_BARC = 'A'")
+                ->where("ST_AGENDAMENTO_BARC = 1")
+                ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+                ->order("DT_CADASTRO_BARC DESC");
 
             //armazeno em uma variavel
             $agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
 
             //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
             $select_normais_topo = $model_banner->select()
-                    ->where("NR_SEQ_LOCAL_BARC = 87")
-                    ->where("ST_BANNER_BARC = 'A'")
-                    ->where("ST_AGENDAMENTO_BARC = 0")
-                    ->order("DT_CADASTRO_BARC DESC");
+                ->where("NR_SEQ_LOCAL_BARC = 87")
+                ->where("ST_BANNER_BARC = 'A'")
+                ->where("ST_AGENDAMENTO_BARC = 0")
+                ->order("DT_CADASTRO_BARC DESC");
 
             //armazeno em uma variavel
             $normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
