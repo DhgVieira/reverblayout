@@ -50,8 +50,8 @@
                     <span>ADICIONE UMA FOTO +</span>
                 </a>
             </div>
-                <div class="grid-sizer"></div>
-                <div class="gutter-sizer"></div>
+            <div class="grid-sizer"></div>
+            <div class="gutter-sizer"></div>
             {foreach from=$contadores item=foto}
                 {assign var="foto_me" value="{$foto->NR_SEQ_FOTO_FORC}"}
                 {assign var="extensao" value="{$foto->DS_EXT_FORC}"}
@@ -96,7 +96,7 @@
     <div class="row">
         <div id="more-nav">
             {*<a href="/people/?page={$page + 1}">*}
-                <button id="more">CARREGAR MAIS</>
+            <button id="more">CARREGAR MAIS</>
             {*</a>*}
         </div>
     </div>

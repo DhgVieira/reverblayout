@@ -206,486 +206,647 @@ class ForumController extends Zend_Controller_Action
 										 						enquetes_opcoes
 										 					WHERE
 										 						enquetes.idenquete = enquetes_opcoes.idenquete)"))
-				->joinInner('cadastros',
-							'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO','NR_SEQ_CADASTRO_CASO'))
-				->where("idenquete not in (".$hot_enquete->idenquete .",". $nova_enquete->idenquete .")");
-				if ($palavra_enquete != "") {
-					$select_enquete->where("titulo_enquete LIKE '%". $palavra_enquete ."%'");
-				}
-				$select_enquete->order("data_inicio DESC");
-
-				//assino ao view
-				$this->view->enquetes = $model_enquete->fetchAll($select_enquete);
-
-				//inicio o model de banners
-			$model_banner = new Default_Model_Banners();
-			//crio o dia e hora atual
-			$dia_hora = date("Y-m-d H:i:s");
-			//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
-			$select_agendado_topo = $model_banner->select()
-								->where("NR_SEQ_LOCAL_BARC = 87")
-								->where("ST_BANNER_BARC = 'A'")
-								->where("ST_AGENDAMENTO_BARC = 1")
-								->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
-								->order("DT_CADASTRO_BARC DESC");
-								
-			//armazeno em uma variavel
-			$agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
-			
-			//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
-			$select_normais_topo = $model_banner->select()
-									->where("NR_SEQ_LOCAL_BARC = 87")
-									->where("ST_BANNER_BARC = 'A'")
-									->where("ST_AGENDAMENTO_BARC = 0")
-									->order("DT_CADASTRO_BARC DESC");
-								
-			//armazeno em uma variavel
-			$normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
-			//junto os 2 tipos de banners em um só array
-			$banners_topo = array_merge($agendados_topo ,$normais_topo);
-					
-			//Assino ao view
-			$this->view->banners = $banners_topo;
-
-
-			//agora pego o id do usuário logado
-			$idusuario = $usuarios->idperfil;
-
-			$this->view->idusuario = $idusuario;
-
-		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
-		$this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
-	}
-
-	/**
-	 * funcao responsavel por detalhar o forum
-	 */
-	public function detalheforumAction() {
-		//inicio a sessao de usuários
-		$usuarios = new Zend_Session_Namespace("usuarios");
-		//recebo o id do topico
-		$idtopico = $this->_request->getparam("idforum");
-
-		//inicio o model do forum
-		$model_topico = new Default_Model_Topicos();
-		//inicio a query
-		$select_topicos = $model_topico->select()
-		//seleciono somente os ativos
-						->where("NR_SEQ_TOPICO_TOSO = ?", $idtopico)
-						->where("ST_TOPICO_TOSO = 'A'");
-
-
-		//assino ao view
-		$this->view->topico = $model_topico->fetchRow($select_topicos);
-
-		//inicio o model de mensagens
-		$model_mensagens = new Default_Model_Mensagens();
-		//crio a query
-		$select_mensagens = $model_mensagens->select()
-		//digo que nao existe integridade entre as tabelas
-			->setIntegrityCheck(false)
-			//escolho a tabela do select para o join
-			->from('msgs', array('NR_SEQ_MSG_MESO',
-								 'NR_SEQ_TOPICO_MESO',
-								 'NR_SEQ_CADASTRO_CASO',
-								 'DT_CADASTRO_MESO',
-								 'ST_MSG_MESO',
-								 'DS_MSG_MESO',
-								 'DS_IP_MESO',
-								 'NR_CURTIRAM_MESO',
-								 'NR_NAOCURTIRAM_MESO',
-								 'NR_REPLY_MESO'))
-
-			//crio o inner join das pessoas
-			->joinInner('cadastros',
-					'msgs.NR_SEQ_CADASTRO_CASO = cadastros.NR_SEQ_CADASTRO_CASO',array('NR_SEQ_CADASTRO_CASO', 'DS_NOME_CASO', 'DS_EXT_CACH'))
-			->where("msgs.NR_SEQ_TOPICO_MESO = ?", $idtopico)
-			->where("NR_REPLY_MESO is NULL")
-			//ordeno pela data de envio
-			->order("msgs.DT_CADASTRO_MESO DESC")
-			->group("msgs.NR_SEQ_MSG_MESO");
-
-
-			$lista_comentarios = $model_mensagens->fetchAll($select_mensagens);
-			//crio o objeto de conexao com o banco externo
-			// $db = Zend_Registry::get('db');
-			// //agora vou contar as respostas
-			// foreach ($lista_comentarios as $key => $comentario) {
-
-				
-				
-			// 	$select_total_comentarios = "SELECT
-			// 									NR_SEQ_MSG_MESO, 										
-			// 									DS_NOME_CASO,
-			// 									NR_CURTIRAM_MESO,
-			// 									NR_NAOCURTIRAM_MESO,
-			// 									DS_MSG_MESO,
-			// 									DT_CADASTRO_MESO,
-			// 									COUNT(NR_SEQ_MSG_MESO)
-			// 								AS 
-			// 									total_comentarios 
-			// 								FROM 
-			// 									msgs
-			// 								INNER JOIN 
-			// 									cadastros 
-			// 								ON 
-			// 									cadastros.NR_SEQ_CADASTRO_CASO = msgs.NR_SEQ_CADASTRO_CASO 
-			// 								WHERE 
-			// 									NR_REPLY_MESO = ". $comentario["NR_SEQ_MSG_MESO"];
-
-			// 	$query_coments = $db->query($select_total_comentarios);
-			// 	//crio uma lista de comentario
-			// 	$total_comentarios_resp = $query_coments->fetchAll();
-
-			// 	if($total_comentarios_resp[0]["total_comentarios"] > 0){
-
-			// 		$lista_comentarios[$key]["idresposta"] = $total_comentarios_resp[0]["NR_SEQ_MSG_MESO"];
-			// 		$lista_comentarios[$key]["nome_resposta"] = $total_comentarios_resp[0]["DS_NOME_CASO"];
-			// 		$lista_comentarios[$key]["curtiram_resposta"] = $total_comentarios_resp[0]["NR_CURTIRAM_MESO"];
-			// 		$lista_comentarios[$key]["nao_curtiram_resposta"] = $total_comentarios_resp[0]["NR_NAOCURTIRAM_MESO"];
-			// 		$lista_comentarios[$key]["resposta"] = $total_comentarios_resp[0]["DS_MSG_MESO"];
-			// 		$lista_comentarios[$key]["data_resposta"] = $total_comentarios_resp[0]["DT_CADASTRO_MESO"];
-			// 		$lista_comentarios[$key]["total_comentarios"] = $total_comentarios_resp[0]["total_comentarios"];
-
-			// 	}else{
-					
-			// 		$lista_comentarios[$key]["total_comentarios"] = $total_comentarios_resp[0]["total_comentarios"];
-			// 	}
-			// } 
-
-			//assino ao view
-
-			// crio a paginação para proximo e para anterior
-			$contador = new Reverb_Paginator($lista_comentarios);
-
-			//defino a quantidade de itens por pagina
-			$contador->setItemCountPerPage(9)
-			//defino a quantidade de paginas
-			->setPageRange(5)
-			//recebo o numero da pagina
-			->setCurrentPageNumber($this->_getParam('page'));
-			//atribuo ovalor a variavel
-			$pages = $contador->getPages();
-			//crio o array de paginas
-			$pageArray = get_object_vars($pages);
-			//assino
-			$this->view->assign('pages', $pageArray);
-
-
-		// crio paginacao com numeros
-			$current_page = $this->_request->getParam("page", 1);
-			//passo para o paginador o select de produtos
-			$contador = new Reverb_Paginator($lista_comentarios);
-			//defino o numero de itens a serem exibidos por página
-			$contador->setItemCountPerPage(9)
-			//pega o numero da pagina
-			->setCurrentPageNumber($current_page)
-			//defino quantas páginas iram aparecer por vez
-			->setPageRange(5)
-			//assino a paginacao
-			->assign();
-			//assino ao view
-
-			$this->view->mensagens = $contador;
-			// $this->view->mensagens = $model_mensagens->fetchAll($select_mensagens);
-
-				//inicio o model de banners
-			$model_banner = new Default_Model_Banners();
-			//crio o dia e hora atual
-			$dia_hora = date("Y-m-d H:i:s");
-			//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
-			$select_agendado_topo = $model_banner->select()
-								->where("NR_SEQ_LOCAL_BARC = 87")
-								->where("ST_BANNER_BARC = 'A'")
-								->where("ST_AGENDAMENTO_BARC = 1")
-								->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
-								->order("DT_CADASTRO_BARC DESC");
-								
-			//armazeno em uma variavel
-			$agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
-			
-			//crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
-			$select_normais_topo = $model_banner->select()
-									->where("NR_SEQ_LOCAL_BARC = 87")
-									->where("ST_BANNER_BARC = 'A'")
-									->where("ST_AGENDAMENTO_BARC = 0")
-									->order("DT_CADASTRO_BARC DESC");
-								
-			//armazeno em uma variavel
-			$normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
-			//junto os 2 tipos de banners em um só array
-			$banners_topo = array_merge($agendados_topo ,$normais_topo);
-					
-			//Assino ao view
-			$this->view->banners = $banners_topo;
-
-			//assino ao view o id do usuario logado para poder deletar os comentario
-			$this->view->codigo_usuario = $usuarios->idperfil;
-
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
-
-	}
-
-	/*
-	*
-	*/
-	public function curtirAction(){
-		//desabilito o layout
-		$this->_helper->layout->disableLayout();
-		$this->_helper->viewRenderer->setNoRender(TRUE);
-		//inicio a sessao de mensagem
-		$mensagem = new Zend_Session_Namespace("messages");
-		// Cria a sessão de usuário
-		$usuarios = new Zend_Session_Namespace("usuarios");
-
-		//verifico se o usuário esta logado
-		if($usuarios->logado == true){
-		//inicio o model de mensagem
-                    
-                        $idmsg = $this->_request->getparam("idmsg");
-                    
-                        $model_curtiram = new Default_Model_Curtiram();
-                        
-                        $dadosCurtiram = $model_curtiram->fetchRow(array(
-                            'NR_SEQ_CADASTRO_CURC = ?' => $usuarios->idperfil,
-                            'NR_SEQ_MSG_CURC = ?' => $idmsg
-                        ));
-                        
-                        if(!$dadosCurtiram){
-                            $model_mensagens = new Default_Model_Mensagens();
-                            //recupero o id da msg
-                            //crio a query para receber a quantidade de curtidas
-                            $select = $model_mensagens->select()
-                                                    ->from("msgs", array("NR_SEQ_MSG_MESO",
-                                                                                    "NR_CURTIRAM_MESO"))
-                                                    ->where("NR_SEQ_MSG_MESO = ?", $idmsg);
-                            //recebo o resultado da pesquisa
-                            $resultado = $model_mensagens->fetchRow($select);
-                            //agora cada curtida ganha um ponto
-                            $total_curtida = $resultado->NR_CURTIRAM_MESO + 1;
-
-                            $data = array("NR_CURTIRAM_MESO" => $total_curtida);
-
-                            $model_mensagens->update($data,  array("NR_SEQ_MSG_MESO = $idmsg"));
-                            
-                            $data = array();
-                            $data['NR_SEQ_CADASTRO_CURC'] = $usuarios->idperfil;
-                            $data['NR_SEQ_MSG_CURC'] = $idmsg;
-                            
-                            $model_curtiram->insert($data);
-                        }
-
-			$this->_redirect($_SERVER['HTTP_REFERER']);
-		}else{
-
-			$mensagem->error = "Você precisa estar logado para curtir um comentário.";
-
-			$this->_redirect($_SERVER['HTTP_REFERER']);
-		}
-	}
-
-	/*
-	*
-	*/
-	public function naocurtirAction(){
-
-		//desabilito o layout
-		$this->_helper->layout->disableLayout();
-		$this->_helper->viewRenderer->setNoRender(TRUE);
-		//inicio a sessao de mensagem
-		$mensagem = new Zend_Session_Namespace("messages");
-
-		$usuarios = new Zend_Session_Namespace("usuarios");
-
-		//verifico se o usuário esta logado
-		if($usuarios->logado == true){
-                        //recupero o id da msg
-			$idmsg = $this->_request->getparam("idmsg");
-                    
-                        $model_naocurtiram = new Default_Model_Naocurtiram();
-                        
-                        $dadosCurtiram = $model_naocurtiram->fetchRow(array(
-                            'NR_SEQ_CADASTRO_CURC = ?' => $usuarios->idperfil,
-                            'NR_SEQ_MSG_CURC' => $idmsg
-                        ));
-                        
-                        if(!$dadosCurtiram){
-                            //inicio o model de mensagem
-                            $model_mensagens = new Default_Model_Mensagens();
-
-                            //crio a query para receber a quantidade de curtidas
-                            $select = $model_mensagens->select()
-                                                    ->from("msgs", array("NR_SEQ_MSG_MESO",
-                                                                                    "NR_NAOCURTIRAM_MESO"))
-                                                    ->where("NR_SEQ_MSG_MESO = ?", $idmsg);
-                            //recebo o resultado da pesquisa
-                            $resultado = $model_mensagens->fetchRow($select);
-                            //agora cada curtida ganha um ponto
-                            $total_curtida = $resultado->NR_NAOCURTIRAM_MESO + 1;
-
-                            $data = array("NR_NAOCURTIRAM_MESO" => $total_curtida);
-
-                            $model_mensagens->update($data,  array("NR_SEQ_MSG_MESO = $idmsg"));
-                            
-                            $data = array();
-                            $data['NR_SEQ_CADASTRO_CURC'] = $usuarios->idperfil;
-                            $data['NR_SEQ_MSG_CURC'] = $idmsg;
-                            
-                            $model_naocurtiram->insert($data);
-                        }
-
-			$this->_redirect($_SERVER['HTTP_REFERER']);
-		}else{
-
-			$mensagem->error = "Você precisa estar logado para nao curtir um comentário.";
-
-			$this->_redirect($_SERVER['HTTP_REFERER']);
-		}
-
-	}
-
-	/**
-	* Função responsavel por criar a enquete
-	**/
-
-	public function criarenqueteAction(){
-
-		//desabilito o layout
-		$this->_helper->layout->disableLayout();
-		$this->_helper->viewRenderer->setNoRender(TRUE);
-		//inicio a sessao de usuários
-		$usuarios = new Zend_Session_Namespace("usuarios");
-		//inicio a sessao de mensagem
-		$mensagem = new Zend_Session_Namespace("messages");
-		//verifico se existe usuário logado com sessao
-		if ($usuarios->logado == TRUE) {
-			//se for um post
-			if($this->_request->isPost()){
-				//crio o modulo de enquete
-				$model_enquete = new Default_Model_Enquetes();
-				//recebo os parametros para criar a data de fim
-				$data_form = $this->_request->getparam("dataselecionada");
-
-
-				//explodo data para formatar
-				$data_explode = explode("/", $data_form);
-
-				$dia = $data_explode[0];
-				$mes = $data_explode[1];
-				$ano = $data_explode[2];
-
-				$data_fim = $ano ."-".$mes."-".$dia;
-
- 				//crio o array de enquete
-				$data_enquete = array("idautor"=> $usuarios->idperfil,
-									  "titulo_enquete" => $this->_request->getparam("assunto"),
-									  "descricao" => $this->_request->getparam("descricao"),
-									  "permite_multipla" => $this->_request->getparam("radiog_dark"),
-									  "data_fim" => $data_fim,
-									  "exibe_resultado" => $this->_request->getparam("resultado"),
-									  "sem_data_fim" => $this->_request->getparam("datadefinalizacao"));
-				//insiro os registros e pego o id
-				$idenquete = $model_enquete->insert($data_enquete);
-
-				//inicio o model de alternativas
-				$model_alternativas = new Default_Model_Enquetesopcoes();
-				//recebo as imagens e as opções
-				$fotos = $_FILES["fotos"];
-
-				// var_dump($fotos);die();
-				$opcoes = $this->_request->getparam("opcoes");
-
-
-
-				//inicio o array de opcoes
-				$data_opcao = array();
-
-				foreach ($opcoes as $key => $opcao) {
-
-
-					//passo os parametros
-					$data_opcao["idenquete"] = $idenquete;
-					$data_opcao["opcao"] = $opcao;
-
-					if(($_FILES['fotos']['name'][$key]) != ""){
-						$filename = md5(time() . rand(1000, 9999)) . ".jpg";
-						$data_opcao['imagem_path'] = $filename;
-						// Move o arquivo para o diretório
-						move_uploaded_file($_FILES['fotos']['tmp_name'][$key], APPLICATION_PATH . "/../arquivos/uploads/enquete/" . $filename);
-					}
-					// Insere o registro
-					try {
-						$model_alternativas->insert($data_opcao);
-						}
-					catch(Exception $e) {
-						die(var_dump($e));
-					}
-
-				}
-					//mensagem de usuario
-						$mensagem->success = "Enquete criada com sucesso!";
-						//retorno a ultima pagina
-						$this->_redirect($_SERVER['HTTP_REFERER']);
-			}
-
-
-
-		}else{
-			//mensagem de usuario
-			$mensagem->error = "Você precisa estar logado para criar uma enquete";
-			//retorno a ultima pagina
-			$this->_redirect($_SERVER['HTTP_REFERER']);
-		}
-
-	}
-
-	/**
-	* Função responsavel por detalhar a enquete
-	**/
-
-	public function enqueteAction(){
-		//inicio a sessao de de votos
-		$votos = new Zend_Session_Namespace("votou");
-
-		//recebo o codigo da enquete
-		$idenquete = $this->_request->getparam("idenquete");
-
-		//inicio o model de enquete
-		$model_enquete = new Default_Model_Enquetes();
-
-		//crio a query de enquete
-		$select_enquete = $model_enquete->select()
-							->where("idenquete = ?", $idenquete);
-		//armazeno as informações da variavel na enquente
-		$enquete = $model_enquete->fetchRow($select_enquete);
-
-		//inicio o model de alternativas
-		$model_alternativas = new Default_Model_Enquetesopcoes();
-
-		//crio a query das alternativas
-
-		$select_alternativas = $model_alternativas->select()
-								->where("idenquete = ?", $idenquete);
-
-
-
-		//crio o model de comentarios
-		$model_comentarios = new Default_Model_Enquetecomentarios();
-		//inicio a query de comentarios
-		$select_comentarios = $model_comentarios->select()
-		//digo que nao existe integridade entre as tabelas
-			->setIntegrityCheck(false)
-			//escolho a tabela do select para o join
-			->from('enquete_comentarios', array("idenquete_comentario",
-												"idenquete",
-												"idusuario",
-												"data_comentario",
-												"comentario",
-												"numero_curtiu",
-												"numero_nao_curtiu",
-												"total_comentarios" => "(SELECT
-
+            ->joinInner('cadastros',
+                'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO', 'NR_SEQ_CADASTRO_CASO'))
+            ->where("idenquete not in (" . $hot_enquete->idenquete . "," . $nova_enquete->idenquete . ")");
+        if ($palavra_enquete != "") {
+            $select_enquete->where("titulo_enquete LIKE '%" . $palavra_enquete . "%'");
+        }
+        $select_enquete->order("data_inicio DESC");
+
+        //assino ao view
+        $this->view->enquetes = $model_enquete->fetchAll($select_enquete);
+
+        //inicio o model de banners
+        $model_banner = new Default_Model_Banners();
+        //crio o dia e hora atual
+        $dia_hora = date("Y-m-d H:i:s");
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_agendado_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 1")
+            ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
+
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_normais_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 0")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
+        //junto os 2 tipos de banners em um só array
+        $banners_topo = array_merge($agendados_topo, $normais_topo);
+
+        //Assino ao view
+        $this->view->banners = $banners_topo;
+
+
+        //agora pego o id do usuário logado
+        $idusuario = $usuarios->idperfil;
+
+        $this->view->idusuario = $idusuario;
+
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+
+
+    }
+
+    /**
+     * funcao responsavel por detalhar o forum
+     */
+    public function detalheforumAction()
+    {
+        //inicio a sessao de usuários
+        $usuarios = new Zend_Session_Namespace("usuarios");
+        //recebo o id do topico
+        $idtopico = $this->_request->getparam("idforum");
+
+        //inicio o model do forum
+        $model_topico = new Default_Model_Topicos();
+        //inicio a query
+        $select_topicos = $model_topico->select()
+
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela do select para o join
+            ->from('topicos')
+            //crio o inner join das pessoas
+            ->joinInner('cadastros',
+                'topicos.NR_SEQ_CADASTRO_TOSO = cadastros.NR_SEQ_CADASTRO_CASO', array('NR_SEQ_CADASTRO_CASO',
+                    'DS_NOME_CASO',
+                    'DS_EXT_CACH'))
+
+            ->where("NR_SEQ_TOPICO_TOSO = ?", $idtopico)
+            ->where("ST_TOPICO_TOSO = 'A'");
+
+        //assino ao view
+        $this->view->topico = $model_topico->fetchRow($select_topicos);
+
+        //inicio o model de mensagens
+        $model_mensagens = new Default_Model_Mensagens();
+        //crio a query
+        $select_mensagens = $model_mensagens->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela do select para o join
+            ->from('msgs', array('NR_SEQ_MSG_MESO',
+                'NR_SEQ_TOPICO_MESO',
+                'NR_SEQ_CADASTRO_CASO',
+                'DT_CADASTRO_MESO',
+                'ST_MSG_MESO',
+                'DS_MSG_MESO',
+                'DS_IP_MESO',
+                'NR_CURTIRAM_MESO',
+                'NR_NAOCURTIRAM_MESO',
+                'NR_REPLY_MESO'))
+            //crio o inner join das pessoas
+            ->joinInner('cadastros',
+                'msgs.NR_SEQ_CADASTRO_CASO = cadastros.NR_SEQ_CADASTRO_CASO', array('NR_SEQ_CADASTRO_CASO', 'DS_NOME_CASO', 'DS_EXT_CACH'))
+            ->where("msgs.NR_SEQ_TOPICO_MESO = ?", $idtopico)
+            ->where("NR_REPLY_MESO is NULL")
+            //ordeno pela data de envio
+            ->order("msgs.DT_CADASTRO_MESO DESC")
+            ->group("msgs.NR_SEQ_MSG_MESO");
+
+
+        $lista_comentarios = $model_mensagens->fetchAll($select_mensagens);
+        //crio o objeto de conexao com o banco externo
+        // $db = Zend_Registry::get('db');
+        // //agora vou contar as respostas
+        // foreach ($lista_comentarios as $key => $comentario) {
+
+
+        // 	$select_total_comentarios = "SELECT
+        // 									NR_SEQ_MSG_MESO,
+        // 									DS_NOME_CASO,
+        // 									NR_CURTIRAM_MESO,
+        // 									NR_NAOCURTIRAM_MESO,
+        // 									DS_MSG_MESO,
+        // 									DT_CADASTRO_MESO,
+        // 									COUNT(NR_SEQ_MSG_MESO)
+        // 								AS
+        // 									total_comentarios
+        // 								FROM
+        // 									msgs
+        // 								INNER JOIN
+        // 									cadastros
+        // 								ON
+        // 									cadastros.NR_SEQ_CADASTRO_CASO = msgs.NR_SEQ_CADASTRO_CASO
+        // 								WHERE
+        // 									NR_REPLY_MESO = ". $comentario["NR_SEQ_MSG_MESO"];
+
+        // 	$query_coments = $db->query($select_total_comentarios);
+        // 	//crio uma lista de comentario
+        // 	$total_comentarios_resp = $query_coments->fetchAll();
+
+        // 	if($total_comentarios_resp[0]["total_comentarios"] > 0){
+
+        // 		$lista_comentarios[$key]["idresposta"] = $total_comentarios_resp[0]["NR_SEQ_MSG_MESO"];
+        // 		$lista_comentarios[$key]["nome_resposta"] = $total_comentarios_resp[0]["DS_NOME_CASO"];
+        // 		$lista_comentarios[$key]["curtiram_resposta"] = $total_comentarios_resp[0]["NR_CURTIRAM_MESO"];
+        // 		$lista_comentarios[$key]["nao_curtiram_resposta"] = $total_comentarios_resp[0]["NR_NAOCURTIRAM_MESO"];
+        // 		$lista_comentarios[$key]["resposta"] = $total_comentarios_resp[0]["DS_MSG_MESO"];
+        // 		$lista_comentarios[$key]["data_resposta"] = $total_comentarios_resp[0]["DT_CADASTRO_MESO"];
+        // 		$lista_comentarios[$key]["total_comentarios"] = $total_comentarios_resp[0]["total_comentarios"];
+
+        // 	}else{
+
+        // 		$lista_comentarios[$key]["total_comentarios"] = $total_comentarios_resp[0]["total_comentarios"];
+        // 	}
+        // }
+
+        //assino ao view
+
+        // crio a paginação para proximo e para anterior
+        $contador = new Reverb_Paginator($lista_comentarios);
+
+        //defino a quantidade de itens por pagina
+        $contador->setItemCountPerPage(9)
+            //defino a quantidade de paginas
+            ->setPageRange(5)
+            //recebo o numero da pagina
+            ->setCurrentPageNumber($this->_getParam('page'));
+        //atribuo ovalor a variavel
+        $pages = $contador->getPages();
+        //crio o array de paginas
+        $pageArray = get_object_vars($pages);
+        //assino
+        $this->view->assign('pages', $pageArray);
+
+
+        // crio paginacao com numeros
+        $current_page = $this->_request->getParam("page", 1);
+        //passo para o paginador o select de produtos
+        $contador = new Reverb_Paginator($lista_comentarios);
+        //defino o numero de itens a serem exibidos por página
+        $contador->setItemCountPerPage(9)
+            //pega o numero da pagina
+            ->setCurrentPageNumber($current_page)
+            //defino quantas páginas iram aparecer por vez
+            ->setPageRange(5)
+            //assino a paginacao
+            ->assign();
+        //assino ao view
+
+        $this->view->mensagens = $contador;
+        // $this->view->mensagens = $model_mensagens->fetchAll($select_mensagens);
+
+        //inicio o model de banners
+        $model_banner = new Default_Model_Banners();
+        //crio o dia e hora atual
+        $dia_hora = date("Y-m-d H:i:s");
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_agendado_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 1")
+            ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
+
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_normais_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 0")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
+        //junto os 2 tipos de banners em um só array
+        $banners_topo = array_merge($agendados_topo, $normais_topo);
+
+        //Assino ao view
+        $this->view->banners = $banners_topo;
+
+        //assino ao view o id do usuario logado para poder deletar os comentario
+        $this->view->codigo_usuario = $usuarios->idperfil;
+
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
+
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/default/css/comments.css');
+
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
+
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+
+    }
+
+    /*
+    *
+    */
+    public function curtirAction()
+    {
+        //desabilito o layout
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        //inicio a sessao de mensagem
+        $mensagem = new Zend_Session_Namespace("messages");
+        // Cria a sessão de usuário
+        $usuarios = new Zend_Session_Namespace("usuarios");
+
+        //verifico se o usuário esta logado
+        if ($usuarios->logado == true) {
+            //inicio o model de mensagem
+
+            $idmsg = $this->_request->getparam("idmsg");
+
+            $model_curtiram = new Default_Model_Curtiram();
+
+            $dadosCurtiram = $model_curtiram->fetchRow(array(
+                'NR_SEQ_CADASTRO_CURC = ?' => $usuarios->idperfil,
+                'NR_SEQ_MSG_CURC = ?' => $idmsg
+            ));
+
+            if (!$dadosCurtiram) {
+                $model_mensagens = new Default_Model_Mensagens();
+                //recupero o id da msg
+                //crio a query para receber a quantidade de curtidas
+                $select = $model_mensagens->select()
+                    ->from("msgs", array("NR_SEQ_MSG_MESO",
+                        "NR_CURTIRAM_MESO"))
+                    ->where("NR_SEQ_MSG_MESO = ?", $idmsg);
+                //recebo o resultado da pesquisa
+                $resultado = $model_mensagens->fetchRow($select);
+                //agora cada curtida ganha um ponto
+                $total_curtida = $resultado->NR_CURTIRAM_MESO + 1;
+
+                $data = array("NR_CURTIRAM_MESO" => $total_curtida);
+
+                $model_mensagens->update($data, array("NR_SEQ_MSG_MESO = $idmsg"));
+
+                $data = array();
+                $data['NR_SEQ_CADASTRO_CURC'] = $usuarios->idperfil;
+                $data['NR_SEQ_MSG_CURC'] = $idmsg;
+
+                $model_curtiram->insert($data);
+            }
+
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        } else {
+
+            $mensagem->error = "Você precisa estar logado para curtir um comentário.";
+
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    /*
+    *
+    */
+    public function naocurtirAction()
+    {
+
+        //desabilito o layout
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        //inicio a sessao de mensagem
+        $mensagem = new Zend_Session_Namespace("messages");
+
+        $usuarios = new Zend_Session_Namespace("usuarios");
+
+        //verifico se o usuário esta logado
+        if ($usuarios->logado == true) {
+            //recupero o id da msg
+            $idmsg = $this->_request->getparam("idmsg");
+
+            $model_naocurtiram = new Default_Model_Naocurtiram();
+
+            $dadosCurtiram = $model_naocurtiram->fetchRow(array(
+                'NR_SEQ_CADASTRO_CURC = ?' => $usuarios->idperfil,
+                'NR_SEQ_MSG_CURC' => $idmsg
+            ));
+
+            if (!$dadosCurtiram) {
+                //inicio o model de mensagem
+                $model_mensagens = new Default_Model_Mensagens();
+
+                //crio a query para receber a quantidade de curtidas
+                $select = $model_mensagens->select()
+                    ->from("msgs", array("NR_SEQ_MSG_MESO",
+                        "NR_NAOCURTIRAM_MESO"))
+                    ->where("NR_SEQ_MSG_MESO = ?", $idmsg);
+                //recebo o resultado da pesquisa
+                $resultado = $model_mensagens->fetchRow($select);
+                //agora cada curtida ganha um ponto
+                $total_curtida = $resultado->NR_NAOCURTIRAM_MESO + 1;
+
+                $data = array("NR_NAOCURTIRAM_MESO" => $total_curtida);
+
+                $model_mensagens->update($data, array("NR_SEQ_MSG_MESO = $idmsg"));
+
+                $data = array();
+                $data['NR_SEQ_CADASTRO_CURC'] = $usuarios->idperfil;
+                $data['NR_SEQ_MSG_CURC'] = $idmsg;
+
+                $model_naocurtiram->insert($data);
+            }
+
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        } else {
+
+            $mensagem->error = "Você precisa estar logado para nao curtir um comentário.";
+
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+
+    public function enquetelistaAction()
+    {
+
+        $palavra = $this->_request->getparam("busca");
+
+        //inicio a sessao de usuários
+        $usuarios = new Zend_Session_Namespace("usuarios");
+
+        //inicio o modulo das enquetes
+        $model_enquete = new Default_Model_Enquetes();
+
+
+        //inicio a query da enquete mais nova
+        $select_enquete_nova = $model_enquete->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            ->from('enquetes', array('idenquete',
+                'titulo_enquete',
+                'idautor',
+                'data_inicio',
+                'total_votos' => "(SELECT
+									SUM(quantidade_votos)
+								AS
+									total_votos
+								FROM
+									enquetes_opcoes
+								WHERE
+									enquetes.idenquete = enquetes_opcoes.idenquete)"))
+            ->joinLeft('cadastros',
+                'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO', 'NR_SEQ_CADASTRO_CASO'))
+            ->order("data_inicio DESC")
+            ->limit(1);
+
+        //assino ao view
+        $nova_enquete = $model_enquete->fetchRow($select_enquete_nova);
+        $this->view->nova_enquete = $nova_enquete;
+
+        //inicio a query da enquete mais nova
+        $select_enquete_hot = $model_enquete->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            ->from('enquetes', array('idenquete',
+                'titulo_enquete',
+                'idautor',
+                'data_inicio',
+                'total_votos' => "(SELECT
+									SUM(quantidade_votos)
+								AS
+									total_votos
+								FROM
+									enquetes_opcoes
+								WHERE
+									enquetes.idenquete = enquetes_opcoes.idenquete)"))
+            ->joinInner('cadastros',
+                'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO', 'NR_SEQ_CADASTRO_CASO'))
+            ->order("total_votos DESC")
+            ->limit(2);
+
+        //crio agora a lista das 2 mais votadas no topo
+        $this->view->enquetes_hot = $model_enquete->fetchAll($select_enquete_hot);
+
+        //assino ao view a enquete com ponto vermelho
+        $hot_enquete = $model_enquete->fetchRow($select_enquete_hot);
+        $this->view->hot_enquete = $hot_enquete;
+
+        //recebo o parametro para buscar a enquete
+        $palavra_enquete = $this->_request->getparam("busca_enquete");
+
+        //inicio a query
+        $select_enquete = $model_enquete->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            ->from('enquetes', array('idenquete',
+                'titulo_enquete',
+                'idautor',
+                'data_inicio',
+                'total_votos' => "(SELECT
+										SUM(quantidade_votos)
+									AS
+										total_votos
+									FROM
+										enquetes_opcoes
+									WHERE
+										enquetes.idenquete = enquetes_opcoes.idenquete)"))
+            ->joinInner('cadastros',
+                'cadastros.NR_SEQ_CADASTRO_CASO = enquetes.idautor', array('DS_NOME_CASO', 'NR_SEQ_CADASTRO_CASO'))
+            ->where("idenquete not in (" . $hot_enquete->idenquete . "," . $nova_enquete->idenquete . ")");
+        if ($palavra_enquete != "") {
+            $select_enquete->where("titulo_enquete LIKE '%" . $palavra_enquete . "%'");
+        }
+        $select_enquete->order("data_inicio DESC");
+
+        //assino ao view
+        $this->view->enquetes = $model_enquete->fetchAll($select_enquete);
+
+        //inicio o model de banners
+        $model_banner = new Default_Model_Banners();
+        //crio o dia e hora atual
+        $dia_hora = date("Y-m-d H:i:s");
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_agendado_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 1")
+            ->where("'$dia_hora' BETWEEN DT_INICIO_BARC AND DT_FIM_BARC")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $agendados_topo = $model_banner->fetchAll($select_agendado_topo)->toArray();
+
+        //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
+        $select_normais_topo = $model_banner->select()
+            ->where("NR_SEQ_LOCAL_BARC = 87")
+            ->where("ST_BANNER_BARC = 'A'")
+            ->where("ST_AGENDAMENTO_BARC = 0")
+            ->order("DT_CADASTRO_BARC DESC");
+
+        //armazeno em uma variavel
+        $normais_topo = $model_banner->fetchAll($select_normais_topo)->toArray();
+        //junto os 2 tipos de banners em um só array
+        $banners_topo = array_merge($agendados_topo, $normais_topo);
+
+        //Assino ao view
+        $this->view->banners = $banners_topo;
+
+
+        //agora pego o id do usuário logado
+        $idusuario = $usuarios->idperfil;
+
+        $this->view->idusuario = $idusuario;
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/application/css/default/forum/index.css');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/application/js/default/forum/index.js');
+
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/jquery-timeago/jquery.timeago.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
+    }
+
+    /**
+     * Função responsavel por criar a enquete
+     **/
+
+    public function criarenqueteAction()
+    {
+
+        //desabilito o layout
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        //inicio a sessao de usuários
+        $usuarios = new Zend_Session_Namespace("usuarios");
+        //inicio a sessao de mensagem
+        $mensagem = new Zend_Session_Namespace("messages");
+        //verifico se existe usuário logado com sessao
+        if ($usuarios->logado == TRUE) {
+            //se for um post
+            if ($this->_request->isPost()) {
+                //crio o modulo de enquete
+                $model_enquete = new Default_Model_Enquetes();
+                //recebo os parametros para criar a data de fim
+                $data_form = $this->_request->getparam("dataselecionada");
+
+
+                //explodo data para formatar
+                $data_explode = explode("/", $data_form);
+
+                $dia = $data_explode[0];
+                $mes = $data_explode[1];
+                $ano = $data_explode[2];
+
+                $data_fim = $ano . "-" . $mes . "-" . $dia;
+
+                //crio o array de enquete
+                $data_enquete = array("idautor" => $usuarios->idperfil,
+                    "titulo_enquete" => $this->_request->getparam("assunto"),
+                    "descricao" => $this->_request->getparam("descricao"),
+                    "permite_multipla" => $this->_request->getparam("radiog_dark"),
+                    "data_fim" => $data_fim,
+                    "exibe_resultado" => $this->_request->getparam("resultado"),
+                    "sem_data_fim" => $this->_request->getparam("datadefinalizacao"));
+                //insiro os registros e pego o id
+                $idenquete = $model_enquete->insert($data_enquete);
+
+                //inicio o model de alternativas
+                $model_alternativas = new Default_Model_Enquetesopcoes();
+                //recebo as imagens e as opções
+                $fotos = $_FILES["fotos"];
+
+                // var_dump($fotos);die();
+                $opcoes = $this->_request->getparam("opcoes");
+
+
+                //inicio o array de opcoes
+                $data_opcao = array();
+
+                foreach ($opcoes as $key => $opcao) {
+
+
+                    //passo os parametros
+                    $data_opcao["idenquete"] = $idenquete;
+                    $data_opcao["opcao"] = $opcao;
+
+                    if (($_FILES['fotos']['name'][$key]) != "") {
+                        $filename = md5(time() . rand(1000, 9999)) . ".jpg";
+                        $data_opcao['imagem_path'] = $filename;
+                        // Move o arquivo para o diretório
+                        move_uploaded_file($_FILES['fotos']['tmp_name'][$key], APPLICATION_PATH . "/../arquivos/uploads/enquete/" . $filename);
+                    }
+                    // Insere o registro
+                    try {
+                        $model_alternativas->insert($data_opcao);
+                    } catch (Exception $e) {
+                        die(var_dump($e));
+                    }
+
+                }
+                //mensagem de usuario
+                $mensagem->success = "Enquete criada com sucesso!";
+                //retorno a ultima pagina
+                $this->_redirect($_SERVER['HTTP_REFERER']);
+            }
+
+
+        } else {
+            //mensagem de usuario
+            $mensagem->error = "Você precisa estar logado para criar uma enquete";
+            //retorno a ultima pagina
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        }
+
+    }
+
+    /**
+     * Função responsavel por detalhar a enquete
+     **/
+
+    public function enqueteAction()
+    {
+        //inicio a sessao de de votos
+        $votos = new Zend_Session_Namespace("votou");
+
+        //recebo o codigo da enquete
+        $idenquete = $this->_request->getparam("idenquete");
+
+        //inicio o model de enquete
+        $model_enquete = new Default_Model_Enquetes();
+
+        //crio a query de enquete
+        $select_enquete = $model_enquete->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            ->from('enquetes')
+            ->joinInner('cadastros',
+                'enquetes.idautor = cadastros.NR_SEQ_CADASTRO_CASO', array('NR_SEQ_CADASTRO_CASO',
+                    'DS_NOME_CASO',
+                    'DS_EXT_CACH'))
+            ->where("idenquete = ?", $idenquete);
+        //armazeno as informações da variavel na enquente
+        $enquete = $model_enquete->fetchRow($select_enquete);
+
+        //inicio o model de alternativas
+        $model_alternativas = new Default_Model_Enquetesopcoes();
+
+        //crio a query das alternativas
+
+        $select_alternativas = $model_alternativas->select()
+            ->where("idenquete = ?", $idenquete);
+
+
+        //crio o model de comentarios
+        $model_comentarios = new Default_Model_Enquetecomentarios();
+        //inicio a query de comentarios
+        $select_comentarios = $model_comentarios->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela do select para o join
+            ->from('enquete_comentarios', array("idenquete_comentario",
+                "idenquete",
+                "idusuario",
+                "data_comentario",
+                "comentario",
+                "numero_curtiu",
+                "numero_nao_curtiu",
+                "total_comentarios" => "(SELECT
 																            COUNT(idenquete_comentario) AS total_comentarios
 																        FROM
 																            enquete_comentarios

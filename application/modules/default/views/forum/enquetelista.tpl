@@ -67,7 +67,7 @@
     {/if}
     <div id="content">
         <div class="clear-user-agent-styles">
-            <table class="rvb-table-list-of-posts " id="topics-table">
+            <table class="rvb-table-list-of-posts " id="polls-table">
                 <thead> </thead>
                 <tbody>
                 {foreach from=$enquetes item=enquete}
@@ -93,7 +93,7 @@
             </table>
         </div>
         <div>
-            <button class="show-more" id="show-more-topics" type="button">Clique para carregar mais</button>
+            <button class="show-more" id="show-more-polls" type="button">Clique para carregar mais</button>
             <div class="forum-loder">Carregando</div>
         </div>
     </div>
