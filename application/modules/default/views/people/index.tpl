@@ -50,11 +50,12 @@
                     <span>ADICIONE UMA FOTO +</span>
                 </a>
             </div>
+                <div class="grid-sizer"></div>
+                <div class="gutter-sizer"></div>
             {foreach from=$contadores item=foto}
                 {assign var="foto_me" value="{$foto->NR_SEQ_FOTO_FORC}"}
                 {assign var="extensao" value="{$foto->DS_EXT_FORC}"}
                 {assign var="foto_completa" value="{$foto_me}.{$extensao}"}
-                <div class="grid-sizer"></div>
                 <div class="grid-item">
                     <div class="flip-container">
                         <div class="flipper">

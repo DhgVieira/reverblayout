@@ -1,4 +1,4 @@
-$(function(){
+$(function () {
 
     var $container = $('#grid');
     carregaContainer($container);
@@ -26,8 +26,8 @@ $(function(){
             url: '/people/ajaxpeople/' + page,
             success: function (data) {
                 //$news = $container.html(data);
-                var $newElems = $( data );
-                $container.append($newElems).masonry( 'appended', $newElems, true );
+                var $newElems = $(data);
+                $container.append($newElems).masonry('appended', $newElems, true);
                 carregaContainer($container);
 
             }
@@ -37,12 +37,13 @@ $(function(){
     });
 });
 
-function carregaContainer ($container) {
-    $container.imagesLoaded(function(){
+function carregaContainer($container) {
+    $container.imagesLoaded(function () {
         $container.masonry({
             itemSelector: '.grid-item',
             columnWidth: '.grid-sizer',
-            gutter: 20
+            gutter: '.gutter-sizer',
+            percentPosition: true,
         });
     });
 
