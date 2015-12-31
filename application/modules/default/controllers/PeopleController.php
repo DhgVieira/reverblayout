@@ -101,7 +101,7 @@ class PeopleController extends Zend_Controller_Action {
             ->assign();
         //assino ao view
 
-        $query = $select_fotos->__toString();
+//        $query = $select_fotos->__toString();
 
         $this->view->contadores = $contador;
 
@@ -139,11 +139,12 @@ class PeopleController extends Zend_Controller_Action {
 
         $this->view->headScript()
             ->appendFile(
-                'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js',
-                'text/javascript'
+                'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
             )->appendFile(
                 'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
-                'text/javascript'
+                'text/javascript')
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js'
             )->appendFile(
                 '/arquivos/default/js/people.js', 'text/javascript'
             );
@@ -191,27 +192,12 @@ class PeopleController extends Zend_Controller_Action {
         //ordeno pela data de envio
         $select_fotos->order("me_fotos.NR_SEQ_FOTO_FORC DESC");
 
-        // crio a paginação para proximo e para anterior
-        $paginator = new Reverb_Paginator($select_fotos);
-        //defino a quantidade de itens por pagina
-        $paginator->setItemCountPerPage(20)
-            //defino a quantidade de paginas
-            ->setPageRange(5)
-            //recebo o numero da pagina
-            ->setCurrentPageNumber($this->_getParam('page', 1));
-        //atribuo ovalor a variavel
-        $pages = $paginator->getPages();
-        //crio o array de paginas
-        $pageArray = get_object_vars($pages);
-        //assino
-        $this->view->assign('pages', $pageArray);
-
         // crio paginacao com numeros
         $current_page = $this->_request->getParam("page", 1);
         //passo para o paginador o select de produtos
         $contador = new Reverb_Paginator($select_fotos);
         //defino o numero de itens a serem exibidos por página
-        $contador->setItemCountPerPage(11)
+        $contador->setItemCountPerPage(10)
             //pega o numero da pagina
             ->setCurrentPageNumber($current_page)
             //defino quantas páginas iram aparecer por vez
@@ -219,6 +205,12 @@ class PeopleController extends Zend_Controller_Action {
             //assino a paginacao
             ->assign();
         //assino ao view
+
+//        $query = $select_fotos->__toString();
+//        echo "$query\n";
+
+        //die();
+
         $this->view->contadores = $contador;
     }
 
