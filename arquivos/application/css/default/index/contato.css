@@ -2,10 +2,7 @@
 {
     float: left;
 }
-#form-contato .input-text input ,#form-contato .select-item, .text-box textarea
-{
-    background-color: #000000;
-}
+
 .left-thumb
 {
     margin-bottom: 16px;
@@ -43,8 +40,8 @@
 #form-contato .send-button .btn
 {
     padding: 0 11px;
-    background-color: #000;
-    border: 0px solid #000;
+    /*background-color: #000;*/
+    border: 2px solid #6cccc8;
     font-weight: bold;
     font-size: 12px;
 }
