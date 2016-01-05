@@ -4,7 +4,7 @@
 }
 #form-contato .input-text input ,#form-contato .select-item, .text-box textarea
 {
-    background-color: #000000;
+    background-color: #fff;
 }
 .left-thumb
 {
@@ -43,8 +43,8 @@
 #form-contato .send-button .btn
 {
     padding: 0 11px;
-    background-color: #000;
-    border: 0px solid #000;
+    background-color: #fff;
+    border: 1px solid #62C29E;
     font-weight: bold;
     font-size: 12px;
 }
