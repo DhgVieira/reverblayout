@@ -77,21 +77,9 @@
                             <a>NEW</a>
                         </div>
                         {/if}
-                        <div class="list-product-details">
-                            <h2 class="product-div-op">
-                                {$produto->DS_PRODUTO_PRRC|truncate:15:"...":TRUE}
-                                <span class="preco">
-                                {if $produto->VL_PROMO_PRRC > 0}
-                                    <del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>
-                                    Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}
-                                {else}
-                                    R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}
-                                {/if}
-                                    </span>
-                            </h2>
 
-                        </div>
                         <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
+
                             {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
                                 {*{assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
                                 <!-- Polyfill para imagens responsivas-->
@@ -142,7 +130,20 @@
                             {*{/if}*}
 
                         </a>
+                        <div class="list-product-details">
+                            <h2 class="product-div-op">
+                                {$produto->DS_PRODUTO_PRRC|truncate:15:"...":TRUE}
+                                <span class="preco">
+                                {if $produto->VL_PROMO_PRRC > 0}
+                                    <del>R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</del>
+                                    Por R$ {$produto->VL_PROMO_PRRC|number_format:2:",":"."}
+                                {else}
+                                    R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}
+                                {/if}
+                                    </span>
+                            </h2>
 
+                        </div>
 
                         {*<h2 class="product-name">*}
                             {*{$produto->DS_PRODUTO_PRRC|truncate:19:"...":TRUE}*}
