@@ -30,18 +30,23 @@ $(function () {
             backgroundColor: '#5fbf98',
             url: '/people/ajaxpeople/page/' + page,
             updateContent: false, //this will not update content in #ajax-example-3-1
+
             complete:function(data) {
                 //$news = $container.html(data);
                 var $newElems = $(data);
                 $container.append($newElems).masonry('appended', $newElems, true);
                 carregaContainer($container);
-            }
+            },
+            hideAfter: 1500
         });
-
+        //
         //$.ajax({
         //    url: '/people/ajaxpeople/page/' + page,
         //    success: function (data) {
         //        //$news = $container.html(data);
+        //        setTimeout(function() {
+        //            $('body').attr('backgroundColor', '#5fbf98')
+        //        }, 9000);
         //        var $newElems = $(data);
         //        $container.append($newElems).masonry('appended', $newElems, true);
         //        carregaContainer($container);

@@ -618,6 +618,9 @@
         								<img name="selo-google" alt="Site Autêntico" src="{$basePath}/arquivos/default/images/google-safe-browsing.png" border="0" title="Clique para Validar"/>
         							</a>
         							{*<div id="sustainable_website"></div>*}
+									<div class="address">
+										<span>Rua Ibiporã, 995 Jd. Aurora CEP - 86060-510 Londrina PR CNPJ: 08.345.875/0001-37 | Insc. Est.: 90385677-70</span>
+									</div>
         						</div>
         						<div id="links-footer">
         							<div class="links-nav-footer first">
@@ -661,7 +664,9 @@
         								</ul>
         							</div>
         							<div class="links-social">
+										<p class="title">Siga-nos:</p>
         								<ul class="clearfix">
+
         									<li>
         										<a href="https://www.facebook.com/Reverbcity" title="Abrir a página de Facebook" target="_blank" class="icon facebook ir">Facebook</a>
         									</li>
@@ -685,25 +690,38 @@
         									</li>
         								</ul>
         							</div>
-        							<div class="payments ir" style="margin-top: 7px;">
-        								Aceitamos Cartões Visa, MasterCard, American Express, Dinner e Boleto.
-        							</div>
-        							<div class="footer-newsletter clearfix">
-        								<p class="title">Novidades</p>
-        								<form action="{$this->url([], 'assinanews', TRUE)}" method="POST">
-        									<div class="form-field" >
-        										<input type="email" name="newsletter-email" id="newsletter-email" placeholder="E-MAIL">
-        										<button type="submit" class="btn">Assine</button>
-        									</div>
-        								</form>
-        								<p class="subtitle">Receba notícias, novidades, promoções...</p>
-        								<address class="clearfix">
-        									<span>Rua Ibiporã, 995 Jardim Aurora</span>
-        									<span>CEP:  86060-510 Londrina/PR – F: (43) 3322-8852</span>
-        									<span>CNPJ: 08.345.875/0001-37 | Insc. Est.: 90385677-70</span>
-                                                                                <span>WhatsApp: (43) 9834-4166</span>
-        								</address>
-        							</div>
+									<div class="footer-newsletter clearfix">
+										<p class="title">Newsletter</p>
+										<form action="{$this->url([], 'assinanews', TRUE)}" method="POST">
+											<div class="form-field" >
+												<input type="email" name="newsletter-email" id="newsletter-email" placeholder="E-MAIL">
+												<button type="submit" class="btn">Enviar</button>
+											</div>
+										</form>
+										<p class="subtitle">Receba notícias, novidades, promoções...</p>
+										{*<address class="clearfix">*}
+											{*<span>Rua Ibiporã, 995 Jardim Aurora</span>*}
+											{*<span>CEP:  86060-510 Londrina/PR – F: (43) 3322-8852</span>*}
+											{*<span>CNPJ: 08.345.875/0001-37 | Insc. Est.: 90385677-70</span>*}
+											{*<span>WhatsApp: (43) 9834-4166</span>*}
+										{*</address>*}
+									</div>
+
+        							<div class="payments">
+										<p class="title">Aceitamos:</p>
+										<ul class="clearfix">
+											<li> <a class="visa ir">visa</a></li>
+											<li> <a class="master ir">master</a></li>
+											<li> <a class="icon amex ir">amex</a></li>
+											<li> <a class="icon boleto ir">boleto</a></li>
+										</ul>
+										<span class="subtitle">Fone(43) 3322-8852 e WhatsApp(43) 9834 4166
+										<br>
+										<br>
+										das 8:30 as 17:30 hs de Segunda a Sexta</span>
+									</div>
+
+
         						</div>
         					</div>
         				</div>

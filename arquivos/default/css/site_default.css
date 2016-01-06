@@ -311,7 +311,7 @@ a.text-success:focus,a.text-success:hover
 }
 .logo-footer
 {
-    background-image: url(/arquivos/default/images/sprites/logos.png);
+    background-image: url(/arquivos/default/images/logo_footer.png);
     background-repeat: no-repeat;
 }
 .logo-topo
@@ -534,10 +534,10 @@ header[role=banner]
 {
     float: right;
 }
-.actions-site,.actions-user,.topbar-search
-{
-    float: left;
-}
+/*.actions-site,.actions-user,.topbar-search*/
+/*{*/
+    /*float: left;*/
+/*}*/
 .actions-site
 {
     margin-right: 7px;
@@ -754,7 +754,7 @@ header[role=banner]
 }
 .actions-site .my-cart:focus,.actions-site .my-cart:hover,.actions-site .opened.my-cart
 {
-    background-position: 71px -57px;
+    background-position: 100px -30px;
 }
 .actions-site .my-cart .reverb-count
 {
@@ -1124,8 +1124,8 @@ header[role=banner]
 }
 .logo-footer
 {
-    background-position: 0 -62px;
-    background-size: 64px 126px;
+    /*background-position: 0 -62px;*/
+    /*background-size: 64px 126px;*/
     height: 68px;
     margin-bottom: 15px;
     margin-left: auto;
@@ -1165,6 +1165,15 @@ header[role=banner]
 {
     width: 220px;
 }
+.links-social ul {
+    margin: -4px -31px 6px 65px;
+}
+.links-social .title {
+    float: left;
+    color: #cbcbcb;
+    font-size: 12px;
+    font-weight: bold;
+}
 .links-social ul li
 {
     display: inline-block;
@@ -1185,7 +1194,7 @@ header[role=banner]
 }
 .links-social .icon:focus,.links-social .icon:hover
 {
-    background-color: #cbcbcb;
+    /*background-color: #cbcbcb;*/
 }
 .links-social .icon:active
 {
@@ -1199,7 +1208,7 @@ header[role=banner]
 .links-social .facebook:hover
 {
     /*background: url(../../default/images/icon/facebook_new.png) no-repeat;*/
-    background-position: 8px -27px;
+    /*background-position: 8px -27px;*/
 }
 .links-social .twitter
 {
@@ -1208,7 +1217,7 @@ header[role=banner]
 }
 .links-social .twitter:hover
 {
-    background-position: -27px -27px;
+    /*background-position: -27px -27px;*/
 }
 .links-social .tumblr
 {
@@ -1217,7 +1226,7 @@ header[role=banner]
 }
 .links-social .tumblr:hover
 {''
-    background-position: -60px -27px;
+    /*background-position: -60px -27px;*/
 }
 /*.links-social .flickr*/
 /*{*/
@@ -1242,7 +1251,7 @@ header[role=banner]
 }
 .links-social .instagram:hover
 {
-    background-position: -158px -27px;
+    /*background-position: -158px -27px;*/
 }
 .links-social .pinterest
 {
@@ -1251,13 +1260,64 @@ header[role=banner]
 }
 .links-social .pinterest:hover
 {
-    background-position: -191px -27px;
+    /*background-position: -191px -27px;*/
+}
+.address {
+    margin-top: 52px;
+    width: 500px;
+    clear: both;
+    color: #959595;
 }
 .payments
 {
-    background: url(/arquivos/default/images/sprites/payments.png) no-repeat;
+    margin-top: 50px;
+    width: 220px;
+    /*background: url(/arquivos/default/images/bandeiras/ico_card_visa_footer.png) no-repeat;*/
+    /*height: 28px;*/
+    /*margin-top: 2px;*/
+}
+.payments .title
+{
+    color: #cbcbcb;
+    /*text-transform: uppercase;*/
+    font-size: 12px;
+    font-weight: bold;
+    float: left;
+}
+.payments .subtitle {
+    clear: both;
+    color: #959595;
+    margin-top: 40px;
+}
+.payments ul {
+    list-style: none;
+    padding: 0;
+    /*margin: 0;*/
+    margin: -7px -36px 6px 76px;
+}
+.payments ul li {
+    display: inline-block;
+    width: 40px;
+}
+.payments .visa {
     height: 28px;
     margin-top: 2px;
+    background: url(../../default/images/bandeiras/ico_card_visa_footer.png) no-repeat;
+}
+.payments .master {
+    height: 28px;
+    margin-top: 2px;
+    background: url(/arquivos/default/images/bandeiras/ico_card_master_footer.png) no-repeat;
+}
+.payments .amex {
+    height: 28px;
+    margin-top: 2px;
+    background: url(/arquivos/default/images/bandeiras/ico_card_amex_footer.png) no-repeat;
+}
+.payments .boleto {
+    height: 28px;
+    margin-top: 2px;
+    background: url(/arquivos/default/images/bandeiras/ico_card_boleto_footer.png) no-repeat;
 }
 .form-field
 {
@@ -1275,12 +1335,12 @@ header[role=banner]
     line-height: 24px;
     margin: 0 5px 0 0;
     padding: 0 5px;
-    width: 165px;
+    width: 160px;
 }
 .form-field button
 {
-    background-color: #666;
-    border: 1px solid #fff;
+    background-color: #5fbf98;
+    border: 0;
     border-radius: 4px;
     color: #fff;
     cursor: pointer;
@@ -1290,11 +1350,12 @@ header[role=banner]
     height: 23px;
     line-height: 23px;
     padding: 0 4px;
+    width: 55px;
     text-transform: uppercase;
 }
 .footer-newsletter
 {
-    margin-top: 15px;
+    margin-top: 25px;
     width: 220px;
 }
 .footer-newsletter p
@@ -1304,12 +1365,15 @@ header[role=banner]
 .footer-newsletter .title
 {
     color: #cbcbcb;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
+    font-size: 12px;
+    font-weight: bold;
 }
 .footer-newsletter .subtitle
 {
     clear: both;
     color: #959595;
+    margin-top: 40px;
 }
 .footer-newsletter address
 {
