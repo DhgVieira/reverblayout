@@ -28,6 +28,171 @@
 
 <div class="clearfix"></div>
 
+<div class="rvb-me-top">
+    <div class="rvb-me-details user-image">
+        {assign var="foto" value="{$perfil->NR_SEQ_CADASTRO_CASO}"}
+        {assign var="extensao" value="{$perfil->DS_EXT_CACH}"}
+        {assign var="foto_completa" value="{$foto}.{$extensao}"}
+        {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+            <img class="profile" src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>130,'altura'=>139,'imagem'=>$foto_completa],'imagem', TRUE)}" width="130" height="139" alt="Avatar do ReverbMe de {$perfil->DS_NOME_CASO}">
+        {else}
+            <img class="profile" src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>130,'altura'=>139,'imagem'=>'not_found_bkp.jpg'],'imagem', TRUE)}" width="130" height="139" alt="Avatar Padrão Rerverbcity">
+        {/if}
+    </div>
+    <div class="rvb-me-user left">
+        <p class="name">
+            {$_nome_usuario}
+        </p>
+        <p class="local"><i class="fa fa-map-marker hover"></i>{$perfil->DS_CIDADE_CASO}, {$perfil->DS_UF_CASO}</p>
+        <ul class="my-social-networks">
+            {if $perfil->DS_TWITTER_CACH neq ""}
+
+                <li class="social-network-item">
+                    <a href="{$perfil->DS_TWITTER_CACH}" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+                </li>
+            {/if}
+            {if $perfil->DS_FACEBOOK_CACH neq ""}
+                <li class="social-network-item">
+                    <a href="{$perfil->DS_FACEBOOK_CACH}" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+                </li>
+            {/if}
+            <li class="social-network-item">
+                <a href="{$perfil->DS_INSTAGRAM_CASO}" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
+            </li>
+            <li class="social-network-item">
+                <a href="#" target="_blank"><i class="fa fa-pinterest fa-2x"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="rvb-me-user-controls">
+        <ul class="rbv-me-control">
+            <li>
+                <a><i class="fa fa-cog fa-2x"></i></a>
+                <ul class="hide">
+                    <li><a href="#" class="btn-detail md-trigger modal-info" data-modal="lightbox-alterar-dados">Editar Perfil</a></li>
+                    <li>
+                        <div class="rvb-my-orders">
+                            <span>Minhas compras:</span> <a href="#" class="btn-detail">Consultar</a>
+                            <div class="reverb-flyout">
+                                <div class="flyout-header"></div>
+                                <div class="flyout-container">
+                                    <p class="flyout-title">
+                                        Minhas compras:
+                                    </p>
+                                    <ul class="flyout-list">
+                                        {foreach from=$cestas item=cesta}
+                                            {assign var="foto" value="{$cesta->NR_SEQ_PRODUTO_PRRC}"}
+                                            {assign var="extensao" value="{$cesta->DS_EXT_PRRC}"}
+                                            {assign var="foto_completa" value="{$foto}.{$extensao}"}
+                                            <li class="flyout-item">
+
+                                                <img src="{$this->Url(['tipo'=>"produtos", 'crop'=>1,'largura'=>38,'altura'=>34,'imagem'=>$foto_completa],'imagem', TRUE)}" alt="{$cesta->DS_PRODUTO_PRRC}" class="thumb"> <span class="order-product-name">{$cesta->DS_PRODUTO_PRRC}</span> <span class="order-date">{$cesta->DT_INCLUSAO_CESO|date_format:"%d/%m/%Y"}</span>
+                                            </li>
+                                        {/foreach}
+
+                                    </ul><a href="{$this->url([], "minhascompras", TRUE)}" class="flyout-button see-more">Ver mais</a>
+                                </div>
+                            <div class="flyout-footer"></div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="rvb-me-friends">
+    <h2>Amigos ( {$total_amigos} )</h2>
+    <div class="rvb-content-item friends">
+        <ul class="rvb-list rvb-list-of-friends" id="friends-list">
+            {foreach from=$amigos item="amigo"}
+                {assign var="foto" value="{$amigo['NR_SEQ_AMIGO_FRRC']}"}
+                {assign var="extensao" value="{$amigo['DS_EXT_CACH']}"}
+                {assign var="foto_completa" value="{$foto}.{$extensao}"}
+                <div class="grid-item">
+                    <li class="flip-container">
+                        <div class="flipper">
+                            <div class="front">
+                                <div id="home-front2">
+                                    {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+                                        <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126,'imagem'=>$foto_completa],'imagem', TRUE)}">
+                                    {else}
+                                        <img src="{$basePath}/arquivos/default/images/sem_foto.jpg" alt="{$amigo['DS_NOME_CASO']}" title="{$amigo['DS_NOME_CASO']}"/>
+                                    {/if}
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div id="home-back2">
+                                    {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+                                        <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126, 'imagem'=>$foto_completa], "imagem", TRUE)}"/>
+                                    {else}
+                                        <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}"/>
+                                    {/if}
+                                    <div class="image_over">
+                                        <div class="image_hover_text">
+                                            <a href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}" title="Open" rel="nofollow"></a>
+                                            <i class="fa fa-play fa-2x"></i> <br />{$amigo['DS_NOME_CASO']}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+            {/foreach}
+        </ul>
+        <div id="friends-pagination" data-lastpage="{$paginas_amigos}" data-size="8">
+            <ul class="pagination">
+                {if $paginas_amigos <= 1}
+
+                {elseif $paginas_amigos > 8}
+
+                    <li>
+                        <a href="#" class="prev disabled">◀</a>
+                    </li>
+                    {for $i=1; $i <= 5; $i++}
+                        {if $i == 1}
+                            <li>
+                                <a href="#" data-page="{$i}" class="page current">{$i}</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="#" data-page="{$i}" class="page">{$i}</a>
+                            </li>
+                        {/if}
+                    {/for}
+                    <li>
+                        <a class="prev">...</a>
+                    </li>
+                    <li>
+                        <a href="#" data-page="{$paginas_amigos}" class="page">{$paginas_amigos}</a>
+                    </li>
+                    <li>
+                        <a href="#" class="next">▶</a>
+                    </li>
+                {elseif $paginas_amigos <= 9}
+
+                    {for $i=1; $i <= $paginas_amigos; $i++}
+
+                        {if $i == 1}
+                            <li>
+                                <a href="#" data-page="{$i}" class="page current">{$i}</a>
+                            </li>
+                        {else}
+                            <li>
+                                <a href="#" data-page="{$i}" class="page">{$i}</a>
+                            </li>
+                        {/if}
+
+                    {/for}
+
+                {/if}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="rvb-column left">
     <div class="rvb-header-item">

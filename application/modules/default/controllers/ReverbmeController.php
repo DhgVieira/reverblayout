@@ -933,8 +933,10 @@ class ReverbmeController extends Zend_Controller_Action {
 	        //crio o total de amigos
 	        $total_amigos = count($lista_count);
 
+			$this->view->total_amigos = $total_amigos;
+
 	        //crio a quantidade de paginas
-	        $this->view->paginas_amigos = ceil($total_amigos / 8);
+	        $this->view->paginas_amigos = ceil($total_amigos / 16);
 
 			/*-----------------------
 			*
@@ -1764,6 +1766,8 @@ class ReverbmeController extends Zend_Controller_Action {
 	        $lista_count = $query_count->fetchAll();
 	        //crio o total de amigos
 	        $total_amigos = count($lista_count);
+
+			$this->view->total_amigos = $total_amigos;
 
 	        //crio a quantidade de paginas
 	        $this->view->paginas_amigos = ceil($total_amigos / 8);
