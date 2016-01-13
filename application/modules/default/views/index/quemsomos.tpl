@@ -161,7 +161,7 @@
             <div class="flip-container">
                 <div class="flipper">
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/caio.png" alt="Foto de Alexandre - Diretor de Arte da Reverbcity">
+                        <img src="{$basePath}/arquivos/default/images/quem-somos/rose.png" alt="Foto de Rose - Administrativo da Reverbcity">
                     </div>
                     <div class="back">
                         <h2 class="who"><a href="{$basePath}/perfil/rosilene-cardoso/26087" target="blank">ANNAI</a></h2>

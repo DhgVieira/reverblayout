@@ -151,8 +151,106 @@ class ReverbcycleController extends Zend_Controller_Action {
 
 		//assino a categoria ao view
 		$this->view->idcategoria = $idcategoria;
+//		$this->view->headLink()->appendStylesheet('/arquivos/default/css/reverbcycle.css');
+		$this->view->headScript()
+			->appendFile(
+				'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
+			)->appendFile(
+				'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
+				'text/javascript')
+			->appendFile(
+				'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js'
+			)->appendFile(
+				'/arquivos/default/js/cycle.js', 'text/javascript'
+			);
 	}
 
+	public function ajaxcycleAction(){
+		$this->_helper->layout()->disableLayout();
+		//inicio o model de categorias do cycle
+		$model_categoria = new Default_Model_Reverbcyclecategorias();
+		//crio a query
+		$select_categoria = $model_categoria->select()
+			//ordeno pela descrição
+			->order("DS_CATEGORIA_RVRC ASC");
+		//assino ao view
+		$this->view->categorias = $model_categoria->fetchAll($select_categoria);
+
+
+		//iniciei o model de cycle
+		$model_cycle = new Default_Model_Reverbcycle();
+		//crio a query
+		$select_cycle = $model_cycle->select()
+			//digo que nao existe integridade entre as tabelas
+			->setIntegrityCheck(false)
+			//escolho a tabela do select para o join
+			->from('reverbcycle', array("NR_SEQ_REVERBCYCLE_RCRC",
+				"DS_OBJETO_RCRC",
+				"NR_SEQ_CADASTRO_RCRC",
+				"NR_SEQ_CATEGREV_RCRC",
+				"DS_EXT_RCRC",
+				"DT_CADASTRO_RCRC",
+				"NR_VIEWS_RCRC",
+				"ST_CYCLE_RCRC",
+				"ST_CLIENTE_RCRC",
+				//crio uma subquery para contar o numero de comentarios
+				"total_comentarios" => "(SELECT
+															COUNT(NR_SEQ_COMENTARIO_CRRC)
+																AS total_comentatios
+															FROM
+															    reverbcycle_coments
+															WHERE
+															    NR_SEQ_REVERBCYCLE_RCRC = NR_SEQ_REVERBCYCLE_CRRC)"))
+			//crio o inner join das pessoas
+			->joinLeft('cadastros',
+				'cadastros.NR_SEQ_CADASTRO_CASO = reverbcycle.NR_SEQ_CADASTRO_RCRC',array('DS_NOME_CASO',
+					'NR_SEQ_CADASTRO_CASO'))
+			->where('ST_CYCLE_RCRC = "A"');
+
+		//recebo a categoria
+		$idcategoria = $this->_request->getParam("idcategoria",0);
+		//se existir categoria faz a busca
+		if ($idcategoria > 0) {
+			//faz busca por categoria
+			$select_cycle->where("NR_SEQ_CATEGREV_RCRC = $idcategoria");
+		}
+
+		//ordeno pela data de envio
+		$select_cycle->order("reverbcycle.NR_SEQ_REVERBCYCLE_RCRC DESC");
+
+
+		// crio a paginação para proximo e para anterior
+		$paginator = new Reverb_Paginator($select_cycle);
+		//defino a quantidade de itens por pagina
+		$paginator->setItemCountPerPage(11)
+			//defino a quantidade de paginas
+			->setPageRange(5)
+			//recebo o numero da pagina
+			->setCurrentPageNumber($this->_getParam('page', 1));
+		//atribuo ovalor a variavel
+		$pages = $paginator->getPages();
+		//crio o array de paginas
+		$pageArray = get_object_vars($pages);
+		//assino
+		$this->view->assign('pages', $pageArray);
+
+		// crio paginacao com numeros
+		$current_page = $this->_request->getParam("page", 1);
+		//passo para o paginador o select de produtos
+		$contador = new Reverb_Paginator($select_cycle);
+		//defino o numero de itens a serem exibidos por página
+		$contador->setItemCountPerPage(11)
+			//pega o numero da pagina
+			->setCurrentPageNumber($current_page)
+			//defino quantas páginas iram aparecer por vez
+			->setPageRange(5)
+			//assino a paginacao
+			->assign();
+		//assino ao view
+		$this->view->contadores = $contador;
+
+
+	}
 	/**
 	* funcao responsavel por detalhar o cycle escolhido
 	*/
