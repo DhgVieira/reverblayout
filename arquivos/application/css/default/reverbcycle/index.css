@@ -1,3 +1,10 @@
+#container {
+    width: 940px;
+    margin: 0 auto;
+}
+div#main-content {
+    padding: 0px 20px;
+}
 #reverbcycle
 {
     float: left;
@@ -856,88 +863,6 @@ a.thumbnail:focus,a.thumbnail:hover
 {
     color: #fff;
 }
-@media screen and (max-width:979px)
-{
-    .redes,.share-buttons,.span12.float-left-cycle.texto-ppl
-    {
-        display: none!important;
-    }
-    .thumbnails>li
-    {
-        float: left;
-        margin: 0 9px 20px;
-    }
-    .wrap-select-category
-    {
-        margin-right: 13px;
-    }
-    .cycle-top
-    {
-        margin-top: -35px;
-    }
-    .thumbnails
-    {
-        margin-top: 10px;
-    }
-}
-@media screen and (max-width:767px)
-{
-    #inserir-objeto .md-content
-    {
-        width: 470px;
-    }
-    #inserir-objeto label
-    {
-        height: 22px;
-        margin-bottom: 0;
-        width: 100%;
-    }
-    #inserir-objeto #categoria-select,#inserir-objeto .input-text,#inserir-objeto .tagsinput,#inserir-objeto textarea
-    {
-        margin-bottom: 5px;
-        width: 100%!important;
-    }
-    .wrap-select-category
-    {
-        margin-right: 9px;
-    }
-}
-@media screen and (max-width:479px)
-{
-    .rvb-title
-    {
-        text-align: center;
-        width: 100%;
-    }
-    .thumbnails>li
-    {
-        float: left;
-        margin: 0 40px 20px;
-    }
-    .wrap-select-category
-    {
-        margin-right: 40px;
-    }
-    .cycle-top
-    {
-        margin-top: 5px;
-    }
-    #inserir-objeto .md-content
-    {
-        width: 310px;
-    }
-    #inserir-objeto .bg-image
-    {
-        margin-right: 3px;
-    }
-}
-@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5)
-{
-    .deal-c
-    {
-        background: url(../../../../default/images/selos-produto@2x/tag-dealclosed-big.png) 0 0/95px 93px no-repeat;
-    }
-}
 
 .grid-item .md-trigger {
     background: #5fbf98;
@@ -1121,4 +1046,115 @@ a.thumbnail:focus,a.thumbnail:hover
 }
 .text_bold {
     font-weight: bold;
+}
+
+@media screen and (max-width:979px)
+{
+    .grid-item,  .grid-sizer { width: 32%; }
+
+    .gutter-sizer {
+        width: 1.33333%;
+    }
+    .redes,.share-buttons,.span12.float-left-cycle.texto-ppl
+    {
+        display: none!important;
+    }
+    .thumbnails>li
+    {
+        float: left;
+        margin: 0 9px 20px;
+    }
+    .wrap-select-category
+    {
+        margin-right: 13px;
+    }
+    .cycle-top
+    {
+        margin-top: -35px;
+    }
+    .thumbnails
+    {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .grid-item,  .grid-sizer { width: 32%; }
+
+    .gutter-sizer {
+        width: 1.33333%;
+    }
+}
+
+@media (max-width: 650px) {
+    .grid-item, .grid-sizer { width: 100%; }
+
+    .gutter-sizer {
+        width: 0;
+    }
+}
+@media screen and (max-width:767px)
+{
+    .grid-item, .grid-sizer {
+        width: 100%;
+    }
+
+    .gutter-sizer {
+        width: 0%;
+    }
+    #inserir-objeto .md-content
+    {
+        width: 470px;
+    }
+    #inserir-objeto label
+    {
+        height: 22px;
+        margin-bottom: 0;
+        width: 100%;
+    }
+    #inserir-objeto #categoria-select,#inserir-objeto .input-text,#inserir-objeto .tagsinput,#inserir-objeto textarea
+    {
+        margin-bottom: 5px;
+        width: 100%!important;
+    }
+    .wrap-select-category
+    {
+        margin-right: 9px;
+    }
+}
+@media screen and (max-width:479px)
+{
+    .rvb-title
+    {
+        text-align: center;
+        width: 100%;
+    }
+    .thumbnails>li
+    {
+        float: left;
+        margin: 0 40px 20px;
+    }
+    .wrap-select-category
+    {
+        margin-right: 40px;
+    }
+    .cycle-top
+    {
+        margin-top: 5px;
+    }
+    #inserir-objeto .md-content
+    {
+        width: 310px;
+    }
+    #inserir-objeto .bg-image
+    {
+        margin-right: 3px;
+    }
+}
+@media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:3/2),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5)
+{
+    .deal-c
+    {
+        background: url(../../../../default/images/selos-produto@2x/tag-dealclosed-big.png) 0 0/95px 93px no-repeat;
+    }
 }

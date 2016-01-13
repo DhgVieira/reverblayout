@@ -63,7 +63,7 @@ data-cycle-pause-on-hover="true">
 										{if file_exists("arquivos/uploads/reverbcycle/$foto_completa")}
 											<img src="{$this->Url(['tipo'=>"reverbcycle", 'crop'=>1, 'imagem'=>$foto_completa], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}" />
 										{else}
-											<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>170, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}" width="220" height="170" />
+											<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}" />
 										{/if}
 									</a>
 								</div>
@@ -74,7 +74,7 @@ data-cycle-pause-on-hover="true">
 									{if file_exists("arquivos/uploads/reverbcycle/$foto_completa")}
 										<img src="{$this->Url(['tipo'=>"reverbcycle", 'crop'=>1, 'imagem'=>$foto_completa], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}" />
 									{else}
-										<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>220, 'altura'=>170, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}" width="220" height="170" />
+										<img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}" alt="{$cycle['DS_OBJETO_RCRC']}"/>
 									{/if}
 									<div class="image_over">
 										<div class="image_hover_text">
