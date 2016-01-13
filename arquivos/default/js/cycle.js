@@ -1,12 +1,11 @@
-$( document ).ready(function() {
-
+$(function () {
     var $container = $('#grid');
     carregaContainer($container);
-
     var page = 2;
     $('#more').click(function () {
         $('#newaddress-lightbox').attr('style', '');
         $('#newaddress-lightbox').removeClass('md-show');
+        console.log('rea');
 
         $('body').oLoader({
             image: '/arquivos/default/images/loader.gif',
@@ -22,22 +21,7 @@ $( document ).ready(function() {
             },
             hideAfter: 1500
         });
-        //
-        //$.ajax({
-        //    url: '/people/ajaxpeople/page/' + page,
-        //    success: function (data) {
-        //        //$news = $container.html(data);
-        //        setTimeout(function() {
-        //            $('body').attr('backgroundColor', '#5fbf98')
-        //        }, 9000);
-        //        var $newElems = $(data);
-        //        $container.append($newElems).masonry('appended', $newElems, true);
-        //        carregaContainer($container);
-        //
-        //    }
-        //});
         page++;
-
     });
 });
 

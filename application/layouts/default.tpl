@@ -712,8 +712,8 @@
 										<ul class="clearfix">
 											<li> <a class="visa ir">visa</a></li>
 											<li> <a class="master ir">master</a></li>
-											<li> <a class="icon amex ir">amex</a></li>
-											<li> <a class="icon boleto ir">boleto</a></li>
+											<li> <a class="amex ir">amex</a></li>
+											<li> <a class="boleto ir">boleto</a></li>
 										</ul>
 										<span class="subtitle">Fone(43) 3322-8852 e WhatsApp(43) 9834 4166
 										<br>

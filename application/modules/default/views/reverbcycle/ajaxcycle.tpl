@@ -41,7 +41,7 @@
                                                 {$cycle['DS_OBJETO_RCRC']}
                                             </a>
                                             <br/>
-                                            <a href="{$this->url(["titulo"=>{$this->createslug($cycle['DS_OBJETO_RCRC'])}, "idcycle"=>{$cycle['NR_SEQ_REVERBCYCLE_RCRC']}], 'cycledetalhe', TRUE)}" class="title">
+                                            <a href="{$this->url(["titulo"=>{$this->createslug($cycle['DS_OBJETO_RCRC'])}, "idcycle"=>{$cycle['NR_SEQ_REVERBCYCLE_RCRC']}], 'cycledetalhe', TRUE)}" class="title text_bold">
                                                 Eu quero!
                                             </a>
 

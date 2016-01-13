@@ -1,13 +1,3 @@
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id))
-			return;
-		js = d.createElement(s);
-		js.id = id;
-		js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
 <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 
 <div class="banners-advertisement cycle-slideshow"
@@ -44,7 +34,6 @@ data-cycle-pause-on-hover="true">
 	</div>
 	<div class="row">
 		<div id="grid">
-
 			<div class="grid-item">
 				<a href="#" class="md-trigger" data-modal="inserir-objeto">
 					<span>ADICIONE ALGO BACANA +</span>
@@ -53,11 +42,10 @@ data-cycle-pause-on-hover="true">
 			<div class="grid-sizer"></div>
 			<div class="gutter-sizer"></div>
 			{foreach from=$contadores item=cycle}
-
-				<br>
-				<br>
-				<br>
-				<br>
+				{*<br>*}
+				{*<br>*}
+				{*<br>*}
+				{*<br>*}
 				{assign var="foto" value="{$cycle['NR_SEQ_REVERBCYCLE_RCRC']}"}
 				{assign var="extensao" value="{$cycle['DS_EXT_RCRC']}"}
 				{assign var="foto_completa" value="{$foto}.{$extensao}"}
@@ -94,11 +82,9 @@ data-cycle-pause-on-hover="true">
 											{$cycle['DS_OBJETO_RCRC']}
 											</a>
 											<br/>
-											<a href="{$this->url(["titulo"=>{$this->createslug($cycle['DS_OBJETO_RCRC'])}, "idcycle"=>{$cycle['NR_SEQ_REVERBCYCLE_RCRC']}], 'cycledetalhe', TRUE)}" class="title">
+											<a href="{$this->url(["titulo"=>{$this->createslug($cycle['DS_OBJETO_RCRC'])}, "idcycle"=>{$cycle['NR_SEQ_REVERBCYCLE_RCRC']}], 'cycledetalhe', TRUE)}" class="title text_bold">
 												Eu quero!
 											</a>
-
-
 										</div>
 									</div>
 								</div>
@@ -112,7 +98,7 @@ data-cycle-pause-on-hover="true">
 	<div class="row">
 		<div id="more-nav">
 			{*<a href="/people/?page={$page + 1}">*}
-			<button id="more">CARREGAR MAIS</>
+			<button id="more">CARREGAR MAIS</button>
 			{*</a>*}
 		</div>
 	</div>
@@ -190,8 +176,6 @@ data-cycle-pause-on-hover="true">
 		{*</ul>*}
 	{*</div>*}
 </section>
-
-</div>
 
 <div class="md-modal md-effect-1" id="inserir-objeto">
 
