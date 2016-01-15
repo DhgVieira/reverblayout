@@ -4973,7 +4973,20 @@ class LojaController extends Zend_Controller_Action {
         $lista_tipo = $query_tipo->fetchAll();
         //assino os amigos ao view
         $this->view->tipos = $lista_tipo;
+        $this->view->headLink()->appendStylesheet('/arquivos/default/css/aviseme.css');
 
+
+        $this->view->headScript()
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js', 'text/javascript'
+            )->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery-infinitescroll/2.1.0/jquery.infinitescroll.min.js',
+                'text/javascript')
+            ->appendFile(
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js'
+            )->appendFile(
+                '/arquivos/default/js/aviseme.js', 'text/javascript'
+            );
         //inicio o model de banners
         $model_banner = new Default_Model_Banners();
         //crio a query com os banners que pertencem somente a esta pagina e ativos e depois ordeno por data de cadastro
@@ -4983,6 +4996,148 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+    }
+    /**
+     *
+     */
+    public function ajaxavisemeAction() {
+        $this->_helper->layout()->disableLayout();
+        $model_produtos = new Default_Model_Produtos();
+        //crio a query de produtos
+        $select_produtos = $model_produtos->select()
+            //digo que nao existe integridade entre as tabelas
+            ->setIntegrityCheck(false)
+            //escolho a tabela base
+            ->from("aviseme", array("NR_SEQ_AVISEME_AVRC",
+                "NR_SEQ_PRODUTO_AVRC",
+                "COUNT(NR_SEQ_PRODUTO_AVRC) as total_produtos"
+            ))
+            //escolho a tabela do select para o join
+            ->joinInner('produtos', "aviseme.NR_SEQ_PRODUTO_AVRC = produtos.NR_SEQ_PRODUTO_PRRC", array('NR_SEQ_PRODUTO_PRRC',
+                'VL_PRODUTO_PRRC',
+                'DS_PRODUTO_PRRC',
+                'DS_EXT_PRRC',
+                'TP_DESTAQUE_PRRC',
+                'DS_FRETEGRATIS_PRRC',
+                'NR_SEQ_CATEGORIA_PRRC',
+                'NR_SEQ_TIPO_PRRC',
+                'VL_PROMO_PRRC'))
+            //->joinInner("estoque", "produtos.NR_SEQ_PRODUTO_PRRC = estoque.NR_SEQ_PRODUTO_ESRC", array("NR_QTDE_ESRC"))
+            //->joinLeft("tamanhos", "tamanhos.NR_SEQ_TAMANHO_TARC = estoque.NR_SEQ_TAMANHO_ESRC", array("NR_SEQ_TAMANHO_TARC"))
+            //nao e classic
+            ->where("DS_CLASSIC_PRRC = 'S'")
+            // //produto e ativo
+            // ->where("ST_PRODUTOS_PRRC = 'A'")
+            // //quantidade em estoque positiva
+            //->where("NR_QTDE_ESRC = 0")
+            // //onde e tipo de destaque = 3 (novidades)
+            // ->where("TP_DESTAQUE_PRRC = 1")
+            //removo os buttons
+            ->where("NR_SEQ_TIPO_PRRC = 6")
+            ->where("ST_JACOMPROU_AVRC = 'N'")
+            ->where('NR_SEQ_PRODUTO_AVRC NOT IN(2030, 2025)')
+            ->where("NR_SEQ_TIPO_PRRC not in (4,24,139,140,65,59)");
+        //agora coloco as condições da url, dependendo dos parametros
+        if ($categoria != "") {
+            $select_produtos->where("NR_SEQ_CATEGORIA_PRRC = " . $categoria);
+            //assino ao view a categoria
+            $this->view->cat_url = $categoria;
+        }
+        //se existir palavra a ser buscada
+        if ($palavra != "") {
+            $select_produtos->where("DS_PRODUTO_PRRC LIKE '%" . $palavra . "%'");
+            //assino ao view a palavra
+            $this->view->palavra_busca = $palavra;
+        }
+        //se for masculino
+        if ($genero == "masculino") {
+            $select_produtos->where("DS_GENERO_PRRC = 'M'");
+            //assino ao view o genero
+            $this->view->genero = $genero;
+        }
+        //se for feminino
+        if ($genero == "feminino") {
+            $select_produtos->where("DS_GENERO_PRRC = 'F'");
+            //assino ao view o genero
+            $this->view->genero = $genero;
+        }
+        //se tiver um tipo de produto selecionado
+        if ($tipo != "") {
+            $select_produtos->where("NR_SEQ_TIPO_PRRC = " . $tipo);
+            //assino ao view a categoria
+            $this->view->tipo_url = $tipo;
+        }
+        //se tiver uma cor selecionada
+        if ($cor != "") {
+            $select_produtos->where("DS_CORES_PRRC = " . $cor);
+            //assino ao view a categoria
+            $this->view->cor_url = $cor;
+        }
+        //se o tamanho do produto for p
+        if ($tamanho == "p") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 2 or NR_SEQ_TAMANHO_TARC = 7");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        }
+        //se o tamanho do produto for m
+        if ($tamanho == "m") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 3 or NR_SEQ_TAMANHO_TARC = 8");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        }
+        //se o tamanho do produto for g
+        if ($tamanho == "g") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 4 or NR_SEQ_TAMANHO_TARC = 9");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        }
+        //se o tamanho do produto for gg
+        if ($tamanho == "gg") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 5 or NR_SEQ_TAMANHO_TARC = 10");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        }
+        //se o tamanho do produto for xgg
+        if ($tamanho == "xgg") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        }
+
+        //agrupo por codigo do produto
+        $select_produtos->group("NR_SEQ_PRODUTO_PRRC")
+            //ordeno pela ordem de ordenacao de produtos
+            ->order('total_produtos DESC');
+
+        // crio a paginação para proximo e para anterior
+        $paginator = new Reverb_Paginator($select_produtos);
+        //defino a quantidade de itens por pagina
+        $paginator->setItemCountPerPage(20)
+            //defino a quantidade de paginas
+            ->setPageRange(5)
+            //recebo o numero da pagina
+            ->setCurrentPageNumber($this->_getParam('page', 1));
+        //atribuo ovalor a variavel
+        $pages = $paginator->getPages();
+        //crio o array de paginas
+        $pageArray = get_object_vars($pages);
+        //assino
+        $this->view->assign('pages', $pageArray);
+
+        // crio paginacao com numeros
+        $current_page = $this->_request->getParam("page", 1);
+        //passo para o paginador o select de produtos
+        $contador = new Reverb_Paginator($select_produtos);
+        //defino o numero de itens a serem exibidos por página
+        $contador->setItemCountPerPage(20)
+            //pega o numero da pagina
+            ->setCurrentPageNumber($current_page)
+            //defino quantas páginas iram aparecer por vez
+            ->setPageRange(5)
+            //assino a paginacao
+            ->assign();
+        //assino ao view
+        $this->view->contadores = $contador;
     }
 
     /**
