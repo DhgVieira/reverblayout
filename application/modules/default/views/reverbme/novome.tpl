@@ -109,7 +109,6 @@
                 {assign var="foto" value="{$amigo['NR_SEQ_AMIGO_FRRC']}"}
                 {assign var="extensao" value="{$amigo['DS_EXT_CACH']}"}
                 {assign var="foto_completa" value="{$foto}.{$extensao}"}
-                {*<div class="grid-item">*}
                     <li class="grid-item" data-url="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}">
                         <div class="flip-container">
                             <div class="flipper">
@@ -142,7 +141,6 @@
                             </div>
                         </div>
                     </li>
-                {*</div>*}
             {/foreach}
         </ul>
         <div class="row">

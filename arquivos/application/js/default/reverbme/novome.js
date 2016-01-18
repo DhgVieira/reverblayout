@@ -1286,12 +1286,14 @@ reverb.friendsPaginator = function() {
                         thumb = document.basePath + "/arquivos/default/images/sem_foto.jpg";
                     }
 
-                    html += "<li>";
-                    html += '<a href="' + link + '" class="profile-thumb">';
-                    html += '<img src="' + thumb + '">';
-                    html += "</a>";
-                    html += "</li>";
-
+                    html += '<li class="grid-item" data-url="' + link + '">';
+                        html += '<div class="flip-container"><div class="flipper"><div class="front"><div id="home-front2">';
+                        html += '<img src="' + thumb + '" width="117" height="126" >';
+                        html += '</div></div><div class="back"><div id="home-back2">';
+                        html += '<img src="' + thumb + '" width="117" height="126" >';
+                        html += '<div class="image_over"><div class="image_hover_text"><i class="fa fa-play fa-2x"></i> <br />';
+                        html += nome + '</div></div></div></div></div></div>';
+                    html += '</li>';
                 });
                 $container.append(html);
             },
