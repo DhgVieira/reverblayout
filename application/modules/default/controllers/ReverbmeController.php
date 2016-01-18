@@ -936,7 +936,7 @@ class ReverbmeController extends Zend_Controller_Action {
 			$this->view->total_amigos = $total_amigos;
 
 	        //crio a quantidade de paginas
-	        $this->view->paginas_amigos = ceil($total_amigos / 16);
+	        $this->view->paginas_amigos = ceil($total_amigos / 8);
 
 			/*-----------------------
 			*
@@ -961,7 +961,7 @@ class ReverbmeController extends Zend_Controller_Action {
             }
             $select_amigos .= " GROUP BY NR_SEQ_CADASTRO_CASO
                                 ORDER BY DT_ACESSO_CASO DESC
-                                LIMIT 8";
+                                LIMIT 16";
 
 	        // Monta a query
 	        $query = $db->query($select_amigos);
@@ -1266,8 +1266,18 @@ class ReverbmeController extends Zend_Controller_Action {
 
             $this->view->cestas = $model_cesta->fetchAll($select_cesta);
 
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
-            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
+
+			$this->view->headScript()
+				->appendFile(
+					$this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js',
+					'text/javascript'
+				)->appendFile(
+					$this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js',
+					'text/javascript'
+				)->appendFile(
+					'https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js'
+				);
+
 
 		}else{
 			//se nao existir eu redireciono para a página de cadastro

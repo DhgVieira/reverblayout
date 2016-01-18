@@ -195,7 +195,7 @@ class JsonController extends Zend_Controller_Action {
     public function listaamigosAction() {
         $info   = (bool) $this->_request->getParam("info", false);
         $start  = (int)  $this->_request->getParam("start", 0);
-        $size   = (int)  $this->_request->getParam("size", 8);
+        $size   = (int)  $this->_request->getParam("size", 16);
         $filter = $this->_request->getParam("filter", "");
 
         //inicio a sessao do usuario

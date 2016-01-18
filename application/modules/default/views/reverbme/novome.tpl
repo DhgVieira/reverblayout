@@ -104,48 +104,59 @@
 <div class="rvb-me-friends">
     <h2>Amigos ( {$total_amigos} )</h2>
     <div class="rvb-content-item friends">
-        <ul class="rvb-list rvb-list-of-friends" id="friends-list">
+        <ul class="rvb-list rvb-list-of-friends grid" id="grid-friends-list">
             {foreach from=$amigos item="amigo"}
                 {assign var="foto" value="{$amigo['NR_SEQ_AMIGO_FRRC']}"}
                 {assign var="extensao" value="{$amigo['DS_EXT_CACH']}"}
                 {assign var="foto_completa" value="{$foto}.{$extensao}"}
-                <div class="grid-item">
-                    <li class="flip-container">
-                        <div class="flipper">
-                            <div class="front">
-                                <div id="home-front2">
-                                    {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
-                                        <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126,'imagem'=>$foto_completa],'imagem', TRUE)}">
-                                    {else}
-                                        <img src="{$basePath}/arquivos/default/images/sem_foto.jpg" alt="{$amigo['DS_NOME_CASO']}" title="{$amigo['DS_NOME_CASO']}"/>
-                                    {/if}
+                {*<div class="grid-item">*}
+                    <li class="grid-item" data-url="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <div id="home-front2">
+                                        {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+                                            <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126,'imagem'=>$foto_completa],'imagem', TRUE)}">
+                                        {else}
+                                            <img src="{$basePath}/arquivos/default/images/sem_foto.jpg" width="117" height="126" alt="{$amigo['DS_NOME_CASO']}" title="{$amigo['DS_NOME_CASO']}"/>
+                                        {/if}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="back">
-                                <div id="home-back2">
-                                    {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
-                                        <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126, 'imagem'=>$foto_completa], "imagem", TRUE)}"/>
-                                    {else}
-                                        <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'imagem'=>'not_found.jpg'], "imagem", TRUE)}"/>
-                                    {/if}
-                                    <div class="image_over">
-                                        <div class="image_hover_text">
-                                            <a href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}" title="Open" rel="nofollow"></a>
-                                            <i class="fa fa-play fa-2x"></i> <br />{$amigo['DS_NOME_CASO']}
+                                <div class="back">
+                                    <div id="home-back2">
+                                        {if file_exists("arquivos/uploads/reverbme/$foto_completa")}
+                                            <img src="{$this->Url(['tipo'=>"reverbme", 'crop'=>1,'largura'=>117,'altura'=>126, 'imagem'=>$foto_completa], "imagem", TRUE)}"/>
+                                        {else}
+                                            <img src="{$basePath}/arquivos/default/images/sem_foto.jpg" width="117" height="126" alt="{$amigo['DS_NOME_CASO']}" title="{$amigo['DS_NOME_CASO']}"/>
+                                        {/if}
+                                        <div class="image_over">
+                                            <div class="image_hover_text">
+                                                {*<a href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}" title="Visualizar perfil de {$amigo->NR_SEQ_AMIGO_FRRC}" class="profile-link">*}
+                                                    {*<a href="{$this->url(["nome"=>{$this->createslug($amigo['DS_NOME_CASO'])}, "idperfil"=>{$amigo['NR_SEQ_AMIGO_FRRC']}], "perfil", TRUE)}" title="Open" rel="nofollow"></a>*}
+                                                    <i class="fa fa-play fa-2x"></i> <br />{$amigo['DS_NOME_CASO']}
+                                                {*</a>*}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                </div>
+                {*</div>*}
             {/foreach}
         </ul>
-        <div id="friends-pagination" data-lastpage="{$paginas_amigos}" data-size="8">
-            <ul class="pagination">
+        <div class="row">
+            <div id="more-nav">
+                {*<a href="/people/?page={$page + 1}">*}
+                <button id="more-friends" data-page="0" data-size="16">CARREGAR MAIS</>
+                {*</a>*}
+            </div>
+        </div>
+        <div id="friends-pagination" data-lastpage="{$paginas_amigos}" data-size="16">
+            <ul class="pagination" id="page-nav">
                 {if $paginas_amigos <= 1}
 
-                {elseif $paginas_amigos > 8}
+                {elseif $paginas_amigos > 16}
 
                     <li>
                         <a href="#" class="prev disabled">◀</a>
@@ -170,7 +181,7 @@
                     <li>
                         <a href="#" class="next">▶</a>
                     </li>
-                {elseif $paginas_amigos <= 9}
+                {elseif $paginas_amigos <= 17}
 
                     {for $i=1; $i <= $paginas_amigos; $i++}
 

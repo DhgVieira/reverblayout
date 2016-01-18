@@ -1244,6 +1244,62 @@ reverb.formCadastro = function() {
         }
     })
 };
+reverb.detailsUser = function() {
+    $('.flip-container').click(function() {
+        var url = $(this).data('url');
+        window.open(url);
+    });
+};
+
+reverb.friendsPaginator = function() {
+
+    var $container = $('#grid-friends-list');
+
+    $('#more-friends').click(function () {
+
+        var page = $(this).data('page');
+        var size = $(this).data('size');
+
+        var novaPagina = size + page;
+
+        $('body').oLoader({
+            image: '/arquivos/default/images/loader.gif',
+            backgroundColor: '#5fbf98',
+            url: '/json/listaamigos/start/' + novaPagina,
+            updateContent: false, //this will not update content in #ajax-example-3-1
+
+            complete: function (data) {
+                console.log('nova pagina: ' + novaPagina);
+                $('#more-friends').data('page', novaPagina);
+                $('#more-friends').attr( "data-page", novaPagina);
+
+                var html = "";
+
+                $.each(data, function(index) {
+
+                    var nome = data[index].DS_NOME_CASO;
+                    var cod = data[index].NR_SEQ_CADASTRO_CASO;
+                    var link = document.basePath + "/perfil/" + nome.replace(/[^A-Za-z0-9]/, "") + "/" + cod;
+                    var image = data[index].NR_SEQ_CADASTRO_CASO + "." + data[index].DS_EXT_CACH;
+                    var thumb = document.basePath + "/thumb/reverbme/1/103/90/" + image;
+                    if (!reverb.UrlExists(thumb)) {
+                        thumb = document.basePath + "/arquivos/default/images/sem_foto.jpg";
+                    }
+
+                    html += "<li>";
+                    html += '<a href="' + link + '" class="profile-thumb">';
+                    html += '<img src="' + thumb + '">';
+                    html += "</a>";
+                    html += "</li>";
+
+                });
+                $container.append(html);
+            },
+            hideAfter: 1500
+        });
+    });
+};
+
 $(function() {
     reverb.alterarDados();
     reverb.details();
@@ -1255,5 +1311,7 @@ $(function() {
     reverb.paginationWishlist();
     reverb.paginationCycle();
     reverb.paginationSwipe();
-    reverb.formCadastro()
+    reverb.formCadastro();
+    reverb.detailsUser();
+    reverb.friendsPaginator();
 })

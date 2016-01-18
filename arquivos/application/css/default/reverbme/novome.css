@@ -1755,6 +1755,8 @@ Flip Thumb
     background-position: -57px -82px;
 }
 .image_hover_text {
+    color: #fff;
+    font-size: 9px;
     opacity: 1;
     margin-top: 30%;
     margin-bottom: 100%;
@@ -1843,6 +1845,7 @@ Flip Thumb
     top: 0;
     left: 0;
     overflow: hidden;
+    height: 126px;
 }
 /* front pane, placed above back */
 .front {
