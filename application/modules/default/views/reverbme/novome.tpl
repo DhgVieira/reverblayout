@@ -28,6 +28,8 @@
 
 <div class="clearfix"></div>
 
+{* Topo *}
+
 <div class="rvb-me-top">
     <div class="rvb-me-details user-image">
         {assign var="foto" value="{$perfil->NR_SEQ_CADASTRO_CASO}"}
@@ -100,7 +102,7 @@
         </ul>
     </div>
 </div>
-
+ {* Amigos *}
 <div class="rvb-me-friends">
     <h2>Amigos ( {$total_amigos} )</h2>
     <div class="rvb-content-item friends">
@@ -201,7 +203,9 @@
     </div>
 </div>
 
+{* Mensagens *}
 
+{include file="../modules/default/views/reverbme/messages.tpl"}
 
 <div class="rvb-column left">
     <div class="rvb-header-item">

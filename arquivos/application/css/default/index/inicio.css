@@ -16,3 +16,8 @@ section.products .rvb-column.left
     top: 50%;
     width: 0;
 }
+
+#main-content
+{
+    padding: 0 10px !important;
+}

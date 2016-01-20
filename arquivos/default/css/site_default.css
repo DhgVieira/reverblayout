@@ -1161,6 +1161,16 @@ header[role=banner]
     font-size: 11px;
     margin-bottom: 15px;
 }
+.links-social li {
+    color: #706f6f;
+    margin: 4px 5px 0 0;
+}
+.links-social i {
+    color:#706f6f;
+}
+.links-social i:hover {
+    color: #c4c3c3;
+}
 .links-social,.payments
 {
     width: 220px;
@@ -1177,7 +1187,10 @@ header[role=banner]
 .links-social ul li
 {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 21px;
+}
+.links-social ul li:first-child {
+margin-left: 21px;
 }
 .links-social .last
 {
@@ -1514,11 +1527,12 @@ input.error:focus+label.error,input.error:hover+label.error,select.error:focus+l
     display: table;
     font-size: 11px;
     padding-bottom: 20px;
+    padding: 0 20px;
 }
 .selo-google
 {
     display: block;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .selo-google img
 {

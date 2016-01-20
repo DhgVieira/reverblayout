@@ -372,6 +372,7 @@ a.me-remove.post-remove {
     color: #888
 }
 
+
 .search-friend {
     position: absolute;
     top: 3px;
@@ -1873,4 +1874,92 @@ Flip Thumb
 .texto-ppl {
     width: 50%;
     color: #949494;
+}
+
+
+/*
+    Comments
+*/
+.message-box {
+    font-family: 'verdana';
+    font-size: 15px;
+    padding: 15px;
+    color: #c9c9c9;
+    border: solid 1px #c9c9c9;
+}
+.comment-person img {
+    display: block;
+    margin: 0 25px 4px 0;
+    max-width: 50px;
+}
+.rvb-comment {
+    background: none;
+    box-sizing: initial;
+    padding: 0;
+}
+.send-button .btn {
+    background-color: #5fbf98;
+    border: 1px solid #44a980;
+    color: #fff;
+    height: 30px;
+    padding: 0 65px;
+}
+.list-of-comments .comment-item{
+    border: none!important;
+    padding: 15px 0px 0px 10px;
+}
+.hide {
+    display: none;
+}
+.btn-vermais {
+    display: block;
+    float: none;
+    margin: 20px 0;
+    text-align: center;
+    position: initial;
+}
+.send-button .btn:focus, .send-button .btn:hover {
+    border: 1px solid #fff;
+    color: #fff;
+}
+.comments-item {
+    width: 50%;
+    float: left;
+    min-height: 123px;
+}
+.about-this-post {
+    padding: 0;
+}
+.comment-person {
+    width: 20%;
+}
+.comment-detail {
+    color: #414042;
+    padding: 0;
+    width: 77%;
+    font-size: 13px;
+    font-family: verdana;
+    min-height: 76px;
+}
+.comment-detail p {
+    min-height: 100px;
+}
+.comment-border {
+    width: 310px;
+    border-bottom: 3px solid #f0f0f0;
+    float: left;
+    height: 15px;
+    margin-right: 9px;
+}
+.comment-dots {
+    color: #5fbf98;
+    font-size: 46px;
+    font-family: 'calibre';
+    text-align: right;
+    line-height: 0px;
+    float: left;
+}
+.comment-rodape {
+    width: 77%;
+    float: right;
 }
