@@ -518,9 +518,21 @@
                         </div>
                     </div>
                 </form>
+
+                <div class="trustedcompany-widget" style="margin-top: 15px;">
+                    <iframe id="trustedcompany-widget" width="100%" height="114" frameborder="0" scrolling="no"></iframe>
+                    <a href="http://trustedcompany.com/br/reverbcity.com-opiniões" target="_blank" title="Avaliações da Reverbcity"></a>
+                    <script>
+                        (function(){
+                            document.getElementById('trustedcompany-widget').src='//trustedcompany.com/embed/widget/v2?domain=reverbcity.com&type=d&review=1&text=a';
+                        })();
+                    </script>
+                </div>
+
             </div>
 
             <!-- End Description -->
+
         </section>
     </div>
 
@@ -876,18 +888,6 @@
         </div>
 
     </div>
-
-
-    <div class="trustedcompany-widget" style="text-align: center;">
-        <iframe id="trustedcompany-widget" width="700" height="114" frameborder="0" scrolling="no"></iframe>
-        <a href="http://trustedcompany.com/br/reverbcity.com-opiniões" target="_blank" title="Avaliações da Reverbcity"></a>
-        <script>
-            (function(){
-                document.getElementById('trustedcompany-widget').src='//trustedcompany.com/embed/widget/v2?domain=reverbcity.com&type=d&review=1&text=a';
-            })();
-        </script>
-    </div>
-
 
     <div class="rvb-comment">
         <form action="{$this->url(["idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], "comentarproduto", TRUE)}" method="post">
