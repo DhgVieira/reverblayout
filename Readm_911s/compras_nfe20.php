@@ -400,16 +400,16 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'PR'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '',
-            'pICMSUFDest' => '19.00',
-            'pICMSInter' => '12.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
+//        'PR'=> array(
+//            'vBCUFDest' => '',
+//            'pFCPUFDest' => '',
+//            'pICMSUFDest' => '19.00',
+//            'pICMSInter' => '12.00',
+//            'pICMSInterPart' => '40',
+//            'vFCPUFDest' => 0,
+//            'vICMSUFDest' => 0,
+//            'vICMSUFRemet' => 0
+//        ),
     );
     
     try{
