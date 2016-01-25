@@ -422,8 +422,6 @@ foreach ($compras as $idc) {
             $ncmprod = $dadoscesta["DS_NCM_PRRC"];
             
             if ($ncmprod) $NCM = $ncmprod;
-
-            $descontoum = 0;
             
             fwrite($handle,"H|$x|".strtoupper(RemoveAcentos($dadoscesta["DS_CATEGORIA_PTRC"]))."\r\n");
             if (!$val_desc){
