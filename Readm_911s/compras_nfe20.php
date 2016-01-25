@@ -373,7 +373,7 @@ foreach ($compras as $idc) {
         'MG'=> array(
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
+            'pICMSUFDest' => '18.00',
             'pICMSInter' => '12.00',
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
@@ -390,7 +390,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'SP'=> array(
+        'RJ'=> array(
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '19.00',
