@@ -64,7 +64,7 @@ function carregaContainer($container) {
             itemSelector: '.grid-item',
             columnWidth: '.grid-sizer',
             gutter: '.gutter-sizer',
-            percentPosition: true,
+            percentPosition: true
         });
     });
 
