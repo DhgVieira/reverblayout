@@ -203,7 +203,7 @@
 
                 <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}" class="product-photo">
                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-                        {assign var="foto_completa" value="{$this->createslug($produto['DS_PRODUTO_PRRC'])}-{$foto_produto}.{$extensao_produto}"}
+                        {*{assign var="foto_completa" value="{$this->createslug($produto['DS_PRODUTO_PRRC'])}-{$foto_produto}.{$extensao_produto}"}*}
                         <!-- Polyfill para imagens responsivas-->
                         <span data-picture data-alt="{$produto['DS_PRODUTO_PRRC']}" data-title="{$produto['DS_PRODUTO_PRRC']}">
                             {if $_isMobile neq 1}

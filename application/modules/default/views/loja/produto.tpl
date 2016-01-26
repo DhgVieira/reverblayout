@@ -92,7 +92,7 @@
                                 {assign var="foto_completa_produto" value="{$foto_produto}.{$extensao_produto}"}
                                 <li class="prod-thumbnails-items">
                                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa_produto")}
-                                        {assign var="foto_completa_produto" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
+                                        {*{assign var="foto_completa_produto" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
                                         <a href="#" data-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>443, 'altura'=>494, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" title="{$produto->DS_PRODUTO_PRRC}" >
                                             <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>60, 'altura'=>70, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}"/>
                                         </a>
