@@ -390,7 +390,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'SP'=> array(
+        'RJ'=> array(
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '19.00',
@@ -398,7 +398,8 @@ foreach ($compras as $idc) {
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
+            'vICMSUFRemet' => 0,
+            'inscEstadual' => 816014030110
         ),
 //        'PR'=> array(
 //            'vBCUFDest' => '',
@@ -475,9 +476,9 @@ foreach ($compras as $idc) {
                 $vlrIcmDest = (40 / 100) * $vlrDeducao;
                 $vlrFCP = ($pFCPUFDest / 100) * $vlProduto;
 
-                $vlrIcmRemetente = number_format($vlrIcmRemetente,2,".","");
-                $vlrIcmDest = number_format($vlrIcmDest,2,".","");
-                $vlrFCP = number_format($vlrFCP,2,".","");
+                $vlrIcmRemetente    = (empty($vlrIcmRemetente))? '0.00' : number_format($vlrIcmRemetente,2,".","");
+                $vlrIcmDest         = (empty($vlrIcmDest))? '0.00' : number_format($vlrIcmDest,2,".","");
+                $vlrFCP             = (empty($vlrFCP))? '0.00' : number_format($vlrFCP,2,".","");
 
                 fwrite($handle,"NA|" . $vlProduto . "|" . $pFCPUFDest . "|" . $pICMSUFDest . "|" . $pICMSInter . "|" . $pICMSInterPart . "|" . $vlrFCP . "|" . $vlrIcmDest . "|" . $vlrIcmRemetente . "\r\n");
 
