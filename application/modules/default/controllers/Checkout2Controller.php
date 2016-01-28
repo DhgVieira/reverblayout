@@ -5582,24 +5582,24 @@ class Checkout2Controller extends Zend_Controller_Action {
                 }
 
 //                //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-                if ($resultado_busca['uf'] == "SP" and $valor_total >= 59) {
+//                if ($resultado_busca['uf'] == "SP" and $valor_total >= 59) {
 //
 //                    //verifico s tem preco cheio
-                    if ($tem_camiseta_cheia == 1) {
+//                    if ($tem_camiseta_cheia == 1) {
 //
 //                        //agora verifico se tem brinde
-                        if ($tem_brinde == 0) {
+//                        if ($tem_brinde == 0) {
 //                            //atribuo o valor do frete como gratis cep valido e valor para frete zerado
-                            $valor_total_frete = 0;
+//                            $valor_total_frete = 0;
 //
-                            $valor_para_frete_gratis = 0;
+//                            $valor_para_frete_gratis = 0;
 //
-                            $sessao_frete->frete_gratis = 1;
+//                            $sessao_frete->frete_gratis = 1;
 //
-                            $retorno["lugar"] = 8.1;
-                        }
-		}                
-		}
+//                            $retorno["lugar"] = 8.1;
+//                        }
+//		}                
+//		}
             }
 
             /**

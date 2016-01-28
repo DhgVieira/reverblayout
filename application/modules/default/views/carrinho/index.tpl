@@ -466,7 +466,7 @@
         <h2 class="rvb-title pagamento-title">Pagamento</h2>
         <div id="mycart-payment-container">
             <ul id="mycart-payment-list">
-                <li class="mycart-payment-item">
+                <li class="mycart-payment-item boleto">
                     <label class="mycart-payment-radio">
                         <input type="radio" name="formapagto" value="boleto" />
                         <span class="radio-icon"></span>

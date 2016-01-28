@@ -89,6 +89,10 @@ class CarrinhoController extends Zend_Controller_Action {
             //recebo o cupon de desconto ou vale presente
             $cupom = $this->_request->getParam("cupom");
 
+            $paymentSelected = $this->_request->getParam("paymentSelected");
+            $selecPayment = $this->_request->getParam("selecPayment");
+
+
             $sessao_frete->cupom = $cupom;
             //recebo a chave para desativar o vale presente
             $desativa = $this->_request->getParam("desativa");
@@ -123,6 +127,8 @@ class CarrinhoController extends Zend_Controller_Action {
             $tem_produto_cheio = 0;
 
             $credito_proxima_compra = 0;
+
+            $sem_promo_recur = 0;
 
             $sessao_promo->niver = 0;
             $sessao_promo->primeira = 0;
@@ -253,6 +259,9 @@ class CarrinhoController extends Zend_Controller_Action {
                 $sem_promo = false;
                 if ($data_carrinho[$key]['vl_promo'] == 0 and $data_carrinho[$key]['valor'] >= 59) {
                     $sem_promo = true;
+                    //aqui somamos a quantidade de produtos com valor cheio estao fora da promocao
+                    $sem_promo_recur++;
+                    ($item['quantidade']>= 2)? $sem_promo_recur++ : '';
                 }
 
                 // Promo caneca ou poster grátis da compra de uma estilos musicais
@@ -603,6 +612,36 @@ class CarrinhoController extends Zend_Controller_Action {
 //                            }
 //                    }
 //                }
+
+                if(!empty($paymentSelected)) {
+                    if($paymentSelected == 'boleto') {
+                        if(!empty($sem_promo_recur) && $sem_promo_recur >= 2) {
+                            //agora vejo se e camiseta
+                            //var_dump($data_carrinho[$key]);die();
+                            if($data_carrinho[$key]["destaque"] == 2){
+                                //atribuo a mensagem para o carrinho
+                                $msg_promo = "Na compra de 2(duas) camisetas(59,00), ganhe uma camiseta grátis com a Tag Sale!";
+                                //agora assino a mensagem a promo
+                                $sessao_promo->msg = $msg_promo;
+
+                                $this->view->promo_sale = 1;
+
+                                //agora vejo se e camiseta
+                                if($item["tipo"] == 6 and $ja_tem_brinde == 0){
+                                    //defino os valores como 0
+                                    $vlr_desconto = $data_carrinho[$key]['vl_promo'];
+                                    $data_carrinho[$key]['vl_promo'] = 0;
+                                    $data_carrinho[$key]['valor'] = 0;
+                                    //falo que ele ja ganhou um brinde
+                                    $ja_tem_brinde = 1;
+                                    //agora atribuo como verdadeiro a sessao sale
+                                    $sessao_promo->sale = 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
                 //-----------//
                 //Ganha sale //
                 //-----------//
@@ -928,6 +967,32 @@ class CarrinhoController extends Zend_Controller_Action {
 
             if ($this->_request->isPost()) {
 
+                //se existir promo boleto
+                if(!empty($paymentSelected)) {
+                    $sessao_frete->valor_desconto = $vlr_desconto;
+                    //se for json
+                    if ($this->_request->getParam('json')) {
+                        //crio um array com mensagem do json
+                        $data_json = array('valor_desconto' => $vlr_desconto,
+                            'erro' => false,
+                            'msg_erro' => $sessao_promo->msg);
+                        //assino o json
+                        $this->_helper->json($data_json);
+                    }
+                }
+
+
+                if(empty($paymentSelected) && !empty($selecPayment)) {
+                    $sessao_frete->valor_desconto = 0;
+
+                    //crio um array com mensagem do json
+                    $data_json = array('valor_desconto' => $sessao_frete->valor_desconto,
+                        'erro' => false,
+                        'msg_erro' => $sessao_promo->msg);
+                    //assino o json
+                    $this->_helper->json($data_json);
+                }
+
                 // se existir um cupom informado
                 if ($cupom != "") {
                     $sessao_frete->valor = $this->view->frete;
@@ -1075,14 +1140,16 @@ class CarrinhoController extends Zend_Controller_Action {
                         }
                     }
                 } else {
-                    if ($this->_request->getParam('json')) {
-                        //crio um array com mensagem do json
-                        $data_json = array('valor_desconto' => 0,
-                            'erro' => true,
-                            'msg_erro' => 'Por favor insira um cupom / vale presente válido');
-                        //assino o json
-                        $this->_helper->json($data_json);
-                    }
+                    //if(empty($this->_request->getParam('selecPayment'))) {
+                        if ($this->_request->getParam('json')) {
+                            //crio um array com mensagem do json
+                            $data_json = array('valor_desconto' => 0,
+                                'erro' => true,
+                                'msg_erro' => 'Por favor insira um cupom / vale presente válido');
+                            //assino o json
+                            $this->_helper->json($data_json);
+                        }
+                    //}
                     //mensagem de retorno para o usuario
                     $messages->error = "Por favor insira um cupom / vale presente válido.";
                     // Redireciona para a última página
