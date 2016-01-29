@@ -224,6 +224,8 @@ class Checkout2Controller extends Zend_Controller_Action {
 //            }
 //        }
 
+
+
         if ($usuarios->cadastro_completo == 0) {
             //mensagem de retorno para o usuario
             $messages->error = "Você precisa completar seu cadastro para continuar a sua compra.";

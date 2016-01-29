@@ -397,6 +397,7 @@ class CheckoutController extends Zend_Controller_Action {
      * função responsavel por remover o produto do carrinho
      */
     public function removercarrinhoAction() {
+
         // Desabilita os layouts
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender(TRUE);
@@ -406,16 +407,15 @@ class CheckoutController extends Zend_Controller_Action {
         // Cria a sessão das mensagens
         $messages = new Zend_Session_Namespace("messages");
 
-
         $idestoque = $this->_request->getParam("idestoque", 0);
         $idproduto = $this->_request->getParam("idproduto", 0);
 
         // unset($carrinho->produtos[$idproduto]);
         if ($this->_request->isPost()) {
             if ($idproduto > 0) {
-                unset($carrinho->produtos[$idproduto]);
+                $this->deleteProdCarrinhoBy($carrinho, $idproduto, 'idproduto');
             } else {
-                unset($carrinho->produtos[$idestoque]);
+                $this->deleteProdCarrinhoBy($carrinho, $idestoque, 'idestoque');
             }
 
             //crio um array com mensagem do json
@@ -425,15 +425,23 @@ class CheckoutController extends Zend_Controller_Action {
             $this->_helper->json($data_json);
         } else {
             if ($idproduto > 0) {
-                unset($carrinho->produtos[$idproduto]);
+                $this->deleteProdCarrinhoBy($carrinho, $idproduto, 'idproduto');
             } else {
-                unset($carrinho->produtos[$idestoque]);
+                $this->deleteProdCarrinhoBy($carrinho, $idestoque, 'idestoque');
             }
 
             $messages->success = "O Produto foi removido com sucesso do seu carrinho!";
 
             //redireciono para a última página visitada
             $this->_redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    private function deleteProdCarrinhoBy($carrinho, $id, $type) {
+        foreach($carrinho->produtos as $key => $produto){
+            if($produto[$type] == $id) {
+                unset($carrinho->produtos[$key]);
+            }
         }
     }
 

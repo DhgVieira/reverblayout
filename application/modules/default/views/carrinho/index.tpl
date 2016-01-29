@@ -16,7 +16,7 @@
     </div>*}
 
     <div class="mycart-buttons clearfix">
-        <a href="{$this->url([], "todos-produtos", TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
+        <a href="{$this->url([], $this->btn_comprar_mais, TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
         <a href="#" class="mycart-button carrinho avancar">Avançar</a>
     </div>
 
@@ -241,7 +241,7 @@
     <div class="clearfix"></div>
 
     <div class="mycart-buttons clearfix">
-        <a href="{$this->url([], "todos-produtos", TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
+        <a href="{$this->url([], $this->btn_comprar_mais, TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
         <a href="#" class="mycart-button carrinho avancar">Avançar</a>
     </div>
 </div>

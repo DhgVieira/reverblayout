@@ -516,8 +516,8 @@ $(document).ready(function(){
                 }
             })
         }
-    })
-
+    });
+    carregaFretes(1);
     $('.mycart-payment-item input').on('change', function () {
         setTimeout(function () {
             $("#msg-box").remove();
@@ -544,10 +544,13 @@ $(document).ready(function(){
             },
             success: function (e) {
                 var r = e.valor_desconto, a = e.erro, o = e.msg_erro;
-                a ? reverb.alertMessage("error", o) : (carrinho.desconto = r, $("#mycart-discount-button").text("DESATIVAR"), $("#cupomcode").prop("disabled", !0), reverb.alertMessage("success", e.msg_erro))
+                a ? reverb.alertMessage("error", o) : (carrinho.desconto = r, reverb.alertMessage("success", o));
             },
             complete: function () {
-                r()
+                r();
+                setTimeout(function () {
+                    $("#msg-box").remove();
+                }, 2000);
             }
         });
     });

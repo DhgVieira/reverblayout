@@ -29,6 +29,8 @@ class CarrinhoController extends Zend_Controller_Action {
         $sessao_promo = new Zend_Session_Namespace("promocoes");
 
         $campanhas = new Zend_Session_Namespace("campanhas");
+
+        $sessionPromoBoleto = new Zend_Session_Namespace("promoBoleto");
         //pego a url da campanha
         $endereco = $_SERVER ['REQUEST_URI'];
         //pego o id da campanha
@@ -43,12 +45,19 @@ class CarrinhoController extends Zend_Controller_Action {
             $campanhas->idcampanha = $parametro[1];
         }
 
-        // foreach ($carrinho->produtos as $key => $produto) {
-        // 	$valor[$key]  = $produto['valor'];
-        // }
-        // array_multisort($valor, SORT_DESC, $carrinho->produtos);
-        // usort($carrinho->produtos, create_function('$a, $b',
-//  			'if ($a["valor"] == $b["valor"]) return 0; return ($a["valor"] < $b["valor"]) ? -1 : 1;'));
+//         foreach ($carrinho->produtos as $key => $produto) {
+//         	$vl_promo[$key]  = $produto['vl_promo'];
+//         }
+//         array_multisort($vl_promo, SORT_DESC, $carrinho->produtos);
+//         usort($carrinho->produtos, create_function('$a, $b',
+//  			'if ($a["vl_promo"] == $b["vl_promo"]) return 0; return ($a["vl_promo"] < $b["vl_promo"]) ? -1 : 1;'));
+
+
+        foreach ($carrinho->produtos as $key => $row) {
+            $vl_promo[$key] = $row['vl_promo'];
+        }
+
+        array_multisort($vl_promo, SORT_ASC, $carrinho->produtos);
 
 
         $sessao_promo->niver = 0;
@@ -183,6 +192,7 @@ class CarrinhoController extends Zend_Controller_Action {
 //                return $b['total_produto'] - $a['total_produto'];
 //            });
 
+
             foreach ($carrinho->produtos as $key => $item) {
                 //crio a query dos produtos do carrinho
                 $select_produto = $model_produto->select()
@@ -261,6 +271,7 @@ class CarrinhoController extends Zend_Controller_Action {
                     $sem_promo = true;
                     //aqui somamos a quantidade de produtos com valor cheio estao fora da promocao
                     $sem_promo_recur++;
+
                     ($item['quantidade']>= 2)? $sem_promo_recur++ : '';
                 }
 
@@ -614,28 +625,29 @@ class CarrinhoController extends Zend_Controller_Action {
 //                }
 
                 if(!empty($paymentSelected)) {
-                    if($paymentSelected == 'boleto') {
-                        if(!empty($sem_promo_recur) && $sem_promo_recur >= 2) {
-                            //agora vejo se e camiseta
-                            //var_dump($data_carrinho[$key]);die();
-                            if($data_carrinho[$key]["destaque"] == 2){
-                                //atribuo a mensagem para o carrinho
-                                $msg_promo = "Na compra de 2(duas) camisetas(59,00), ganhe uma camiseta grátis com a Tag Sale!";
-                                //agora assino a mensagem a promo
-                                $sessao_promo->msg = $msg_promo;
-
-                                $this->view->promo_sale = 1;
-
+                    if(!empty($data_carrinho[$key]['vl_promo'])) {
+                        if($paymentSelected == 'boleto') {
+                            if(!empty($sem_promo_recur) && $sem_promo_recur >= 2) {
                                 //agora vejo se e camiseta
-                                if($item["tipo"] == 6 and $ja_tem_brinde == 0){
-                                    //defino os valores como 0
-                                    $vlr_desconto = $data_carrinho[$key]['vl_promo'];
-                                    $data_carrinho[$key]['vl_promo'] = 0;
-                                    $data_carrinho[$key]['valor'] = 0;
-                                    //falo que ele ja ganhou um brinde
-                                    $ja_tem_brinde = 1;
-                                    //agora atribuo como verdadeiro a sessao sale
-                                    $sessao_promo->sale = 1;
+                                if($data_carrinho[$key]["destaque"] == 2){
+                                    //atribuo a mensagem para o carrinho
+                                    $msg_promo = "Na compra de 2(duas) camisetas(59,00), ganhe uma camiseta grátis com a Tag Sale!";
+                                    //agora assino a mensagem a promo
+                                    $sessao_promo->msg = $msg_promo;
+
+                                    $this->view->promo_sale = 1;
+
+                                    //agora vejo se e camiseta
+                                    if($item["tipo"] == 6 and $ja_tem_brinde == 0){
+                                        //defino os valores como 0
+                                        $vlr_desconto = $data_carrinho[$key]['vl_promo'];
+                                        $data_carrinho[$key]['vl_promo'] = 0;
+                                        $data_carrinho[$key]['valor'] = 0;
+                                        //falo que ele ja ganhou um brinde
+                                        $ja_tem_brinde = 1;
+                                        //agora atribuo como verdadeiro a sessao sale
+                                        $sessao_promo->sale = 1;
+                                    }
                                 }
                             }
                         }
@@ -969,6 +981,7 @@ class CarrinhoController extends Zend_Controller_Action {
 
                 //se existir promo boleto
                 if(!empty($paymentSelected)) {
+                    $sessao_frete->valor = $this->view->frete;
                     $sessao_frete->valor_desconto = $vlr_desconto;
                     //se for json
                     if ($this->_request->getParam('json')) {
@@ -984,9 +997,9 @@ class CarrinhoController extends Zend_Controller_Action {
 
                 if(empty($paymentSelected) && !empty($selecPayment)) {
                     $sessao_frete->valor_desconto = 0;
-
+                    $sessao_frete->valor = $this->view->frete;
                     //crio um array com mensagem do json
-                    $data_json = array('valor_desconto' => $sessao_frete->valor_desconto,
+                    $data_json = array('valor_desconto' => 0,
                         'erro' => false,
                         'msg_erro' => $sessao_promo->msg);
                     //assino o json
@@ -1259,6 +1272,9 @@ class CarrinhoController extends Zend_Controller_Action {
 
             //assino que tem frete gratis no vire
             $this->view->frete_gratis = $sessao_frete->frete_gratis;
+
+            //botao comprar mais
+            $this->view->btn_comprar_mais = ($sem_promo_recur >= 2)? 'sale' : 'todos-produtos';
         } else {
 
             //mensagem de usuario
