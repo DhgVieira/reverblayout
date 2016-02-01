@@ -396,7 +396,7 @@ class CheckoutController extends Zend_Controller_Action {
     /**
      * função responsavel por remover o produto do carrinho
      */
-    public function removercarrinhoAction() {
+    /*public function removercarrinhoAction() {
 
         // Desabilita os layouts
         $this->_helper->layout->disableLayout();
@@ -433,6 +433,47 @@ class CheckoutController extends Zend_Controller_Action {
             $messages->success = "O Produto foi removido com sucesso do seu carrinho!";
 
             //redireciono para a última página visitada
+            $this->_redirect($_SERVER['HTTP_REFERER']);
+        }
+    }*/
+	
+	public function removercarrinhoAction() {
+        // Desabilita os layouts
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+        //cria a sessÃ£o do carrinho
+        $carrinho = new Zend_Session_Namespace("carrinho");
+
+        // Cria a sessÃ£o das mensagens
+        $messages = new Zend_Session_Namespace("messages");
+
+
+        $idestoque = $this->_request->getParam("idestoque", 0);
+        $idproduto = $this->_request->getParam("idproduto", 0);
+
+        // unset($carrinho->produtos[$idproduto]);
+        if ($this->_request->isPost()) {
+            if ($idproduto > 0) {
+                unset($carrinho->produtos[$idproduto]);
+            } else {
+                unset($carrinho->produtos[$idestoque]);
+            }
+
+            //crio um array com mensagem do json
+            $data_json = array('erro' => false,
+                'msg_sucesso' => 'O Produto foi removido com sucesso do seu carrinho!');
+            //assino o json
+            $this->_helper->json($data_json);
+        } else {
+            if ($idproduto > 0) {
+                unset($carrinho->produtos[$idproduto]);
+            } else {
+                unset($carrinho->produtos[$idestoque]);
+            }
+
+            $messages->success = "O Produto foi removido com sucesso do seu carrinho!";
+
+            //redireciono para a Ãºltima pÃ¡gina visitada
             $this->_redirect($_SERVER['HTTP_REFERER']);
         }
     }

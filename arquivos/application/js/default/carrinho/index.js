@@ -518,42 +518,42 @@ $(document).ready(function(){
         }
     });
     carregaFretes(1);
-    $('.mycart-payment-item input').on('change', function () {
-        setTimeout(function () {
-            $("#msg-box").remove();
-        }, 200);
-        var a = {
-            paymentSelected: $('input[name=formapagto]:checked', '.mycart-payment-item').val(),
-            json: !0,
-            selecPayment: 1
-        };
-        $.ajax({
-            url: document.basePath + "/carrinho-compras",
-            type: "POST",
-            dataType: "json",
-            data: a,
-            error: function (e) {
-                setTimeout(function () {
-                    $("#msg-box").remove();
-                }, 200);
-                return;
-            },
-            beforeSend: function () {
-                var e = '<div class="loader ir">Carregando</div>';
-                $("#my-cart-subtotal p, .product-subtotal").fadeOut(), $("#my-cart-subtotal").append(e), $("#free-delivery").text("Carregando...")
-            },
-            success: function (e) {
-                var r = e.valor_desconto, a = e.erro, o = e.msg_erro;
-                a ? reverb.alertMessage("error", o) : (carrinho.desconto = r, reverb.alertMessage("success", o));
-            },
-            complete: function () {
-                r();
-                setTimeout(function () {
-                    $("#msg-box").remove();
-                }, 2000);
-            }
-        });
-    });
+    //$('.mycart-payment-item input').on('change', function () {
+    //    setTimeout(function () {
+    //        $("#msg-box").remove();
+    //    }, 200);
+    //    var a = {
+    //        paymentSelected: $('input[name=formapagto]:checked', '.mycart-payment-item').val(),
+    //        json: !0,
+    //        selecPayment: 1
+    //    };
+    //    $.ajax({
+    //        url: document.basePath + "/carrinho-compras",
+    //        type: "POST",
+    //        dataType: "json",
+    //        data: a,
+    //        error: function (e) {
+    //            setTimeout(function () {
+    //                $("#msg-box").remove();
+    //            }, 200);
+    //            return;
+    //        },
+    //        beforeSend: function () {
+    //            var e = '<div class="loader ir">Carregando</div>';
+    //            $("#my-cart-subtotal p, .product-subtotal").fadeOut(), $("#my-cart-subtotal").append(e), $("#free-delivery").text("Carregando...")
+    //        },
+    //        success: function (e) {
+    //            var r = e.valor_desconto, a = e.erro, o = e.msg_erro;
+    //            a ? reverb.alertMessage("error", o) : (carrinho.desconto = r, reverb.alertMessage("success", o));
+    //        },
+    //        complete: function () {
+    //            r();
+    //            setTimeout(function () {
+    //                $("#msg-box").remove();
+    //            }, 2000);
+    //        }
+    //    });
+    //});
 
 
     $('.mycart-edit-address').live('click', function (e) {

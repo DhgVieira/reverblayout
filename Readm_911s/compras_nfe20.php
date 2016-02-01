@@ -89,11 +89,28 @@ foreach ($compras as $idc) {
     
     $arq = 'nfe/geradas/nfe_'.$dataat.'_'.$nfe.'.txt';
     $handle = fopen($arq,"w+");
+
+    $fd = fopen($file, 'r');
+    stream_filter_append($fd, 'convert.iconv.UTF-8/OLD-ENCODING');
+    stream_copy_to_stream($fd, fopen($output, 'w'));
+
+//IE ST informada: verificar o DV da IE do Substituto Tributário informada.
+
+    $ieEST = '';
+
+    switch ($estado) {
+        case 'SP':
+            $ieEST = '816014030110';
+            break;
+        case 'DF':
+            $ieEST = '0774742000174';
+            break;
+    }
     
     fwrite($handle,"NOTA FISCAL|1\r\n");
     fwrite($handle,"A|3.10|NFe|\r\n");
     fwrite($handle,"B|41||VENDA|$parcelas|55|1|$nfe|$dataat|$dataat|1|$idDest|4113700|1|1||1|1|1|2|||\r\n");
-    fwrite($handle,"C|ANTONIO M DIAS CONFECCOES|REVERBCITY|9038567770||||1|\r\n");
+    fwrite($handle,"C|ANTONIO M DIAS CONFECCOES|REVERBCITY|9038567770|" . $ieEST . "|||1|\r\n");
     fwrite($handle,"C02|08345875000137\r\n");
     fwrite($handle,"C05|RUA IBIPORA|995||JARDIM AURORA|4113700|Londrina|PR|86060510|1058|BRASIL|433228852|\r\n");
     //indIEDest = 9=Não Contribuinte
