@@ -24,12 +24,12 @@ foreach ($compras as $idc) {
 	$st = mysql_query($sql);
     $dados = mysql_fetch_array($st);
 	  
-    $nome = strtoupper($dados["DS_NOME_CASO"]);
-	$ende = strtoupper($dados["DS_ENDERECO_CASO"]);
+    $nome = strtoupper(RemoveAcentos(utf8_encode($dados["DS_NOME_CASO"])));
+	$ende = strtoupper(RemoveAcentos(utf8_encode($dados["DS_ENDERECO_CASO"])));
     $numer = $dados["DS_NUMERO_CASO"];
-	$bairro = strtoupper($dados["DS_BAIRRO_CASO"]);
-	$complem = strtoupper($dados["DS_COMPLEMENTO_CASO"]);
-	$estado = strtoupper($dados["DS_UF_CASO"]);
+	$bairro = strtoupper(RemoveAcentos(utf8_encode($dados["DS_BAIRRO_CASO"])));
+	$complem = strtoupper(RemoveAcentos(utf8_encode($dados["DS_COMPLEMENTO_CASO"])));
+	$estado = strtoupper(RemoveAcentos(utf8_encode($dados["DS_UF_CASO"])));
 	$cida = $dados["DS_CIDADE_CASO"];
 	$cep = $dados["DS_CEP_CASO"];
     $cpfcnpj = $dados["DS_CPFCNPJ_CASO"];
@@ -43,12 +43,12 @@ foreach ($compras as $idc) {
         $rowen = mysql_fetch_array($sten);
         $cpfnovo = $rowen["DS_CPF_ENRC"];
         if (strlen($cpfnovo) >= 11){
-            $nome = strtoupper($rowen["DS_DESTINATARIO_ENRC"]);
-        	$ende = strtoupper($rowen["DS_ENDERECO_ENRC"]);
+            $nome = strtoupper(RemoveAcentos(utf8_encode($rowen["DS_DESTINATARIO_ENRC"])));
+        	$ende = strtoupper(RemoveAcentos(utf8_encode($rowen["DS_ENDERECO_ENRC"])));
             $numer = $rowen["DS_NUMERO_ENRC"];
-        	$bairro = strtoupper($rowen["DS_BAIRRO_ENRC"]);
-        	$complem = strtoupper($rowen["DS_COMPLEMENTO_ENRC"]);
-        	$estado = strtoupper($rowen["DS_UF_ENRC"]);
+        	$bairro = strtoupper(RemoveAcentos(utf8_encode($rowen["DS_BAIRRO_ENRC"])));
+        	$complem = strtoupper(RemoveAcentos(utf8_encode($rowen["DS_COMPLEMENTO_ENRC"])));
+        	$estado = strtoupper(RemoveAcentos(utf8_encode($rowen["DS_UF_ENRC"])));
         	$cida = $rowen["DS_CIDADE_ENRC"];
         	$cep = $rowen["DS_CEP_ENRC"];
             $cpfcnpj = $rowen["DS_CPF_ENRC"];
@@ -157,7 +157,7 @@ foreach ($compras as $idc) {
 //NA|44.84|2|18.00|12.00|40|0.90|1.08|1.61
 
     $arrUfsICMSDestino = array(
-        'AC'=> array(
+        'AC'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -167,7 +167,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'AP'=> array(
+        'AP'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -177,7 +177,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'AM'=> array(
+        'AM'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -187,7 +187,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'PA'=> array(
+        'PA'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -197,7 +197,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'RR'=> array(
+        'RR'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -207,7 +207,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'AL'=> array(
+        'AL'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -217,7 +217,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'BA'=> array(
+        'BA'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -227,7 +227,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'CE'=> array(
+        'CE'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -237,7 +237,17 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'DF'=> array(
+        'DF'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'ES'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -247,7 +257,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'ES'=> array(
+        'GO'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -257,7 +267,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'GO'=> array(
+        'MA'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -267,7 +277,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'MA'=> array(
+        'MT'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -277,7 +287,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'MT'=> array(
+        'MS'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -287,7 +297,27 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'MS'=> array(
+        'PB'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PE'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PI'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -297,7 +327,17 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'PB'=> array(
+        'RN'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RO'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '17.00',
@@ -307,67 +347,27 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'PE'=> array(
+        'SE'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
+            'pICMSUFDest' => '18.00',
             'pICMSInter' => '7.00',
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'PI'=> array(
+        'TO'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
+            'pICMSUFDest' => '18.00',
             'pICMSInter' => '7.00',
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'RN'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '7.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'RO'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '7.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'SE'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '7.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'TO'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '7.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'SC'=> array(
+        'SC'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '',
             'pICMSUFDest' => '17.00',
@@ -377,27 +377,7 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'RS'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '12.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'MG'=> array(
-            'vBCUFDest' => '',
-            'pFCPUFDest' => '2',
-            'pICMSUFDest' => '17.00',
-            'pICMSInter' => '12.00',
-            'pICMSInterPart' => '40',
-            'vFCPUFDest' => 0,
-            'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
-        ),
-        'SP'=> array(
+        'RS'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '18.00',
@@ -407,7 +387,27 @@ foreach ($compras as $idc) {
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0
         ),
-        'RJ'=> array(
+        'MG'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'SP'=> array(//
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RJ'=> array(//
             'vBCUFDest' => '',
             'pFCPUFDest' => '2',
             'pICMSUFDest' => '19.00',
@@ -438,7 +438,7 @@ foreach ($compras as $idc) {
             if (!$NCM) $NCM = $dadoscesta["DS_NCM_PCRC"];
             
             $ncmprod = $dadoscesta["DS_NCM_PRRC"];
-            
+
             if ($ncmprod) $NCM = $ncmprod;
             
             fwrite($handle,"H|$x|".strtoupper(RemoveAcentos($dadoscesta["DS_CATEGORIA_PTRC"]))."\r\n");
@@ -458,8 +458,9 @@ foreach ($compras as $idc) {
                     }else{
                         $descontoum = "";
                     }
+                    $vlr_prod = ($descontoum)? $dadoscesta["VL_PRODUTO_CESO"] - $descontoum + $vlr_frete : $dadoscesta["VL_PRODUTO_CESO"];
                     // I|cProd|cEAN|xProd|NCM|EXTIPI|CFOP|uCom|qCom|vUnCom|vProd|cEANTrib|uTrib|qTrib|vUnTrib|vFrete|vSeg|vDesc|vOutro|indTot|xPed|nItemPed|nFCI| 
-                    fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(RemoveAcentos($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|".number_format(($dadoscesta["VL_PRODUTO_CESO"]*$dadoscesta["NR_QTDE_CESO"]),2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],2,".","")."|".$freteum."||".$descontoum."||1|\r\n");
+                    fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(RemoveAcentos($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($vlr_prod,10,".","")."|".number_format(($vlr_prod*$dadoscesta["NR_QTDE_CESO"]),2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($vlr_prod,2,".","")."|".$freteum."||".$descontoum."||1|\r\n");
                     $val_desc = true;   
                 //}
             }else{
@@ -493,9 +494,10 @@ foreach ($compras as $idc) {
                 $vlrIcmDest = (40 / 100) * $vlrDeducao;
                 $vlrFCP = ($pFCPUFDest / 100) * $vlProduto;
 
-                $vlrIcmRemetente    = (empty($vlrIcmRemetente))? '0.00' : number_format($vlrIcmRemetente,2,".","");
-                $vlrIcmDest         = (empty($vlrIcmDest))? '0.00' : number_format($vlrIcmDest,2,".","");
-                $vlrFCP             = (empty($vlrFCP))? '0.00' : number_format($vlrFCP,2,".","");
+                $vlrIcmRemetente    = (empty($vlrIcmRemetente))? "0.00" : number_format($vlrIcmRemetente,2,".","");
+                $vlrIcmDest         = (empty($vlrIcmDest))? "0.00" : number_format($vlrIcmDest,2,".","");
+                $vlrFCP             = (empty($vlrFCP))? "0.00" : number_format($vlrFCP,2,".","");
+                $pFCPUFDest         = (empty($pFCPUFDest))? "0.00" : $pFCPUFDest;
 
                 fwrite($handle,"NA|" . $vlProduto . "|" . $pFCPUFDest . "|" . $pICMSUFDest . "|" . $pICMSInter . "|" . $pICMSInterPart . "|" . $vlrFCP . "|" . $vlrIcmDest . "|" . $vlrIcmRemetente . "\r\n");
 

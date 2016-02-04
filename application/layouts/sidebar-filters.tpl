@@ -79,24 +79,24 @@
                 </a>
             {/if}
         </li>       
-        <li class="sub-menu-item">
-            {if $valor_url eq 61}
-                <span class="sub-menu-link active">De R$ 61,00 A R$ 90,00</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"61"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                   De R$ 61,00 A R$ 89,90
-                </a>
-            {/if}
-        </li>
-        <li class="sub-menu-item">
-           {if $valor_url eq 90}
-                <span class="sub-menu-link active">A PARTIR DE R$ 90,00</span>
-            {else}
-                <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">
-                   A PARTIR DE R$ 90,00
-                </a>
-            {/if}
-        </li>
+        {*<li class="sub-menu-item">*}
+            {*{if $valor_url eq 61}*}
+                {*<span class="sub-menu-link active">De R$ 61,00 A R$ 90,00</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"61"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                   {*De R$ 61,00 A R$ 89,90*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
+        {*<li class="sub-menu-item">*}
+           {*{if $valor_url eq 90}*}
+                {*<span class="sub-menu-link active">A PARTIR DE R$ 90,00</span>*}
+            {*{else}*}
+                {*<a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>{$cor_url}, "tipo"=>{$tipo_url}, "valor"=>"90"], "{$acaoAtual}", TRUE)}" class="sub-menu-link">*}
+                   {*A PARTIR DE R$ 90,00*}
+                {*</a>*}
+            {*{/if}*}
+        {*</li>*}
     </ul>
 
 {if $tipos|count > 0}
