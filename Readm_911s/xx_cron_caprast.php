@@ -109,14 +109,14 @@ if (mysql_num_rows($stnf) > 0) {
 								<tr><td><img src="http://www.reverbcity.com/imgrast/div.gif" width="598" height="40" /></td></tr>
 								</table>
 								<div style="font-family:Verdana;font-size:11px;color: #646464; padding: 0 25px 25px 25px; width: 550px;">
-								Pronto para o Rock and Roll, <strong>' . utf8_encode($nome) . '</strong>?
+								Pronto para o Rock and Roll, <strong>' . utf8_decode($nome) . '</strong>?
 								<br /><br />
 								A turnê da sua camiseta saiu daqui da Reverbcity e <strong>chegou em sua casa</strong>! Última atualização fornecida pelos Correios:
 								<br /><br />
 								Pedido número: <strong>' . $nrcompra . '</strong>
 								</div>    
 								<div style="background-color: #dcddde; padding: 25px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-								' . $data . ' - ' . utf8_encode($local) . ' - ' . utf8_encode($status) . '
+								' . $data . ' - ' . utf8_decode($local) . ' - ' . utf8_decode($status) . '
 								</div>
 								<a href="mailto:compras@reverbcity.com"><img src="http://www.reverbcity.com/imgrast/rodape.gif" width="598" height="212" border="0" /></a>
 								</td></tr></table>';
@@ -191,14 +191,14 @@ if (mysql_num_rows($stnf) > 0) {
 	<tr><td><img src="http://www.reverbcity.com/imgrast/div.gif" width="598" height="40" /></td></tr>
 	</table>
 	<div style="font-family:Verdana;font-size:11px;color: #646464; padding: 0 25px 25px 25px; width: 550px;">
-	Pronto para o Rock and Roll, <strong>' . utf8_encode($nome) . '</strong>?
+	Pronto para o Rock and Roll, <strong>' . utf8_decode($nome) . '</strong>?
 	<br /><br />
 	A turnê da sua camiseta saiu daqui da Reverbcity e em breve se apresentará em sua casa. Acompanhe por onde ela tem passado através dos dados fornecidos pelos Correios:
 	<br /><br />
 	Pedido número: <strong>' . $nrcompra . '</strong>
 	</div>    
 	<div style="background-color: #dcddde; padding: 25px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-	' . utf8_encode($registro) . '
+	' . utf8_decode($registro) . '
 	</div>
 	<a href="mailto:compras@reverbcity.com"><img src="http://www.reverbcity.com/imgrast/rodape.gif" width="598" height="212" border="0" /></a>
 	</td></tr></table>';
