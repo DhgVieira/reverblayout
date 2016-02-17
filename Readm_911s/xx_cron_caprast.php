@@ -2,7 +2,14 @@
 include 'lib.php';
 
 $subject = "Atualização no status de envio de sua ReverbCompra!";
-$bccParceiro = "system_3b0d831f35737@inbound.trustedcompany.com";
+$bccParceiro = "";
+
+$arrParceiros = array(
+    'Trusted Company' => 'system_3b0d831f35737@inbound.trustedcompany.com' ,
+    'Vasco Pineda' => 'vasco.pineda@trustedcompany.com',
+    'Vasco' => 'vascopbp@gmail.com',
+    'ReverbDev' => 'desenvolvimento@reverbcity.com'
+);
 
 $sqlnf = "SELECT ST_COMPRA_COSO, DS_RASTREAMENTO_COSO, DS_NOME_CASO, DS_EMAIL_CASO, NR_SEQ_COMPRA_COSO
 from compras, cadastros WHERE NR_SEQ_CADASTRO_COSO = NR_SEQ_CADASTRO_CASO 
@@ -120,8 +127,14 @@ if (mysql_num_rows($stnf) > 0) {
 								</div>
 								<a href="mailto:compras@reverbcity.com"><img src="http://www.reverbcity.com/imgrast/rodape.gif" width="598" height="212" border="0" /></a>
 								</td></tr></table>';
-                                EnviaMailer("atendimento@reverbcity.com", "Reverbcity", $emaildest, $nome, "", $subject, $corpo, $bccParceiro);
+                                EnviaMailer("atendimento@reverbcity.com", "Reverbcity", $emaildest, $nome, "", $subject, $corpo);
                                 $x++;
+
+                                if($arrParceiros) {
+                                    foreach ($arrParceiros as $keyName => $emailContato) {
+                                        EnviaMailer("atendimento@reverbcity.com", "Reverbcity", $emailContato, $keyName, "", $subject, $corpo);
+                                    }
+                                }
 
                                 $temenvio = false;
                                 $get = false;
