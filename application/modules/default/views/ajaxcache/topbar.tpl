@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/arquivos/default/css/site_default.css">
 <div id="page-nav" class="container">
 	{if $currentController=="reverbcycle"}
 	<span class="logo-topo ir cycle">
@@ -213,11 +212,11 @@
 				</a>
 			</li>
 			<li class="no-border cart">
-				                                    {if $_ultima_action eq 'produto'}
-				                                        <a href="#" class="reverb-button my-cart opened" aria-labelledby="ordersCountWrapper" rel="nofollow">
-				                                    {else}
+				{*                                    {if $_ultima_action eq 'produto'}*}
+				{*                                        <a href="#" class="reverb-button my-cart opened" aria-labelledby="ordersCountWrapper" rel="nofollow">*}
+				{*                                    {else}*}
 				<a href="#" class="reverb-button my-cart" aria-labelledby="ordersCountWrapper" rel="nofollow">
-					  {/if}
+					{*  {/if}*}
 					Meu Carrinho
 					<span class="reverb-count red" id="ordersCountWrapper">
 						<span id="orderCountValue">{$_totalprodutos|count}</span>
@@ -299,7 +298,7 @@
 						{if $_totalprodutos|count > 0}
 						<a href="#" class="flyout-button see-more" rel="nofollow">{$_totalprodutos|count} itens</a>
 						<a href="{$this->url([], 'carrinho', TRUE)}" class="flyout-button see-more" rel="nofollow">Ver carrinho</a>
-						<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Continuar comprando</a>
+						{*<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Continuar comprando</a>*}
 						{else}
 						<a href="{$this->url([], 'loja', TRUE)}" class="flyout-button see-more">Comprar</a>
 						{/if}
@@ -312,14 +311,11 @@
 					Compras Internacionais
 				</a>
 			</li>
-			{*<li class="menu-item busca">*}
-				{*<form action="{$this->url([], 'busca', TRUE)}" id="topbar-search-desktop" class="topbar-search" method="post">*}
-					{*<input type="text" name="busca_topo" id="busca_site" placeholder="Busca" class="input-box">*}
-					{*<button type="submit" class="submit search-icon">Buscar</button>*}
-				{*</form>*}
-			{*</li>*}
 		</ul>
-
+		<form action="{$this->url([], 'busca', TRUE)}" id="topbar-search-desktop" class="topbar-search" method="post">
+			<input type="text" name="busca_topo" id="busca_site" placeholder="Busca" class="input-box">
+			<button type="submit" class="submit search-icon">Buscar</button>
+		</form>
 	</div>
 </div>
 <script type="text/javascript">
@@ -353,10 +349,10 @@
 	                	});
 	                }
             	});
-
+                
             {/literal}
-
-
+            
+            
             return false
         })
 </script>

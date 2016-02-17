@@ -3689,10 +3689,7 @@ class IndexController extends Zend_Controller_Action {
         $crop = $this->_request->getParam("crop", 1);
 
         // Monta o caminho do arquivo
-        if($type == 'default')
-            $file = APPLICATION_PATH . "/../arquivos/" . $type . "/" . $file;
-        else
-            $file = APPLICATION_PATH . "/../arquivos/uploads/" . $type . "/" . $file;
+        $file = APPLICATION_PATH . "/../arquivos/uploads/" . $type . "/" . $file;
 
         // Cria o objeto canvas
         $canvas = new Reverb_Image_Canvas($file);

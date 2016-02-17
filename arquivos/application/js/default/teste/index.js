@@ -229,12 +229,39 @@ $(document).ready(function () {
         } else {
             // Novo Checkout
             var amount = reverb.floatNumbersPagarme(carrinho.total);
+            var customerName = $(this).data('customer-name');
+            var customerDocumentNumber = $(this).data('customer-document-number');
+            var customerEmail = $(this).data('customer-email');
+            var customerAddressStreet = $(this).data('customer-address-street');
+            var customerAddressStreetNumber = $(this).data('customer-address-street-number');
+            var customerAddressComplementary = $(this).data('customer-address-complementary');
+            var customerAddressNeighborhood = $(this).data('customer-address-neighborhood');
+            var customerAddressZipcode = $(this).data('customer-address-zipcode');
+            var customerPhoneDdd = $(this).data('customer-phone-ddd');
+            var customerPhoneNumber = $(this).data('customer-phone-number');
 
             var checkout = new PagarMeCheckout.Checkout({"encryption_key": carrinho.encryption_key, success: function (r) {
                     $("#data-holder").val(r.token);
                     $('#mycart-payment').submit();
                 }});
-            checkout.open({"customerData": false, "cardBrands": "visa,mastercard,amex", "amount": amount,  "maxInstallments": 4, "uiColor": "#6ec6a4"});
+
+            checkout.open({
+                "customerData": false,
+                "cardBrands": "visa,mastercard,amex",
+                "amount": amount,
+                "maxInstallments": 4,
+                "uiColor": "#6ec6a4",
+                "customerName": customerName,
+                "customerDocumentNumber": customerDocumentNumber,
+                "customerEmail": customerEmail,
+                "customerAddressStreet": customerAddressStreet,
+                "customerAddressStreetNumber": customerAddressStreetNumber,
+                "customerAddressComplementary": customerAddressComplementary,
+                "customerAddressNeighborhood": customerAddressNeighborhood,
+                "customerAddressZipcode": customerAddressZipcode,
+                "customerPhoneDdd": customerPhoneDdd,
+                "customerPhoneNumber": customerPhoneNumber
+            });
         }
     });
 

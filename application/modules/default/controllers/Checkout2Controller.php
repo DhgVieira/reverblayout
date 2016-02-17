@@ -1440,8 +1440,7 @@ class Checkout2Controller extends Zend_Controller_Action {
         $temTeste = false;
 
         require APPLICATION_PATH . '/../library/Reverb/Library/pagarme/Pagarme.php';
-        //Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
-        Pagarme::setApiKey("ak_test_lemGrJb4dURjNVsXIlGa54NOyifzOB");
+        Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
 
         $token = $dados['transition-token'];
         $returnedTransaction = PagarMe_Transaction::findById("{$token}");
@@ -3982,7 +3981,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 $this->view->bairro = $bairro;
 
                 require APPLICATION_PATH . '/../library/Reverb/Library/pagarme/Pagarme.php';
-                Pagarme::setApiKey("ak_test_lemGrJb4dURjNVsXIlGa54NOyifzOB");
+                Pagarme::setApiKey("ak_live_oFTsUUkB2uBBJboQqhvyzcF2m9TnKl");
 
                 $transaction = PagarMe_Transaction::findById($compra->DS_TID_COSO);
 
@@ -5583,7 +5582,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 }
 
 //                //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-//                if ($resultado_busca['uf'] == "SP" and $valor_total >= 90) {
+//                if ($resultado_busca['uf'] == "SP" and $valor_total >= 59) {
 //
 //                    //verifico s tem preco cheio
 //                    if ($tem_camiseta_cheia == 1) {
@@ -5599,8 +5598,8 @@ class Checkout2Controller extends Zend_Controller_Action {
 //
 //                            $retorno["lugar"] = 8.1;
 //                        }
-//                    }
-//                }
+//		}                
+//		}
             }
 
             /**

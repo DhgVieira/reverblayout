@@ -1,8 +1,4 @@
-*.DS_Store
 .DS_Store
-.idea
-application/configs/application.ini
-application/Bootstrap.php
 arquivos/uploads/banners/*
 arquivos/uploads/blog/*
 arquivos/uploads/blog_me/*
@@ -17,10 +13,11 @@ arquivos/uploads/people/*
 arquivos/uploads/produtos/*
 arquivos/uploads/reverbcycle/*
 arquivos/uploads/reverbme/*
-application/tmp/templates_c/*
-application/tmp/
+.idea
 Readm_911s/nfe/geradas/*
-Readm_911s/lib.php
-Readm_911s/temp/
+temporarios/*
+livezilla/*
 nfe
-index.php
+application/tmp/cache/*
+application/tmp/templates_c/*
+

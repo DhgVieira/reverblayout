@@ -1,6 +1,6 @@
 <h1 class="rvb-title">Reverb <span>Atacado</span></h1>
 
-<div class="right-column-content">
+<div class="left-column-content">
     <ul class="list-of-products">
         {foreach from=$contadores item=produto}
             {assign var="foto" value="{$produto->NR_SEQ_PRODUTO_PRRC}"}
@@ -38,29 +38,26 @@
             {/if}*}
            
         <form action="{$this->url(["idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'adicionarcarrinho', TRUE)}" >
-
             <li class="product-item">
-                <div class="list-product-details">
-                    <h2 class="product-div-op">
-                        <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produtolojista', TRUE)}">
-                            {utf8_decode($produto->DS_PRODUTO_PRRC|truncate:38:"...":TRUE)}
-                        </a>
-
-                        {*<div class="prices">*}
-                        <span class="preco">
-                        <p class="retail">Varejo: R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</p>
-                        <p class="wholesale">Atacado: <strong>R$ {$vl_lojista|number_format:2:",":"."} </strong></p>
-                            {*</div>*}
-                    </span>
-                    </h2>
-                </div>
                 <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produtolojista', TRUE)}" class="product-thumb">
                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
-                        <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>220, 'altura'=>242, 'imagem'=>$foto_completa], "imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" title="{$produto->DS_PRODUTO_PRRC}" width="220" height="242"/>
+                        <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa], "imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" title="{$produto->DS_PRODUTO_PRRC}" width="160" height="185"/>
                     {else}
-                         <img class="profile" src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>220,'altura'=>242,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" width="220" height="242">
+                         <img class="profile" src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>160,'altura'=>185,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" width="160" height="185">
                     {/if}
                 </a>
+                <h2 class="product-title">
+                    <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produtolojista', TRUE)}">
+                        {utf8_decode($produto->DS_PRODUTO_PRRC|truncate:38:"...":TRUE)}
+                    </a>
+                </h2>
+                <div class="prices">
+                    <p class="retail">Varejo: R$ {$produto->VL_PRODUTO_PRRC|number_format:2:",":"."}</p>
+                    <p class="wholesale">Atacado: <strong>R$ {$vl_lojista|number_format:2:",":"."} </strong></p>
+                </div>
+                <div class="ui-buttons">
+                    <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produtolojista', TRUE)}" class="ui-button add">Adicionar</a>
+                </div>
             </li>
         </form>
         {/foreach}

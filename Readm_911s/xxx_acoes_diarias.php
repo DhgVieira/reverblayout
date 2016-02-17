@@ -3,8 +3,8 @@
 //ini_set('display_errors', 1);
 
 include 'lib.php';
-include 'RVBMemcached.php';
-$memcached = new RVBMemcached();
+//include 'RVBMemcached.php';
+//$memcached = new RVBMemcached();
 
 $dia = date("d");
 $mes = date("m");
@@ -115,4 +115,4 @@ if (mysql_num_rows($st_pdia_novo) > 0) {
     $st_volta_banner_new = mysql_query($str_agendado_new);
 }
 
-$memcached->flushCache();
+//$memcached->flushCache();
