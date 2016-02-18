@@ -245,7 +245,8 @@ foreach ($compras as $idc) {
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
+            'vICMSUFRemet' => 0,
+            'inscEstadual' => 0774742000174,
         ),
         'ES'=> array(//
             'vBCUFDest' => '',
@@ -405,7 +406,8 @@ foreach ($compras as $idc) {
             'pICMSInterPart' => '40',
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
-            'vICMSUFRemet' => 0
+            'vICMSUFRemet' => 0,
+            'inscEstadual' => 816014030110,
         ),
         'RJ'=> array(//
             'vBCUFDest' => '',
@@ -416,7 +418,7 @@ foreach ($compras as $idc) {
             'vFCPUFDest' => 0,
             'vICMSUFDest' => 0,
             'vICMSUFRemet' => 0,
-            'inscEstadual' => 816014030110
+            'inscEstadual' => 92032523
         ),
 //        'PR'=> array(
 //            'vBCUFDest' => '',
@@ -499,7 +501,7 @@ foreach ($compras as $idc) {
                 $vlrFCP             = (empty($vlrFCP))? "0.00" : number_format($vlrFCP,2,".","");
                 $pFCPUFDest         = (empty($pFCPUFDest))? "0.00" : $pFCPUFDest;
 
-                fwrite($handle,"NA|" . $vlProduto . "|" . $pFCPUFDest . "|" . $pICMSUFDest . "|" . $pICMSInter . "|" . $pICMSInterPart . "|" . $vlrFCP . "|" . $vlrIcmDest . "|" . $vlrIcmRemetente . "\r\n");
+                fwrite($handle,"NA|" . number_format($dados["VL_TOTAL_COSO"],2,".","") . "|" . $pFCPUFDest . "|" . $pICMSUFDest . "|" . $pICMSInter . "|" . $pICMSInterPart . "|" . $vlrFCP . "|" . $vlrIcmDest . "|" . $vlrIcmRemetente . "\r\n");
 
             }
             $x++;
