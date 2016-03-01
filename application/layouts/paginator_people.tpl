@@ -14,6 +14,6 @@
     {/foreach}
 {if $next}
     <li class="item">
-        <a title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"people", "action"=>"index", "page"=>{$next}], "people", TRUE)}" class="next">►</a>
+        <a title="Página Anterior" href="{$this->url(["module"=>"default", "controller"=>"people", "action"=>"index", "page"=>{$next}], "people", TRUE)}">►</a>
     </li>
 {/if}

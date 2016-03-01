@@ -3,20 +3,20 @@ include 'lib.php';
 $sql = "select NR_SEQ_FUNCIONARIO_FURC from funcionarios";
 $st = mysql_query($sql);
 if (mysql_num_rows($st) > 0) {
-    while($row = mysql_fetch_row($st)) {
-        $nrfunc	= $row[0];
-        $testa = VerificaExtraAnt($nrfunc);
-        if ($testa[0] && $testa[2] > 600){
-            $str = "INSERT INTO funcionarios_ponto_just (NR_SEQ_FUNCIONARIO_JUPO, DT_PONTO_JUPO, ST_JUSTIFICADO_JUPO, NR_SEGUNDOS_JUPO)
+while($row = mysql_fetch_row($st)) {
+$nrfunc	= $row[0];
+$testa = VerificaExtraAnt($nrfunc);
+if ($testa[0] && $testa[2] > 600){
+$str = "INSERT INTO funcionarios_ponto_just (NR_SEQ_FUNCIONARIO_JUPO, DT_PONTO_JUPO, ST_JUSTIFICADO_JUPO, NR_SEGUNDOS_JUPO)
 values ($nrfunc,'".$testa[1]."','N', ".$testa[2].");";
-            $st2 = mysql_query($str);
-        }
-    }
+$st2 = mysql_query($str);
+}
+}
 }
 // $texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 25px 25px; width: 550px;">
 // <strong>As pessoas abaixo se cadastraram ontem no site:</strong>
 // <br /><br />
-// A partir de agora, alï¿½m de poder comprar nossos produtos online, eles poderï¿½o participar da nossa rede social, por isso, adicione-o(a)s como amigos e envie um scrap de boas vindas :)
+// A partir de agora, além de poder comprar nossos produtos online, eles poderão participar da nossa rede social, por isso, adicione-o(a)s como amigos e envie um scrap de boas vindas :)
 // <br />
 // </div>    
 // <div style="background-color: #dcddde; padding: 25px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">';
@@ -58,7 +58,7 @@ $texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding
 &nbsp;&nbsp;<a href="http://www.reverbcity.com/Readm_911s/xx_estoq.php?data=' . date("Y-m-d") . '">http://www.reverbcity.com/Readm_911s/xx_estoq.php?data=' . date("Y-m-d") . '</a>
 </div>
 <p style="font-family:Verdana;font-size:11px;color: #555555;padding: 0 25px 0 25px;">
-Para acessÃ¡-lo vocÃª precisa estar logado na adm Londrina com um usuÃ¡rio vÃ¡lido.
+Para acessá-lo você precisa estar logado na adm Londrina com um usuário válido.
 <br /> 
 </p>';
 
@@ -81,22 +81,22 @@ where DATEDIFF(sysdate(),DT_CADASTRO_CASO) = 25";
 $st = mysql_query($sql);
 
 if (mysql_num_rows($st) > 0) {
-    while($row = mysql_fetch_row($st)) {
-        $nrcad	= $row[0];
-        $nome	= $row[1];
-        $email	= $row[2];
-        $celddd  = $row[3];
-        $celular = $row[4];
-        $enviar  = $row[5];
-        $stbloq  = $row[6];
+while($row = mysql_fetch_row($st)) {
+$nrcad	= $row[0];
+$nome	= $row[1];
+$email	= $row[2];
+$celddd  = $row[3];
+$celular = $row[4];
+$enviar  = $row[5];
+$stbloq  = $row[6];
 
-        $sql2 = "select NR_SEQ_COMPRA_COSO from compras where NR_SEQ_CADASTRO_COSO = $nrcad and ST_COMPRA_COSO <> 'C'";
-        $st2 = mysql_query($sql2);
+$sql2 = "select NR_SEQ_COMPRA_COSO from compras where NR_SEQ_CADASTRO_COSO = $nrcad and ST_COMPRA_COSO <> 'C'";
+$st2 = mysql_query($sql2);
 
-        if (mysql_num_rows($st2) <= 0) {
-            $subject  = "Reverbcity - 15% off na primeira compra!";
+if (mysql_num_rows($st2) <= 0) {
+$subject  = "Reverbcity - 15% off na primeira compra!";
 
-            $texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
+$texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
 <p>Ol&aacute; <strong>'.$nome.'</strong>,</p>
 
 <p>Voc&ecirc; fez o cadastro no nosso site mas at&eacute; agora n&atilde;o fez uma compra :(</p> 
@@ -107,36 +107,36 @@ if (mysql_num_rows($st) > 0) {
 </div>    
 ';
 
-            $corpo = IncluiPapelCarta("padrao",$texto,"&Uacute;LTIMOS DIAS PARA GANHAR");
+$corpo = IncluiPapelCarta("padrao",$texto,"&Uacute;LTIMOS DIAS PARA GANHAR");
 
-            EnviaEmailNovo("atendimento@reverbcity.com","Reverbcity",$email,"","",$subject, $corpo);
+EnviaEmailNovo("atendimento@reverbcity.com","Reverbcity",$email,"","",$subject, $corpo);
 
-            if ($enviar == "S" && $stbloq == "N"){
-                $celddd = str_replace("(","",$celddd);
-                $celddd = str_replace(")","",$celddd);
-                $celddd = str_replace(" ","",$celddd);
+if ($enviar == "S" && $stbloq == "N"){
+$celddd = str_replace("(","",$celddd);
+$celddd = str_replace(")","",$celddd);
+$celddd = str_replace(" ","",$celddd);
 
-                $celular = str_replace("-","",$celular);
-                $celular = str_replace(".","",$celular);
-                $celular = str_replace("/","",$celular);
-                $celular = str_replace("=","",$celular);
-                $celular = str_replace(" ","",$celular);
+$celular = str_replace("-","",$celular);
+$celular = str_replace(".","",$celular);
+$celular = str_replace("/","",$celular);
+$celular = str_replace("=","",$celular);
+$celular = str_replace(" ","",$celular);
 
-                $celularcomp = $celddd.$celular;
+$celularcomp = $celddd.$celular;
 
-                $texto = "Aproveite os ultimos 5 dias pra vc fazer uma compra (a partir de $$59) e ganhar 15% http://rvb.la";
+$texto = "Aproveite os ultimos 5 dias pra vc fazer uma compra (a partir de $$59) e ganhar 15% http://rvb.la";
 
-                if (substr($celularcomp,0,1) == "0"){
-                    $celularcomp = substr($celularcomp,1,strlen($celularcomp));
-                }
+if (substr($celularcomp,0,1) == "0"){
+$celularcomp = substr($celularcomp,1,strlen($celularcomp));
+}
 
-                if (strlen($celularcomp)==10 || strlen($celularcomp)==11){
-                    EnviaSMS(1,$nrcad,$celularcomp,$texto);
-                    $x++;
-                }
-            }
-        }
-    }
+if (strlen($celularcomp)==10 || strlen($celularcomp)==11){
+EnviaSMS(1,$nrcad,$celularcomp,$texto);   
+$x++;
+}
+}
+}
+}
 }
 
 mysql_close($con);

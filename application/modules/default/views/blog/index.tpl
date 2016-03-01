@@ -114,7 +114,7 @@
             <li><a rel="nofollow" href="http://reverbcity.tumblr.com/" target="_blank" class="icon tumblr ir">Tumblr</a></li>
             <li><a rel="nofollow" href="http://instagram.com/reverbcity" target="_blank" class="icon instagram ir">Instagram</a></li>
             <li><a rel="nofollow" href="http://pinterest.com/reverbcity/" target="_blank" class="icon pinterest ir">Pinterest</a></li>
-            {*<li class="last"><a rel="nofollow" href="https://plus.google.com/+reverbcity/posts" target="_blank" class="icon rss ir">Google Plus</a></li>*}
+            <li class="last"><a rel="nofollow" href="https://plus.google.com/+reverbcity/posts" target="_blank" class="icon rss ir">Google Plus</a></li>
         </ul>
 
         <div class="banners-sidebar cycle-slideshow">
@@ -130,34 +130,10 @@
             <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($_produto_dia->DS_PRODUTO_PRRC)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                 <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1,'largura'=>220,'altura'=>280,'imagem'=>$foto_completa_dia],'imagem', TRUE)}" alt="{$_produto_dia->DS_PRODUTO_PRRC}">
             </a>
-            {*<span class="promocao_dia">Promoção do Dia</span>*}
+            <span class="promocao_dia">Promoção do Dia</span>
 
         </div>
-        <div class="product-details">
-            <div class="circle" style="background-color: #5fbf98">
-                <a>NEW</a>
-            </div>
-            <h2 class="product-name" style="height: 18px">
-                <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                    {$_produto_dia->DS_PRODUTO_PRRC|truncate:29:"...":TRUE}
-                    {if $_produto_dia->DS_FRETEGRATIS_PRRC == 'S'}
-                        - Frete Grátis
-                    {/if}
-                </a>
-            </h2>
-            <p class="price">
-                {if $destaque->VL_PROMO_PRRC neq 0}
-                    <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                        <span class="old-price">R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}</span>
-                        por R$ {$destaque->VL_PROMO_PRRC|number_format:2:",":"."}
-                    </a>
-                {else}
-                    <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$destaque->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                        R$ {$destaque->VL_PRODUTO_PRRC|number_format:2:",":"."}
-                    </a>
-                {/if}
-            </p>
-        </div>
+
         <div id="categorias" class="posreflole">
             <h3>Categorias</h3>
             <ul>
@@ -173,15 +149,15 @@
 
 
 
-        {*<div id="forum" class="posreflole">*}
-            {*<h3>Forum</h3>*}
-            {*<ul>*}
-                {*{foreach from=$foruns item=forum}*}
-                    {*<li><a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($forum->DS_TOPICO_TOSO)}, "idforum"=>{$forum->NR_SEQ_TOPICO_TOSO}], 'detalheforum', TRUE)}">{$forum->DT_CADASTRO_TOSO|date_format:"%m/%y"} | {$forum->DS_TOPICO_TOSO|truncate:20:"...":TRUE}</a></li>*}
-                {*{/foreach}*}
-            {*</ul>*}
-            {*<a rel="nofollow" href="{$this->url([], 'forum', TRUE)}" class="vejamais posreflole">veja mais +</a>*}
-        {*</div>*}
+        <div id="forum" class="posreflole">
+            <h3>Forum</h3>
+            <ul>
+                {foreach from=$foruns item=forum}
+                    <li><a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($forum->DS_TOPICO_TOSO)}, "idforum"=>{$forum->NR_SEQ_TOPICO_TOSO}], 'detalheforum', TRUE)}">{$forum->DT_CADASTRO_TOSO|date_format:"%m/%y"} | {$forum->DS_TOPICO_TOSO|truncate:20:"...":TRUE}</a></li>
+                {/foreach}
+            </ul>
+            <a rel="nofollow" href="{$this->url([], 'forum', TRUE)}" class="vejamais posreflole">veja mais +</a>
+        </div>
 
         <div class="banners-sidebar cycle-slideshow"
          data-cycle-fx="fadeout"

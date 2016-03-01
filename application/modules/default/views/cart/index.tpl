@@ -237,7 +237,7 @@
     </div>
 </div>
 <div class="carrinho-pagamento" style="display: block;">
-    <form id="mycart-payment" action="{$this->url([], "fazerpedidocheckout", TRUE)}" method="post">
+    <form id="mycart-payment" action="{$this->url([], "fazerpedido2", TRUE)}" method="post">
         <h2 class="rvb-title">Endereço de Envio</h2>
         <ul id="mycart-address-list">
             <!--
@@ -610,7 +610,7 @@
             </ul>*}
         </div>
         <div class="clearfix"></div>
-
+    </form>
     <div class="mycart-buttons clearfix">
         <a href="#" class="mycart-button pedido voltar">Voltar - {$dadosProduto['total_produto']|number_format:2:",":"."}</a>
         <input type="hidden" name="transition-token" id="data-holder" data-token="" data-customer-data="false" data-max-installments="4" value="" >
@@ -631,7 +631,7 @@
                     >
             </script>
         </form>*}
-    </div></form>
+    </div>
 </div>
 
 </div>
