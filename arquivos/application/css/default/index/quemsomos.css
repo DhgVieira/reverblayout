@@ -172,14 +172,9 @@
 }
 @media screen and (max-width: 979px) {
     .rvb-fundoverde {
-        height: 800px;
         padding: 25px 40px;
-        min-height: 1000px;
-        background: #5fbf98;
-        float: left
-    }
-    #rvb-staff li {
-        position: absolute
+        min-height: 1970px;
+        background: #5fbf98
     }
     #quemsomos-frase-bonitinha {
         width: 100%;
@@ -189,17 +184,8 @@
         margin-left: 280px
     }
     #rvb-staff {
-        float: left;
-        position: relative;
-        margin: -60px 0 0;
-        padding: 0;
-        width: 100%;
-        height: 683px;
-        background: url(../../../../default/images/quem-somos/fundo-linhas-staff_m.png) no-repeat 9px -60px;
-    }
-    #staff-tony {
-        top: -15px;
-        left: -12px;
+        height: 1902px;
+        background: url(../../../../default/images/quem-somos/fundo-linhas-staff_m.png) no-repeat 0
     }
     #staff-jana {
         top: 1410px;
@@ -222,28 +208,32 @@
         left: 240px
     }
     #staff-caio {
-        top: 627px;
-        right: -30px;
+        top: 835px;
+        right: -30px
     }
     #staff-diego {
-        top: 331px;
-        left: -36px;
+        top: 359px;
+        left: -36px
     }
     #staff-marcio {
-        top: 340px;
-        right: -34px;
+        top: 358px;
+        right: -34px
     }
     #staff-gabi {
-        top: 181px;
-        left: 186px;
+        top: 220px;
+        left: 174px
+    }
+    #staff-tony {
+        top: -15px;
+        left: -12px
     }
     #staff-lorem {
-        top: 473px;
-        left: 201px;
+        top: 640px;
+        left: 235px
     }
     #staff-ipsum {
-        top: 611px;
-        left: -30px;
+        top: 720px;
+        left: -30px
     }
 }
 @media screen and (max-width: 767px) {
