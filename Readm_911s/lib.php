@@ -27,7 +27,9 @@ function has_utf8_encodingOrChars($str, $returnInForm__1forSpecialChars__2forEnc
 //$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
 //mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
 
-$con = mysql_connect("localhost","root","root") or die("Conex�o Falhou!");
+//$con = mysql_connect("localhost","root","root") or die("Conex�o Falhou!");
+//mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
+$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
 mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
 
 //if (request("cp")){
@@ -704,7 +706,7 @@ function EnviaEmailNovo($de, $denome, $para, $cc, $cco, $assunto, $conteudo){
     }
 }
 
-function EnviaMailer($de, $denome, $para, $paranome, $cc, $assunto, $conteudo){
+function EnviaMailer($de, $denome, $para, $paranome, $cc, $assunto, $conteudo, $bcc = ''){
     $sql = "select ST_BLOQUEIOMAIL_CACH from cadastros where DS_EMAIL_CASO = '$para'";
     $st2 = mysql_query($sql);
     if (mysql_num_rows($st2) > 0) {
@@ -732,6 +734,11 @@ function EnviaMailer($de, $denome, $para, $paranome, $cc, $assunto, $conteudo){
 
             if ($cc){
                 $mail->AddAddress($cc);
+            }
+
+            if ($bcc){
+                $mail->AddBCC($bcc);
+                //  $mail->addCustomHeader("BCC: " . $bcc);
             }
 
             $mail->IsHTML(true);
@@ -1273,6 +1280,7 @@ function IncluiPapelCarta($tipo, $texto, $assunto=""){
                     <td align="right" height="75">
                         <table width="150" cellpadding="0" cellspacing="0" height="25" border="0">
                             <tr>
+                                <td><a href="https://open.spotify.com/user/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/spotify.png" height="25" /></a></td>
                                 <td><a href="http://instagram.com/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/rss.gif" width="26" height="25" /></a></td>
                                 <td><a href="https://www.facebook.com/Reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/fb.gif" width="26" height="25" /></a></td>
                                 <td><a href="https://twitter.com/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/twi.gif" width="26" height="25" /></a></td>

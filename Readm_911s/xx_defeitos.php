@@ -113,7 +113,7 @@
 		<?php
 	}
 	//$body = IncluiPapelCarta("sistema",$body,'Camisetas com defeito - '. $dataReferencia); 
-	//EnviaEmailNovo("atendimento@reverbcity.com","Reverbcity",'daniel.arbext@gmail.com',"","",'Camisetas com defeito - ' . $dataReferencia, $body);
+	//EnviaEmailNovo("atendimento@reverbcity.com","Reverbcity",'desenvolvimento@reverbcity.com',"","",'Camisetas com defeito - ' . $dataReferencia, $body);
 ?>
 </body>
 </html>

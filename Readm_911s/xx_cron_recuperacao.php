@@ -7,7 +7,8 @@
 	
 	$body = IncluiPapelCarta("sistema",$body,'Recuperação de carrinho - '. date('d/m/Y')); 
 
-	$contatos = array('daniel' => "daniel.arbext@gmail.com",
+	$contatos = array(
+				'dev' => 'desenvolvimento@reverbcity.com',
                   'tony' => "contato@reverbcity.com",
                   'marcio' => "marcio@reverbcity.com",
                   'miria' => 'atendimento@reverbcity.com');

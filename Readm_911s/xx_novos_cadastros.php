@@ -11,7 +11,8 @@ $sql_count = "SELECT
               AND
                      MONTH(DT_CADASTRO_CASO) = MONTH(DATE_SUB(SYSDATE(), INTERVAL 1 DAY)) 
               AND
-                     YEAR(DT_CADASTRO_CASO) = YEAR(DATE_SUB(SYSDATE(), INTERVAL 1 DAY)) 
+                     YEAR(DT_CADASTRO_CASO) = YEAR(DATE_SUB(SYSDATE(), INTERVAL 1 DAY))
+              AND DS_UF_CASO IS NOT NULL
               ";
 
 $st_count = mysql_query($sql_count);
@@ -38,7 +39,8 @@ $sql_cadastros = "SELECT
 		              AND
 		                     MONTH(DT_CADASTRO_CASO) = MONTH(DATE_SUB(SYSDATE(), INTERVAL 1 DAY)) 
 		              AND
-		                     YEAR(DT_CADASTRO_CASO) = YEAR(DATE_SUB(SYSDATE(), INTERVAL 1 DAY)) 
+		                     YEAR(DT_CADASTRO_CASO) = YEAR(DATE_SUB(SYSDATE(), INTERVAL 1 DAY))
+		              AND DS_UF_CASO IS NOT NULL
 		              ";	
 
   $st = mysql_query($sql_cadastros);
@@ -77,13 +79,15 @@ if (mysql_num_rows($st) > 0) {
           		$row_c = mysql_fetch_row($st_c);
 
 	    		$total  = $row_c[0];
-				$img = 'money2.gif';
+				$img = 'dollar-sticker.png';
+				$isCompra = true;
 
 	    		$totcompras++;
 	    	}else{
 
 	    		$total = 0;
-				$img = 'negada.png';
+				$img = 'close-sticker.png';
+				$isCompra = false;
 	    	}
 	    	
 
@@ -94,19 +98,20 @@ if (mysql_num_rows($st) > 0) {
 		$x++;
 
 		$bgColorTable = ($x%2 == 0)? '#ECECFF': '#FFFFFF';
+		$bgColorTableIcon = (!empty($isCompra))? '#5fbf98': '#F05626';
 
 		$mensagem .= utf8_encode(
 					"<tr bgcolor='{$bgColorTable}' onMouseOver='document.getElementById('colorChanger').style.backgroundColor='{$bgColorTable}''>
 						<td width='375px' style='padding: 5px'><b><a href='http://reverbcity.com/perfil/".$nome."/$idperfil'>". $nome ."</a></b></td>
-						<td style='padding: 5px'><img src='http://reverbcity.com/Readm_911s/img/{$img}' title='R$ " . number_format($total,2,",","") . "'/></td>
+						<td style='padding: 5px'><img width='16' src='http://reverbcity.com/Readm_911s/img/{$img}' title='R$ " . number_format($total,2,",","") . "'/></td>
 						<td style='padding: 5px'><b><a href='http://reverbcity.com/perfil/".$nome."/$idperfil'>".  $cidade . " / " . $uf ."</a></b></td>
 					</tr>");
 		//$mensagem .= utf8_encode("<p><b><a href='http://reverbcity.com/perfil/".$nome."/$idperfil'>". $nome ." - " . $cidade . " - " . $uf . " </a></b></p>");
 	}
 	$mensagem .= "</tbody></table>";
 }		
-		$mensagem .= "<p><img src='http://reverbcity.com/Readm_911s/img/negada.png'/> Compra Não Efetuada
-					| <img src='http://reverbcity.com/Readm_911s/img/money2.gif'/> Compra Realizada</p>";
+		$mensagem .= "<p><img width='16' src='http://reverbcity.com/Readm_911s/img/close-sticker.png'/> Compra Não Efetuada
+					| <img width='16' src='http://reverbcity.com/Readm_911s/img/dollar-sticker.png'/> Compra Realizada</p>";
 		$mensagem .= "<p><b>Total Gasto Pelos Novos Usuários :</b> R$". number_format($totcompgeral,2,",","") ."</p>";
 		$mensagem .= "<p><b>Obs:</b> Para acessar o perfil dos usuários, basta clicar no nome dos mesmos.</p>";
 
@@ -115,8 +120,8 @@ $contatos = array(
 				'tony' =>"contato@reverbcity.com" ,
 				'miri' =>"atendimento@reverbcity.com",
 				'gustavo' => "gustavo@reverbcity.com",
-				'desenvolvimento' => "desenvolvimento@reverbcity.com",
-				'diego' => "diego@reverbcity.com"
+				'diego' => "diego@reverbcity.com",
+				'desenvolvimento' => "desenvolvimento@reverbcity.com"
 				);
 
 
