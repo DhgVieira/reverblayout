@@ -54,24 +54,16 @@
 div#main-content {
     padding: 0px 20px;
 }
-
 .grid-sizer,
 .grid-item {
-    width: 19%;
-}
-/*img[width'180'] {*/
-
-/*}*/
-div.grid-item:nth-child(4n) {
-    width: auto;
-    max-width: 36.5%;
+    width: 23.5%;
 }
 .gutter-sizer {
-    width: 1%;
+    width: 2%;
 }
 .grid-item {
     float: left;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 @media (max-width: 1050px) {
