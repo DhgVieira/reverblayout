@@ -5583,7 +5583,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 }
 
 //                //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-//                if ($resultado_busca['uf'] == "SP" and $valor_total >= 90) {
+//                if ($resultado_busca['uf'] == "SP" and $valor_total >= 59) {
 //
 //                    //verifico s tem preco cheio
 //                    if ($tem_camiseta_cheia == 1) {
@@ -5599,8 +5599,8 @@ class Checkout2Controller extends Zend_Controller_Action {
 //
 //                            $retorno["lugar"] = 8.1;
 //                        }
-//                    }
-//                }
+//		}                
+//		}
             }
 
             /**

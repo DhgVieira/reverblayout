@@ -89,14 +89,32 @@ foreach ($compras as $idc) {
     
     $arq = 'nfe/geradas/nfe_'.$dataat.'_'.$nfe.'.txt';
     $handle = fopen($arq,"w+");
+
+    $fd = fopen($file, 'r');
+    stream_filter_append($fd, 'convert.iconv.UTF-8/OLD-ENCODING');
+    stream_copy_to_stream($fd, fopen($output, 'w'));
+
+//IE ST informada: verificar o DV da IE do Substituto Tributário informada.
+
+    $ieEST = '';
+
+    switch ($estado) {
+        case 'SP':
+            $ieEST = '816014030110';
+            break;
+        case 'DF':
+            $ieEST = '0774742000174';
+            break;
+    }
     
     fwrite($handle,"NOTA FISCAL|1\r\n");
     fwrite($handle,"A|3.10|NFe|\r\n");
     fwrite($handle,"B|41||VENDA|$parcelas|55|1|$nfe|$dataat|$dataat|1|$idDest|4113700|1|1||1|1|1|2|||\r\n");
-    fwrite($handle,"C|ANTONIO M DIAS CONFECCOES|REVERBCITY|9038567770||||1|\r\n");
+    fwrite($handle,"C|ANTONIO M DIAS CONFECCOES|REVERBCITY|9038567770|" . $ieEST . "|||1|\r\n");
     fwrite($handle,"C02|08345875000137\r\n");
     fwrite($handle,"C05|RUA IBIPORA|995||JARDIM AURORA|4113700|Londrina|PR|86060510|1058|BRASIL|433228852|\r\n");
-    fwrite($handle,"E|$nome|2|||\r\n");
+    //indIEDest = 9=Não Contribuinte
+    fwrite($handle,"E|$nome|9|||\r\n");
     if (strlen($cpfcnpj) > 11){
         fwrite($handle,"E02|$cpfcnpj\r\n");
     }else{
@@ -127,6 +145,290 @@ foreach ($compras as $idc) {
     $val_desc = false;
     $freteum = "";
     $descontoum = "";
+
+    //UF ICMS para a UF de destino
+    //AC-AP-AM-PA-RR                                        = 17% + 7% SEM FCP
+    //AL-BA-CE-DF-ES-GO-MA-MT-MS-PB-PE-PI-RN-RO-SE-TO       = 17% + 7% + FCP
+    //SC                                                    = 17% + 12% sem FCP
+    //RS                                                    = 17% + 12% + FCP
+    //MG-SP                                                 = 18% + 12% + FCP
+    //RJ                                                    = 19% + 12% + FCP
+//NA|vBCUFDest|pFCPUFDest|pICMSUFDest|pICMSInter|pICMSInterPart|vFCPUFDest|vICMSUFDest|vICMSUFRemet
+//NA|44.84|2|18.00|12.00|40|0.90|1.08|1.61
+
+    $arrUfsICMSDestino = array(
+        'AC'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'AP'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'AM'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PA'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RR'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'AL'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'BA'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'CE'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'DF'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'ES'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'GO'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'MA'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'MT'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'MS'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PB'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PE'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'PI'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RN'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RO'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'SE'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'TO'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '7.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'SC'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RS'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'MG'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '17.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'SP'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '18.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0
+        ),
+        'RJ'=> array(
+            'vBCUFDest' => '',
+            'pFCPUFDest' => '2',
+            'pICMSUFDest' => '19.00',
+            'pICMSInter' => '12.00',
+            'pICMSInterPart' => '40',
+            'vFCPUFDest' => 0,
+            'vICMSUFDest' => 0,
+            'vICMSUFRemet' => 0,
+            'inscEstadual' => 816014030110
+        ),
+//        'PR'=> array(
+//            'vBCUFDest' => '',
+//            'pFCPUFDest' => '',
+//            'pICMSUFDest' => '19.00',
+//            'pICMSInter' => '12.00',
+//            'pICMSInterPart' => '40',
+//            'vFCPUFDest' => 0,
+//            'vICMSUFDest' => 0,
+//            'vICMSUFRemet' => 0
+//        ),
+    );
     
     try{
         while($dadoscesta = mysql_fetch_array($stces)){
@@ -165,11 +467,39 @@ foreach ($compras as $idc) {
             }
             fwrite($handle,"M|\r\n");
             fwrite($handle,"N|\r\n");
-            fwrite($handle,"N10c|0|101|500|0|0\r\n");
+            //fwrite($handle,"N10c|0|101|500|0|0\r\n");
+            fwrite($handle,"N10d|0|102|500|0|0\r\n");
             fwrite($handle,"Q|\r\n");
             fwrite($handle,"Q04|06\r\n");
             fwrite($handle,"S|\r\n");
             fwrite($handle,"S04|06\r\n");
+            //NA|vBCUFDest|pFCPUFDest|pICMSUFDest|pICMSInter|pICMSInterPart|vFCPUFDest|vICMSUFDest|vICMSUFRemet
+            //NA|44.84|2|18.00|12.00|40|0.90|1.08|1.61
+            if (array_key_exists($estado, $arrUfsICMSDestino)) {
+
+                $vlProduto = number_format(($dadoscesta["VL_PRODUTO_CESO"]*$dadoscesta["NR_QTDE_CESO"]),2,".","");
+
+                $pFCPUFDest = $arrUfsICMSDestino[$estado]['pFCPUFDest'];
+                $pICMSUFDest = $arrUfsICMSDestino[$estado]['pICMSUFDest'];
+                $pICMSInter = $arrUfsICMSDestino[$estado]['pICMSInter'];
+                $pICMSInterPart = $arrUfsICMSDestino[$estado]['pICMSInterPart'];
+
+                $valBaseAlInt = ($pICMSInter / 100) * $vlProduto;
+                $vlrBaseAlDest = ($pICMSUFDest / 100) * $vlProduto;
+
+                $vlrDeducao = $vlrBaseAlDest - $valBaseAlInt;
+
+                $vlrIcmRemetente = (60 / 100) * $vlrDeducao;
+                $vlrIcmDest = (40 / 100) * $vlrDeducao;
+                $vlrFCP = ($pFCPUFDest / 100) * $vlProduto;
+
+                $vlrIcmRemetente    = (empty($vlrIcmRemetente))? '0.00' : number_format($vlrIcmRemetente,2,".","");
+                $vlrIcmDest         = (empty($vlrIcmDest))? '0.00' : number_format($vlrIcmDest,2,".","");
+                $vlrFCP             = (empty($vlrFCP))? '0.00' : number_format($vlrFCP,2,".","");
+
+                fwrite($handle,"NA|" . $vlProduto . "|" . $pFCPUFDest . "|" . $pICMSUFDest . "|" . $pICMSInter . "|" . $pICMSInterPart . "|" . $vlrFCP . "|" . $vlrIcmDest . "|" . $vlrIcmRemetente . "\r\n");
+
+            }
             $x++;
         }
         

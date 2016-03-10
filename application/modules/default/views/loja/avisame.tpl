@@ -23,10 +23,59 @@
     {/foreach}
 </div>
 <section class="products">
+<<<<<<< HEAD
     <h1 class="rvb-title">Reprints</h1>
     <div class="row">
 		<span class="span12 float-left-cycle texto-ppl">
 			A vida é uma troca! Ao invés de jogar tudo fora e poluir nosso planeta, que tal fazer um escambo com a galera que frequenta nosso site? No Reverbcycle você pode trocar ou vender objetos que não tem mais significado para você. Você pode pechincar demais por aqui, a única regra é que o item negociado tem que ter algo relacionado com o nosso universo musical.
+=======
+    <h1 class="rvb-title">Reverb <span>Avise-me</span></h1>
+{if $contadores|count > 0}
+    <div class="rvb-column left">
+        <ul class="rvb-collection-of-products">
+            {foreach from=$contadores item=produto name=produtosForEach}
+                {assign var="foto" value="{$produto->NR_SEQ_PRODUTO_PRRC}"}
+                {assign var="extensao" value="{$produto->DS_EXT_PRRC}"}
+                {assign var="foto_completa" value="{$foto}.{$extensao}"}
+                
+                {*{assign var="fotos" value=$this->fotoproduto($produto->NR_SEQ_PRODUTO_PRRC)}
+                {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
+                {assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
+                {assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}*}
+            <li class="rvb-product-item">
+                <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'classic', TRUE)}" class="product-photo">
+                    {if file_exists("arquivos/uploads/produtos/$foto_completa")}
+                        {*{assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto}.{$extensao}"}*}
+                        <!-- Polyfill para imagens responsivas-->
+                        <span data-picture data-alt="{$produto->DS_PRODUTO_PRRC}" data-title="{$produto->DS_PRODUTO_PRRC}">
+                            <span data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                            <span data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
+                            <span data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
+                            <!-- for hd displays -->
+                            <span data-width="140" data-height="160" data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>280, 'altura'=>320, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
+                            <span data-width="130" data-height="150" data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>260, 'altura'=>300, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
+
+                            <noscript>
+                                <img src="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="Imagem não encontrada - Reverbcity">
+                            </noscript>
+                        </span>
+                    {else}
+                        {assign var="fotos" value=$this->fotoproduto($produto->NR_SEQ_PRODUTO_PRRC)}
+                        {assign var="foto_produto" value="{$fotos[1]['NR_SEQ_FOTO_FORC']}"}
+                        {assign var="extensao_produto" value="{$fotos[1]['DS_EXT_FORC']}"}
+                        {assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
+                        
+                        {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
+                            {assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
+                            <!-- Polyfill para imagens responsivas-->
+                            <span data-picture data-alt="{$produto->DS_PRODUTO_PRRC}" data-title="{$produto->DS_PRODUTO_PRRC}">
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>160, 'altura'=>185, 'imagem'=>$foto_completa],"imagem", TRUE)}"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>140, 'altura'=>160, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px)"></span>
+                                <span data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>130, 'altura'=>150, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px)"></span>
+                                <!-- for hd displays -->
+                                <span data-width="140" data-height="160" data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>320, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
+                                <span data-width="130" data-height="150" data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>260, 'altura'=>300, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
+>>>>>>> 32147427d9962ee265deb06d1114a180b4f5a38b
 
 		</span>
     </div>

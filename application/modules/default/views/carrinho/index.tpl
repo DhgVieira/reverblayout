@@ -16,7 +16,7 @@
     </div>*}
 
     <div class="mycart-buttons clearfix">
-        <a href="{$this->url([], "todos-produtos", TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
+        <a href="{$this->url([], $this->btn_comprar_mais, TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
         <a href="#" class="mycart-button carrinho avancar">Avançar</a>
     </div>
 
@@ -241,7 +241,7 @@
     <div class="clearfix"></div>
 
     <div class="mycart-buttons clearfix">
-        <a href="{$this->url([], "todos-produtos", TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
+        <a href="{$this->url([], $this->btn_comprar_mais, TRUE)}" class="mycart-button carrinho voltar">Comprar mais</a>
         <a href="#" class="mycart-button carrinho avancar">Avançar</a>
     </div>
 </div>
@@ -466,7 +466,7 @@
         <h2 class="rvb-title pagamento-title">Pagamento</h2>
         <div id="mycart-payment-container">
             <ul id="mycart-payment-list">
-                <li class="mycart-payment-item">
+                <li class="mycart-payment-item boleto">
                     <label class="mycart-payment-radio">
                         <input type="radio" name="formapagto" value="boleto" />
                         <span class="radio-icon"></span>
