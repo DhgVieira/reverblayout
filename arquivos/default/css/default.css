@@ -1821,10 +1821,6 @@ iframe[name=google_conversion_frame]
 }
 @media screen and (max-width:979px)
 {
-    section.products .rvb-product-item.highlight {
-        overflow: hidden;
-        width: 360px;
-    }
     #base-bar .links-information,#desktop-header,.category-item.day,.cycle-slideshow,.header.container,.rvb-column.right .sidebar-ui
     {
         display: none!important;
@@ -2608,7 +2604,7 @@ iframe[name=google_conversion_frame]
     }
     ul.sub-menu.filter-by-colors
     {
-        float: left;
+        float: right;
         width: 305px;
     }
     .filter-by-sizes .sub-menu-item
@@ -2662,12 +2658,12 @@ iframe[name=google_conversion_frame]
     }
     section.products .rvb-product-item
     {
-        height: 160px;
+        height: 240px;
         width: 140px;
     }
     section.products .rvb-product-item.highlight
     {
-        width: 225px;
+        width: 220px;
     }
     #indique-lightbox .md-content
     {
@@ -2792,13 +2788,12 @@ iframe[name=google_conversion_frame]
     }
     section.products .rvb-product-item
     {
-        height: 140px;
-        width: 122px;
+        height: 240px;
+        width: 130px;
     }
-
     section.products .rvb-product-item.highlight
     {
-        width: 325px;
+        width: 280px;
     }
     #indique-lightbox .md-content
     {
@@ -2807,19 +2802,6 @@ iframe[name=google_conversion_frame]
     #indique-form .field
     {
         width: 100%;
-    }
-    .preco{
-        display: none;
-    }
-    .rvb-product-item .list-product-details {
-        width: 128px;
-    }
-    section.products .rvb-column.center {
-        float: left;
-        width: 280px !important;
-    }
-    .sex {
-        width: 280px;
     }
 }
 @media only screen and (-webkit-min-device-pixel-ratio:1.5),only screen and (-o-min-device-pixel-ratio:32),only screen and (min--moz-device-pixel-ratio:1.5),only screen and (min-device-pixel-ratio:1.5)
