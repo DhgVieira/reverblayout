@@ -457,6 +457,9 @@
                 $( "#range-min" ).val( "R$ " + ui.values[ 0 ]);
                 $( "#range-max" ).val( "R$ " + ui.values[ 1 ]);
 
+            },
+            change: function(event, ui) {
+                alert('ta dando ' + ui.values[ 0 ] + ' auuuu ' + ui.values[ 1 ]);//$("#priceform").submit();
             }
         });
         $( "#range-min" ).val( "R$ " + $( "#slide-green" ).slider( "values", 0 ));
