@@ -92,30 +92,30 @@ foreach ($lines as $line) {
 
 						if ($stcompra == 'A'){
 							$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-							$logerros .= "<font color=red>A compra informada ainda está em aberta!!</font><br /><br />";
+							$logerros .= "<font color=red>A compra informada ainda estÃ¡ em aberta!!</font><br /><br />";
 							$totalerro++;
 						}else if ($stcompra == 'P'){
 							if ($codrast){
 								$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-								$logerros .= "<font color=red>A compra informada Já possui um código de rastreamento!!</font><br /><br />";
+								$logerros .= "<font color=red>A compra informada JÃ¡ possui um cÃ³digo de rastreamento!!</font><br /><br />";
 								$totalerro++;
 						}else{
 							$logacoes .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
 							$str = "update compras set DS_RASTREAMENTO_COSO = '$codrastreamento', VL_FRETECUSTO_COSO = $vlrfrete, ST_COMPRA_COSO = 'V' WHERE NR_SEQ_COMPRA_COSO = ".$compra;
 							$st = mysql_query($str);
 
-							$subject  = utf8_encode("ReverbCity - Confirmação de Envio (Rastreamento)!");
+							$subject  = utf8_encode("ReverbCity - Confirmaï¿½ï¿½o de Envio (Rastreamento)!");
 
 							$texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 25px 25px; width: 550px;">
 							Pronto para o Rock and Roll, <strong>'.utf8_decode($nome).'</strong>?
 							<br /><br />
-							A turnê da sua camiseta vai começar! Segue abaixo o código de rastreamento da sua compra número <strong>'.$idc.'</strong>
+							A turnÃª da sua camiseta vai comeÃ§ar! Segue abaixo o cÃ³digo de rastreamento da sua compra nÃºmero <strong>'.$idc.'</strong>
 							</div>    
 							<div style="background-color: #dcddde; padding: 25px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-							Código: <strong>'.$codrastreamento.'</strong>
+							CÃ³digo: <strong>'.$codrastreamento.'</strong>
 							</div>
 							<p style="font-family:Verdana;font-size:11px;color: #555555;padding: 0 25px 0 25px;">
-							Para consultar o status do envio acesse o nosso site clicando no link <strong>Rastreamento</strong> no<br/ >rodapé e informe o código acima.
+							Para consultar o status do envio acesse o nosso site clicando no link <strong>Rastreamento</strong> no<br/ >rodapÃ© e informe o cÃ³digo acima.
 							<br /><br /></p>
 							';
 							$corpo = IncluiPapelCarta("rast",$texto,"ReverbCity RASTREAMENTO");
@@ -127,7 +127,7 @@ foreach ($lines as $line) {
 						}
 					}else if ($stcompra == 'E'){
 						$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-						$logerros .= "<font color=red>A compra informada já está setada como entregue!!</font><br /><br />";
+						$logerros .= "<font color=red>A compra informada jÃ¡ estÃ¡ setada como entregue!!</font><br /><br />";
 						$totalerro++;
 					}else{
 						$logenviado .= "$codrastreamento - Frete: R$ ".number_format($vlrfrete,2,",","")." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a> - ST: $stcompra<br />";
@@ -135,7 +135,7 @@ foreach ($lines as $line) {
 				}
 			}else{
 				$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-				$logerros .= "<font color=red>Rastreamento sem número de compra!!</font><br /><br />";
+				$logerros .= "<font color=red>Rastreamento sem nÃºmero de compra!!</font><br /><br />";
 				$totalerro++;
 			}
 		}
@@ -175,9 +175,9 @@ if ($totalpag > 1){
 
 			$lines = explode("\n", $result);
 
-        	$con2 =  mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conexão Falhou!");
+        	$con2 =  mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("ConexÃ£o Falhou!");
             
-            mysql_select_db("reverb_amazon",$con) or die("Database Inválido");
+            mysql_select_db("reverb_amazon",$con) or die("Database InvÃ¡lido");
 
 			foreach ($lines as $line) {
 				$splitlinha = explode("|",$line);
@@ -209,30 +209,30 @@ if ($totalpag > 1){
 
 								if ($stcompra == 'A'){
 									$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-									$logerros .= "<font color=red>A compra informada ainda está em aberta!!</font><br /><br />";
+									$logerros .= "<font color=red>A compra informada ainda estÃ¡ em aberta!!</font><br /><br />";
 									$totalerro++;
 								}else if ($stcompra == 'P'){
 									if ($codrast){
 										$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-										$logerros .= "<font color=red>A compra informada Já possui um código de rastreamento!!</font><br /><br />";
+										$logerros .= "<font color=red>A compra informada JÃ¡ possui um cÃ³digo de rastreamento!!</font><br /><br />";
 										$totalerro++;
 								}else{
 									$str = "UPDATE compras set DS_RASTREAMENTO_COSO = '$codrastreamento', VL_FRETECUSTO_COSO = $vlrfrete, ST_COMPRA_COSO = 'V' WHERE NR_SEQ_COMPRA_COSO = ".$compra;
 
 									$st = mysql_query($str);
 
-									$subject  = utf8_encode("ReverbCity - Confirmação de Envio (Rastreamento)!");
+									$subject  = utf8_encode("ReverbCity - Confirmaï¿½ï¿½o de Envio (Rastreamento)!");
 
 									$texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 25px 25px; width: 550px;">
 									Pronto para o Rock and Roll, <strong>'.utf8_decode($nome).'</strong>?
 									<br /><br />
-									A turnê da sua camiseta vai começar! Segue abaixo o código de rastreamento da sua compra número <strong>'.$idc.'</strong>
+									A turnÃª da sua camiseta vai comeÃ§ar! Segue abaixo o cÃ³digo de rastreamento da sua compra nÃºmero <strong>'.$idc.'</strong>
 									</div>    
 									<div style="background-color: #dcddde; padding: 25px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-									Código: <strong>'.$codrastreamento.'</strong>
+									CÃ³digo: <strong>'.$codrastreamento.'</strong>
 									</div>
 									<p style="font-family:Verdana;font-size:11px;color: #555555;padding: 0 25px 0 25px;">
-									Para consultar o status do envio acesse o nosso site clicando no link <strong>Rastreamento</strong> no<br/ >rodapé e informe o código acima.
+									Para consultar o status do envio acesse o nosso site clicando no link <strong>Rastreamento</strong> no<br/ >rodapÃ© e informe o cÃ³digo acima.
 									<br /><br /></p>
 									';
 									$corpo = IncluiPapelCarta("rast",$texto,"ReverbCity RASTREAMENTO");
@@ -246,13 +246,13 @@ if ($totalpag > 1){
 								}
 							}else if ($stcompra == 'E'){
 								$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-								$logerros .= "<font color=red>A compra informada já está setada como entregue!!</font><br /><br />";
+								$logerros .= "<font color=red>A compra informada jÃ¡ estÃ¡ setada como entregue!!</font><br /><br />";
 								$totalerro++;
 							}
 						}
 					}else{
 						$logerros .= "Rast.: $codrastreamento - Nome: ".$splitlinha[1]." - Vlr.Frete: R$ ".number_format($vlrfrete,2,",","")." - Cep: ".$cep." - Compra: <a href=http://www.reverbcity.com/Readm_911s/compras_ver.php?idc=".$compra." target=_blank>$compra</a><br />";
-						$logerros .= "<font color=red>Rastreamento sem número de compra!!</font><br /><br />";
+						$logerros .= "<font color=red>Rastreamento sem nÃºmero de compra!!</font><br /><br />";
 						$totalerro++;
 					}
 
@@ -267,9 +267,9 @@ curl_close($ch);
 
 if (($totalerro > 0) || ($total > 0)){
 	$texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
-	<p>Período processado: <strong>'.$dia.'/'.$mes.'/'.$ano.' 00:00 a '.$dia.'/'.$mes.'/'.$ano.' 23:59</strong><br /><br /></p> 
+	<p>PerÃ­odo processado: <strong>'.$dia.'/'.$mes.'/'.$ano.' 00:00 a '.$dia.'/'.$mes.'/'.$ano.' 23:59</strong><br /><br /></p>
 
-	<p><strong>'.$totalerro.' erros para Verificação Manual:</p>
+	<p><strong>'.$totalerro.' erros para VerificaÃ§Ã£o Manual:</p>
 	</div>';
 	if ($totalerro > 0){    
 		$texto .= '<div style="background-color: #dcddde; padding: 15px 10px 15px 25px; font-family:Verdana;font-size:11px;color: #646464; width: 565px; margin: 25px 0 25px 0;">
@@ -286,13 +286,13 @@ if (($totalerro > 0) || ($total > 0)){
 
 	$texto .= '<br /><br />';
 
-	$corpo = IncluiPapelCarta("sistema",$texto,"IMPORTAÇÃO DOS CÓDIGOS DE RASTREAMENTO");
+	$corpo = IncluiPapelCarta("sistema",$texto,"IMPORTAÃ‡ÃƒO DOS Cï¿½DIGOS DE RASTREAMENTO");
 
-	EnviaMailer("atendimento@reverbcity.com","Reverbcity","contato@reverbcity.com","Tony","",utf8_encode("Importação dos códigos de rastreamento processada!"),utf8_encode($corpo));
-	EnviaMailer("atendimento@reverbcity.com","Reverbcity","atendimento@reverbcity.com","Miria","",utf8_encode("Importação dos códigos de rastreamento processada!"),utf8_encode($corpo));                           
+	EnviaMailer("atendimento@reverbcity.com","Reverbcity","contato@reverbcity.com","Tony","","ImportaÃ§Ã£o dos cÃ³digos de rastreamento processada!",$corpo);
+	EnviaMailer("atendimento@reverbcity.com","Reverbcity","atendimento@reverbcity.com","Miria","","ImportaÃ§Ã£o dos cÃ³digos de rastreamento processada!",$corpo);
 }else{
-	$corpo = IncluiPapelCarta("sistema",'Rastreamento rodou mas não encontrou nada',"IMPORTAÇÃO DOS CÓDIGOS DE RASTREAMENTO");
-	EnviaMailer("atendimento@reverbcity.com","Reverbcity","daniel.arbext@gmail.com","Miria","",utf8_encode("Importação dos códigos de rastreamento processada!"),utf8_encode($corpo)); 
+	$corpo = IncluiPapelCarta("sistema",'Rastreamento rodou mas nÃ£o encontrou nada',"IMPORTAÃ‡ÃƒO DOS CÃ“DIGOS DE RASTREAMENTO");
+	EnviaMailer("atendimento@reverbcity.com","Reverbcity","desenvolvimento@reverbcity.com","DEV - RVB","","ImportaÃ§Ã£o dos cÃ³digos de rastreamento processada!",$corpo);
 }
 mysql_close($con);
 ?>
