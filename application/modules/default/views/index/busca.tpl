@@ -123,7 +123,7 @@
     {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
     {assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
     {assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
-        
+
         <li class="rvb-product-item">
             <a href="{$this->url(["titulo"=>{$this->createslug($resultItem['titulo'])},"idproduto"=>{$resultItem['id']}], 'classic', TRUE)}" class="product-photo">
                 {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa") && $foto_completa != '.'}
@@ -138,8 +138,20 @@
                         </noscript>
                     </span>
                 {else}
-                    <!-- Polyfill para imagens responsivas-->
-                    <span data-picture data-alt="{$produto->titulo}" data-title="{$resultado['titulo']}">
+                    {if file_exists("arquivos/uploads/produtos/{$resultItem['id']}.{$extensao_produto}")}
+                        <!-- Polyfill para imagens responsivas-->
+                        <span data-picture data-alt="{$produto->titulo}" data-title="{$resultado['titulo']}">
+                            <span data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1,'largura'=>170,'altura'=>190,'imagem'=>"{$resultItem['id']}.{$extensao_produto}"],'imagem', TRUE)}"></span>
+
+                            <span data-src="{$this->Url(['tipo'=>"produtos", 'crop'=>1,'largura'=>140,'altura'=>156,'imagem'=>"{$resultItem['id']}.{$extensao_produto}"],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
+
+                            <noscript>
+                                <img src="{$this->Url(['tipo'=>"produtos", 'crop'=>1,'largura'=>170,'altura'=>190,'imagem'=>"{$resultItem['id']}.{$extensao_produto}"],'imagem', TRUE)}" alt="{$produto->titulo}">
+                            </noscript>
+                        </span>
+                    {else}
+                        <!-- Polyfill para imagens responsivas-->
+                        <span data-picture data-alt="{$produto->titulo}" data-title="{$resultado['titulo']}" data="{$foto_completa}">
                         <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>170,'altura'=>190,'imagem'=>'not_found.jpg'],'imagem', TRUE)}"></span>
 
                         <span data-src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>140,'altura'=>156,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" data-media="(max-width: 767px)"></span>
@@ -148,8 +160,9 @@
                             <img src="{$this->Url(['tipo'=>"error", 'crop'=>1,'largura'=>170,'altura'=>190,'imagem'=>'not_found.jpg'],'imagem', TRUE)}" alt="{$produto->titulo}">
                         </noscript>
                     </span>
+                    {/if}
                 {/if}
-                <span class="rvb-tag"></span>
+                <span class="rvb-tag" data-fotoTeste="{$resultItem['id']}.{$extensao_produto}"></span>
             </a>
             <h2 class="product-name">{utf8_decode($resultItem['titulo']|truncate:24:"...":TRUE)}</h2>
         </li>

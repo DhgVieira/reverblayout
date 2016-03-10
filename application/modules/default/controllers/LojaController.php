@@ -3868,6 +3868,9 @@ class LojaController extends Zend_Controller_Action {
 //            //assino
 //            $this->view->assign('pages', $pageArray);
 
+        $sql = $select_produtos->__toString();
+        //echo "$sql\n"; die();
+
         // crio paginacao com numeros
         $current_page = $this->_request->getParam("page", 1);
         //passo para o paginador o select de produtos

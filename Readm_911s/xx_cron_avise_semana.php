@@ -12,7 +12,7 @@
 	
 	$body = IncluiPapelCarta("sistema",$body,'Relatório avise-me - '. $dataReferencia); 
 
-	$contatos = array('daniel' => "daniel.arbext@gmail.com",
+	$contatos = array('dev' => 'desenvolvimento@reverbcity.com',
                   'tony' => "contato@reverbcity.com",
                   'jonathan' => "moda@reverbcity.com",
                   'jana' => 'janaina@reverbcity.com');

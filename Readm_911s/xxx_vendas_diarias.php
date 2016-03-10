@@ -808,6 +808,7 @@ $topo = '<table align="center"><tr><td>
 			<td align="right" height="75">
 				<table width="150" cellpadding="0" cellspacing="0" height="25" border="0">
 					<tr>
+					    <td><a href="https://open.spotify.com/user/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/spotify.png" height="25" /></a></td>
 						<td><a href="http://instagram.com/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/rss.gif" width="26" height="25" /></a></td>
 						<td><a href="https://www.facebook.com/Reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/fb.gif" width="26" height="25" /></a></td>
 						<td><a href="https://twitter.com/reverbcity"><img border="0" src="http://www.reverbcity.com/imgrast/twi.gif" width="26" height="25" /></a></td>
