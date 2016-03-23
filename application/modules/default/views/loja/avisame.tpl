@@ -23,14 +23,8 @@
     {/foreach}
 </div>
 <section class="products">
-<<<<<<< HEAD
-    <h1 class="rvb-title">Reprints</h1>
-    <div class="row">
-		<span class="span12 float-left-cycle texto-ppl">
-			A vida é uma troca! Ao invés de jogar tudo fora e poluir nosso planeta, que tal fazer um escambo com a galera que frequenta nosso site? No Reverbcycle você pode trocar ou vender objetos que não tem mais significado para você. Você pode pechincar demais por aqui, a única regra é que o item negociado tem que ter algo relacionado com o nosso universo musical.
-=======
     <h1 class="rvb-title">Reverb <span>Avise-me</span></h1>
-{if $contadores|count > 0}
+    {if $contadores|count > 0}
     <div class="rvb-column left">
         <ul class="rvb-collection-of-products">
             {foreach from=$contadores item=produto name=produtosForEach}
@@ -75,10 +69,13 @@
                                 <!-- for hd displays -->
                                 <span data-width="140" data-height="160" data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>280, 'altura'=>320, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 767px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
                                 <span data-width="130" data-height="150" data-src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>260, 'altura'=>300, 'imagem'=>$foto_completa],"imagem", TRUE)}" data-media="(max-width: 479px) and (-webkit-min-device-pixel-ratio: 2.0)"></span>
->>>>>>> 32147427d9962ee265deb06d1114a180b4f5a38b
-
-		</span>
+		                    </span>
+                        {/if}
+                    {/if}
+            {/foreach}
+    {/if}
     </div>
+
     {if $contadores|count > 0}
         {*<div class="rvb-column center">*}
         <div class="row">

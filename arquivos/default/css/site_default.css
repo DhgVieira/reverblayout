@@ -1108,7 +1108,7 @@ header[role=banner]
 {
     float: left;
     height: 40px;
-    margin: 10px 25px;
+    margin: 0 25px;
     width: 142px;
 }
 .links-information
@@ -1529,6 +1529,12 @@ input.error:focus+label.error,input.error:hover+label.error,select.error:focus+l
     padding-bottom: 20px;
     padding: 0 20px;
 }
+.selo-trustedcompany {
+    margin-top: 15px;
+    margin-left: 10px;
+    max-width: 70px;
+    float: left;
+}
 .selo-google
 {
     display: block;
@@ -1536,7 +1542,8 @@ input.error:focus+label.error,input.error:hover+label.error,select.error:focus+l
 }
 .selo-google img
 {
-    background-color: white;
+    max-width: 100px;
+    margin: 15px 0 0 10px;
 }
 .selo-trustsign img
 {

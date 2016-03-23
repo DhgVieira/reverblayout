@@ -4,6 +4,7 @@
 application/configs/application.ini
 application/Bootstrap.php
 arquivos/uploads/banners/*
+arquivos/emails/*
 arquivos/uploads/blog/*
 arquivos/uploads/blog_me/*
 arquivos/uploads/cadastros/*
