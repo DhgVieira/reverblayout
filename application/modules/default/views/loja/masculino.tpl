@@ -95,9 +95,11 @@
                             </noscript>
                         </span>
                     {/if}
-                    
-                    {if $produto->TP_DESTAQUE_PRRC == 1}
-                    <span class="rvb-tag new"></span>
+
+                    {if $produto->DS_FRETEGRATIS_PRRC == 'S'}
+                        <span class="rvb-tag sale-frete"></span>
+                    {elseif $produto->TP_DESTAQUE_PRRC == 1}
+                        <span class="rvb-tag new"></span>
                     {elseif $produto->TP_DESTAQUE_PRRC == 3}
                         <span class="rvb-tag reprint"></span>
                     {elseif $produto->TP_DESTAQUE_PRRC == 2}

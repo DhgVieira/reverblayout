@@ -31,18 +31,18 @@
             <div class="input-text">
                 <input type="email" name="email" id="email-contato" placeholder="E-mail"  value="{$email}" required>
             </div>
-            <div class="select-item estado margin">
-                <span>Estado</span>
-                <select class="select-field" name="estado" id="estado">
-                    <option  value="{$uf}" selected>{$uf}</option>
-                </select>
-            </div>
-            <div class="select-item cidade">
-                <span>Cidade</span>
-                <select class="select-field" name="cidade" id="cidade">
-                    <option  value="{$cidade}" selected>{$cidade}</option>
-                </select>
-            </div>
+
+             <div class="select-item estado margin">
+                 <span>{$uf}</span>
+                 <select class="select-field" name="estado" id="estado" value="{$uf}">
+                 </select>
+             </div>
+             <div class="select-item cidade">
+                 <span>{$cidade}</span>
+                 <select class="select-field" name="cidade" id="cidade"value="{$cidade}">
+                 </select>
+             </div>
+
         {else}
             <div class="input-text margin">
                 <input type="text" name="nome" id="nome-contato" placeholder="Nome completo" required>

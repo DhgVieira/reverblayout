@@ -239,17 +239,29 @@ $(document).ready(function () {
             var customerAddressZipcode = $(this).data('customer-address-zipcode');
             var customerPhoneDdd = $(this).data('customer-phone-ddd');
             var customerPhoneNumber = $(this).data('customer-phone-number');
+            var maxInstallments = 1;
+
 
             var checkout = new PagarMeCheckout.Checkout({"encryption_key": carrinho.encryption_key, success: function (r) {
                     $("#data-holder").val(r.token);
                     $('#mycart-payment').submit();
                 }});
 
+            if(amount > 50 && amount < 100){
+                maxInstallments = 2;
+            }else if(amount > 100 && amount < 150){
+                maxInstallments = 3;
+            }else if(amount > 150){
+                maxInstallments = 4;
+            }else{
+                maxInstallments = 1;
+            }
+
             checkout.open({
                 "customerData": false,
                 "cardBrands": "visa,mastercard,amex",
                 "amount": amount,
-                "maxInstallments": 4,
+                "maxInstallments": maxInstallments,
                 "uiColor": "#6ec6a4",
                 "customerName": customerName,
                 "customerDocumentNumber": customerDocumentNumber,

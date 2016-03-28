@@ -26,7 +26,8 @@ function confirma_cat(idl) {
 	} 
 }
 
-</script> 
+</script>
+
     	<table class="textosjogos" cellpadding="0" cellspacing="0">
         	<tr>
             	<td height="20" width="130" align="center" class="textostabelas">

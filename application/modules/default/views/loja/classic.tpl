@@ -34,7 +34,7 @@
             <div class="span8 foto">
                 <div class="classic-product-photo">
                     
-                    {assign var="fotos" value=$this->fotoproduto($produto->NR_SEQ_PRODUTO_PRRC)}
+                    {assign var="fotos" value=$this->fotoproduto($produto->NR_SEQ_PRODUTO_PRRC, true)}
                     {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
                     {assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
 

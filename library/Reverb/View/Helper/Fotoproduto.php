@@ -8,7 +8,7 @@
 class Reverb_View_Helper_Fotoproduto extends Zend_View_Helper_Abstract {
     
     
-    public function fotoproduto($produto_id) {
+    public function fotoproduto($produto_id, $boolEstampa = false) {
         $lista = array();
         
         if($produto_id){
@@ -37,6 +37,11 @@ class Reverb_View_Helper_Fotoproduto extends Zend_View_Helper_Abstract {
                 
                 Zend_Registry::get("cache")->save($lista, $idCache);
             }
+
+            if($boolEstampa == true && count($lista) >= 2) {
+                $lista[0] = $lista[1];
+            }
+
         }
         
         return $lista;

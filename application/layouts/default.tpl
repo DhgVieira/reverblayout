@@ -161,7 +161,7 @@
 	
         	</head>
         	<body>
-
+			<div id="TRUSTEDCOMPANY_widget_321"><script async src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXhQAHBgFBgAjGREeAAUNEQUQC0EABBlTVkVe"></script></div>
 			<div class="full-size" id="full-size"></div>
 
         		{if $_isMobile eq 1}
@@ -172,6 +172,7 @@
         		</header>
         		{else}
         		<header id="desktop-header" role="banner">
+
         				<div id="top-bar">
         					{* LOAD DINAMIC *}
         				</div>
@@ -601,8 +602,8 @@
 			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
 			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
 			{/literal}
-		</script>		
-		
+		</script>
+
 
     </body>
 </html>

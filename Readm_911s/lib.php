@@ -24,13 +24,13 @@ function has_utf8_encodingOrChars($str, $returnInForm__1forSpecialChars__2forEnc
 
 
 //error_reporting(0);
-//$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
-//mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
+$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
+mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
 
 //$con = mysql_connect("localhost","root","root") or die("Conex�o Falhou!");
 //mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
-$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
-mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
+//$con = mysql_connect("reverbcity1.cp48hix4ktfm.sa-east-1.rds.amazonaws.com","reverb","reverbserver2014") or die("Conex�o Falhou!");
+//mysql_select_db("reverb_amazon",$con) or die("Database Inv�lido");
 
 //if (request("cp")){
 //    $SS_campanha = request("cp");

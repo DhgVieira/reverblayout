@@ -31,6 +31,7 @@
                 {assign var="foto" value="{$produto->NR_SEQ_PRODUTO_PRRC}"}
                 {assign var="extensao" value="{$produto->DS_EXT_PRRC}"}
                 {assign var="foto_completa" value="{$foto}.{$extensao}"}
+
                 
                 {*{assign var="fotos" value=$this->fotoproduto($produto->NR_SEQ_PRODUTO_PRRC)}
                 {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}

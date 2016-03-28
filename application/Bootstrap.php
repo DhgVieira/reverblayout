@@ -260,7 +260,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
 		// Registra o plugin para carregar informações para todo o site
 		$this->frontController->registerPlugin(new Reverb_Controller_Plugin_Geral);
-		$this->frontController->registerPlugin(new Reverb_Controller_Plugin_Cachepages());
+//		$this->frontController->registerPlugin(new Reverb_Controller_Plugin_Cachepages());
 
         //$this->frontController->registerPlugin( new Reverb_Controller_Plugin_Ssl);
 
