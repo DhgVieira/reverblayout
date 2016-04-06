@@ -5,21 +5,12 @@ include_once("fckeditor/fckeditor.php");
 
 $mes = request("mes");
 
-$subject  = "Happy bday! Aproveite o seu dia com uma promo exclusiva: 20% de desconto!";
+$subject  = "Happy bday! Aproveite o seu dia com uma promo exclusiva: 15% de desconto!";
 
 $texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
-                <p>Parab&eacute;ns, <strong>##nome##</strong>!</p>	
-                <p>Que a sua vida seja repleta de boa m&uacute;sica, seja no seu fone de ouvido ou nas nossas camisetas!</p> 
-                <p>Durante o m&ecirc;s do seu anivers&aacute;rio, voc&ecirc; ganha 20% DE DESCONTO em itens fora de promo&ccedil;&atilde;o aqui na Reverbcity!</p>
-                <p>Confira nossas estampas:</p>
-                <div style="background-color: #dcddde; padding: 5px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-                <a href="http://rvb.la/FelizBday">http://rvb.la/FelizBday</a>
-                </div>
-                <br /> 
-                * Basta colocar o que deseja no carrinho e o desconto ser&aacute; aplicado automaticamente
-                <br /> <br /> 
-                Que os pr&oacute;ximos anos sejam ainda mais rock and roll,<br /> 
-                Equipe Reverbcity.
+                <p>Parab&eacute;ns, <strong>'.$nome.'</strong>!</p>
+                <p>Na primeira compra efetuada dentro mês do seu aniversário você ganha 15% de desconto ao finalizar o pedido.</p>
+                <p>Caso ultrapasse os R$ 150,00 você também ganha o frete para todo Brasil.</p>
           </div>';
 
 

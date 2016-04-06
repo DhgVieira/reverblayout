@@ -1,5 +1,6 @@
 <?php
-include '../adm/lib.php';
+include 'auth.php';
+include 'lib.php';
 
 $nome = request("nome");
 $email = request("email");

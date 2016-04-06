@@ -219,6 +219,8 @@
         {/foreach}
     </ul>
 
+    <div id="TRUSTEDCOMPANY_widget_100713" style="float: left"><script async src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXkJYR1xcRFRSW0RfVEQ&v=1"></script></div>
+
     <div id="mycart-subtotal-carrinho" class="clearfix"  data-usuario="{$tipo_usuario}" data-quantidade="{$quantidade_total}" data-subtotal="{$subtotal}" data-cep="{$info['DS_CEP_CASO']}" data-frete="{$frete}" data-desconto="{$valor_desconto}" data-total="{$total}">
         <p>
             <span class="left total-itens">
@@ -270,6 +272,20 @@
                 </label>
                 <!-- <button class="mycart-edit-address"> Editar </button> -->
             </li>
+            {assign var="cidadeUser" value="{$info['DS_CIDADE_CASO']}"}
+
+                <li class="mycart-address-item" data-cep="86060510" data-endereco_id="999999999">
+                    <p class="mycart-address-text">
+                        <strong>Retirar na  Reverbcity sem Frete</strong> <br>
+                        Rua Ibipora, 995 <br>
+                        Jardim Aurora <br>
+                        Londrina PR - 86060-510
+                    </p>
+                    <label class="mycart-use-address">
+                        <span>Retirar no office</span>
+                    </label>
+                </li>
+
             {foreach from=$dadosEnderecos item=endereco}
                 <li class="mycart-address-item" data-cep="{$endereco->DS_CEP_ENRC}" data-endereco_id="{$endereco->NR_SEQ_ENDERECO_ENRC}">
                     <p class="mycart-address-text">

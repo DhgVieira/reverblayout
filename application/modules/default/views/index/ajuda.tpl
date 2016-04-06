@@ -119,10 +119,13 @@
         <a href="#" class="open-help">5. Politíca de Troca</a>
         <div class="conteudo-help">
             <span class="titulo">QUAL A POLÍTICA DE TROCAS DA REVERBCITY?</span>
-                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal. Você deverá preencher o formulário de trocas que vai junto com a encomenda e enviar para o endereço indicado. O frete é por conta do comprador, desde que o produto não apresente nenhum defeito, neste caso é responsabilidade da Reverbcity.<br><br>
+                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal. Você deverá preencher o formulário de trocas disponível <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">aqui</a> e enviar para o endereço indicado. O frete é por conta do comprador, desde que o produto não apresente nenhum defeito, neste caso é responsabilidade da Reverbcity.<br />
 
             <span class="titulo">PRODUTOS COM DEFEITO</span>
-               Você possui até 30 dias corridos, após o recebimento do produto, para solicitar a troca ou devolução, desde que o mesmo não tenha sido usado.<br><br>
+               Você possui até 30 dias corridos, após o recebimento do produto, para solicitar a troca ou devolução, desde que o mesmo não tenha sido usado.<br>
+
+            <span class="titulo">FORMULÁRIO DE TROCA</span>
+                <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">Baixe aqui!</a> <br />
 
             <span class="titulo">QUAIS AS FORMAS DE RESTITUIÇÃO DO PAGAMENTO?</span>
                Formas de restituição em caso de produtos com defeito ou desistência da compra.<br>
@@ -130,7 +133,7 @@
 
                 Estorno em cartão: Exclusivo para pedidos pagos em cartão de crédito. O prazo do estorno seguirá as regras da administradora do cartão. Poderá demorar o prazo de  uma  fatura para constar o crédito, dependendo da data de vencimento de sua fatura.<br>
 
-                Reembolso em conta corrente: Para pedidos pagos em boleto, o valor da compra poderá ser reembolsado em uma conta corrente, de mesma titularidade do responsável pelo pedido (CPF idêntico).   <br><br>
+                Reembolso em conta corrente: Para pedidos pagos em boleto, o valor da compra poderá ser reembolsado em uma conta corrente, de mesma titularidade do responsável pelo pedido (CPF idêntico).   <br />
 
         </div>
     </li>
@@ -160,7 +163,7 @@
         <a href="#" class="open-help">9. Frete grátis</a>
         <div class="conteudo-help">
             <span class="titulo">COMO ME ENCAIXO NO FRETE GRÁTIS?</span>
-            Compras a partir de R$200 ganham o frete para qualquer cidade do Brasil! Realize um pedido a partir de R$200, com pelo menos um item fora de promoção no carrinho (a partir de R$59), e tenha frete grátis para o país inteiro.
+            Compras a partir de R$ 150,00 - inclusive em itens com desconto - ganham o frete para qualquer cidade do Brasil!
             <br />
         A Reverbcity se reserva ao direito de alterar/cancelar esta promoção conforme achar necessário e sem aviso prévio.
         </div>
@@ -170,7 +173,7 @@
         <a href="#" class="open-help">10. Como funciona a promoção de primeira compra?</a>
         <div class="conteudo-help">
             <span class="titulo">PROMOÇÃO DE PRIMEIRA COMPRA</span>
-            Como presente de primeira compra na Reverbcity, você ganha 15% de desconto ao finalizar o seu pedido. Esta promoção é válida apenas para a primeira compra no site, limitada a um cpf por cadastro. É preciso que pelo menos uma camiseta do seu carrinho esteja fora de promoção ( a partir de R$59,00). Promoção válida por 30 dias a partir da data de cadastro no site e não é cumulativa.
+            Como presente de boas vindas na Reverbcity você ganha 15% de desconto ao finalizar o seu primeiro pedido, em até 30 dias após ter feito o cadastro. Caso a compra seja em um valor a partir de R$ 150,00 você também ganha o frete para qualquer cidade do Brasil.
             <br />
             A Reverbcity se reserva ao direito de alterar/cancelar esta promoção conforme achar necessário e sem aviso prévio.
         </div>
@@ -180,7 +183,7 @@
         <a href="#" class="open-help">11. Promoção de aniversário</a>
         <div class="conteudo-help">
             <span class="titulo">PROMOÇÃO DE ANIVERSÁRIO</span>
-            A promoção é válida para a primeira compra efetuada dentro mês do seu aniversário. Nesta compra você ganha estes 15% de desconto  de presente ao finalizar o pedido.  Para a promoção ser válida é preciso que pelo menos uma camiseta selecionada esteja fora de promoção ( a partir de R$59,00). Promoção não cumulativa.
+            Na primeira compra efetuada dentro mês do seu aniversário você ganha 15% de desconto ao finalizar o pedido. Caso ultrapasse os R$ 150,00 você também ganha o frete para todo Brasil.
             <br />
             A Reverbcity se reserva ao direito de alterar/cancelar esta promoção conforme achar necessário e sem aviso prévio.
         </div>
@@ -194,6 +197,17 @@
             2. Vá na opção ao lado, onde está seu nome + Meu Perfil <br />
             3. Embaixo da imagem do seu profile tem a opção “Dados Cadastrais” <br />
             4. Altere seus dados e se vista de música! <br />
+        </div>
+    </li>
+
+    <li>
+        <a href="#" class="open-help">13. Frete grátis para Londrina</a>
+        <div class="conteudo-help">
+            <span class="titulo">FRETE GRÁTIS PARA LONDRINA?</span>
+            Para você que é aqui de Londrina, em qualquer compra a partir de R$ 59,00, a gente entrega na sua casa sem custo nenhum.
+            <br />
+            <p>Caso queria vir buscar pessoalmente aqui, basta selecionar a opção “Retirar na Reverbcity” e efetuar o pagamento. Não será cobrado o frete e o seu pedido ficará reservado aqui na Reverbcity (Rua Ibiporã, 995 Jardim Aurora - Londrina, PR)</p>
+            A Reverbcity se reserva ao direito de alterar/cancelar esta promoção conforme achar necessário e sem aviso prévio.
         </div>
     </li>
 </ul>

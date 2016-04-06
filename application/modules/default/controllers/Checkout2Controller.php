@@ -2527,7 +2527,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                         //se tiver apenas 1
                         if ($item['quantidade'] == 1) {
                             //se tiver um de preco cheio
-                            if ($tem_cheio == 1) {
+//                            if ($tem_cheio == 1) {
                                 //agora vejo se e camiseta
                                 if ($item["tipo"] == 6) {
 
@@ -2543,7 +2543,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                                         }
                                     }
                                 }
-                            }
+//                            }
                         }
                     }
                 }
@@ -3616,7 +3616,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                         //se tiver apenas 1
                         if ($item['quantidade'] == 1) {
                             //se tiver um de preco cheio
-                            if ($tem_cheio == 1) {
+//                            if ($tem_cheio == 1) {
                                 //agora vejo se e camiseta
                                 if ($item["tipo"] == 6) {
 
@@ -3632,7 +3632,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                                         }
                                     }
                                 }
-                            }
+//                            }
                         }
                     }
                 }
@@ -5126,9 +5126,9 @@ class Checkout2Controller extends Zend_Controller_Action {
                     $so_camiseta = false;
                 }
 
-                if ($produto['tipo'] == 52) {
-                    $tem_caneca = 1;
-                }
+//                if ($produto['tipo'] == 52) {
+//                    $tem_caneca = 1;
+//                }
 
                 $quantidade_total = $quantidade_total + $produto['quantidade'];
 
@@ -5175,7 +5175,8 @@ class Checkout2Controller extends Zend_Controller_Action {
 
                     $tem_cheio = 1;
 
-                    if ($valor >= 59) {
+//                    if ($valor >= 59) {
+                    if ($valor) {
 
                         $tem_camiseta_cheia = 1;
                     }
@@ -5458,7 +5459,7 @@ class Checkout2Controller extends Zend_Controller_Action {
                 if ($configuracoes->VL_FRETEGRATIS_GESA <= $valor_total and $tem_brinde == 0) {
                     //agora vejo se tem um produto de preÃ§o cheio
                     // Habilitar o if de volta depois da black friday
-                    if ($tem_cheio == 1) {
+                    //if ($tem_cheio == 1) {
                         //atribuo o valor do frete como gratis cep valido e valor para frete zerado
 
                         $valor_total_frete = 0;
@@ -5467,7 +5468,7 @@ class Checkout2Controller extends Zend_Controller_Action {
 
                         $sessao_frete->frete_gratis = 1;
                         $retorno["lugar"] = 4;
-                    }
+                    //}
                 } else {
                     //senao falo a quantidade que falta gastar para o frete gratis
                     $valor_para_frete_gratis = $configuracoes->VL_FRETEGRATIS_GESA - $valor_total;
@@ -5479,7 +5480,7 @@ class Checkout2Controller extends Zend_Controller_Action {
 
             // Se for primeira compra e for mais que 260 ganha frete grÃ¡tis
             if (($sessao_promo->primeira == 1 or $sessao_promo->niver == 1) and $tem_brinde == 1 and $valor_total > $configuracoes->VL_FRETEGRATIS_GESA) {
-                if ($tem_cheio == 1) {
+                //if ($tem_cheio == 1) {
                     //atribuo o valor do frete como gratis cep valido e valor para frete zerado
 
                     $valor_total_frete = 0;
@@ -5488,7 +5489,7 @@ class Checkout2Controller extends Zend_Controller_Action {
 
                     $sessao_frete->frete_gratis = 1;
                     $retorno["lugar"] = 4;
-                }
+                //}
             }
 
             if ($sessao_promo->niver == 1 and $tem_brinde == 1 and $valor_total > $configuracoes->VL_FRETEGRATIS_GESA) {
@@ -5544,7 +5545,6 @@ class Checkout2Controller extends Zend_Controller_Action {
 
                 return $retorno;
             }
-
             $resultado_busca = busca_cep($int_cepDestino, $forma_envio);
 
             if (!empty($resultado_busca)) {
@@ -5558,26 +5558,27 @@ class Checkout2Controller extends Zend_Controller_Action {
                 //verifico se a promo de frete gratis londrina esta ativae o tipo de cadastro nao for pj
                 if ($promocoes["st_frete_londrina"] == 1 and $usuarios->tipo <> 'PJ') {
 
-                    //agora faÃ§o a condiÃ§Ã£o de frete grÃ¡tis para usuÃ¡rios de londrina and $tem_promo == 0
-                    if (($resultado_busca['uf'] == "PR" OR $resultado_busca['uf'] == "SP" OR $resultado_busca['uf'] == "RJ") and $valor_total >= $configuracoes->VL_FRETEGRATIS_GESA) {
+                    //agora faço a condição de frete grátis para usuários de londrina and $tem_promo == 0
+                    $strPR = strtoupper($resultado_busca['uf']);
+                    $strLondrina = strtoupper($resultado_busca['localidade']);
+
+                    if (($strPR == "PR" AND $strLondrina == "LONDRINA") and $valor_total >= $promocoes["vl_frete_londrina"]) {
 
                         //verifico s tem preco cheio
-                        if ($tem_camiseta_cheia == 1) {
+                        //if ($tem_camiseta_cheia == 1) {
 
                             //agora verifico se tem brinde
-                            if ($tem_brinde == 0) {
-                                //atribuo o valor do frete como gratis cep valido e valor para frete zerado
+                           // if ($tem_brinde == 0) {
+
                                 $valor_total_frete = 0;
 
                                 $valor_para_frete_gratis = 0;
 
-                                $retorno['PrazoEntrega'] = 0;
-
                                 $sessao_frete->frete_gratis = 1;
 
-                                $retorno["lugar"] = 8;
-                            }
-                        }
+                                $retorno['PrazoEntrega'] = -1;
+                           // }
+                        //}
                     }
                 }
 

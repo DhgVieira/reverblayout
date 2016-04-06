@@ -66,7 +66,7 @@ include 'topo.php'; ?>
 							 $fone		   = $row[7];
 							 $idcli		   = $row[8];
 							 $parcelas	   = $row[9];
-							 
+
 							 if ($x == 0) {
 							 	$bg = "#FFFFFF";
 								if ( date("d/m/Y", strtotime($dt_compra)) == date("d/m/Y") ) $bg = "#f5f1ea";
@@ -154,7 +154,7 @@ include 'topo.php'; ?>
 							<?php
 							}
 						  }else{
-						 
+
 						?>
                         <table width="100%" align="center"><tr><td align="center"><strong>Nenhum aniversariante hoje!</strong></td></tr></table>
                         <?php }?>
@@ -188,7 +188,7 @@ include 'topo.php'; ?>
 							<?php
 							}
 						  }
-						 
+
 						?>
                 </ul>
               </td>
@@ -219,7 +219,7 @@ include 'topo.php'; ?>
                                         <?php
                                         }
                                       }else{
-                                     
+
                                     ?>
                                     <table width="100%" align="center"><tr><td align="center"><strong>Nenhum Produto!</strong></td></tr></table>
                                     <?php }?>
@@ -249,7 +249,7 @@ include 'topo.php'; ?>
                                         <?php
                                         }
                                       }else{
-                                     
+
                                     ?>
                                     <table width="100%" align="center"><tr><td align="center"><strong>Nenhum Produto!</strong></td></tr></table>
                                     <?php }?>
@@ -263,7 +263,7 @@ include 'topo.php'; ?>
 
 <!-- //****
     NAO COMPRA HA MAIS DE 3 MESES  -->
-<center>   
+<center>
 <table class="textostabelas" width="800" bgcolor="#F1EBD3" cellpadding="0" cellspacing="0">
     <tr>
         <td align="left">
@@ -273,7 +273,7 @@ include 'topo.php'; ?>
         </td>
     </tr>
     <tr>
-       	<td align="left"> 
+       	<td align="left">
            <table border="0" width="100%" cellpadding="0" cellspacing="0" height="20" bgcolor="#CCCCCC">
                 <tr>
                     <td align="center" width="120"><strong>Data da compra</strong></td>
@@ -281,10 +281,10 @@ include 'topo.php'; ?>
                     <td align="left" width="200"><strong>Nome</strong></td>
                     <td align="left" width="200"><strong>E-mail</strong></td>
                     <td align="left" width="50"><strong>Aviso</strong></td>
-                </tr>  
-            </table> 
+                </tr>
+            </table>
          </td>
-	</tr>    
+	</tr>
     <tr>
     	<td align="left" height="68" bgcolor="#FFFFFF" valign="top">
             <ul class="noticias">
@@ -301,21 +301,21 @@ include 'topo.php'; ?>
 				$ano = date("Y")*365;
 				$datahoje = $dia + $mes + $ano;
 				$contador = 0;
-				if (mysql_num_rows($compraST) > 0) { 		
+				if (mysql_num_rows($compraST) > 0) {
 				 	while($row = mysql_fetch_row($compraST)) {
 					  $datCompra = $row[0];
 					  $nrCompra = $row[1];
 					  $nome = $row[2];
 					  $email = $row[3];
 					  $status = $row[4];
-		
-// PEGA O NOME DA PESSOA PARA VER A ULTIMA COMPRA 					
+
+// PEGA O NOME DA PESSOA PARA VER A ULTIMA COMPRA
 					  if ($entra == '0' ){
 						  if ( $pessoa == "") {
 							$pessoa = $nome;
 							$entra = '1';
 						  }
-						  elseif ( $pessoa == $nome) { 
+						  elseif ( $pessoa == $nome) {
 							  $entra = '0';
 							   }
 							   else if( $pessoa <> $nome) {
@@ -328,7 +328,7 @@ include 'topo.php'; ?>
 					  $mesComp = date("m",strtotime($datCompra))*30;
 					  $anoComp = date("Y",strtotime($datCompra))*365;
 					  $dataComp = $diaComp + $mesComp + $anoComp;
-					  
+
 					  if ($datahoje - $dataComp > 90 && $entra == '1'){
 						  $imprime = '1';
 					  }
@@ -336,12 +336,12 @@ include 'topo.php'; ?>
 						  $entra = '0';
 						  $imprime = '0';
 					  }
-// IMPRIME A ULTIMA COMPRA, QUE A DATA MENOR QUE HOJE					
+// IMPRIME A ULTIMA COMPRA, QUE A DATA MENOR QUE HOJE
 					  if ( $entra == '1' && $imprime == '1'){
 						$entra = '0';
 						$imprime = '0';
 						$contador++;
-						
+
 			?>
                         <li style="width:98%; ">
                         <table border="0" width="100%" cellpadding="0" cellspacing="0" height="20" >
@@ -352,14 +352,14 @@ include 'topo.php'; ?>
                                     <td align="left" width="200" nowrap="nowrap"><a href="mailto:<?php echo $email; ?>" ><?php echo $email; ?></a></td>
                                     <td align="left" width="50"><a href="aviso.php?nome=<?php echo $nome; ?>&email=<?php echo $email; ?>"><img src="img/ico_mail.gif" title="Enviar aviso" border="0" /></a></td>
                                 </tr>
-                    </table>  
+                    </table>
                         </li>
-  			        <?php	
+  			        <?php
 						} // FIM IF
 					} // FIM WHILE
 				} // FIM IF
 
-				  else{                
+				  else{
                 ?>
             <table width="44%" align="left">
           		<tr>
@@ -368,15 +368,15 @@ include 'topo.php'; ?>
           			</td>
            		</tr>
             </table>
-            <?php 
+            <?php
 		 		} // FIM ELSE
 				echo "<strong> Encontrado </strong>: ".$contador;
 			?>
            </ul>
 		</td>
     </tr>
-</table>    
+</table>
 </center>
-<!-- //**** -->    
-   
+<!-- //**** -->
+
 <?php include 'rodape.php'; ?>

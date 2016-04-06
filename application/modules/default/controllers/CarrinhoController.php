@@ -257,17 +257,18 @@ class CarrinhoController extends Zend_Controller_Action {
                 }
 
                 //agora verifico se existe algo que anule frete gratis
-                if ($data_carrinho[$key]['tipo'] == 52) {
+                /*if ($data_carrinho[$key]['tipo'] == 52) {
                     //anulo o frete gratis
                     $anula_frete_gratis = 1;
                 } else {
                     //nao anulo
                     $anula_frete_gratis = 0;
-                }
+                }*/
 
                 // Verifico se o produto nao tem valor promocional
                 $sem_promo = false;
-                if ($data_carrinho[$key]['vl_promo'] == 0 and $data_carrinho[$key]['valor'] >= 59) {
+//                if ($data_carrinho[$key]['vl_promo'] == 0 and $data_carrinho[$key]['valor'] >= 59) {
+                if ($data_carrinho[$key]['vl_promo'] == 0) {
                     $sem_promo = true;
                     //aqui somamos a quantidade de produtos com valor cheio estao fora da promocao
                     $sem_promo_recur++;
@@ -341,7 +342,7 @@ class CarrinhoController extends Zend_Controller_Action {
                         $compra_niver = $query_compra_niver->fetchAll();
 
                         if ($compra_niver[0] == Null) {
-                            if($sem_promo == true) {
+                            //if($sem_promo == true) {
                                 //é aniversariante
                                 $aniversariante = true;
                                 // atribuo a mensagem para o carrinho
@@ -362,7 +363,7 @@ class CarrinhoController extends Zend_Controller_Action {
 // 
                                 // $data_carrinho[$key]['valor_total_desconto'] = $valor;
                                 // $carrinho->produtos[$key]['valor_total_desconto'] = $valor;
-                            }
+                            //}
                         }
                     }
                 }
@@ -493,7 +494,7 @@ class CarrinhoController extends Zend_Controller_Action {
 
                             if ($usuarios->tipo <> 'PJ') {
 
-                                if ($sem_promo == true) {
+                                //if ($sem_promo == true) {
 
                                         $sessao_promo->primeira = 1;
                                         $sessao_promo->brinde = 1;
@@ -501,11 +502,12 @@ class CarrinhoController extends Zend_Controller_Action {
 
                                         $msg_promo = $promocoes["msg_primeira_compra"];
                                         $sessao_promo->msg = $promocoes["msg_primeira_compra"];
+                                        $this->view->primeira_compra = true;
 
 
                                         //$credito_proxima_compra += $data_carrinho[$key]['valor'] * 0.15;
                                     
-                                }
+                                //}
                             }
                         }
                     }
@@ -723,7 +725,8 @@ class CarrinhoController extends Zend_Controller_Action {
                         //multiplico pela quantidade do produto
                         $valor = $valor * $quantidade;
                         //agora falo que tem produto cheio
-                        if ($valor_cheio >= 59) {
+//                        if ($valor_cheio >= 59) {
+                        if ($valor_cheio) {
                             $tem_cheio = 1;
                         }
                     }
@@ -803,9 +806,11 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where('ST_EXPIRADO_CRSA = "N"');
                 $creditos = $model_creditos->fetchRow($select_credito);
 
+                $sql1 = $select_credito->__toString();
+
                 // Busca os créditos gerado pelo admin
-                $model_creditos = new Default_Model_Contascorrente();
-                $select_credito = $model_creditos->select()
+                $model_creditos2 = new Default_Model_Contascorrente();
+                $select_credito2 = $model_creditos2->select()
                         //digo a tabela e os campos que vou precisar
                         ->from("contacorrente", array("NR_SEQ_CONTA_CRSA",
                             "VL_LANCAMENTO_CRSA"))
@@ -816,9 +821,12 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where("DT_VENCIMENTO_CRSA >= NOW()")
                         ->where("DS_OBSERVACAO_CRSA NOT LIKE 'Crédito de % gerado pela compra %'")
                         ->where('ST_EXPIRADO_CRSA = "N"');
-                $creditos2 = $model_creditos->fetchRow($select_credito);
+                $creditos2 = $model_creditos2->fetchRow($select_credito);
 
-                if ($valor_cheio >= 59 and $data_carrinho[$key]['vl_promo'] == 0) {
+                $sql2 = $select_credito2->__toString();
+
+//                if ($valor_cheio >= 59 and $data_carrinho[$key]['vl_promo'] == 0) {
+                if ($data_carrinho[$key]['vl_promo'] == 0) {
                     $data_hoje = date("Y-m-d");
 
                     if ($creditos->VL_LANCAMENTO_CRSA > 0) {
@@ -1277,6 +1285,8 @@ class CarrinhoController extends Zend_Controller_Action {
 
             //assino que tem frete gratis no vire
             $this->view->frete_gratis = $sessao_frete->frete_gratis;
+
+            $this->view->frete_valor = $sessao_frete->valor;
 
             //botao comprar mais
             $this->view->btn_comprar_mais = ($sem_promo_recur >= 2)? 'sale' : 'todos-produtos';
