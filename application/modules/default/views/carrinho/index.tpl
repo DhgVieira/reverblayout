@@ -276,7 +276,7 @@
 
                 <li class="mycart-address-item" data-cep="86060510" data-endereco_id="999999999">
                     <p class="mycart-address-text">
-                        <strong>Retirar na Reverbcity</strong> <br>
+                        <strong>Retirar na  Reverbcity sem Frete</strong> <br>
                         Rua Ibipora, 995 <br>
                         Jardim Aurora <br>
                         Londrina PR - 86060-510

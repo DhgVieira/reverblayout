@@ -119,10 +119,13 @@
         <a href="#" class="open-help">5. Politíca de Troca</a>
         <div class="conteudo-help">
             <span class="titulo">QUAL A POLÍTICA DE TROCAS DA REVERBCITY?</span>
-                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal. Você deverá preencher o formulário de trocas que vai junto com a encomenda e enviar para o endereço indicado. O frete é por conta do comprador, desde que o produto não apresente nenhum defeito, neste caso é responsabilidade da Reverbcity.<br><br>
+                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal. Você deverá preencher o formulário de trocas disponível <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">aqui</a> e enviar para o endereço indicado. O frete é por conta do comprador, desde que o produto não apresente nenhum defeito, neste caso é responsabilidade da Reverbcity.<br />
 
             <span class="titulo">PRODUTOS COM DEFEITO</span>
-               Você possui até 30 dias corridos, após o recebimento do produto, para solicitar a troca ou devolução, desde que o mesmo não tenha sido usado.<br><br>
+               Você possui até 30 dias corridos, após o recebimento do produto, para solicitar a troca ou devolução, desde que o mesmo não tenha sido usado.<br>
+
+            <span class="titulo">FORMULÁRIO DE TROCA</span>
+                <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">Baixe aqui!</a> <br />
 
             <span class="titulo">QUAIS AS FORMAS DE RESTITUIÇÃO DO PAGAMENTO?</span>
                Formas de restituição em caso de produtos com defeito ou desistência da compra.<br>
@@ -130,7 +133,7 @@
 
                 Estorno em cartão: Exclusivo para pedidos pagos em cartão de crédito. O prazo do estorno seguirá as regras da administradora do cartão. Poderá demorar o prazo de  uma  fatura para constar o crédito, dependendo da data de vencimento de sua fatura.<br>
 
-                Reembolso em conta corrente: Para pedidos pagos em boleto, o valor da compra poderá ser reembolsado em uma conta corrente, de mesma titularidade do responsável pelo pedido (CPF idêntico).   <br><br>
+                Reembolso em conta corrente: Para pedidos pagos em boleto, o valor da compra poderá ser reembolsado em uma conta corrente, de mesma titularidade do responsável pelo pedido (CPF idêntico).   <br />
 
         </div>
     </li>

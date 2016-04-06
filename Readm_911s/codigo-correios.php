@@ -234,7 +234,7 @@ class CodigoCorreios
                         $strSubject = utf8_encode("ReverbCity - Confirmação de Envio (Rastreamento)!");
 
                         $strTexto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 25px 25px; width: 550px;">
-							Pronto para o Rock and Roll, <strong>' . utf8_decode($objOrder->orderNome) . '</strong>?
+							Pronto para o Rock and Roll, <strong>' . $objOrder->orderNome . '</strong>?
 							<br /><br />
 							A turnê da sua camiseta vai começar! Segue abaixo o código de rastreamento da sua compra número <strong>' . $objOrder->orderCod . '</strong>
 							</div>

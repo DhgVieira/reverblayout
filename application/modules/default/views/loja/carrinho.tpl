@@ -24,6 +24,10 @@
     <div class="steps step-2">Etapa 2 - Pagamento</div>
     <div class="steps step-3">Etapa 3 - Confirmação</div>
 </div>
+<h2 style="background-color: #e85238; color: #FFF; padding: 10px 10px 10px 10px; font-size: 13px;">
+
+    <b>NAOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</b>
+</h2>
 {if $msg_promo neq ""}
     <h2 style="background-color: #e85238; color: #FFF; padding: 10px 10px 10px 10px; font-size: 13px;">
     {if $primeira_compra eq 1 and $compra_niver eq 0}
@@ -43,7 +47,7 @@
         {if $msg_promo eq ""}
             <img src="{$basePath}/arquivos/default/images/sale-icon.png"style="float: left;padding-right: 10px;">
             <b>Na compra de um produto a partir de  69,00  ganhe uma camiseta grátis que esteja em sale!</b>
-    
+
         {elseif $uf_usuario eq 'PR'}
             <img src="{$basePath}/arquivos/default/images/rocket-icon.png"style="float: left;padding-right: 10px;">
             <b>Faça uma compra a partir de R$69 em qualquer item fora de promoção e ganhe o frete para qualquer lugar do PR. Promo não cumulativa com a de aniversário.</b>
@@ -72,12 +76,12 @@
             {assign var="foto" value="{$dadosProduto['codigo']}"}
             {assign var="extensao" value="{$dadosProduto['path']}"}
             {assign var="foto_completa" value="{$foto}.{$extensao}"}
-            
+
             {assign var="fotos" value=$this->fotoproduto($dadosProduto['codigo'])}
             {assign var="foto_produto" value="{$fotos[0]['NR_SEQ_FOTO_FORC']}"}
             {assign var="extensao_produto" value="{$fotos[0]['DS_EXT_FORC']}"}
             {assign var="foto_completa" value="{$foto_produto}.{$extensao_produto}"}
-            
+
             {assign var="quantidade_total" value="{$quantidade_total+$dadosProduto['quantidade']}"}
             <!-- Verifica se valor do produto é promocional ou não -->
             {if $dadosProduto['vl_promo'] eq "" or $dadosProduto['vl_promo'] eq 0}
@@ -224,7 +228,7 @@
                             <strong>frete grátis</strong>!
                         </p>
                     {/if}
-                    
+
                 {/if}
             </div>
             <div class="my-cart-footer-item footer-delivery-type">
@@ -296,7 +300,7 @@
 
     <div class="clearfix"></div>
 
-    
+
 
     <div class="rvb-column left" id="delivery-address">
         <div class="rvb-header-item">
@@ -394,19 +398,19 @@
     {if $_isMobile eq 1}
     <div class="my-cart-footer-buttons clearfix">
         <a href="{$this->url([], "loja", TRUE)}" class="footer-button buy-more-items">Comprar mais</a>
-    
-        
+
+
         <a href="#" class="footer-button next-step">Avançar</a>
     {else}
         <div class="my-cart-footer-buttons clearfix" style=" margin-top: -165px; ">
         <a href="{$this->url([], "loja", TRUE)}" class="footer-button buy-more-items">Comprar mais</a>
-    
-        
+
+
         <a href="#" class="footer-button next-step">Avançar</a>
 
     {/if}
-                
-         
+
+
 
     </div>
 </div>

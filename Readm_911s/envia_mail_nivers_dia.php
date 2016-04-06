@@ -8,18 +8,9 @@ $mes = request("mes");
 $subject  = "Happy bday! Aproveite o seu dia com uma promo exclusiva: 15% de desconto!";
 
 $texto = '<div style="font-family:Verdana;font-size:11px;color: #555555; padding: 0 25px 0 25px; width: 550px;">
-                <p>Parab&eacute;ns, <strong>##nome##</strong>!</p>	
-                <p>Que a sua vida seja repleta de boa m&uacute;sica, seja no seu fone de ouvido ou nas nossas camisetas!</p> 
-                <p>Durante o m&ecirc;s do seu anivers&aacute;rio, voc&ecirc; ganha 15% DE DESCONTO em itens fora de promo&ccedil;&atilde;o aqui na Reverbcity!</p>
-                <p>Confira nossas estampas:</p>
-                <div style="background-color: #dcddde; padding: 5px; font-family:Verdana;font-size:12px;color: #313131; width: 550px;">
-                <a href="http://rvb.la/FelizBday">http://rvb.la/FelizBday</a>
-                </div>
-                <br /> 
-                * Basta colocar o que deseja no carrinho e o desconto será aplicado automaticamente
-                <br /> <br /> 
-                Que os próximos anos sejam ainda mais rock and roll,<br /> 
-                Equipe Reverbcity.
+                <p>Parab&eacute;ns, <strong>'.$nome.'</strong>!</p>
+                <p>Na primeira compra efetuada dentro mês do seu aniversário você ganha 15% de desconto ao finalizar o pedido.</p>
+                <p>Caso ultrapasse os R$ 150,00 você também ganha o frete para todo Brasil.</p>
           </div>';
           
 //$corpo = "<table align=\"center\" cellpadding=\"0\" cellspacing=\"0\" width=\"539\" border=\"0\" bgcolor=\"#ffe99e\">";

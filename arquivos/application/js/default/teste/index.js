@@ -247,11 +247,11 @@ $(document).ready(function () {
                     $('#mycart-payment').submit();
                 }});
 
-            if(amount > 50 && amount < 100){
+            if(carrinho.total > 50 && carrinho.total < 100){
                 maxInstallments = 2;
-            }else if(amount > 100 && amount < 150){
+            }else if(carrinho.total > 100 && carrinho.total < 150){
                 maxInstallments = 3;
-            }else if(amount > 150){
+            }else if(carrinho.total > 150){
                 maxInstallments = 4;
             }else{
                 maxInstallments = 1;

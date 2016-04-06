@@ -502,6 +502,7 @@ class CarrinhoController extends Zend_Controller_Action {
 
                                         $msg_promo = $promocoes["msg_primeira_compra"];
                                         $sessao_promo->msg = $promocoes["msg_primeira_compra"];
+                                        $this->view->primeira_compra = true;
 
 
                                         //$credito_proxima_compra += $data_carrinho[$key]['valor'] * 0.15;
@@ -805,9 +806,11 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where('ST_EXPIRADO_CRSA = "N"');
                 $creditos = $model_creditos->fetchRow($select_credito);
 
+                $sql1 = $select_credito->__toString();
+
                 // Busca os créditos gerado pelo admin
-                $model_creditos = new Default_Model_Contascorrente();
-                $select_credito = $model_creditos->select()
+                $model_creditos2 = new Default_Model_Contascorrente();
+                $select_credito2 = $model_creditos2->select()
                         //digo a tabela e os campos que vou precisar
                         ->from("contacorrente", array("NR_SEQ_CONTA_CRSA",
                             "VL_LANCAMENTO_CRSA"))
@@ -818,7 +821,9 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where("DT_VENCIMENTO_CRSA >= NOW()")
                         ->where("DS_OBSERVACAO_CRSA NOT LIKE 'Crédito de % gerado pela compra %'")
                         ->where('ST_EXPIRADO_CRSA = "N"');
-                $creditos2 = $model_creditos->fetchRow($select_credito);
+                $creditos2 = $model_creditos2->fetchRow($select_credito);
+
+                $sql2 = $select_credito2->__toString();
 
 //                if ($valor_cheio >= 59 and $data_carrinho[$key]['vl_promo'] == 0) {
                 if ($data_carrinho[$key]['vl_promo'] == 0) {
