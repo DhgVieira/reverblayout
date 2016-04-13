@@ -514,17 +514,17 @@ var reverb = {
 };
 $(function() {
     reverb.init();
-    $.reject({
-        reject: {
-            safari: false,
-            chrome: false,
-            firefox: false,
-            msie: true,
-            opera: false,
-            konqueror: false,
-            unknown: false
-        },
-        display: ["firefox", "chrome", "opera", "msie"]
-    });
+    //$.reject({
+    //    reject: {
+    //        safari: false,
+    //        chrome: false,
+    //        firefox: false,
+    //        msie: true,
+    //        opera: false,
+    //        konqueror: false,
+    //        unknown: false
+    //    },
+    //    display: ["firefox", "chrome", "opera", "msie"]
+    //});
     return false
 })

@@ -6633,8 +6633,10 @@ class LojaController extends Zend_Controller_Action {
         $this->view->uf = $usuarios->uf;
         $this->view->ddd = $usuarios->ddd;
         $this->view->telefone = $usuarios->cel;
+        $this->view->headLink()->appendStylesheet($this->view->basePath . '/arquivos/default/js/libs/EasyZoom/css/easyzoom.css');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/EasyZoom/dist/easyzoom.js');
     }
 
     /**

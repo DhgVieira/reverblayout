@@ -26,7 +26,7 @@ reverb.tabelaMedidas = function() {
                 r.animate({
                     opacity: "1"
                 }, 500)
-                
+
                 $("#sizes-list li").removeClass("active");
                 $("#sizes-list li").first().addClass("active");
                 r.live("click", function(s) {
@@ -72,14 +72,14 @@ $(function() {
         wrap: "last",
         scroll: 1
     });
-    $(".carousel").touchwipe({
-        wipeDown: function() {
-            $(".carousel").jcarousel("scroll", "+=1")
-        },
-        wipeUp: function() {
-            $(".carousel").jcarousel("scroll", "-=1")
-        }
-    });
+    //$(".carousel").touchwipe({
+    //    wipeDown: function() {
+    //        $(".carousel").jcarousel("scroll", "+=1")
+    //    },
+    //    wipeUp: function() {
+    //        $(".carousel").jcarousel("scroll", "-=1")
+    //    }
+    //});
     $("#moveprev").on("click", function(e) {
         e.preventDefault();
         $(".carousel").jcarousel("scroll", "-=1")
@@ -136,7 +136,7 @@ $(function() {
 //        }
     });
     $(".prodcurtiu").on("mouseout", function() {
-        
+
 //        var comentarioid = $(this).data('comentarioid');
 //        console.log(comentarioid)
 //        if ($(this).hasClass("ativo")) {
@@ -167,6 +167,7 @@ $(function() {
             loadingIcon: "/arquivos/default/images/spinner-product.gif"
         })
     };
+
     //if (!reverb.isMobile()) {
         e()
     //}
@@ -211,4 +212,7 @@ $(function() {
             r.mask("(99) 9999-9999?9")
         }
     });
+
+    // Instantiate EasyZoom instances
+    var $easyzoom = $('.easyzoom').easyZoom();
 })
