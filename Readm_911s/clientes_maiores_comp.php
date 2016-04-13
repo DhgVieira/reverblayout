@@ -32,6 +32,7 @@ include 'topo.php'; ?>
                                 $strBuscabyUfCidade = "";
                                 if(!empty(request("endereco_estado")) && !empty(request("endereco_cidade"))) {
                                     $strBuscabyUfCidade = " AND DS_UF_CASO = '" . request("endereco_estado") ."' AND DS_CIDADE_CASO = '" . request("endereco_cidade") ."' ";
+                                    $strBuscabyUfCidadeGet = "aba=" . request("aba") ."&endereco_estado=" . request("endereco_estado") ."&endereco_cidade=" . request("endereco_cidade") ."&";
                                 }
 
 								$num_por_pagina = 50;
@@ -40,15 +41,24 @@ include 'topo.php'; ?>
 								}
 								$primeiro_registro = ($pagina*$num_por_pagina) - $num_por_pagina;
 
+                                $sqlTotalDeRegistros =
+
                                 $compra = "select NR_SEQ_CADASTRO_COSO, DT_COMPRA_COSO, DS_NOME_CASO, DS_EMAIL_CASO, ST_COMPRA_COSO,
                                 DS_DDDFONE_CASO, DS_FONE_CASO, count(*) as total, DS_CELULAR_CASO, SUM(VL_TOTAL_COSO) as vlrtotal, DS_TWITTER_CACH,
                                 DS_FACEBOOK_CACH, DS_DDDCEL_CASO
                                 from compras, cadastros where NR_SEQ_CADASTRO_COSO = NR_SEQ_CADASTRO_CASO
                                 AND ST_COMPRA_COSO <> 'C' and NR_SEQ_CADASTRO_COSO not in (8074, 6605, 4160, 2, 3, 9701)
                                 $strBuscabyUfCidade
-                                GROUP BY NR_SEQ_CADASTRO_COSO ORDER BY vlrtotal desc LIMIT $primeiro_registro, $num_por_pagina";
-                                $compraST = mysql_query($compra);
-                                if (mysql_num_rows($compraST) > 0) { 
+                                GROUP BY NR_SEQ_CADASTRO_COSO ORDER BY vlrtotal desc";
+
+                                $limit = $compra . " LIMIT $primeiro_registro, $num_por_pagina";
+
+                                $compraST = mysql_query($limit);
+                                $compraTotal = mysql_query($compra);
+
+                                $total_usuarios = mysql_num_rows($compraTotal);
+
+                                if (mysql_num_rows($compraST) > 0) {
                                     $mos = true;
                                     while($row = mysql_fetch_row($compraST)) {
                                         $datCompra = $row[1];
@@ -161,34 +171,46 @@ include 'topo.php'; ?>
 									 ?> 
 									 <ul class="paginacao2" style="clear: both; margin: 20px 0 0 0;">
 										<?php
-										$total_usuarios = 1400;
-										$total_paginas = $total_usuarios/$num_por_pagina;
-										$prev = $pagina - 1;
-										$next = $pagina + 1;
-										if ($pagina > 1) {
-										$prev_link = "<li><a href=\"$PHP_SELF?pagina=$prev\">Anterior</a></li>";
-										} else { 
-										$prev_link = "<li>Anterior</li>";
-										}
-										if ($total_paginas > $pagina) {
-										$next_link = "<li><a href=\"$PHP_SELF?pagina=$next\">Proxima</a></li>";
-										} else {
-										$next_link = "<li>Proxima</li>";
-										}
-										$total_paginas = ceil($total_paginas);
-										$painel = "";
-										for ($x=1; $x<=$total_paginas; $x++) {
-										  if ($x==$pagina) { 
-											$painel .= "<li>[$x]</li>";
-										  } else {
-											$painel .= "<li><a href=\"$PHP_SELF?pagina=$x\">[$x]</a></li>";
-										  }
-										}
-										echo "$prev_link";
-										echo "$painel";
-										echo "$next_link";
-										
-										 mysql_close($con);
+                                        error_reporting(1);
+                                        if(!empty($total_usuarios)) {
+
+                                            if ($strBuscabyUfCidadeGet) {
+                                                $urlGet = $strBuscabyUfCidadeGet;
+                                            } else {
+                                                $urlGet = "";
+                                            }
+
+                                            $total_paginas = $total_usuarios / $num_por_pagina;
+                                            $prev = $pagina - 1;
+                                            $next = $pagina + 1;
+                                            if ($pagina > 1) {
+                                                $prev_link = "<li><a href=\"$PHP_SELF?{$urlGet}pagina=$prev\">Anterior</a></li>";
+                                            } else {
+                                                $prev_link = "<li>Anterior</li>";
+                                            }
+
+                                            if ($total_paginas > $pagina) {
+                                                $next_link = "<li><a href=\"$PHP_SELF?{$urlGet}pagina=$next\">Proxima</a></li>";
+                                            } else {
+                                                $next_link = "<li>Proxima</li>";
+                                            }
+                                            $total_paginas = ceil($total_paginas);
+                                            $painel = "";
+                                            //if ($total_paginas <= 40) {
+                                                for ($x = 1; $x <= $total_paginas; $x++) {
+                                                    if ($x == $pagina) {
+                                                        $painel .= "<li>[$x]</li>";
+                                                    } else {
+                                                        $painel .= "<li><a href=\"$PHP_SELF?{$urlGet}pagina=$x\">[$x]</a></li>";
+                                                    }
+                                                }
+                                            //}
+                                            echo "$prev_link";
+                                            echo "$painel";
+                                            echo "$next_link";
+
+                                            mysql_close($con);
+                                        }
 										?>                
 									</ul>
 									 

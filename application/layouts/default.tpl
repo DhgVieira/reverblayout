@@ -22,8 +22,8 @@
 	<script type="text/javascript">
 	document.basePath = '{$basePath}';
 	</script>
-	
-	
+
+
 	<meta property="fb:app_id" content="713473752042540" />
 	<meta property="fb:admins" content="100000451099995"/>
 	<meta property="og:title" content="{$title}"/>
@@ -158,7 +158,7 @@
         			<img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6007459841147&amp;cd[value]={$compra->VL_TOTAL_COSO}&amp;cd[currency]=BRL&amp;noscript=1" />
         		</noscript>
 				{/if}
-	
+
         	</head>
         	<body>
 			<div id="TRUSTEDCOMPANY_widget_321"><script async src="https://d3643s33l1rfut.cloudfront.net/js/widget?w=BQYHDBEcXhQAHBgFBgAjGREeAAUNEQUQC0EABBlTVkVe"></script></div>
@@ -166,7 +166,7 @@
 
         		{if $_isMobile eq 1}
         		<header id="mobile-header" role="banner">
-        			<div id="top-bar">        				
+        			<div id="top-bar">
         				{* LOAD DINAMIC *}
         			</div>
         		</header>
@@ -237,7 +237,7 @@
         							{if substr_count($_email_usuario, "@reverbcity.com")}
         							Usuários online: {$_totalusers}
                                                                 {else}
-                                                                
+
         							{/if}
         						</p>
         					</div>
@@ -513,7 +513,7 @@
 
             <div class="md-overlay"></div>
             <!-- scripts -->
-            
+
             <div id="fb-root"></div>
        		<script>(function(d, s, id) {
             	var js, fjs = d.getElementsByTagName(s)[0];
@@ -523,7 +523,7 @@
             	fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
 
-            
+
 
           {*<script type="text/javascript">
           var _gaq = _gaq || [];
@@ -590,15 +590,15 @@
             <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
             <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=l5zln&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
         </noscript>
-      
+
 
 
 		{* BUSCAR O MENU TOPO *}
-		
+
 		<script type="text/javascript">
 			var isMobile = {if $_isMobile eq 1} 1 {else} 0 {/if};
-			
-			{literal}               			
+
+			{literal}
 			$('#top-bar').load('/ajaxcache/top?isMobile=' + isMobile.toString());
 			$('#load-login-sidebar').load('/ajaxcache/sidebar-login');
 			{/literal}
