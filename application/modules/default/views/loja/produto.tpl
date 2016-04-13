@@ -1,4 +1,6 @@
 {$this->headScript()->appendFile('/arquivos/default/js/produto.js')}
+{$this->headScript()->appendFile('/arquivos/default/slick/slick.min.js')}
+
 <div class="banners-advertisement cycle-slideshow"
      data-cycle-fx="fadeout"
      data-cycle-timeout="5000"
@@ -81,15 +83,9 @@
                             <li class="prod-thumbnails-items">
                                 <div class="image">
                                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa_produto")}
-<<<<<<< HEAD
-                                        {assign var="foto_completa_produto" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}
-                                        <img itemprop="image"  src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>
-=======
                                         {*{assign var="foto_completa_produto" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
-                                        <a href="#" data-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>443, 'altura'=>494, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" title="{$produto->DS_PRODUTO_PRRC}" >
-                                            <img src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>60, 'altura'=>70, 'imagem'=>$foto_completa_produto], "imagem", TRUE)}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}"/>
-                                        </a>
->>>>>>> 32147427d9962ee265deb06d1114a180b4f5a38b
+                                        <img itemprop="image"  src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>
+
                                     {else}
                                         <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>
                                     {/if}
@@ -404,7 +400,7 @@
                     </div>
                 </form>
 
-                <div class="trustedcompany-widget" style="margin-top: 15px;">
+                <div class="trustedcompany-widget" style="margin-top: 45px; float: left; width: 100%">
                     <iframe id="trustedcompany-widget" width="100%" height="114" frameborder="0" scrolling="no"></iframe>
                     <a href="http://trustedcompany.com/br/reverbcity.com-opiniões" target="_blank" title="Avaliações da Reverbcity"></a>
                     <script>
@@ -598,7 +594,7 @@
                                 </div>
                                 <div class="product-price-box">
                                     <p class="product-title">
-                                        <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$visitado['codigo']}], {$acao}, TRUE)}">{utf8_decode($visitado['nome'])}</a>
+                                        <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$visitado['codigo']}], {$acao}, TRUE)}">{utf8_decode($visitado['nome']|truncate:15:"...":TRUE)}</a>
                                         <span class="product-price">
                                             {if $visitado['promo'] != 0}
                                                 <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$visitado['codigo']}], {$acao}, TRUE)}">R$ {$visitado['promo']|number_format:2:",":"."}</a>
@@ -613,32 +609,7 @@
                     {/foreach}
                 </ul>
             </div>
-<<<<<<< HEAD
         {/if}
-=======
-        </div>
-
-    </div>
-
-    <div class="rvb-comment">
-        <form action="{$this->url(["idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], "comentarproduto", TRUE)}" method="post">
-            {if $_logado neq 1}
-                <p class="not-logado">
-                    Olá! Você precisa estar logado para comentar. <a href="{$this->url([], "reverbme", TRUE)}">Clique aqui </a> e faça um cadastro super rápido!
-                </p>
-            {else}
-                <div class="rvb-header-item">
-                    <span>{$_nome_usuario}</span>
-                </div>
-                <textarea name="comentario" placeholder="Escreva seu comentário" id="comentario" cols="30" rows="10" class="message-box full-comment tynemce-on"></textarea>
-                <input type="hidden" name="extensao" value="{$produto->DS_EXT_PRRC}"/>
-                <div class="send-button">
-                    <button type="submit" class="btn">Enviar comentário</button>
-                </div>
-            {/if}
-
-        </form>
->>>>>>> 32147427d9962ee265deb06d1114a180b4f5a38b
     </div>
 
 </div>

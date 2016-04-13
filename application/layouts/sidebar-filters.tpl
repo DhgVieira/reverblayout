@@ -246,10 +246,13 @@
             {if $tem_preto eq 1}
                 <li class="sub-menu-item">
                     {if $cor_url eq 1}
+                        <i class="icon-correct"></i>
+                        teste
                         <span class="sub-menu-link ui-button active">
                         <span class="color ir black">Preto</span>
                     </span>
                     {else}
+                        <i class="icon-correct"></i>
                         <a rel="nofollow" href="{$this->url(["categoria"=>{$cat_url}, "tamanho"=>{$tamanho_url}, "genero"=>{$genero}, "cor"=>1, "tipo"=>{$tipo_url}, "valor"=>{$valor_url}], "{$acaoAtual}", TRUE)}" class="sub-menu-link ui-button">
                             <span class="color ir black">Preto</span>
                         </a>

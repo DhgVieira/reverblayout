@@ -75,7 +75,7 @@
                     </div>
                     <h2 class="product-name">
                         <a href="{$this->url(["titulo"=>{$this->createslug($slug)},"idproduto"=>{$_produto_dia->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}">
-                            {$_produto_dia->DS_PRODUTO_PRRC|truncate:29:"...":TRUE}
+                            {$_produto_dia->DS_PRODUTO_PRRC|truncate:15:"...":TRUE}
                             {if $_produto_dia->DS_FRETEGRATIS_PRRC == 'S'}
                                 - Frete Grátis
                             {/if}
@@ -269,10 +269,10 @@
                             </a>
                             <span class="preco">
                                     {if $produto['VL_PROMO_PRRC'] > 0}
-                                        <del>R$ {$produto['VL_PRODUTO_PRRC']}  Por</del>
+                                        <del>R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}  Por</del>
                                         R$ {$produto['VL_PROMO_PRRC']}
                                     {else}
-                                        R$ {$produto['VL_PRODUTO_PRRC']}
+                                        R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}
                                     {/if}
                                         </span>
                         </h2>

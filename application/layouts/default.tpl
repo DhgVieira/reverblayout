@@ -11,6 +11,7 @@
 	{literal}
 		<link rel="stylesheet" href="arquivos/default/css/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="/arquivos/default/css/site_default.css">
+		<link rel="stylesheet" type="text/css" href="/arquivos/default/slick/slick.css"/>
 	{/literal}
 	<!-- teste123 -->
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
