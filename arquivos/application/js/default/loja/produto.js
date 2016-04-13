@@ -1,4 +1,5 @@
 reverb.tabelaMedidas = function() {
+
     $("#show-sizes").on("click", function(e) {
         e.preventDefault();
         var t = $("#img-preview");
@@ -55,6 +56,13 @@ reverb.tabelaMedidas = function() {
     })
 };
 $(function() {
+    // $('.images').slick({
+    //     dots: true,
+    //     infinite: true,
+    //     speed: 500,
+    //     fade: true,
+    //     cssEase: 'linear'
+    // });
     reverb.tabelaMedidas();
     new dgCidadesEstados({
         estado: $("#avise-estado").get(0),

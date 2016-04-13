@@ -5,7 +5,6 @@ $(function () {
     $('#more').click(function () {
         $('#newaddress-lightbox').attr('style', '');
         $('#newaddress-lightbox').removeClass('md-show');
-        console.log('rea');
 
         $('body').oLoader({
             image: '/arquivos/default/images/loader.gif',
