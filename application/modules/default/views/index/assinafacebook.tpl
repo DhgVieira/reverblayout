@@ -1,4 +1,11 @@
 <div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.6&appId=483597398506439";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 <link href="https://www.reverbcity.com/arquivos/default/css/default.css" media="screen" rel="stylesheet" type="text/css">
 <link href="https://www.reverbcity.com/arquivos/application/css/default/index/assinafacebook.css" media="screen" rel="stylesheet" type="text/css">
 <script type="text/javascript">

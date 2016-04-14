@@ -6,7 +6,7 @@
         </li>
 
         <li class="fb-share-count-box">
-            <div class="fb-share-button" data-href="{$_pagina_atual}" data-type="button" data-width="40"></div>
+            <div class="fb-share-button" data-href="{$_pagina_atual}" data-layout="button" data-mobile-iframe="true"></div>
         </li>
 
         <li class="pinit-box">

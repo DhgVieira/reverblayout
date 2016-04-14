@@ -2518,7 +2518,7 @@ class CheckoutController extends Zend_Controller_Action {
             // Verifica se a resposta será um JSON
 
             $retorno['Valor'] = $valor_total_frete;
-
+            $retorno['PrazoEntrega'] = $PrazoEntrega;
 
 
             $retorno['valor_frete_gratis'] = $valor_para_frete_gratis;
@@ -2527,7 +2527,6 @@ class CheckoutController extends Zend_Controller_Action {
                 $retorno['Valor'] = 0;
                 $retorno['valor_frete_gratis'] = 0;
             }
-
 
             $this->_helper->json($retorno);
 

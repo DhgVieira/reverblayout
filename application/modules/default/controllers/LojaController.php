@@ -1991,6 +1991,7 @@ class LojaController extends Zend_Controller_Action {
         // crio paginacao com numeros
         $current_page = $this->_request->getParam("page", 1);
         //passo para o paginador o select de produtos
+        $stringSql = $select_produtos->__toString();
         $contador = new Reverb_Paginator($select_produtos);
         //defino o numero de itens a serem exibidos por página
         $contador->setItemCountPerPage(16)

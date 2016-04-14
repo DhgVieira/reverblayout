@@ -1138,18 +1138,6 @@ span.total-itens{
 		width: 315px;
 	}
 }
-.pretty-select-wrap .pretty-select-select-container .select-options {
-	padding: 5px;
-	min-width: 50px;
+.select-options {
 	height: 135px !important;
-	overflow: scroll;
-	background-color: #fff;
-	position: absolute;
-	top: 0;
-	left: 5px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	-o-border-radius: 6px;
-	-ms-border-radius: 6px;
-	border-radius: 6px;
 }
