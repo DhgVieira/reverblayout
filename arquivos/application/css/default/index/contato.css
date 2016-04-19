@@ -132,35 +132,41 @@
     height: 40px;
     width: 40px;
 }
-.socials-network-dark .icon.facebook
-{
-    background: url(../../../../default/images/icon/facebook-white.png) no-repeat;
-    /*background-position: 0 0;*/
-}
-.socials-network-dark .icon.twitter
-{
-    background: url(../../../../default/images/icon/twitter-white.png) no-repeat;
-    /*background-position: -47px 0;*/
-}
-.socials-network-dark .icon.tumblr
-{
-    background: url(../../../../default/images/icon/tumblr-white.png) no-repeat;
-    /*background-position: -94px 0;*/
-}
-.socials-network-dark .icon.instagram
-{
-    background: url(../../../../default/images/icon/instagram-white.png) no-repeat;
-    /*background-position: -141px 0;*/
-}
-.socials-network-dark .icon.pinterest
-{
-    background: url(../../../../default/images/icon/pinterest-white.png) no-repeat;
-    /*background-position: -187px 0;*/
-}
-.socials-network-dark .icon.rss
-{
-    /*background: url(../../../../default/images/icon/faceboock-white.png) no-repeat;*/
-    /*background-position: -232px 0;*/
+/*.socials-network-dark .icon.facebook*/
+/*{*/
+    /*background: url(../../../../default/images/icon/facebook-white.png) no-repeat;*/
+    /*!*background-position: 0 0;*!*/
+/*}*/
+/*.socials-network-dark .icon.twitter*/
+/*{*/
+    /*background: url(../../../../default/images/icon/twitter-white.png) no-repeat;*/
+    /*!*background-position: -47px 0;*!*/
+/*}*/
+/*.socials-network-dark .icon.tumblr*/
+/*{*/
+    /*background: url(../../../../default/images/icon/tumblr-white.png) no-repeat;*/
+    /*!*background-position: -94px 0;*!*/
+/*}*/
+/*.socials-network-dark .icon.instagram*/
+/*{*/
+    /*background: url(../../../../default/images/icon/instagram-white.png) no-repeat;*/
+    /*!*background-position: -141px 0;*!*/
+/*}*/
+/*.socials-network-dark .icon.pinterest*/
+/*{*/
+    /*background: url(../../../../default/images/icon/pinterest-white.png) no-repeat;*/
+    /*!*background-position: -187px 0;*!*/
+/*}*/
+/*.socials-network-dark .icon.rss*/
+/*{*/
+    /*!*background: url(../../../../default/images/icon/faceboock-white.png) no-repeat;*!*/
+    /*!*background-position: -232px 0;*!*/
+/*}*/
+
+.socials-network-dark li {
+    margin-right: 20px;
+    height: 40px;
+    padding-top: 10px;
 }
 @media screen and (max-width:979px)
 {

@@ -666,19 +666,87 @@ p.full-strip
 {
     background-color: #12132d;
 }
-.ui-button:focus,.ui-button:hover
-{
-    border: 1px solid #414042;
-    color: #414042;
+
+.ui-button:hover .red{
+    background: #CC252C url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
 }
-.ui-button.active,.ui-button.active:hover
-{
-    background: #ccc;
-    border: 1px solid #ccc!important;
-    color: #fff;
-    cursor: default;
-    font-weight: 700;
+.ui-button:hover .black{
+    background: #000 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
 }
+.ui-button:hover .orange{
+    background: #12132d url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .gray{
+    background: #7b7b7b url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .pink{
+    background: #f3a9f4 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .brown{
+    background: #563118 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .purple{
+    background: #732571 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .light-blue{
+    background: #3F89C8 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .yellow{
+    background: #F6F307 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .cream{
+    background: #d2d19a url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .green{
+    background: #048847 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button:hover .white {
+    background: #fff url(../images/icon/checktblack.png) no-repeat 1px -7px !important;
+}
+
+
+.ui-button.active > .red,.ui-button.active > .red:hover {
+    background: #CC252C url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .black,.ui-button.active > .black:hover {
+    background: #000 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .orange,.ui-button.active > .orange:hover {
+    background: #12132d url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .gray,.ui-button.active > .gray:hover {
+    background: #7b7b7b url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .pink,.ui-button.active > .pink:hover {
+    background: #f3a9f4 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .brown,.ui-button.active > .brown:hover {
+    background: #563118 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .purple,.ui-button.active > .purple:hover {
+    background: #732571 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+
+.ui-button.active > .light-blue,.ui-button.active > .light-blue:hover {
+    background: #3F89C8 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .yellow,.ui-button.active > .yellow:hover {
+    background: #F6F307 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .cream,.ui-button.active > .cream:hover {
+    background: #d2d19a url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+
+.ui-button.active > .green,.ui-button.active > .green:hover {
+    background: #048847 url(../images/icon/checkwhite.png) no-repeat 3px -4px !important;
+}
+.ui-button.active > .white,.ui-button.active > .white:hover {
+    background: #fff url(../images/icon/checktblack.png) no-repeat 1px -7px !important;
+}
+
+
+
+
 #form-filtro-cor
 {
     margin-top: 10px;

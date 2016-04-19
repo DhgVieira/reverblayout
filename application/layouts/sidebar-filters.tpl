@@ -244,10 +244,9 @@
         </div>
         <ul class="sub-menu filter-by-colors">
             {if $tem_preto eq 1}
-                <li class="sub-menu-item">
+                <li class="sub-menu-item"
                     {if $cor_url eq 1}
                         <i class="icon-correct"></i>
-                        teste
                         <span class="sub-menu-link ui-button active">
                         <span class="color ir black">Preto</span>
                     </span>

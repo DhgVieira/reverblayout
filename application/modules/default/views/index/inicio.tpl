@@ -265,12 +265,12 @@
                     <div class="list-product-details">
                         <h2 class="product-div-op">
                             <a href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto['NR_SEQ_PRODUTO_PRRC']}], 'produto', TRUE)}">
-                                {$produto['DS_PRODUTO_PRRC']|truncate:15:"...":TRUE}
+                                {$produto['DS_PRODUTO_PRRC']|truncate:10:"...":TRUE}
                             </a>
                             <span class="preco">
                                     {if $produto['VL_PROMO_PRRC'] > 0}
-                                        <del>R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}  Por</del>
-                                        R$ {$produto['VL_PROMO_PRRC']}
+                                        <del>R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."} </del>
+                                        Por R$ {$produto['VL_PROMO_PRRC']|number_format:2:",":"."}
                                     {else}
                                         R$ {$produto['VL_PRODUTO_PRRC']|number_format:2:",":"."}
                                     {/if}

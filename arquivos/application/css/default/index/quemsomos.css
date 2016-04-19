@@ -65,13 +65,13 @@
     transform: perspective(800px) rotateY(0deg);
     backface-visibility: hidden
 }
-.flipper:hover .back {
-    opacity: 1;
-    transform: perspective(800px) rotateY(0)
-}
-.flipper:hover .front {
-    transform: perspective(800px) rotateY(-179.9deg)
-}
+/*.flipper:hover .back {*/
+    /*opacity: 1;*/
+    /*transform: perspective(800px) rotateY(0)*/
+/*}*/
+/*.flipper:hover .front {*/
+    /*transform: perspective(800px) rotateY(-179.9deg)*/
+/*}*/
 #staff-jana {
     top: 1260px;
     left: 287px

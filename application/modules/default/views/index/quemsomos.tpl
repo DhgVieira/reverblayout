@@ -31,10 +31,10 @@
         <li id="staff-tony">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/tony.png" alt="Foto de Tony - Boss da Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/tony.png" alt="Foto de Tony - Boss da Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="{$basePath}/perfil/tony-strauss/2" target="_blank">Tony</a></h2>
                         <p class="overview">Depois de 6 anos vivendo no <br>
                         Japão, Tony Strauss voltou para <br>
@@ -56,10 +56,10 @@
         <li id="staff-gabi">
             <div class="flip-container">
                 <div class="flipper">
-                    <<div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/marcio.png" alt="Foto de Marcio - Mídias sociais da Reverbcity">
-                    </div>
-                    <div class="back">
+                    {*<<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/marcio.png" alt="Foto de Marcio - Mídias sociais da Reverbcity">*}
+                    {*</div>*}
+                    <div class="front">
                         <h2 class="who"><a href="{$basePath}/perfil/marcio-araujo/4162" target="_blank">Marcio</a></h2>
                         <p class="overview">Nasceu em Rolândia e <br>
                             passou a infância rolando em <br>
@@ -160,10 +160,10 @@
         <li id="staff-caio">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/rose.png" alt="Foto de Rose - Administrativo da Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/rose.png" alt="Foto de Rose - Administrativo da Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="{$basePath}/perfil/rosilene-cardoso/26087" target="blank">ANNAI</a></h2>
                         <p class="overview">Essa chocólatra é só<br>
                             "um pouquinho" distraída e <br>
@@ -182,10 +182,10 @@
         <li id="staff-diego">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/miria.png" alt="Foto de Miriã - SAC da Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/miria.png" alt="Foto de Miriã - SAC da Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="{$basePath}/perfil/miria-atendimento-reverbcity/22652" target="_blank">mimi</a></h2>
                         <p class="overview">Um bom atendimento de SAC vai <br>
                             muito além de ser bem-educado, é <br>
@@ -200,10 +200,10 @@
         <li id="staff-marcio">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/jonatas.png" alt="Foto de Jonatas - Moda na Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/jonatas.png" alt="Foto de Jonatas - Moda na Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="{$basePath}perfil/jonatas-g--itiyama/356432" target="_blank">Jonatas</a></h2></br>
                         <p class="overview">Elvis - Morrissey - Depeche mode<br>
                             Moda e comportamento - Fotografia <br>
@@ -215,10 +215,10 @@
         <li id="staff-lorem">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/jana.png" alt="Foto de Janaína - Logística da Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/jana.png" alt="Foto de Janaína - Logística da Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="{$basePath}/perfil/janaina-dias/10470" target="_blank">Jana</a></h2>
                         <p class="overview">O seu pedido está demorando?<br>
                             A balinha de brinde não foi?<br>
@@ -236,10 +236,10 @@
         <li id="staff-ipsum">
             <div class="flip-container">
                 <div class="flipper">
+                    {*<div class="front">*}
+                        {*<img src="{$basePath}/arquivos/default/images/quem-somos/toy-menina.png" alt="Foto de Reverbtoy - Mascote Reverbcity">*}
+                    {*</div>*}
                     <div class="front">
-                        <img src="{$basePath}/arquivos/default/images/quem-somos/toy-menina.png" alt="Foto de Reverbtoy - Mascote Reverbcity">
-                    </div>
-                    <div class="back">
                         <h2 class="who"><a href="#">Toy</a></h2>
                         <p class="overview">
                             Todas as letras das boas músicas escritas <br />
