@@ -1,5 +1,5 @@
 {$this->headScript()->appendFile('/arquivos/default/js/produto.js')}
-{$this->headScript()->appendFile('/arquivos/default/slick/slick.min.js')}
+{*{$this->headScript()->appendFile('/arquivos/default/slick/slick.min.js')}*}
 
 <div class="banners-advertisement cycle-slideshow"
      data-cycle-fx="fadeout"
@@ -73,6 +73,7 @@
 
 
 
+                {*<div id="hide-thumbnails">*}
                 <div id="hide-thumbnails">
 
                      <ul class="thumbnails" id="">
@@ -81,10 +82,22 @@
                             {assign var="extensao_produto" value="{$foto['DS_EXT_FORC']}"}
                             {assign var="foto_completa_produto" value="{$foto_produto}.{$extensao_produto}"}
                             <li class="prod-thumbnails-items">
-                                <div class="image">
+                                <!-- Placeholder for demo purposes only -->
+
+                                <div class="easyzoom easyzoom--overlay">
+                                {*<div class="easyzoom  easyzoom--adjacent">*}
                                     {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa_produto")}
+
+                                        <!-- Placeholder for demo purposes only -->
+                                        {*<div style="float: right; width: 310px; height: 400px; background: #EEE;"></div>*}
+
+                                            <a href="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}">
+                                                <img width="517" height="494" src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}"/>
+                                            </a>
+
+
                                         {*{assign var="foto_completa_produto" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
-                                        <img itemprop="image"  src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>
+                                        {*<img itemprop="image"  src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa_produto],"imagem", TRUE)}" title="{$preTitle}{$produto->DS_PRODUTO_PRRC}" alt="{$preTitle}{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>*}
 
                                     {else}
                                         <img src="{$this->Url(['tipo'=>"error", 'crop'=>1, 'largura'=>517, 'altura'=>494, 'imagem'=>'not_found.jpg'],"imagem", TRUE)}" data-zoom-image="{$this->Url(['tipo'=>"produtos", 'crop'=>1, 'largura'=>886, 'altura'=>988, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}" max-height="100%"/>
