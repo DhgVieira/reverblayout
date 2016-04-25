@@ -2,7 +2,7 @@
 
 /**
  * Created by PhpStorm.
- * User: alecio
+ * User: Alécio
  * Date: 11/04/16
  * Time: 22:45
  */
@@ -16,6 +16,7 @@ class ProdutoDia
     public $setLog = false;
     public $DB;
     private $setEnv = 'development : production';
+    public $clearMemCached = false;
 
     public function __construct($strSetDB = false)
     {
@@ -89,11 +90,7 @@ class ProdutoDia
             $this->setBannersAgendados($objProdutoDiaNovo->NR_SEQ_AGENDAMENTO_BARC, 'S');
         }else
             $this->printLog('msg', 'Não foram econtrados produtos novos a Serem Setados');
-
-//        if(!empty($this->clearMemCached)) {
-//            $memcached = new RVBMemcached();
-//            $memcached->flushCache();
-//        }
+        $this->clearMemCached();
         $this->printLog('fim');
     }
 
@@ -211,5 +208,24 @@ class ProdutoDia
                 $strRetun = '-   ' . utf8_decode($strMsgLog) . PHP_EOL;
         }
         echo $strRetun;
+    }
+
+    /**
+     *
+     */
+    public function clearMemCached() {
+        try {
+            if(!empty($this->clearMemCached)) {
+                $this->printLog('msg', 'Limpando MenCached');
+                $objRVBMemcached = new RVBMemcached();
+                $objRVBMemcached->flushCached(0);
+            }
+
+        } catch (PDOException $e) {
+            $this->printLog('msg', 'Algo deu errado ao setar preço novo produto: ');
+            $this->printLog('msg', 'Exception: ' . $e->getMessage());
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
     }
 }
