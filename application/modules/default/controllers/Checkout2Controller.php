@@ -4946,7 +4946,7 @@ class Checkout2Controller extends Zend_Controller_Action {
             //crio o valor total do frete
             $valor_total_frete = $valor_correio + $valor_porcentagem;
 
-
+            $PrazoEntrega = $retorno['PrazoEntrega'];
 
 
 

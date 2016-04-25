@@ -194,8 +194,12 @@ class LojaController extends Zend_Controller_Action {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 5 or NR_SEQ_TAMANHO_TARC = 10");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
-        } elseif ($tamanho == "xgg") {
+        } elseif ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -681,8 +685,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -1106,8 +1114,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -1538,8 +1550,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -1963,7 +1979,7 @@ class LojaController extends Zend_Controller_Action {
         }
         //se o tamanho do produto for xgg
         if ($tamanho == "xgg") {
-            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -2381,8 +2397,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -2969,8 +2989,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -3401,8 +3425,12 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -3837,8 +3865,12 @@ class LojaController extends Zend_Controller_Action {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 5 or NR_SEQ_TAMANHO_TARC = 10");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
-        } elseif ($tamanho == "xgg") {
+        } elseif ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -4299,8 +4331,12 @@ class LojaController extends Zend_Controller_Action {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 5 or NR_SEQ_TAMANHO_TARC = 10");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
-        } elseif ($tamanho == "xgg") {
+        } elseif ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+            $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }
@@ -4850,8 +4886,13 @@ class LojaController extends Zend_Controller_Action {
             $this->view->tamanho_url = $tamanho;
         }
         //se o tamanho do produto for xgg
-        if ($tamanho == "xgg") {
+
+        if ($tamanho == "xgg" && $genero == "masculino") {
             $select_produtos->where("NR_SEQ_TAMANHO_TARC = 33");
+            //assino ao view a categoria
+        $this->view->tamanho_url = $tamanho;
+        } elseif ($tamanho == "xgg" && $genero == "feminino") {
+            $select_produtos->where("NR_SEQ_TAMANHO_TARC = 47");
             //assino ao view a categoria
             $this->view->tamanho_url = $tamanho;
         }

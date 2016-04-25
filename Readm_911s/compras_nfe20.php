@@ -1,7 +1,7 @@
 <?php
 include 'auth.php';
 include 'lib.php';
-error_reporting(0);
+//error_reporting(0);
 
 $compras = $_POST['etiq'];
 
@@ -123,7 +123,7 @@ foreach ($compras as $idc) {
     }else{
         fwrite($handle,"E03|$cpfcnpj\r\n");
     }
-    fwrite($handle,"E05|$ende|$numer|$complem|$bairro|$codibge|".strtoupper(RemoveAcentos($cida))."|$estado|$cep|1058|BRASIL||\r\n");
+    fwrite($handle,"E05|$ende|$numer|$complem|$bairro|$codibge|".strtoupper(remover_caracter_ext($cida))."|$estado|$cep|1058|BRASIL||\r\n");
     
     $sqlces = "select * from compras, cestas, produtos, produtos_tipo, produtos_categoria where NR_SEQ_COMPRA_COSO = NR_SEQ_COMPRA_CESO
             and NR_SEQ_PRODUTO_CESO = NR_SEQ_PRODUTO_PRRC and NR_SEQ_TIPO_PRRC = NR_SEQ_CATEGPRO_PTRC 
@@ -438,15 +438,15 @@ foreach ($compras as $idc) {
     try{
         while($dadoscesta = mysql_fetch_array($stces)){
             $NCM = "";
-            $NCM = strtoupper(RemoveAcentos($dadoscesta["DS_NCM_PTRC"]));
+            $NCM = strtoupper(remover_caracter_ext($dadoscesta["DS_NCM_PTRC"]));
             
-            if (!$NCM) $NCM = strtoupper(RemoveAcentos($dadoscesta["DS_NCM_PCRC"]));
+            if (!$NCM) $NCM = strtoupper(remover_caracter_ext($dadoscesta["DS_NCM_PCRC"]));
             
-            $ncmprod = strtoupper(RemoveAcentos($dadoscesta["DS_NCM_PRRC"]));
+            $ncmprod = strtoupper(remover_caracter_ext($dadoscesta["DS_NCM_PRRC"]));
 
             if ($ncmprod) $NCM = $ncmprod;
             
-            fwrite($handle,"H|$x|".strtoupper(RemoveAcentos($dadoscesta["DS_CATEGORIA_PTRC"]))."\r\n");
+            fwrite($handle,"H|$x|".strtoupper(remover_caracter_ext($dadoscesta["DS_CATEGORIA_PTRC"]))."\r\n");
             if (!$val_desc){
                 //if ($dadoscesta["VL_PRODUTO_CESO"] > $vlr_frete){
                     if ($vlr_frete > 0){
@@ -465,11 +465,11 @@ foreach ($compras as $idc) {
                     }
                     $vlr_prod = ($descontoum)? $dadoscesta["VL_PRODUTO_CESO"] - $descontoum + $vlr_frete : $dadoscesta["VL_PRODUTO_CESO"] + $vlr_frete;
                     // I|cProd|cEAN|xProd|NCM|EXTIPI|CFOP|uCom|qCom|vUnCom|vProd|cEANTrib|uTrib|qTrib|vUnTrib|vFrete|vSeg|vDesc|vOutro|indTot|xPed|nItemPed|nFCI| 
-                    fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(RemoveAcentos($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],2,".","")."|".$freteum."||".$descontoum."||1|\r\n");
+                    fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(remover_caracter_ext($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],2,".","")."|".$freteum."||".$descontoum."||1|\r\n");
                     $val_desc = true;
                 //}
             }else{
-                fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(RemoveAcentos($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|".number_format(($dadoscesta["VL_PRODUTO_CESO"]*$dadoscesta["NR_QTDE_CESO"]),2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|||||1|\r\n");
+                fwrite($handle,"I|".$dadoscesta["NR_SEQ_PRODUTO_CESO"]."||".strtoupper(remover_caracter_ext($dadoscesta["DS_PRODUTO2_PRRC"]))."|$NCM||{$coduf}|UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|".number_format(($dadoscesta["VL_PRODUTO_CESO"]*$dadoscesta["NR_QTDE_CESO"]),2,".","")."||UN|".number_format($dadoscesta["NR_QTDE_CESO"],4,".","")."|".number_format($dadoscesta["VL_PRODUTO_CESO"],10,".","")."|||||1|\r\n");
             }
             fwrite($handle,"M|\r\n");
             fwrite($handle,"N|\r\n");

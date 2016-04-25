@@ -16,9 +16,12 @@ class DBConnection extends PDO
     private $pass;
     private $localFileConfig = '../application/configs/application.ini';
 
-    public function __construct()
+    /**
+     * DBConnection constructor.
+     */
+    public function __construct($setEnv = false)
     {
-
+        $this->getenv = (!empty($setEnv))? $setEnv : $this->getenv;
         $this->setDbConfig();
 
         try {
@@ -31,6 +34,9 @@ class DBConnection extends PDO
         }
     }
 
+    /**
+     * Seta as variv
+     */
     private function setDbConfig()
     {
         $this->host = $this->getDBConfig('resources.db.params.host');
@@ -39,10 +45,15 @@ class DBConnection extends PDO
         $this->dbname = $this->getDBConfig('resources.db.params.dbname');
     }
 
+    /**
+     * @param null $strOpt
+     * @return array
+     */
     private function getDBConfig($strOpt = null)
     {
         $arrConfig = parse_ini_file($this->localFileConfig, true);
         $arrReturn = array();
+
         if (empty($strOpt))
             $arrReturn = $arrConfig[$this->getenv];
         else {
@@ -50,5 +61,38 @@ class DBConnection extends PDO
         }
 
         return $arrReturn;
+    }
+
+    private function getUserByLogin() {
+
+    }
+
+    /**
+     * Grava Logs do Sistema
+     *
+     * @param $intCoduser
+     * @param $strScript
+     * @param $strDsAcao
+     */
+    public function setLog($intCoduser = null, $strScript = null, $strDsAcao = null){
+
+        try {
+
+            $strSQL = 'INSERT INTO `logs_adm` `NR_SEQ_LOGIN_LOSO` = :intCoduser, `DT_ACESSO_LOSO` = :srtDate, DS_SCRIPT_LOSO = :strScript, DS_ACAO_LOSO = :strDsAcao, DS_IP_LOSO = :strIpUser';
+
+            //INSERT INTO `reverb_amazon`.`logs_adm` (`NR_SEQ_LOGIN_LOSO`, `DT_ACESSO_LOSO`, `DS_SCRIPT_LOSO`, `DS_ACAO_LOSO`) VALUES ('0', 'now()', 'teste.php', 'teste de teste');
+
+            $strIpUser = $_SERVER["REMOTE_ADDR"];
+            $statement = $this->prepare($strSQL);
+            $statement->bindValue(":strScript", $strScript);
+            $statement->bindValue(":strDsAcao", $strDsAcao);
+            $statement->bindValue(":strIpUser", $strIpUser);
+            $statement->bindValue(":strDate",  date('Y-m-d H:i:s'));
+            $result = $statement->execute();
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
     }
 }
