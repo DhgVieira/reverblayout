@@ -146,6 +146,9 @@ $(function() {
             var t = parseFloat(e.Valor);
             var t = reverb.formatNumber(t);
             var n = parseInt(e.PrazoEntrega) + 1;
+
+            console.log(e);
+            console.log(e.PrazoEntrega);
             $(".calcula-frete").text("R$" + t + "*");
             $(".calcula-prazo").text("Até " + n + " dias*")
         })

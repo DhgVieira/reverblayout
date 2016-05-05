@@ -502,7 +502,6 @@ class CarrinhoController extends Zend_Controller_Action {
 
                                         $msg_promo = $promocoes["msg_primeira_compra"];
                                         $sessao_promo->msg = $promocoes["msg_primeira_compra"];
-                                        $this->view->primeira_compra = true;
 
 
                                         //$credito_proxima_compra += $data_carrinho[$key]['valor'] * 0.15;
@@ -806,11 +805,9 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where('ST_EXPIRADO_CRSA = "N"');
                 $creditos = $model_creditos->fetchRow($select_credito);
 
-                $sql1 = $select_credito->__toString();
-
                 // Busca os créditos gerado pelo admin
-                $model_creditos2 = new Default_Model_Contascorrente();
-                $select_credito2 = $model_creditos2->select()
+                $model_creditos = new Default_Model_Contascorrente();
+                $select_credito = $model_creditos->select()
                         //digo a tabela e os campos que vou precisar
                         ->from("contacorrente", array("NR_SEQ_CONTA_CRSA",
                             "VL_LANCAMENTO_CRSA"))
@@ -821,9 +818,7 @@ class CarrinhoController extends Zend_Controller_Action {
                         ->where("DT_VENCIMENTO_CRSA >= NOW()")
                         ->where("DS_OBSERVACAO_CRSA NOT LIKE 'Crédito de % gerado pela compra %'")
                         ->where('ST_EXPIRADO_CRSA = "N"');
-                $creditos2 = $model_creditos2->fetchRow($select_credito);
-
-                $sql2 = $select_credito2->__toString();
+                $creditos2 = $model_creditos->fetchRow($select_credito);
 
 //                if ($valor_cheio >= 59 and $data_carrinho[$key]['vl_promo'] == 0) {
                 if ($data_carrinho[$key]['vl_promo'] == 0) {
@@ -1290,6 +1285,14 @@ class CarrinhoController extends Zend_Controller_Action {
 
             //botao comprar mais
             $this->view->btn_comprar_mais = ($sem_promo_recur >= 2)? 'sale' : 'todos-produtos';
+
+            $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+            $whatDevice = $this->_helper->navegacao->whatDevice();
+            $userEmail = $this->_helper->usuario->getEmail();
+            $strScript = $this->_helper->criteo->getCarrinho($whatDevice, $userEmail);
+            $this->view->headScript()->appendScript($strScript);
+
         } else {
 
             //mensagem de usuario

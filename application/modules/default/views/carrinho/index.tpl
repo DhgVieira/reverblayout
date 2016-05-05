@@ -276,7 +276,7 @@
 
                 <li class="mycart-address-item" data-cep="86060510" data-endereco_id="999999999">
                     <p class="mycart-address-text">
-                        <strong>Retirar na  Reverbcity sem Frete</strong> <br>
+                        <strong>Retirar na Reverbcity</strong> <br>
                         Rua Ibipora, 995 <br>
                         Jardim Aurora <br>
                         Londrina PR - 86060-510
@@ -500,6 +500,7 @@
                             <img src="{$basePath}/arquivos/default/images/selos-pagamentos@2x/visa.png" data-cartao="visa" width="45" height="29" alt="Cartão de crédito - Visa">
                             <img src="{$basePath}/arquivos/default/images/selos-pagamentos@2x/master.png" data-cartao="mastercard" width="45" height="29" alt="Cartão de crédito - Mastercard">
                             <img src="{$basePath}/arquivos/default/images/selos-pagamentos@2x/american-express.png" data-cartao="amex" width="45" height="29" alt="Cartão de crédito - American Express">
+                            <img src="{$basePath}/arquivos/default/images/selos-pagamentos@2x/elo.png" data-cartao="elo" width="45" height="29" alt="Cartão de crédito - Elo">
                             <!-- <img src="{$basePath}/arquivos/default/images/selos-pagamentos@2x/diners.png" data-cartao="diners" width="45" height="29" alt="Cartão de crédito - Diners"> -->
                         </div>
                         <span class="label">Cartões de crédito</span>

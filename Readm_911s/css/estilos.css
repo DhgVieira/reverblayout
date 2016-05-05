@@ -13,7 +13,7 @@
 	color:#42413e;
 	float:left;
 	}
-	
+
 	h3 {
 	width:100%; height:auto;
 	margin:10px 0 10px 0;
@@ -320,7 +320,7 @@ table.prodmon tr:hover > td {
 	ul.paginacao li, ul.paginacao2 li {
 	list-style-type:none;
 	margin:0 5px 0 5px;
-	display:inline;
+	display:inline-block;
 	}		
 
 	ul.paginacao li a, ul.paginacao2 li a {

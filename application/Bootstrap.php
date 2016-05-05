@@ -264,6 +264,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         //$this->frontController->registerPlugin( new Reverb_Controller_Plugin_Ssl);
 
+		// Action Helpers
+		Zend_Controller_Action_HelperBroker::addPath(APPLICATION_PATH .'/modules/default/controllers/helpers');
+
 
 		// Verifica se utiliza um layout por modulo
 		if(!$this->config->Reverb->layout->justone) {

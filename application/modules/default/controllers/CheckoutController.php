@@ -2220,10 +2220,40 @@ class CheckoutController extends Zend_Controller_Action {
         $this->_redirect($_SERVER['HTTP_REFERER']);
     }
 
+    private function getServiceCorreios() {
+
+    }
+
+    public function getCalculoCorreio() {
+        //desabilito o layout
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender(TRUE);
+
+        //Codigo Produto
+        $intIDProduto = $this->_request->getParam("idproduto");
+
+        //Sessions
+        //Usuários
+        $usuarios = new Zend_Session_Namespace("usuarios");
+        //crio a sessao de mensagens
+        $messages = new Zend_Session_Namespace("messages");
+
+        $intCepDestino = $usuarios->cep;
+
+        if($usuarios->logado) {
+            $objDAOProdutos = new Default_Model_produtos();
+            $objProduto = $objDAOProdutos->getProdutoByCod($intIDProduto);
+
+            $intPesoProd = $objProduto->NR_PESOGRAMAS_PRRC;
+            $intPesoProd = $intPesoProd / 1000;
+        }
+    }
+
     /**
      * funcão responsavel por calcular frete de um produto individual
      * */
     public function calculaindividualAction() {
+        $this->getCalculoCorreio();
         // Desabilita os layouts
         $this->_helper->layout->disableLayout();
         $this->_helper->viewRenderer->setNoRender(TRUE);
@@ -2250,6 +2280,7 @@ class CheckoutController extends Zend_Controller_Action {
                     ->where("NR_SEQ_PRODUTO_PRRC = $idproduto");
 
             $peso_lista = $model_produtos->fetchRow($select_produto);
+
 
 
             //recebo o peso do produto
@@ -2465,6 +2496,16 @@ class CheckoutController extends Zend_Controller_Action {
 
             $resp = Xml2array($resposta, false);
 
+            $xml = simplexml_load_string($dados);
+            $json = json_encode($xml);
+            $array = json_decode($json,TRUE);
+
+            var_dump($dados);
+            var_dump($xml);
+            var_dump($json);
+            var_dump($array);
+            die();
+
 
             //pego o retorno do servico e acesso o indice com as informacoes
 //                        $retorno = $resp['cResultado']['Servicos']['cServico'];
@@ -2518,7 +2559,7 @@ class CheckoutController extends Zend_Controller_Action {
             // Verifica se a resposta será um JSON
 
             $retorno['Valor'] = $valor_total_frete;
-
+            $retorno['PrazoEntrega'] = $PrazoEntrega;
 
 
             $retorno['valor_frete_gratis'] = $valor_para_frete_gratis;
@@ -2527,7 +2568,6 @@ class CheckoutController extends Zend_Controller_Action {
                 $retorno['Valor'] = 0;
                 $retorno['valor_frete_gratis'] = 0;
             }
-
 
             $this->_helper->json($retorno);
 

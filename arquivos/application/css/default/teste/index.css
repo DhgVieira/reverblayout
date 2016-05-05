@@ -1138,3 +1138,6 @@ span.total-itens{
 		width: 315px;
 	}
 }
+.select-options {
+	height: 135px !important;
+}

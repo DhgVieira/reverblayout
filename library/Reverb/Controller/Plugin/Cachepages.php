@@ -20,14 +20,18 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
             'default-loja-masculino',
             'default-loja-feminino',
             'default-loja-casa',
-            'default-loja-produto',
+            //'default-loja-produto',
             'default-index-imprensa',
             'default-index-quemsomos',
+
         );
     }
 
     public function postDispatch(Zend_Controller_Request_Abstract $request)
     {
+        if($this->isMobile()) {
+            return;
+        }
 
         $route = $request->getModuleName() . '-' . $request->getControllerName() . '-' . $request->getActionName();
         $routes = $this->getRoutesAllowedCache();
@@ -51,6 +55,7 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
         if ($request->getParam('noCache')) {
             return;
         }
+
         $load = $cache->get($key);
 
         if (isset($load[0])) {
@@ -112,4 +117,21 @@ class Reverb_Controller_Plugin_Cachepages extends Zend_Controller_Plugin_Abstrac
         return $cache;
     }
 
-} 
+
+    private function isMobile()
+    {
+        $strIphone = strpos($_SERVER['HTTP_USER_AGENT'], "iPhone");
+        $strIPad = strpos($_SERVER['HTTP_USER_AGENT'], "iPad");
+        $strAndroid = strpos($_SERVER['HTTP_USER_AGENT'], "Android");
+        $strPalmpre = strpos($_SERVER['HTTP_USER_AGENT'], "webOS");
+        $strBerry = strpos($_SERVER['HTTP_USER_AGENT'], "BlackBerry");
+        $strIpod = strpos($_SERVER['HTTP_USER_AGENT'], "iPod");
+
+        //se for mobile eu vou assinar uma variavel para identificar e remover um menu
+        if ($strIphone || $strIPad || $strAndroid || $strPalmpre || $strBerry || $strIpod == true)
+            return true;
+        return;
+    }
+
+
+}

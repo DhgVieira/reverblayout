@@ -71,7 +71,7 @@
                     {assign var=ds_produto_prrc value=' - '|explode:$produto->DS_PRODUTO_PRRC}
                     {assign var=slug value="{$preTitle}{$ds_produto_prrc[0]}"}
 
-                    <li class="rvb-product-item">
+                    <li class="rvb-product-item" data-id="{$produto->NR_SEQ_PRODUTO_PRRC}">
                         <a rel="nofollow" href="{$this->url(["titulo"=>{$this->createslug($slug)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                             {if file_exists("arquivos/uploads/fotosprodutos/$foto_completa")}
                                 {*{assign var="foto_completa" value="{$this->createslug($produto->DS_PRODUTO_PRRC)}-{$foto_produto}.{$extensao_produto}"}*}
@@ -198,3 +198,7 @@
         </div>
     {/if}
 </section>
+<!-- Tag Criteo -->
+<script type="text/javascript">
+    {$tagCriteo}
+</script>

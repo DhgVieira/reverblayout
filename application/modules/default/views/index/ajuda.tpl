@@ -119,8 +119,9 @@
         <a href="#" class="open-help">5. Politíca de Troca</a>
         <div class="conteudo-help">
             <span class="titulo">QUAL A POLÍTICA DE TROCAS DA REVERBCITY?</span>
-                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal. Você deverá preencher o formulário de trocas disponível <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">aqui</a> e enviar para o endereço indicado. O frete é por conta do comprador, desde que o produto não apresente nenhum defeito, neste caso é responsabilidade da Reverbcity.<br />
-
+                As trocas podem ser efetuadas em até 30 dias após recebimento, desde que o produto esteja em perfeito estado acompanhado da nota fiscal.
+                Envie um e-mail para <a href="mailto:atendimento@reverbcity.com" class="post-link" >atendimento@reverbcity.com</a> informando a escolha para a troca, preencha o formulário de troca disponível <a href="{$basePath}/arquivos/download/Formulario_de_Troca.pdf" class="post-link" target="_blank">aqui</a> e envie para o endereço indicado.
+            <br />
             <span class="titulo">PRODUTOS COM DEFEITO</span>
                Você possui até 30 dias corridos, após o recebimento do produto, para solicitar a troca ou devolução, desde que o mesmo não tenha sido usado.<br>
 

@@ -598,7 +598,8 @@ function confirma_cla(idp) {
                              }else{
                                  $totcomp = 0;
                              }
-                             $msgniver = "Presente Reverb! No mes do seu aniversario vc compra 1 camiseta fora de promo e ganha outra de igual ou menor valor. http://rvb.la/FelizBday";
+                                $msgniver = "Ganhe 20% de desconto em suas compras durante o mes do seu aniversario na Reverbcity http://rvb.la/Bday";
+//                             $msgniver = "Presente Reverb! No mes do seu aniversario vc compra 1 camiseta fora de promo e ganha outra de igual ou menor valor. http://rvb.la/FelizBday";
                              //$msgniver = "Happy bday! Aproveite o seu dia com uma promo exclusiva: LEVE 3 PAGUE 2! www.reverbcity.com";
                              //$msgniver = "Parabens, aproveite que hj e seu dia e bora se jogar nas compras! Estamos com ate 50% OFF em quase todos os produtos www.reverbcity.com";
 							?>
@@ -1060,7 +1061,8 @@ function confirma_cla(idp) {
                                      }
                                      
                                      $totcompgeral += $totcomp;
-                                     $msgcel = "Pedidos a partir de R$59 em itens fora de promo&ccedil;&atilde;o ganham 15% de desconto para serem usados em uma pr&oacute;xima compra! http://rvb.la/Compra";
+                                        $msgcel = "Como presente de boas vindas na Reverbcity você ganha 15% de desconto! Saiba mais aqui www.reverbcity.com/ajuda";
+//                                     $msgcel = "Pedidos a partir de R$59 em itens fora de promo&ccedil;&atilde;o ganham 15% de desconto para serem usados em uma pr&oacute;xima compra! http://rvb.la/Compra";
                                      //$msgcel = "Ola! Como presente de boas-vindas, na sua 1a compra em 30d a partir de 150, em produtos fora de promo, voce ganha outra tee reverbcity.com";
                                      //$msgcel = "Welcome to Reverbcity! Vamos te presentear na sua primeira compra de camisetas a partir de $150 voce ganha outra! www.reverbcity.com";
                              

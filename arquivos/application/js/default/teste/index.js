@@ -644,6 +644,7 @@ $(document).ready(function () {
  * Pagarme Lib
  */
 !function () {
+
     function e(e) {
         e.readyState ? e.onreadystatechange = function () {
             ("complete" == this.readyState || "loaded" == this.readyState) && n()
@@ -677,7 +678,26 @@ $(document).ready(function () {
         }, p = {remotePath: "/modal.html", props: {style: {zIndex: 9999, background: "transparent", border: "0 none transparent", overflowX: "hidden", overflowY: "auto", margin: 0, padding: 0, "-webkit-tap-highlight-color": "transparent", "-webkit-touch-callout": "none", position: "fixed", left: 0, top: 0, width: "100%", height: "100%"}}, closeModal: function () {
                 return p.container.hide(), p.container.find("iframe").blur(), !0
             }, openModal: function () {
-                p.container.show(), p.container.find("iframe").focus()
+                p.container.show(), p.container.find("iframe").focus(); console.log('dois');
+                var iframeResponse = p.container.find("iframe");
+                var iframeID = $(iframeResponse).attr('id');
+                console.log(iframeResponse);
+                console.log(iframeID);
+
+                //console.log($('#'+iframeID).contents().find('.pretty-select-wrap'));
+
+                //window.setTimeout(function(){
+                //    $('#'+iframeID).contents().find(".select-options").css("height","135px !important");
+                //}, 1000);
+
+                //$('#'+iframeID).load(function() {
+                //    $('#'+iframeID).contents().find(".select-options").css("height","135px !important");
+                //});
+                //
+                //var stylesheet = $('#'+iframeID).contents().find('head > link[rel="stylesheet"][href$="/arquivos/application/css/default/teste/index.css"]');
+                //$('#'+iframeID).contents().find('ul.select-options').prepend(stylesheet);
+
+
             }, beforeOpen: function (e) {
                 e && e()
             }, create: function () {

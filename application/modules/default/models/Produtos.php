@@ -24,6 +24,14 @@ class Default_Model_produtos extends Zend_Db_Table_Abstract {
 	 * @var string
 	 */
 	protected $_primary = "NR_SEQ_PRODUTO_PRRC";
+
+	public function getProdutoByCod($intIDProduto) {
+		$objSelect = $this->select()
+			->from('produtos', array('NR_PESOGRAMAS_PRRC', 'DS_FRETEGRATIS_PRRC'))
+			->where("NR_SEQ_PRODUTO_PRRC = $intIDProduto");
+
+		return $this->fetchRow($objSelect);
+	}
 	
 }
 

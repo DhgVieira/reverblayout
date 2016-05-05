@@ -318,6 +318,7 @@
 		</form>
 	</div>
 </div>
+
 <script type="text/javascript">
         $(function() {
             reverb.init();
@@ -356,3 +357,30 @@
             return false
         })
 </script>
+
+	{*<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>*}
+	{*<script type="text/javascript">*}
+
+		{*console.log("{$_getController}");*}
+
+		{*window.criteo_q = window.criteo_q || [];*}
+		{*var setSiteType = "{$_whatDevice}";*}
+		{*var setEmail = "{$_email_usuario}";*}
+
+		{*{if isset($_SESSION['CRITEO']['LOCAL']) && $criteo == 'home'}*}
+			{*{assign var="crito_conf" value=",{ event: \"viewHome\" }"}*}
+		{*{elseif $_SESSION['CRITEO']['LOCAL'] == 'listagem'}*}
+			{*var produtosID = reverb.getProdutosID();*}
+			{*{assign var="crito_conf" value=",{ event: \"viewList\", item:produtosID }"}*}
+		{*{elseif $_SESSION['CRITEO']['LOCAL'] == 'product_detail'}*}
+			{*var produtoID = reverb.getProdutoID();*}
+			{*{assign var="crito_conf" value=",{ event: \"produtoID\" }"}*}
+		{*{/if}*}
+
+		{*window.criteo_q.push(*}
+				{*{ event: "setAccount", account: 28203 },*}
+				{*{ event: "setEmail", email: setEmail },*}
+				{*{ event: "setSiteType", type: setSiteType }*}
+				{*{$crito_conf}*}
+		{*);*}
+	{*</script>*}
