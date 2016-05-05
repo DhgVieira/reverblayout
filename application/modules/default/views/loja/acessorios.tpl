@@ -12,7 +12,7 @@
                 {assign var="foto" value="{$produto->NR_SEQ_PRODUTO_PRRC}"}
                 {assign var="extensao" value="{$produto->DS_EXT_PRRC}"}
                 {assign var="foto_completa" value="{$foto}.{$extensao}"}
-            <li class="rvb-product-item">
+            <li class="rvb-product-item" data-id="{$produto->NR_SEQ_PRODUTO_PRRC}">
                 <a href="{$this->url(["titulo"=>{$this->createslug($produto->DS_PRODUTO_PRRC)}, "idproduto"=>{$produto->NR_SEQ_PRODUTO_PRRC}], 'produto', TRUE)}" class="product-photo">
                    {if file_exists("arquivos/uploads/produtos/$foto_completa")}
                         <!-- Polyfill para imagens responsivas-->

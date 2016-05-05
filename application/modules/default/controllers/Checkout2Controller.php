@@ -2418,6 +2418,16 @@ class Checkout2Controller extends Zend_Controller_Action {
             //recupero o pedido feito
             $idpedido = $this->_request->getParam("idpedido");
 
+            /**
+             * Criteo
+             */
+            $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+            $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+            $whatDevice = $this->_helper->navegacao->whatDevice();
+            $userEmail = $this->_helper->usuario->getEmail();
+            $strScript = $this->_helper->criteo->getTransaction($whatDevice, $userEmail, $idpedido);
+            $this->view->headScript()->appendScript($strScript);
+
             //inicio o modulo de compra
             $model_compras = new Default_Model_Compras();
             //inicio a query de compra
@@ -4946,7 +4956,7 @@ class Checkout2Controller extends Zend_Controller_Action {
             //crio o valor total do frete
             $valor_total_frete = $valor_correio + $valor_porcentagem;
 
-            $PrazoEntrega = $retorno['PrazoEntrega'];
+
 
 
 

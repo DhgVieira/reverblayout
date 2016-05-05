@@ -78,7 +78,8 @@ function detectCardType(number) {
         amex: /^3[47][0-9]{13}$/,
         diners: /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/,
         discover: /^6(?:011|5[0-9]{2})[0-9]{12}$/,
-        jcb: /^(?:2131|1800|35\d{3})\d{11}$/
+        jcb: /^(?:2131|1800|35\d{3})\d{11}$/,
+        elo: /^((((636368)|(438935)|(504175)|(451416)|(636297))\d{0,10})|((5067)|(4576)|(4011))\d{0,12})$/
     };
     if (re.electron.test(number)) {
         //return 'electron';
@@ -101,6 +102,8 @@ function detectCardType(number) {
         return 'mastercard';
     } else if (re.amex.test(number)) {
         return 'amex';
+    } else if (re.elo.test(number)) {
+        return 'elo';
     } else if (re.diners.test(number)) {
         //return 'diners';
     } else if (re.discover.test(number)) {
@@ -135,6 +138,8 @@ $(document).ready(function(){
             $('.mycart-payment-flags').find('img[data-cartao=amex]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
         }else if(bandeira == 'diners'){
             $('.mycart-payment-flags').find('img[data-cartao=diners]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
+        }else if(bandeira == 'elo'){
+            $('.mycart-payment-flags').find('img[data-cartao=elo]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
         }
 
         if(bandeira){
@@ -156,6 +161,8 @@ $(document).ready(function(){
             $('.mycart-payment-flags').find('img[data-cartao=amex]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
         }else if(bandeira == 'diners'){
             $('.mycart-payment-flags').find('img[data-cartao=diners]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
+        }else if(bandeira == 'elo'){
+            $('.mycart-payment-flags').find('img[data-cartao=elo]').attr('style', 'box-shadow: 0px 0px 3px #e85238;');
         }
 
         if(bandeira){

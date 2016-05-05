@@ -1,4 +1,4 @@
-    <div class="banners-advertisement cycle-slideshow"
+<div class="banners-advertisement cycle-slideshow"
     data-cycle-fx="fadeout"
     data-cycle-timeout="5000"
     data-cycle-slides="> a"
@@ -344,3 +344,8 @@
       {include file="sidebar-default.tpl"}
     </div>
 </section>
+{*<script type="text/javascript">*}
+        {*var setSiteType = "{$_whatDevice}";*}
+        {*var setEmail = "{$_email_usuario}";*}
+        {*criteo.getCriteoHome(setEmail, setSiteType);*}
+{*</script>*}

@@ -131,7 +131,7 @@
 
                 <form action="#actionPraComprar" method="">
 
-                    <div id="heading-details-product" class="heading-details-products">
+                    <div id="heading-details-product" class="heading-details-products" data-id="{$produto->NR_SEQ_PRODUTO_PRRC}">
                         <h1 itemprop="name">{$preTitle} {$produto->DS_PRODUTO_PRRC}</h1>
                         <img itemprop="image" style="display:none;" src="{$this->Url(['tipo'=>"fotosprodutos", 'crop'=>1, 'largura'=>443, 'altura'=>494, 'imagem'=>$foto_completa],"imagem", TRUE)}" alt="{$produto->DS_PRODUTO_PRRC}"/>
                         <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" style="display: none;">

@@ -14,7 +14,6 @@ class Reverb_Controller_Plugin_Geral extends Zend_Controller_Plugin_Abstract
      */
     public function preDispatch(Zend_Controller_Request_Abstract $request)
     {
-
         // Busca o view
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper("viewRenderer");
         $viewRenderer->initView();
@@ -235,6 +234,7 @@ class Reverb_Controller_Plugin_Geral extends Zend_Controller_Plugin_Abstract
             //atribuo 1 para variavel logado para mostrar os itens do menu
             $view->_logado = 1;
             //assino as variaveis do usuario logado
+
             $view->_email_usuario = $usuarios->email;
             $view->_nome_usuario = $usuarios->nome;
             $view->_idperfil = $usuarios->idperfil;
@@ -242,7 +242,6 @@ class Reverb_Controller_Plugin_Geral extends Zend_Controller_Plugin_Abstract
         }else{
             $view->popupNiver = false;
         }
-
         /************
          * SUGESTAO DE PRODUTOS
          *************/

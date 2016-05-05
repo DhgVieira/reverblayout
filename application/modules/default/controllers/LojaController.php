@@ -526,6 +526,13 @@ class LojaController extends Zend_Controller_Action {
 
         //Assino ao view
         $this->view->banners_topo = $lista_banner_topo;
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -948,6 +955,13 @@ class LojaController extends Zend_Controller_Action {
 
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -1384,6 +1398,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -1812,6 +1833,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -2238,6 +2266,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -2492,6 +2527,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -2820,6 +2862,14 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
+
     }
 
     /**
@@ -3260,6 +3310,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -3694,6 +3751,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -4163,6 +4227,14 @@ class LojaController extends Zend_Controller_Action {
 
         //Assino ao view
         $this->view->banners_topo = $lista_banner_topo;
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
+        $this->view->tagCriteo = $strScript;
     }
 
     /**
@@ -4624,6 +4696,13 @@ class LojaController extends Zend_Controller_Action {
 
         //Assino ao view
         $this->view->banners_topo = $lista_banner_topo;
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -4643,7 +4722,9 @@ class LojaController extends Zend_Controller_Action {
                 ->where("ST_PRODUTOS_PRRC = 'A'")
                 ->order("VL_PRODUTO_PRRC");
 
-        $this->view->vale_presentes = $model_produtos->fetchAll($select_produtos);
+        $vale_presentes = $model_produtos->fetchAll($select_produtos);
+
+        $this->view->vale_presentes = $vale_presentes;
 
         $campanhas = new Zend_Session_Namespace("campanhas");
         //pego a url da campanha
@@ -4751,6 +4832,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $vale_presentes);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -5028,6 +5116,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -5197,6 +5292,13 @@ class LojaController extends Zend_Controller_Action {
                 ->order("DT_CADASTRO_BARC DESC");
         //Assino ao view
         $this->view->banners_topo = $model_banner->fetchAll($select_banner_topo);
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdctList($whatDevice, $userEmail, $contador);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -6525,6 +6627,13 @@ class LojaController extends Zend_Controller_Action {
         $this->view->telefone = $usuarios->cel;
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/tinymce.min.js');
         $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/libs/tinymce/langs/pt_BR.js');
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdct($whatDevice, $userEmail, $idproduto);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**
@@ -6656,6 +6765,13 @@ class LojaController extends Zend_Controller_Action {
         $this->view->uf = $usuarios->uf;
         $this->view->ddd = $usuarios->ddd;
         $this->view->telefone = $usuarios->cel;
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getProdct($whatDevice, $userEmail, $idproduto);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     /**

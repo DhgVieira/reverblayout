@@ -6,8 +6,13 @@ class Zend_Controller_Action_Helper_Criteo extends Zend_Controller_Action_Helper
 
     private function setProdByObj($objProd) {
         $arrProd = [];
+        $i = 1;
         foreach($objProd as $produto) {
-            array_push($arrProd, $produto->NR_SEQ_PRODUTO_PRRC);
+            if($i <= 3)
+                array_push($arrProd, $produto->NR_SEQ_PRODUTO_PRRC);
+            else
+                break;
+            $i++;
         }
         return json_encode($arrProd);
     }
@@ -18,12 +23,12 @@ class Zend_Controller_Action_Helper_Criteo extends Zend_Controller_Action_Helper
         $arrRetorno = [];
         $strArrayRetorno = '';
         foreach ($carrinho->produtos as $key => $produto) {
-            if(empty($produto['vl_promo']))
-                $price = $produto['valor'];
-            else
-                $price = $produto['vl_promo'];
-            $arrRetorno[] = ['id' => $produto['codigo'], 'price' => number_format($price, 2, '.', '.'), 'quantity' => $produto['quantidade']];
-            $strArrayRetorno .= '{id: ' . '"'. $produto['codigo'] . '", price: ' . number_format($price, 2, '.', '.') . ', ' . 'quantity: ' . $produto['quantidade'] . '},';
+                if(empty($produto['vl_promo']))
+                    $price = $produto['valor'];
+                else
+                    $price = $produto['vl_promo'];
+                $arrRetorno[] = ['id' => $produto['codigo'], 'price' => number_format($price, 2, '.', '.'), 'quantity' => $produto['quantidade']];
+                $strArrayRetorno .= '{id: ' . '"'. $produto['codigo'] . '", price: ' . number_format($price, 2, '.', '.') . ', ' . 'quantity: ' . $produto['quantidade'] . '},';
         }
 
         if(empty($returnJSON)) {
@@ -42,7 +47,7 @@ class Zend_Controller_Action_Helper_Criteo extends Zend_Controller_Action_Helper
 
     public function getTransaction($whatDevice, $userEmail, $intIDPedido){
         $strProductList = "{ event: \"trackTransaction\", id: \"{$intIDPedido}\",
-        \"viewList\", item:[" . $this->setCarrinho() . "]}";
+        item:[" . $this->setCarrinho() . "]}";
         $getCriteo = $this->getCriteo($whatDevice, $userEmail, $strProductList);
         return $getCriteo;
     }

@@ -831,6 +831,13 @@ class IndexController extends Zend_Controller_Action {
 
         //Assino ao view
         $this->view->banners = $banners;
+
+        $this->view->headScript()->appendFile('//static.criteo.net/js/ld/ld.js');
+        $this->view->headScript()->appendFile($this->view->basePath . '/arquivos/default/js/criteo.js');
+        $whatDevice = $this->_helper->navegacao->whatDevice();
+        $userEmail = $this->_helper->usuario->getEmail();
+        $strScript = $this->_helper->criteo->getCriteoHome($whatDevice, $userEmail);
+        $this->view->headScript()->appendScript($strScript);
     }
 
     public function inicio2Action() {

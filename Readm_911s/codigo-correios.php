@@ -90,10 +90,13 @@ class CodigoCorreios
         $arrOrder = array();
 
         foreach ($objTables as $objTable) {
-            if ($intCounter == 2) {
+            //if ($intCounter >= 2) {
+                $inttable = $objTable->getElementsByTagName('table')->length;
                 if ($objTable->getElementsByTagName('table')->length > 0) {
+                    $objTable2 = $objTable->getElementsByTagName('table');
                     foreach ($objTable->getElementsByTagName('table') as $objSubtable) {
-                        if ($intSubcounter == 2) {
+                        $nodeValue = $objSubtable->nodeValue;
+//                        if ($intSubcounter >= 2) {
                             if (substr($objSubtable->nodeValue, 0, 5) == "SEDEX" || substr($objSubtable->nodeValue, 0, 9) == "ENCOMENDA") {
                                 foreach ($objSubtable->getElementsByTagName('tr') as $objLine) {
                                     $objColumns = $objLine->getElementsByTagName('td');
@@ -113,12 +116,12 @@ class CodigoCorreios
                                     }
                                 }
                             }
-                        }
-                        $intSubcounter++;
+//                        }
+//                        $intSubcounter++;
                     }
                 }
-            }
-            $intCounter++;
+//            }
+//            $intCounter++;
         }
 
         return $arrOrder;

@@ -24,10 +24,6 @@
     <div class="steps step-2">Etapa 2 - Pagamento</div>
     <div class="steps step-3">Etapa 3 - Confirmação</div>
 </div>
-<h2 style="background-color: #e85238; color: #FFF; padding: 10px 10px 10px 10px; font-size: 13px;">
-
-    <b>NAOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO</b>
-</h2>
 {if $msg_promo neq ""}
     <h2 style="background-color: #e85238; color: #FFF; padding: 10px 10px 10px 10px; font-size: 13px;">
     {if $primeira_compra eq 1 and $compra_niver eq 0}
